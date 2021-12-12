@@ -1,5 +1,6 @@
 <?php
 
+	use yii\helpers\Url;
 	use yii\helpers\Html;
 	use yii\widgets\ActiveForm;
 	use yii\widgets\Pjax;
@@ -12,55 +13,58 @@
 	 * @var dektrium\user\models\SettingsForm $model
 	 */
 
-	$this->title = Yii::t('front', 'Личный кабинет');
+	$this->title = Yii::t('front', 'Аккаунт');
 	// $this->params['breadcrumbs'][] = $this->title;
     
-    $this->registerCSS("
-        body {
-            background: radial-gradient(180.55% 81.29% at 50% 100%, #3C0805 0%, #000000 100%);
-        }
-    ");
 ?>
 
-<div class="container">
-
-    <h1 class="acline font-weight-light my-5 display-2">
-        <?= $this->title ?>
-    </h1>
-    
-    <h2 class="acline font-weight-light h1 my-5">
-        <?= Yii::t('front', 'Персональные данные') ?>
-    </h2>
-    
-    <?php
-        $form = ActiveForm::begin([
-            'id' => 'account-form',
-            // 'action' => '/account',
-            // 'method' => 'get',
-            'enableAjaxValidation' => true,
-            'enableClientValidation' => false,
-            'validateOnBlur' => false,
-            'validateOnType' => false,
-            'validateOnChange' => false,
-        ]);
-    ?>
-
-        <div class="row justify-content-start my-5 py-4">
-        
-            <div class="col-12 col-md-6 col-lg-4">
-                
+<div class="container-fluid mb-15 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
+	<div class="row justify-content-center">
+		<div class="col-lg-6 mb-4 d-none d-lg-block">
+			<?= $this->render('_menu') ?>
+		</div>
+		<div class="col-12 col-sm-10 col-md-8 col-lg-6">
+		
+			<h1 class="ttfirsneue text-uppercase font-weight-light text-center d-lg-none mb-3">
+				<?= $this->title ?>
+			</h1>
+			
+			<?php
+				$form = ActiveForm::begin([
+					'id' => 'account-form',
+					// 'action' => '/account',
+					// 'method' => 'get',
+					'enableAjaxValidation' => true,
+					'enableClientValidation' => false,
+					'validateOnBlur' => false,
+					'validateOnType' => false,
+					'validateOnChange' => false,
+				]);
+			?>
+			
+				<div class="row justify-content-between align-items-center mb-3">
+					<div class="col-auto font-weight-bold text-uppercase">
+						<?= Yii::t('front', 'Персональные данные') ?>
+					</div>
+					<div class="col-auto">
+						<button type="button" class="btn btn-link text-uppercase px-0" onclick="$('#account-form').submit();">
+							<?= Yii::t('front', 'Сохранить') ?>
+						</button>
+					</div>
+				</div>
+				
 				<?= $form
                         ->field($model, 'first_name', [
                             'inputOptions' => [
                                 // 'autofocus' => 'autofocus',
-                                'class' => 'form-control mb-0 px-0',
+                                'class' => 'form-control font-weight-normal mb-0 px-0',
                                 'required' => true,
                                 'autocomplete' => rand(),
                                 'placeholder' => ' ',
                                 'value' => $profile->first_name,
                             ],
                             'options' => [
-                                'class' => 'form-group mb-5 position-relative floating-label',
+                                'class' => 'form-group mb-3 position-relative floating-label',
                             ],
                             'template' => '{input}{label}{hint}{error}',
                         ])
@@ -70,28 +74,58 @@
                 <?= $form
                         ->field($model, 'last_name', [
                             'inputOptions' => [
-                                'class' => 'form-control mb-0 px-0',
+                                'class' => 'form-control font-weight-normal mb-0 px-0',
                                 'autocomplete' => rand(),
                                 'placeholder' => ' ',
                                 'value' => $profile->last_name,
                             ],
                             'options' => [
-                                'class' => 'form-group mb-5 position-relative floating-label',
+                                'class' => 'form-group mb-3 position-relative floating-label',
                             ],
                             'template' => '{input}{label}{hint}{error}',
                         ])
                         ->label(Yii::t('front', 'Фамилия'))
                 ?>
+				
+                <?= $form
+                        ->field($model, 'email', [
+                            'inputOptions' => [
+                                'class' => 'form-control font-weight-normal mb-0 px-0',
+                                'autocomplete' => rand(),
+                                'placeholder' => ' ',
+                                // 'value' => $profile->email,
+                            ],
+                            'options' => [
+                                'class' => 'form-group mb-3 position-relative floating-label',
+                            ],
+                            'template' => '{input}{label}{hint}{error}',
+                        ])
+                ?>
+				
+                <?= $form
+                        ->field($model, 'phone', [
+                            'inputOptions' => [
+                                'class' => 'form-control font-weight-normal mb-0 px-0',
+                                'autocomplete' => rand(),
+                                'placeholder' => ' ',
+                                'value' => $profile->phone,
+                            ],
+                            'options' => [
+                                'class' => 'form-group mb-3 position-relative floating-label',
+                            ],
+                            'template' => '{input}{label}{hint}{error}',
+                        ])
+                ?>
                 
                 <?= $form
                         ->field($model, 'birthday', [
                             'inputOptions' => [
-                                'class' => 'form-control mb-0 px-0',
+                                'class' => 'form-control font-weight-normal mb-0 px-0',
                                 'placeholder' => ' ',
                                 'value' => $profile->birthday,
                             ],
                             'options' => [
-                                'class' => 'form-group mb-5 position-relative floating-label',
+                                'class' => 'form-group mb-3 position-relative floating-label',
                             ],
                             'template' => '{input}{label}{hint}{error}',
                         ])
@@ -101,192 +135,67 @@
                         ])
                         ->label(Yii::t('front', 'Дата рождения'))
                 ?>
-                
-                <div class="form-group mb-5 pt-2">
-                    <label class="control-label float-left mr-4">
-                        <?= Yii::t('front', 'Пол') ?>
-                    </label>
-                    <?= $form
-                            ->field($model, 'sex')
-                            ->radioList(
-                                [
-                                    1 => Yii::t('front', 'Мужской'),
-                                    0 => Yii::t('front', 'Женский'),
-                                ],
-                                [
-                                    'item' => function($index, $label, $name, $checked, $value) use ($profile){
-                                        return '
-                                            <div class="custom-control custom-radio d-inline mr-4">
-                                                <input type="radio" name="' . $name . '" class="custom-control-input" ' . ($value == $profile->sex ? 'checked': '') . ' id="' . $name . $value . '" value="' . $value . '">
-                                                <label class="custom-control-label" for="' . $name . $value . '">' . $label . '</label>
-                                            </div>';
-                                    }
-                                ]
-                            )
-                            ->label(false)
-                    ?>
-                </div>
-                
-            </div>
-            
-            <div class="col-12 col-md-6 col-lg-4">
-            
-                <?= $form
-                        ->field($model, 'phone', [
-                            'inputOptions' => [
-                                'class' => 'form-control mb-0 px-0',
-                                'autocomplete' => rand(),
-                                'placeholder' => ' ',
-                                'value' => $profile->phone,
-                            ],
-                            'options' => [
-                                'class' => 'form-group mb-5 position-relative floating-label',
-                            ],
-                            'template' => '{input}{label}{hint}{error}',
-                        ])
-                ?>
-            
-                <?= $form
-                        ->field($model, 'email', [
-                            'inputOptions' => [
-                                'class' => 'form-control mb-0 px-0',
-                                'autocomplete' => rand(),
-                                'placeholder' => ' ',
-                                // 'value' => $profile->email,
-                            ],
-                            'options' => [
-                                'class' => 'form-group mb-5 position-relative floating-label',
-                            ],
-                            'template' => '{input}{label}{hint}{error}',
-                        ])
-                ?>
-
-				<?= $form
-                        ->field($model, 'new_password', [
-                            'inputOptions' => [
-                                'class' => 'form-control mb-0 px-0',
-                                // 'required' => true,
-                                'autocomplete' => rand(),
-                                'placeholder' => ' ',
-                            ],
-                            'options' => [
-                                'class' => 'form-group mb-5 position-relative floating-label',
-                            ],
-                            'template' => '{input}{label}{hint}{error}',
-                        ])
-                        ->passwordInput()
-                        // ->hint(Yii::t('front', 'Не менее 6 латинских букв, цифр и спец. символов'))
-                ?>
-                
+				
+				<div class="row justify-content-between align-items-center mt-8 mb-3">
+					<div class="col-auto font-weight-bold text-uppercase">
+						<?= Yii::t('front', 'Пароль') ?>
+					</div>
+					<div class="col-auto">
+						<button type="button" class="btn btn-link text-uppercase px-0" onclick="$('#account-form').submit();">
+							<?= Yii::t('front', 'Сохранить') ?>
+						</button>
+					</div>
+				</div>
+				
 				<?= $form
                         ->field($model, 'current_password', [
                             'inputOptions' => [
                                 // 'autofocus' => 'autofocus',
-                                'class' => 'form-control mb-0 px-0',
+                                'class' => 'form-control font-weight-normal mb-0 px-0',
                                 // 'required' => true,
                                 'autocomplete' => rand(),
                                 'placeholder' => ' ',
                             ],
                             'options' => [
-                                'class' => 'form-group mb-5 position-relative floating-label',
+                                'class' => 'form-group mb-3 position-relative floating-label',
                             ],
                             'template' => '{input}{label}{hint}{error}',
                         ])
                         ->passwordInput()
                         // ->hint(Yii::t('front', 'Введите текущий пароль для Вашей учётной записи'))
                 ?>
-                
-            </div>
-            
-            <div class="col-12 col-lg-4">
-            
-                <?= $form
-                        ->field($model, 'comment', [
+				
+				<?= $form
+                        ->field($model, 'new_password', [
                             'inputOptions' => [
-                                'class' => 'form-control mb-0 px-0 px-2',
+                                'class' => 'form-control font-weight-normal mb-0 px-0',
+                                // 'required' => true,
                                 'autocomplete' => rand(),
-                                // 'placeholder' => ' ',
-                                'value' => $profile->comment,
-                                'rows' => 7,
-                                'style' => '
-                                    resize: none;
-                                    height: 260px;
-                                    margin-top: 4px;
-                                ',
+                                'placeholder' => ' ',
                             ],
                             'options' => [
-                                'class' => 'form-group mb-5 position-relative',
+                                'class' => 'form-group mb-3 position-relative floating-label',
                             ],
-                            'template' => '{label}{input}{hint}{error}',
+                            'template' => '{input}{label}{hint}{error}',
                         ])
-                        ->textArea()
+                        ->passwordInput()
+                        // ->hint(Yii::t('front', 'Не менее 6 латинских букв, цифр и спец. символов'))
                 ?>
-            
-            </div>
-            
-            <div class="col-12 col-md-6 col-lg-4">
-            
-                <?= $form
-                        ->field($model, 'agree', [
-                            'options' => [
-                                'class' => 'form-group mb-5',
-                            ],
-                            'inputOptions' => [
-                                'class' => 'custom-control-input',
-                                'checked' => ($profile->agree ? 'checked' : false),
-                            ],
-                            'labelOptions' => [
-                                'class' => 'custom-control-label',
-                            ],
-                            'template' => '<div class="custom-control custom-checkbox">{input}{label}</div>',
-                        ])
-                        ->textInput([
-                            'type' => 'checkbox',
-                        ])
-                ?>
-            
-            </div>
-            
-            <div class="col-12 col-md-6 col-lg-4">
-            
-                <?= $form
-                        ->field($model, 'lottery', [
-                            'options' => [
-                                'class' => 'form-group mb-5',
-                            ],
-                            'inputOptions' => [
-                                'class' => 'custom-control-input',
-                                'checked' => ($profile->lottery ? 'checked' : false),
-                            ],
-                            'labelOptions' => [
-                                'class' => 'custom-control-label',
-                            ],
-                            'template' => '<div class="custom-control custom-checkbox">{input}{label}</div>',
-                        ])
-                        ->textInput([
-                            'type' => 'checkbox',
-                        ])
-                ?>
-            
-            </div>
-            
-            <div class="col-12 col-sm-6 col-md-12 col-lg-4">
+					
+				<?= Html::hiddenInput('sex', $model->sex) ?>
+				<?= Html::hiddenInput('lang', Yii::$app->language) ?>
+				<?= Html::hiddenInput('agree', Yii::$app->language) ?>
+				<?= Html::hiddenInput('comment', Yii::$app->language) ?>
+				<?= Html::hiddenInput('lottery', Yii::$app->language) ?>
 
-				<div class="form-group text-center text-lg-left">
-					<?= Html::submitButton(Html::tag('span') . Yii::t('front', 'Сохранить'), [
-                            'class' => 'btn-nrk',
-                            'title' => Yii::t('front', 'Сохранить'),
-                        ])
-                    ?>
-				</div>
-            
-            </div>
-        
-        </div>
-        
-        <?= Html::hiddenInput('lang', Yii::$app->language) ?>
+			<?php ActiveForm::end(); ?>
+			
+		</div>
+	</div>
+</div>
 
-    <?php ActiveForm::end(); ?>
+
+
 	
 <?php if ($model->module->enableAccountDelete){ ?>
 	<hr/>

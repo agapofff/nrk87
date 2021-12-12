@@ -13,14 +13,11 @@
 	$this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="container my-4 my-lg-5">
-    
-    <h1 class="text-center acline font-weight-light my-4 my-lg-5 py-4 py-lg-5">
-        <?= $this->title ?>
-    </h1>
+<div class="container">
     
 	<div class="row justify-content-center">
-		<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+	
+		<div class="col-xs-12 col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-5">
 		
         <?php
 			$form = ActiveForm::begin([
@@ -50,12 +47,14 @@
                 
                 <?= Html::hiddenInput('lang', Yii::$app->language) ?>
 
-				<div class="form-group text-center my-5">
-					<?= Html::submitButton(Html::tag('span') . Yii::t('front', 'Продолжить'), [
-                            'class' => 'btn-nrk',
-                            'title' => Yii::t('front', 'Продолжить'),
-                        ])
-                    ?>
+				<div class="row no-gutters">
+					<div class="col-md-6">
+							<?= Html::submitButton(Html::tag('span') . Yii::t('front', 'Продолжить'), [
+									'class' => 'btn btn-primary btn-block py-1',
+									'title' => Yii::t('front', 'Продолжить'),
+								])
+							?>
+					</div>
 				</div>
 
         <?php

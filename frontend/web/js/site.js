@@ -1,8 +1,4 @@
 
-new WOW({
-        mobile: false
-    }).init();
-
 lazyload();
 $(document).on('pjax:end', function(){
 	lazyload();
@@ -52,13 +48,38 @@ $(document).on('click', '*[data-toggle="lightbox"], .lightbox', function(e){
 });
 
 
+// $('body').css({'background': '#000'});
 // меню
 prevScroll = 0;
+
 $(window).scroll(function(){
+	mainMenuStyle();
+});
+
+mainMenuStyle = function(){
     var offset = $(window).scrollTop();
-// console.log(offset);
-    $('#nav').toggleClass('hidden', offset > 100 && offset > prevScroll);
+
+    $('#nav')
+		.toggleClass('hidden', offset > 20 && offset > prevScroll)
+		.toggleClass('shadow-sm', offset > 20)
+		.toggleClass('mt-0_5 mt-lg-1_5 bg-transparent', offset < 20);
+		
+	if ($('#nav').is('.dark')){
+		if (offset > $(window).height()/2){
+			$('#nav')
+				.removeClass('navbar-dark bg-transparent')
+				.addClass('navbar-light bg-white shadow-sm');
+		} else {
+			$('#nav')
+				.removeClass('navbar-light bg-white shadow-sm')
+				.addClass('navbar-dark bg-transparent');
+		}
+	}
     prevScroll = offset;
+}
+
+$(document).ready(function(){
+	mainMenuStyle();
 });
 
 
@@ -79,6 +100,15 @@ $(document).ready(function(){
     // }).on('shown.bs.popover', function(){
         // generateOwlCarousel();
     // });
+});
+
+
+$(document).ready(function(){
+	$('input[name="shipping_type_switcher"]').click(function(){
+		$(this).tab('show');
+		$(this).removeClass('active');
+		$('#order-shipping_type_id').val($(this).val()).trigger('change');
+	});
 });
 
 
@@ -214,7 +244,10 @@ function owlCarouselInit(item){
 		loop: owlLoop,
 		margin: owlMargin,
 		checkVisibility: false,
-		navText: ['<div class="goto_prev"></div', '<div class="goto_next"></div>'],
+		navText: [
+			'<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></svg>', 
+			'<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>'
+		],
 		onInitialize: function(element){
 			if (owlRandom === true){
 				$(item).children().sort(function(){
@@ -252,31 +285,7 @@ $(document).on('click.bs.dropdown.data-api', '.dropdown-menu', function(e){
 });
 
 
-// анимация волны кнопки
-$('.btn-nrk').on('click',function(){
-    $(this).addClass('click');
-});
-$('.btn-nrk').on('webkitAnimationEnd',function(){
-    $(this).removeClass('click');
-});
-
-
-
-$('body').mousemove(function(e){
-    $('.cover, .horizontal-parallax').each(function(){
-        var images = $(this).find('img');
-        $(images).each(function(key, el){
-            $(this).css('marginLeft', Math.round(e.pageX * ($(this).hasClass('horizontal-parallax-reverse') ? -1 : 1) / (20 + (images.length - key)*30)));
-        });
-    });
-    // $('#cover, .horizontal-parallax').each(function(){
-        // $($(this).find('img').get().reverse()).each(function(key, el){
-            // $(this).css('marginLeft', e.pageX * -1 / (20 + key*30));
-        // });
-    // });
-});
-
-
+// зум изображений товаров
 function imageZoom(){
 	$('.zoom').each(function(){
 		$(this).zoom({
@@ -300,29 +309,50 @@ $(document).ready(function(){
 });
 
 
+// выбор размера
+$(document).on('click', '.dropdown-change-select', function(){
+	var $element = $(this).parents('.dropdown').find('button[data-toggle="dropdown"]'),
+		id = $(this).data('id'),
+		val = $(this).data('value');
+		txt = $(this).text();
+		
+	$('select[data-id="' + id + '"]')
+		.val(val)
+		.trigger('change');
+		
+	$element
+		.text(txt)
+		.attr('aria-expanded', false)
+		.addClass('changed');
+		
+	$element.dropdown('hide');
+});
 
-function showVoteResults(data){
-	console.log(data);
-	var results = data;
-	$('.vote-results').html('<dl class="dl-horizontal"></dl>');
-	for (var i = 0; i < results.length; i++){
-		$('.vote-results .dl-horizontal').append(
-			'<dt>' + results[i].name + '</dt>' + 
-			'<dd>' + 
-				'<div class="progress mt-1 bg-transparent">' + 
-					'<div class="vote-result-progress-' + i + ' progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="' + results[i].percent + '" aria-valuemin="0" aria-valuemax="100" style="width:0%"><strong>' + results[i].percent + '%</strong></div>' + 
-				'</div>' + 
-			'</dd>'
-		);
-		$('.vote-result-progress-' + i).animate({
-			'width': results[i].percent + '%'
-		}, {
-			duration: 500,
-			easing: 'linear'
-		});
-	}
+
+// показ корзины при изменении
+$(document).on('dvizhCartChanged', function(){
+	$('#mini-cart').modal('show');
+});
+
+
+// wishlist
+wishlistCheck = function(){
+	var $btn = $('.btn-wishlist');
+	$.get('/' + $btn.data('lang') + '/wishlist/check', {
+		'product_id': $btn.data('product'),
+		'size': $btn.data('size')
+	}, function(data){
+		$btn.replaceWith(data);
+	});
 }
-
+$(document).on('click', '.btn-wishlist', function(){
+	$.get('/' + $(this).data('lang') + '/wishlist/' + $(this).data('action'), {
+		'product_id': $(this).data('product'),
+		'size': $(this).data('size')
+	}, function(){
+		wishlistCheck();
+	});
+});
 
 
 // Яндекс Ecommerce

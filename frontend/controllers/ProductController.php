@@ -9,6 +9,8 @@ use dvizh\shop\models\Modification;
 use yii\db\Query;
 use yii\web\NotFoundHttpException;
 
+use yii\helpers\ArrayHelper;
+
 use Facebook\Facebook;
 use linslin\yii2\curl;
 
@@ -91,13 +93,49 @@ class ProductController extends \yii\web\Controller
             // ]
         // ]);
 		
-
+		$productsPrices = null;
+		$productsPricesOld = null;
+		
+		$relations = $product->getRelations();
+		
+		if ($relations){
+			$modifications = (new Query())
+				->select([
+					'product_id' => 'm.product_id',
+					'price' => 'p.price',
+					'price_old' => 'p.price_old',
+				])
+				->from([
+					'm' => '{{%shop_product_modification}}',
+					'p' => '{{%shop_price}}',
+				])
+				->where([
+					'm.available' => 1,
+					// 'm.lang' => Yii::$app->language,
+					// 'm.store_type' => Yii::$app->params['store_type'],
+				])
+				->andWhere(['like', 'm.name', Yii::$app->language])
+				->andWhere(['like', 'm.name', Yii::$app->params['store_types'][Yii::$app->params['store_type']]])
+				->andWhere('m.id = p.item_id')
+				->groupBy([
+					'product_id',
+					'price',
+					'price_old'
+				])
+				->all();
+		
+			$productsPrices = ArrayHelper::map($modifications, 'product_id', 'price');
+			$productsPricesOld = ArrayHelper::map($modifications, 'product_id', 'price_old');
+		}
         
         return $this->render('index', [
             'model' => $product,
             'price' => $prices['price'],
             'priceOld' => $prices['price_old'],
 			'categoryName' => $categoryName,
+			'relations' => $relations,
+			'prices' => $productsPrices,
+			'pricesOld' => $productsPricesOld,
         ]);
     }
 

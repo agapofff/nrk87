@@ -188,6 +188,16 @@ section.content h1 {
     font-size: 107%;
 }
 
+.sort-handler {
+	padding: 0.5em;
+	cursor: grab;
+}
+.ui-sortable-helper {
+	display: table-row;
+	background-color: #fcf8e3 !important;
+	box-shadow: 0 0 7px rgba(0, 0, 0, .3);
+}
+
 
 /* LOADING */
 #loader {

@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5185d1942ddca47e8c7cb533c474b08b94ff4631',
+        'reference' => '519b7f92ab3430d5316e3ed65b5613edfa89cb5b',
         'name' => 'yiisoft/yii2-app-advanced',
         'dev' => true,
     ),
@@ -1935,7 +1935,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5185d1942ddca47e8c7cb533c474b08b94ff4631',
+            'reference' => '519b7f92ab3430d5316e3ed65b5613edfa89cb5b',
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-authclient' => array(

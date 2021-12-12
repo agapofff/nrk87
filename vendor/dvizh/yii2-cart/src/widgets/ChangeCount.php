@@ -8,8 +8,8 @@ class ChangeCount extends \yii\base\Widget
 {
     public $model = NULL;
     public $lineSelector = 'li'; //Селектор материнского элемента, где выводится элемент
-    public $downArr = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>';
-    public $upArr = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>';
+    public $downArr = '<svg width="8" height="2" viewBox="0 0 8 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1.192H0V0.488H8V1.192Z" fill="black"/></svg>';
+    public $upArr = '<svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.8 0H4.76V3.52H8.28V4.48H4.76V8H3.8V4.48H0.28V3.52H3.8V0Z" fill="black"/></svg>';
     public $cssClass = 'dvizh-change-count';
     public $defaultValue = 1;
     public $showArrows = true;
@@ -32,7 +32,7 @@ class ChangeCount extends \yii\base\Widget
     {
         if($this->showArrows) {
             $downArr = Html::tag('div', Html::button($this->downArr, [
-                'class' => 'btn btn-link px-0 cart-change-count minus',
+                'class' => 'btn btn-link p-0 rounded-pill d-flex align-items-center justify-content-center cart-change-count minus',
                 'style' => 'pointer-events: ' . ($this->model->count == 1 ? 'none' : 'normal'),
                 'disabled' => ($this->model->count == 1 ? true : false),
             ]), [
@@ -40,7 +40,7 @@ class ChangeCount extends \yii\base\Widget
                 'style' => 'pointer-events: ' . ($this->model->count == 1 ? 'none' : 'normal')
             ]);
             $upArr = Html::tag('div', Html::button($this->upArr, [
-                'class' => 'btn btn-link px-0 cart-change-count plus',
+                'class' => 'btn btn-link p-0 rounded-pill d-flex align-items-center justify-content-center cart-change-count plus',
             ]), [
                 'class' => 'input-group-append dvizh-arr dvizh-upArr'
             ]);
@@ -79,8 +79,8 @@ class ChangeCount extends \yii\base\Widget
             ]);
         } else {
             return Html::tag('div', $downArr.$input.$upArr, [
-                'class' => $this->cssClass . ($this->showArrows ? ' input-group justify-content-center mx-auto' : ''),
-                'style' => 'width: 90px;',
+                'class' => $this->cssClass . ($this->showArrows ? ' input-group justify-content-start align-items-center mr-auto' : ''),
+                'style' => 'width: 130px;',
             ]);
         }
     }

@@ -7,6 +7,7 @@ use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\db\Expression;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 // use common\models\LoginForm;
@@ -21,8 +22,14 @@ use dektrium\user\models\User;
 use frontend\models\Pages;
 use frontend\models\Votes;
 use frontend\models\MarsForm;
+use frontend\models\Help;
 
 use backend\models\Boutiques;
+
+use dvizh\shop\models\Product;
+use dvizh\shop\models\product\ProductSearch;
+use yii\db\Query;
+use yii\helpers\ArrayHelper;
 
 /**
  * Site controller
@@ -83,9 +90,73 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+		$products = Product::find()
+			->where([
+				'is_promo' => 1
+			])
+			->orderBy(new Expression('rand()'))
+			->all();
+			
+		$modifications = (new Query())
+			->select([
+				'product_id' => 'm.product_id',
+				'price' => 'p.price',
+				'price_old' => 'p.price_old',
+			])
+			->from([
+				'm' => '{{%shop_product_modification}}',
+				'p' => '{{%shop_price}}',
+			])
+			->where([
+				'm.available' => 1,
+			])
+			->andWhere(['like', 'm.name', Yii::$app->language])
+			->andWhere(['like', 'm.name', Yii::$app->params['store_types'][Yii::$app->params['store_type']]])
+			->andWhere('m.id = p.item_id')
+			->groupBy([
+				'product_id',
+				'price',
+				'price_old'
+			])
+			->all();
+			
+		Yii::$app->params['currency'] = \backend\models\Langs::findOne([
+			'code' => Yii::$app->language
+		])->currency;
+	
+		$prices = ArrayHelper::map($modifications, 'product_id', 'price');
+		$pricesOld = ArrayHelper::map($modifications, 'product_id', 'price_old');
+			
+        return $this->render('index', [
+			'products' => $products,
+			'prices' => $prices,
+			'prices_old' => $pricesOld,
+		]);
         
     }
+	
+	
+	public function actionContacts()
+	{
+        return $this->render('contacts');
+	}
+	
+	
+	public function actionHelp()
+	{
+		$models = Help::find()
+			->where([
+				'active' => 1
+			])
+			->orderBy([
+				'ordering' => SORT_ASC
+			])
+			->all();
+		
+		return $this->render('help', [
+			'models' => $models,
+		]);
+	}
     
     
     public function actionGps()

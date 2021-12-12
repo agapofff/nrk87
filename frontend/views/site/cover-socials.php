@@ -1,4 +1,4 @@
-
+<?php return; ?>
 <div class="row d-none d-md-flex cover-socials">
     <div class="col-4">
         <a href="<?= Yii::$app->params['socials']['Fb'] ?>" target="_blank" class="mx-3">

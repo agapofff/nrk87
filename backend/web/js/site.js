@@ -24,6 +24,7 @@ $(document).on('pjax:send', function(){
 });
 $(document).on('pjax:end', function(){
 	hideLoader();
+	tableSortInit();
 });
 
 
@@ -187,4 +188,42 @@ $(document).on('hidden.bs.modal', '#modification-add-modal', function(event){
 function modificationsRefresh(){
     $('.modal').modal('hide');
     $.pjax.reload('#product-modifications');
+}
+
+
+$(document).ready(function(){
+	tableSortInit();
+});
+
+tableSortInit = function(){
+	$('.sortable tbody').sortable({
+		items: 'tr',
+		placeholder: 'emptySpace',
+		handle: '.sort-handler',
+		helper: function(e, ui) {
+			ui.children().each(function() {
+				$(this).width($(this).width());
+			});
+			return ui;
+		},
+		update: function(){
+			$($('.sortable').hasClass('desc') ? $('.sortable tbody tr').get().reverse() : $('.sortable tbody tr').get()).each(function(key, element){
+// console.log(key + ' - ' + $(this).data('url'));
+					$.ajax({
+						url: $(this).data('url'),
+						type: 'get',
+						data: {
+							ordering: key
+						},
+						async: false,
+					});
+				})
+				.promise()
+				.done(function(){
+					$.pjax.reload({
+						container: '#' + $('[data-pjax-container]').attr('id'),
+					});
+				});
+		}
+	});
 }

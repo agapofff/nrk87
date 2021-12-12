@@ -338,5 +338,53 @@ class ProductController extends Controller
             return $this->redirect(Yii::$app->request->referrer);
         }
     }
+	
+    public function actionNew($id)
+    {
+        $model = Product::findOne($id);
+        $model->is_new = $model->is_new ? 0 : 1;
+        if ($model->save()){
+            Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
+        } else {
+            Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
+        }
+        if (Yii::$app->request->isAjax){
+            $this->actionIndex();
+        } else {
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+    }
+	
+    public function actionPopular($id)
+    {
+        $model = Product::findOne($id);
+        $model->is_popular = $model->is_popular ? 0 : 1;
+        if ($model->save()){
+            Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
+        } else {
+            Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
+        }
+        if (Yii::$app->request->isAjax){
+            $this->actionIndex();
+        } else {
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+    }
+	
+    public function actionPromo($id)
+    {
+        $model = Product::findOne($id);
+        $model->is_promo = $model->is_promo ? 0 : 1;
+        if ($model->save()){
+            Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
+        } else {
+            Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
+        }
+        if (Yii::$app->request->isAjax){
+            $this->actionIndex();
+        } else {
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+    }
 
 }

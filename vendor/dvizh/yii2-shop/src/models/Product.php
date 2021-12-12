@@ -90,7 +90,7 @@ class Product extends \yii\db\ActiveRecord implements \dvizh\relations\interface
             'active' => Yii::t('back', 'Активно'),
             'is_new' => Yii::t('back', 'Новинка'),
             'is_popular' => Yii::t('back', 'Популярное'),
-            'is_promo' => Yii::t('back', 'Акция'),
+            'is_promo' => Yii::t('back', 'Промо'),
             'sort' => Yii::t('back', 'Сортировка'),
             'slug' => Yii::t('back', 'Алиас'),
             'amount_in_stock' => Yii::t('back', 'Количество на складах'),

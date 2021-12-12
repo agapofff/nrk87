@@ -105,7 +105,7 @@ class ElementsList extends \yii\base\Widget
 
         if (empty($elements)) {
             $cart = Html::tag('div', Yii::t('front', 'Корзина пуста'), [
-                'class' => 'dvizh-cart dvizh-empty-cart px-4'
+                'class' => 'dvizh-cart dvizh-empty-cart w-100 text-center'
             ]);
         } else {
         	// $cart = Html::ul($elements, ['item' => function($item, $index) {
@@ -193,8 +193,8 @@ class ElementsList extends \yii\base\Widget
         $cartElName = $product->getCartName();
         
         $image = $product->getImage();
-        $cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_50x50.jpg';
-        $img = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('50x50');
+        $cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_200x200.jpg';
+        $img = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('200x200');
 
         return $this->render($this->elementView, [
             'allOptions' => $allOptions,

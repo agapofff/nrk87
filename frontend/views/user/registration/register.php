@@ -23,15 +23,12 @@ use yii\web\View;
 $this->title = Yii::t('front', 'Регистрация');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container my-4 my-lg-5">
 
-    <h1 class="text-center acline font-weight-light my-4 my-lg-5 py-4 py-lg-5">
-        <?= $this->title ?>
-    </h1>
+<div class="container">
 
     <div class="row justify-content-center align-items-center">
 
-        <div class="col-12 col-sm-10 col-md-6 col-lg-6">
+        <div class="col-xs-12 col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-5">
 
             <?php
                 $form = ActiveForm::begin([
@@ -44,31 +41,34 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form
                         ->field($model, 'email', [
-                                'inputOptions' => [
-                                    'autofocus' => 'autofocus',
-                                    'class' => 'form-control form-control-lg mb-0 px-0',
-                                    'tabindex' => '2',
-                                    'required' => true,
-                                    'autocomplete' => rand(),
-                                    'placeholder' => ' ',
-                                ],
-                                'options' => [
-                                    'class' => 'form-group mb-3 position-relative floating-label',
-                                ],
-                                'template' => '{input}{label}{error}'
-                            ]
-                        )
+							'inputOptions' => [
+								'autofocus' => 'autofocus',
+								'class' => 'form-control mb-0 px-0',
+								'tabindex' => '2',
+								'required' => true,
+								'autocomplete' => rand(),
+								'placeholder' => ' ',
+							],
+							'options' => [
+								'class' => 'form-group mb-1 position-relative floating-label',
+							],
+							'template' => '{input}{label}{error}'
+						]
+					)
                 ?>
 
                 <?= $form
                         ->field($model, 'username', [
                             'template' => '{input}',
+							'options' => [
+								'class' => 'd-none',
+							],
                         ])
                         ->hiddenInput()
                         ->label(false)
                 ?>
                 
-                <div class="form-group mb-5">
+                <div class="form-group mt-2 mb-0">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="agree" name="agree" checked>
                         <label class="custom-control-label" for="agree">
@@ -95,34 +95,32 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 <?= Html::hiddenInput('lang', Yii::$app->language) ?>
 
-                <div class="text-center my-5">
-                    <?= Html::submitButton(Html::tag('span') . Yii::t('front', 'Зарегистрироваться'),
-                            [
-                                'class' => 'btn-nrk',
-                                'tabindex' => '4',
-                                'title' => Yii::t('front', 'Зарегистрироваться'),
-                            ]
-                        )
-                    ?>
-                </div>
+				<div class="row no-gutters">
+					<div class="col-md-6">
+						<div class="mb-2 mt-5">
+							<?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Зарегистрироваться'),
+								[
+									'class' => 'btn btn-primary btn-block text-uppercase py-1',
+									'tabindex' => '4',
+									'title' => Yii::t('front', 'Зарегистрироваться')
+								]
+							) ?>
+						</div>
+						<div class="mb-2 mt-3">
+							<?= Yii::t('front', 'Уже есть аккаунт?') ?> <?= Html::a(Yii::t('front', 'Войти'), ['/login']) ?>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="mb-2">
+							<?= Html::a(Yii::t('front', 'Не получили письмо с подтверждением регистрации?'), [
+									'/resend'
+								])
+							?>
+						</div>
+					</div>
+				</div>
 
             <?php ActiveForm::end(); ?>
-
-            <div class="row justify-content-center">
-                <div class="col-auto text-center">
-                    <p><?= Html::a(Yii::t('front', 'Авторизация'), ['/login']) ?></p>
-                </div>
-            <?php if ($module->enablePasswordRecovery){ ?>
-                <div class="col-auto text-center">
-                    <p><?= Html::a(Yii::t('front', 'Забыли пароль?'), ['/request']) ?></p>
-                </div>
-            <?php } ?>
-            <?php if ($module->enableConfirmation){ ?>
-                <div class="col-auto text-center">
-                    <p><?= Html::a(Yii::t('front', 'Не получили письмо с подтверждением регистрации?'), ['/resend']) ?></p>
-                </div>
-            <?php } ?>
-            </div>
             
         </div>
 
@@ -132,36 +130,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php
     $this->registerJS("
-        $('#registration-form').on('beforeValidateAttribute', function(event, attr, msg){
-            $('#register-form-username').val($('#register-form-email').val());
-        });
+        $('#registration-form')
+			.on('beforeValidateAttribute', function(event, attr, msg){
+				$('#register-form-username').val($('#register-form-email').val());
+			})
+			.on('beforeSubmit', function(event){
+				event.preventDefault();
+				if (!$('#agree').checked){
+					toastr.error('" . Yii::t('front', 'Необходимо согласиться') . "');
+					return false;
+				}
+			})
     ",
-    View::POS_READY,
-    'autofill-username-by-email');
-?>
-
-<?php
-    $this->registerJs("
-            $('form :checkbox').change(function(){
-                if (this.checked){
-                    $(this)
-                        .parents('form')
-                        .removeAttr('disabled')
-                        .removeClass('disabled')
-                        .find('button[type=\'submit\']')
-                        .removeAttr('disabled')
-                        .removeClass('disabled');
-                } else {
-                    $(this)
-                        .parents('form')
-                        .attr('disabled', 'disabled')
-                        .addClass('disabled')
-                        .find('button[type=\'submit\']')
-                        .attr('disabled', 'disabled')
-                        .addClass('disabled');
-                }
-            });
-        ",
-        View::POS_READY,
-        'agree');
+    View::POS_READY);
 ?>

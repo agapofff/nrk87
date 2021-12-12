@@ -51,7 +51,11 @@ class ChangeOptions extends \yii\base\Widget
                 $cssClass = "{$changerCssClass} dvizh-cart-option{$id} cart-option";
 
                 $optionsArray = [];
-                // if ($optionId == 1) $optionsArray = ['' => $optionData['name']];
+                if ($optionId == 1){
+					$optionsArray = [
+						'' => Yii::t('front', $optionData['name']) 
+					];
+				}
                 // $optionsArray = ['' => $optionData['name']];
                 if (isset($optionData['variants'])) {
                     foreach ($optionData['variants'] as $variantId => $value) {
@@ -67,6 +71,16 @@ class ChangeOptions extends \yii\base\Widget
                         $optionsArray[$variantId] = $value;
                     }
                 }
+				
+				$optionsClass = [];
+				if (!empty($optionsArray)){
+					foreach ($optionsArray as $optionKey => $optionVal){
+						$optionsClass[$optionKey] = [
+							'class' => 'px-1 py-1 border-bottom'
+						];
+					}
+				}
+				
 
                 if ($this->type == 'select') {
 
@@ -83,10 +97,26 @@ class ChangeOptions extends \yii\base\Widget
                                 'data-filter-id' => $optionId,
                                 'data-name' => Html::encode($optionData['name']),
                                 'data-id' => $id,
-                                'class' => "form-control $cssClass",
+                                'class' => 'd-none ' . $cssClass,
                                 'id' => 'option' . $optionId,
+								'options' => $optionsClass,
                             ]
                         );
+						
+						$list .= '<div class="dropdown">
+									<button class="btn btn-outline-primary btn-lg btn-block ttfirsneue text-uppercase py-1 dropdown-toggle bg-white text-primary" type="button" id="sizeSelect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0,0" data-flip="false">' 
+										. Yii::t('front', $optionsArray[array_key_first($optionsArray)]) . 
+									'</button>
+									<div class="dropdown-menu rounded-0 pt-0 px-0 pb-1 w-100 border-primary border-top-0 shadow-none" aria-labelledby="sizeSelect">';
+						
+						foreach ($optionsArray as $optionKey => $optionVal){
+							$list .= '<button class="dropdown-item ttfirsneue text-uppercase text-center py-1 w-100 dropdown-change-select ' . ($optionKey ? '' : 'd-none') . '" data-id="' . $id . '" data-value="' . $optionKey . '">' . $optionVal . '</button>
+								<hr class="my-0 mx-2 ' . ($optionKey ? '' : 'd-none') . '">';		
+						}
+									
+						$list .= '</div>
+								</div>';
+								
                     } else {
                         $list = Html::input('hidden', 'cart_options' . $id . '-' . $i, array_key_first($optionsArray), [
                             'data-href' => Url::toRoute([
@@ -97,7 +127,7 @@ class ChangeOptions extends \yii\base\Widget
                             'data-filter-id' => $optionId,
                             'data-name' => Html::encode($optionData['name']),
                             'data-id' => $id,
-                            'class' => "form-control $cssClass",
+                            'class' => 'custom-select custom-select-lg py-1 h-auto ttfirsneue text-center text-uppercase cursor-pointer ' . $cssClass,
                             'id' => 'option' . $optionId,
                         ]);
                     }

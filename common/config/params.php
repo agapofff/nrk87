@@ -35,16 +35,29 @@ return [
     'store_type' => 0,
     'currency' => 'RUB',
     'socials' => [
-        'Fb' => 'https://www.facebook.com/nrk1987.wear/',
+        'Facebook' => 'https://www.facebook.com/nrk1987.wear/',
         'TikTok' => 'https://www.tiktok.com/@nrk1987.wear',
-        'Ig' => 'https://www.instagram.com/nrk1987.wear/',
-        'Vk' => 'https://vk.com/nrk1987.wear',
-        'Yt' => 'https://www.youtube.com/channel/UC_iVum1wE34wTzSY0WxjNGA',
+        'Instagram' => 'https://www.instagram.com/nrk87.wear',
+        'Vkontakte' => 'https://vk.com/nrk1987.wear',
+        'Youtube' => 'https://www.youtube.com/channel/UC_iVum1wE34wTzSY0WxjNGA',
     ],
     'boutiquePlaces' => [
         'earth' => Yii::t('back', 'Адрес на Земле'),
         'mars' => Yii::t('back', 'Адрес на Марсе'),
     ],
+	'contacts' => [
+		'address' => Yii::t('front', 'Москва, ул. Никольская, 10'),
+		'full_address' => [
+			Yii::t('front', 'Москва, ул. Никольская, 10'),
+			Yii::t('front', '«Никольская Плаза», 2 этаж, 3 павильон')
+		],
+		'phone' => '+7 (495) 215-27-27',
+		'phones' => [
+			'8-800-555-27-21',
+			'+7 (495) 215-27-27',
+		],
+		'email' => 'info@nrk1987.com',
+	],
     'hideNotAvailable' => false, // скрывать недоступные товары
     // 'scanToWin' => [
         // 'considerOrderStatus' => false, // учитывать статус чека в розыгрыше (активно / не активно)

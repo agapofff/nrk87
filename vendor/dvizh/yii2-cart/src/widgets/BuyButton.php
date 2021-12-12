@@ -57,7 +57,8 @@ class BuyButton extends \yii\base\Widget
             'data-description' => $this->description,
             'data-model' => $model::className(),
             'title' => $this->text,
-            'style' => 'display: none;',
+            'style' => '',
+			'disabled' => true,
         ]);
     }
 }

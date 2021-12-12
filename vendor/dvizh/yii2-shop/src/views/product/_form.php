@@ -74,29 +74,81 @@ $store_types = Yii::$app->params['store_types'];
     
         <br>
 		
-        <?= $form
-                ->field($model, 'active')
-                ->widget(SwitchInput::classname(), [
-                    'pluginOptions' => [
-                        'onText' => Yii::t('back', 'Да'),
-                        'offText' => Yii::t('back', 'Нет'),
-                        'onColor' => 'success',
-                        'offColor' => 'danger',
-                    ],
-                ]);
-        ?>
-		
-        <?= $form
-                ->field($model, 'available')
-                ->widget(SwitchInput::classname(), [
-                    'pluginOptions' => [
-                        'onText' => Yii::t('back', 'Да'),
-                        'offText' => Yii::t('back', 'Нет'),
-                        'onColor' => 'success',
-                        'offColor' => 'danger',
-                    ],
-                ]);
-        ?>
+		<div class="row">
+			<div class="col-6 col-md-4">
+				<?= $form
+						->field($model, 'active')
+						->widget(SwitchInput::classname(), [
+							'pluginOptions' => [
+								'onText' => Yii::t('back', 'Да'),
+								'offText' => Yii::t('back', 'Нет'),
+								'onColor' => 'success',
+								'offColor' => 'danger',
+							],
+						]);
+				?>
+			</div>
+			<div class="col-6 col-md-4">
+				<?= $form
+						->field($model, 'available')
+						->widget(SwitchInput::classname(), [
+							'pluginOptions' => [
+								'onText' => Yii::t('back', 'Да'),
+								'offText' => Yii::t('back', 'Нет'),
+								'onColor' => 'success',
+								'offColor' => 'danger',
+							],
+						]);
+				?>
+			</div>
+			<div class="col-6 col-md-4">
+				<?= $form
+						->field($model, 'is_new')
+						->widget(SwitchInput::classname(), [
+							'pluginOptions' => [
+								'onText' => Yii::t('back', 'Да'),
+								'offText' => Yii::t('back', 'Нет'),
+								'onColor' => 'success',
+								'offColor' => 'danger',
+							],
+						]);
+				?>
+			</div>
+			<div class="col-6 col-md-4">
+				<?= $form
+						->field($model, 'is_popular')
+						->widget(SwitchInput::classname(), [
+							'pluginOptions' => [
+								'onText' => Yii::t('back', 'Да'),
+								'offText' => Yii::t('back', 'Нет'),
+								'onColor' => 'success',
+								'offColor' => 'danger',
+							],
+						]);
+				?>
+			</div>
+			<div class="col-6 col-md-4">
+				<?= $form
+						->field($model, 'is_promo')
+						->widget(SwitchInput::classname(), [
+							'pluginOptions' => [
+								'onText' => Yii::t('back', 'Да'),
+								'offText' => Yii::t('back', 'Нет'),
+								'onColor' => 'success',
+								'offColor' => 'danger',
+							],
+						]);
+				?>
+			</div>
+			<div class="col-6 col-md-4">
+				<?= $form
+						->field($model, 'sort')
+						->textInput([
+							'type' => 'number'
+						])
+				?>
+			</div>
+		</div>
     
         <div class="hidden">
         <?= $form
@@ -547,37 +599,8 @@ $store_types = Yii::$app->params['store_types'];
                 ->hiddenInput()
                 ->label(false)
         ?>
-        
-        
 
-        
-        
-        <?= $form
-                ->field($model, 'sort')
-                ->hiddenInput()
-                ->label(false)
-        ?>
-        
 
-        <?= $form
-            ->field($model, 'is_new')
-            ->hiddenInput()
-            ->label(false)
-        ?>
-        
-        
-        <?= $form
-            ->field($model, 'is_popular')
-            ->hiddenInput()
-            ->label(false)
-        ?>
-        
-        
-        <?= $form
-            ->field($model, 'is_promo')
-            ->hiddenInput()
-            ->label(false)
-        ?>
 
 
 
@@ -883,15 +906,13 @@ $store_types = Yii::$app->params['store_types'];
         ?>
         </div>
         
-        
-        <div class="hidden">
-            <div class=" panel panel-default related-products-block">
-                <div class="panel-heading"><strong>Связанные продукты</strong></div>
-                <div class="panel-body">
-                    <?=\dvizh\relations\widgets\Constructor::widget(['model' => $model]);?>
-                </div>
-            </div>
+        <br>
+		<br>
+		<p><strong>Связанные продукты</strong></p>
+        <div class="related-products-block">
+            <?=\dvizh\relations\widgets\Constructor::widget(['model' => $model]);?>
         </div>
+
 
         <div class="hidden">
         <?php if(isset($priceTypes)) { ?>

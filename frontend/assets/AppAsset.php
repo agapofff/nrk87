@@ -12,15 +12,16 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        '//fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,600;1,700&display=swap',
+        // '//fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,600;1,700&display=swap',
         // '//use.fontawesome.com/releases/v5.11.2/css/all.css',
-        'css/bootstrap.min.css',
+        'css/bootstrap.css',
         'css/owl.carousel.css',
         'css/owl.theme.default.css',
         'css/bootstrap-select.min.css',
         'css/toastr.css',
-        'css/animate.min.css',
-        'fonts/acline/acline.css',
+        // 'css/animate.min.css',
+        'fonts/helvetica/css/fonts.css',
+        'fonts/ttfirsneue/css/fonts.css',
         'css/nprogress.css',
 		'css/fancybox.css',
         'css/site.css',
@@ -42,15 +43,17 @@ class AppAsset extends AssetBundle
         // 'js/owl.autoplay.js',
         // 'js/owl.lazyload.js',
         // 'js/ekko-lightbox.min.js',
-        'js/wow.min.js',
+        // 'js/wow.min.js',
         
         // 'js/ScrollMagic.min.js',
-        'js/skrollr.min.js',
+        // 'js/skrollr.min.js',
         // 'https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js',
         
         'js/jquery.zoom.js',
 		'js/fancybox.umd.js',
         'js/nprogress.js',
+        // 'js/headroom.min.js',
+        // 'js/jQuery.headroom.js',
         'js/site.js',
     ];
     public $depends = [

@@ -326,6 +326,7 @@ dvizh.cart = {
 
         jQuery('.dvizh-cart-block').replaceWith(json.elementsHTML);
         jQuery('.dvizh-cart-count').html(json.count);
+        jQuery('#mini-cart-total').toggleClass('d-none', json.count === 0);
         jQuery('.dvizh-cart-price').html(json.price);
 
         if (parseFloat(json.count) > parseFloat(qty) && !location.href.includes('checkout')){

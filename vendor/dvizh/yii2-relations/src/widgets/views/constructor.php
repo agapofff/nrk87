@@ -8,6 +8,7 @@ use yii\helpers\Html;
 	<div class="dvizh-relations">
 
     </div>
+	<br>
     <div class="row dvizh-new-relation">
         <div class="col-md-12 col-lg-12">
             <div class="form-group">

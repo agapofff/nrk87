@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row my-4 my-lg-5">
         <div class="col-12">
-            <h1 class="display-3 acline text-center">
+            <h1 class="ttfirsneue font-weight-light text-center">
                 <?= Yii::t('front', 'Заказ') ?> #<?= $order->id ?>
             </h1>
         </div>
@@ -93,7 +93,7 @@
             </div>
         </div>
 
-        <div class="col-12 my-4 my-lg-5">
+        <div class="col-12 my-4 my-lg-5 table-responsive">
             <table class="table">
                 <thead>
                     <tr>
@@ -123,23 +123,22 @@
                                 <img src="<?= Url::to($element->product->getImage()->getUrl('60x60'), true) ?>">
                             </a>
                         </td>
-                        <td class="text-left">
+                        <td class="text-left" style="min-width: 160px;">
                             <p>
                                 <a href="<?= $product_link ?>">
                                     <strong>
-                                        <?= json_decode($element->name)->{$lang} ?>
+                                        <?= json_decode($element->name)->{$lang} ?> <?= $sizes[$key] ?>
                                     </strong>
                                 </a>
                             </p>
-                            <?= $sizes[$key] ?>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center align-middle">
                             <?= (int)$element->count ?>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center align-middle">
                             <?= Yii::$app->formatter->asCurrency($element->price, $currency) ?>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center align-middle">
                             <?= Yii::$app->formatter->asCurrency(($element->count * $element->price), $currency) ?>
                         </td>
                     </tr>

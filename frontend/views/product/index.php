@@ -25,183 +25,221 @@ $h1 = Yii::$app->params['h1'] ?: $product_name;
 $this->title = Yii::$app->params['title'] ?: $product_name . ' - ' . Yii::t('front', 'Купить в интернет-магазине') . ' ' . Yii::$app->name;
 ?>
 
-<div class="container-fluid my-4 my-lg-5" itemscope itemtype="http://schema.org/Product">
+<div class="container-fluid mb-5 px-lg-2 px-xl-3 px-xxl-5" itemscope itemtype="http://schema.org/Product">
     
-    <div class="row justify-content-center my-4 my-lg-5">
-    
-        <div class="col-12 col-lg-10">
+    <div class="row justify-content-center">
 
-            <div class="row">
-
-                <div class="col-12 col-md-6 col-lg-7 col-xl-7">
-                
-                    <div class="row d-none d-md-flex">
-                    
-                    <?php
-                        foreach ($images as $key => $image){
-                            $cachedImageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x600.jpg';
-                            $cachedImageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1200.jpg';
-                    ?>
-                            <div class="col-12 col-md-6 p-2 rounded overflow-hidden">
-                                <a href="#images" data-toggle="modal" class="d-block rounded overflow-hidden zoom" data-url="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMax) ? $cachedImageMax : $image->getUrl('x1200') ?>">
-									<img <?php if ($key == 0){?> itemprop="image" <?php } ?> src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x600') ?>" class="img-fluid rounded" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
-								</a>
-                            </div>
-                    <?php
-                        }
-                    ?>
-                    
-                    </div>
-                    
-                    <div class="row d-md-none">
-                    
-                        <div class="col-12 mb-4">
-                        
-                            <div class="owl-carousel owl-theme owl-dots">
-                            
-                        <?php
-                            foreach ($images as $key => $image){
-                                $cachedImageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x600.jpg';
-								$cachedImageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1500.jpg';
-                        ?>
-								<!-- <a href="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMax) ? $cachedImageMax : $image->getUrl('x1500') ?>" class="fancybox" data-width="100" data-height="100"> -->
-									<img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x600') ?>" class="img-fluid rounded" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
-								<!-- </a> -->
-                        <?php
-                            }
-                        ?>
-                            
-                            </div>
-                        
-                        </div>
-                    
-                    </div>
-                    
-                </div>
-                
-                <div class="col-12 col-md-6 col-lg-5 col-xl-4">
-                
-                    <div class="row justify-content-end">
-                    
-                        <div class="col-12 col-lg-11 col-xl-10">
-                
-                            <h1 class="display-3 acline" itemprop="name">
-                                <?= $h1 ?>
-                            </h1>
-							
-					<?php
-						if ($price && $model->available){
-					?>
-
-                            <div class="product-price my-4" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-								<meta itemprop="price" content="<?= $price ?>">
-								<meta itemprop="priceCurrency" content="<?= Yii::$app->params['currency'] ?>">
-                                <?= ShowPrice::widget([
-                                        'htmlTag' => 'p',
-                                        'cssClass' => 'lead',
-                                        'model' => $model,
-                                        'price' => $price,
-                                        'priceOld' => $priceOld,
-                                    ])
-                                ?>
-                            </div>
-                            
-                            <p class="mb-1">
-                                <?= Yii::t('front', 'Выберите размер') ?>
-                            </p>
-                            
-                            <div class="price-options mt-3 mb-5">
-                                <?= ChangeOptions::widget([
-                                        'model' => $model,
-                                        'type' => 'radio'
-                                    ]);
-                                ?>
-                            </div>
-                            
-                            <div class="product-buy my-4">
-                                <?= BuyButton::widget([
-                                        'model' => $model,
-                                        'htmlTag' => 'button',
-                                        'cssClass' => 'btn-nrk',
-                                    ]);
-                                ?>
-                            </div>
-					<?php
-						}
-					?>
+		<div class="col-12 col-md-6">
+		
+			<div class="row d-none d-md-flex">
+			
+			<?php
+				foreach ($images as $key => $image){
+					$cachedImageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1200.jpg';
+					$cachedImageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1500.jpg';
+			?>
+					<div class="col-12 mt-1 overflow-hidden">
+						<a href="#images" data-toggle="modal" class="d-block overflow-hidden zoom" data-url="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMax) ? $cachedImageMax : $image->getUrl('x1500') ?>">
+							<img <?php if ($key == 0){?> itemprop="image" <?php } ?> src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x1200') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
+						</a>
+					</div>
+			<?php
+				}
+			?>
+			
+			</div>
+			
+			<div class="row d-md-none">
+			
+				<div class="col-12 mb-4">
+				
+					<div class="owl-carousel owl-theme owl-dots">
 					
-					<?php
-						if ($model->code){
+				<?php
+					foreach ($images as $key => $image){
+						$cachedImageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x600.jpg';
+						$cachedImageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1500.jpg';
+				?>
+						<a href="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMax) ? $cachedImageMax : $image->getUrl('x1500') ?>" class="fancybox" data-width="100" data-height="100">
+							<img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x600') ?>" class="img-fluid rounded" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
+						</a>
+				<?php
+					}
+				?>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+			
+		</div>
+		
+		<div class="col-12 col-md-6">
+		
+			<div class="sticky-top" style="top:80px">
+			
+				<h1 class="ttfirsneue font-weight-light mb-3" itemprop="name">
+					<?= $h1 ?>
+				</h1>
+				
+		<?php
+			if ($price && $model->available){
+		?>
+
+				<div class="product-price mb-3" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+					<meta itemprop="price" content="<?= $price ?>">
+					<meta itemprop="priceCurrency" content="<?= Yii::$app->params['currency'] ?>">
+					<?= ShowPrice::widget([
+							'htmlTag' => 'p',
+							'cssClass' => 'lead font-weight-normal ttfirsneue',
+							'model' => $model,
+							'price' => $price,
+							'priceOld' => $priceOld,
+						])
 					?>
-							<div class="my-5">
-								<p class="lead"><?= $model->code ?></p>
-							</div>
-					<?php
-						}
-					?>
-                            
-                            <div class="product-description my-5">
-                                <h4 class="mb-4 d-none"><?= Yii::t('front', 'Описание') ?></h4>
-                                <div itemprop="description">
-									<?= json_decode($model->text)->{Yii::$app->language} ?>
-								</div>
-                            </div>
-                            <hr>
-							<br>
-                            <div class="product-features">
-                                <h4 class="mb-4 d-none"><?= Yii::t('front', 'Характеристики') ?></h4>
-                                <?= json_decode($model->short_text)->{Yii::$app->language} ?>
-                            </div>
-                        
-						<?php
-							if ($sizes = json_decode($model->sizes)->{Yii::$app->language}){
+				</div>
+				
+				<div class="row mb-4">
+					<div class="product-buy col-sm-6 col-md-12 col-lg-6 mb-1">
+						<?= BuyButton::widget([
+								'model' => $model,
+								'htmlTag' => 'button',
+								'cssClass' => 'btn btn-lg btn-primary btn-block py-1 text-uppercase ttfirsneue text-nowrap',
+							]);
 						?>
-							<br>
-							<hr>
-							<br>
-							<div class="mt-4">
-								<a href="#sizes" data-toggle="modal" class="btn-nrk btn-sm" title="<?= Yii::t('front', 'Размерная сетка') ?>">
-									<span></span>
+					</div>
+					<div class="price-options col-sm-6 col-md-12 col-lg-6 mb-1">
+						<div class="row">
+							<div class="col">
+								<?= ChangeOptions::widget([
+										'model' => $model,
+										'type' => 'select',
+									]);
+								?>
+							</div>
+							<div id="product-wishlist" class="col-auto">
+								<?= $this->render('@frontend/views/wishlist/product', [
+									'product_id' => $model->id
+								]) ?>
+							</div>
+						</div>
+					</div>
+				</div>
+		<?php
+			}
+		?>
+		
+		<?php
+			if ($model->code){
+		?>
+				<div class="my-5 d-none">
+					<p class="lead"><?= $model->code ?></p>
+				</div>
+		<?php
+			}
+		?>
+				<div class="row mb-1">
+					<div class="product-features col-sm-6 col-md-12 col-lg-6 mb-2">
+						<p class="text-uppercase font-weight-normal mb-1_5"><?= Yii::t('front', 'Характеристики') ?></p>
+						<div style="opacity: 0.6">
+							<?= json_decode($model->short_text)->{Yii::$app->language} ?>
+						</div>
+					</div>
+					<div class="product-description col-sm-6 col-md-12 col-lg-6 mb-2">
+						<p class="text-uppercase font-weight-normal mb-1_5"><?= Yii::t('front', 'Описание') ?></p>
+						<div itemprop="description" style="opacity: 0.6">
+							<?= json_decode($model->text)->{Yii::$app->language} ?>
+						</div>
+					</div>
+				</div>
+
+		<?php
+			if ($sizes = json_decode($model->sizes)->{Yii::$app->language}){
+		?>
+				<p>
+					<a href="#sizes" data-toggle="modal" title="<?= Yii::t('front', 'Размерная сетка') ?>" class="text-uppercase">
+						<?= Yii::t('front', 'Размерная сетка') ?>
+					</a>
+				</p>
+				<div id="sizes" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="w-100 text-center font-weight-light">
 									<?= Yii::t('front', 'Размерная сетка') ?>
-								</a>
-							</div>
-							<div id="sizes" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-								<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h4 class="w-100 text-center font-weight-light">
-												<?= Yii::t('front', 'Размерная сетка') ?>
-											</h4>
-											<div class="btn-modal-close rounded-circle overflow-hidden" data-dismiss="modal">
-												<svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<line x1="1.49418" y1="0.738243" x2="39.6779" y2="38.922" stroke="white"/>
-													<line x1="0.787072" y1="38.9223" x2="38.9708" y2="0.73856" stroke="white"/>
-												</svg>
-											</div>
-										</div>
-										<div class="modal-body">
-											<div id="size-grid" class="">
-												<?= str_replace('<table>', '<table class="table product-sizes">', $sizes) ?>
-											</div>
-										</div>
-									</div>
+								</h4>
+								<div class="btn-modal-close rounded-circle overflow-hidden" data-dismiss="modal">
+									<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<line x1="13.7891" y1="12.3744" x2="39.9521" y2="38.5373" stroke="black" stroke-width="2"/>
+										<line x1="12.3749" y1="38.5379" x2="38.5379" y2="12.3749" stroke="black" stroke-width="2"/>
+									</svg>
 								</div>
 							</div>
-						<?php
-							}
-						?>
-						
-                        </div>
-                    
-                    </div>
-                    
-                </div>
-                
-            </div>
-            
-        </div>
+							<div class="modal-body">
+								<div id="size-grid" class="">
+									<?= str_replace('<table>', '<table class="table product-sizes">', $sizes) ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		<?php
+			}
+		?>
+				
+			</div>
+			
+		</div>
         
     </div>
+	
+<?php
+	if ($relations){
+?>
+	<div class="row mt-12">
+		<div class="col-12">
+			<hr>
+			<h4 class="h1 ttfirsneue text-uppercase mb-6">
+				<?= Yii::t('front', 'Сопутствующие товары') ?>
+			</h4>
+		</div>
+		<div class="owl-carousel owl-theme" data-items="2-2-3-3-4-4" data-nav="true" data-dots="true" data-margin="0">
+	<?php
+		foreach ($relations->all() as $related){
+	?>
+		<div class="col-12">
+			<div class="card bg-transparent border-0 product">
+				<div class="card-body px-0">
+					<a href="<?= Url::to(['/product/'.$related->slug]) ?>">
+						<?php
+							$image = $related->getImage();
+							$cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_700x1000.jpg';
+						?>
+						<img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('700x1000') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
+					</a>
+					<p class="text-center mt-1_5 mb-0_5">
+						<?= $product_name ?>
+					</p>
+					<p class="price text-center">
+					<?php if (isset($prices_old[$related->id]) && (int)$prices_old[$related->id] > 0){ ?>
+						<del class="text-muted"><?= Yii::$app->formatter->asCurrency((int)$prices_old[$related->id], Yii::$app->params['currency']) ?></del>&nbsp;
+					<?php } ?>
+					<?php if (isset($prices[$related->id]) && (int)$prices[$related->id] > 0){ ?>
+						<?= Yii::$app->formatter->asCurrency((int)$prices[$related->id], Yii::$app->params['currency']) ?>
+					<?php } ?>
+					</p>
+				</div>
+			</div>
+		</div>
+	<?php
+		}
+	?>
+		</div>
+	</div>
+<?php
+	}
+?>
 
 </div>
 
@@ -214,10 +252,10 @@ $this->title = Yii::$app->params['title'] ?: $product_name . ' - ' . Yii::t('fro
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="btn-modal-close rounded-circle overflow-hidden" data-dismiss="modal">
-                            <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="1.49418" y1="0.738243" x2="39.6779" y2="38.922" stroke="white"/>
-                                <line x1="0.787072" y1="38.9223" x2="38.9708" y2="0.73856" stroke="white"/>
-                            </svg>
+							<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<line x1="13.7891" y1="12.3744" x2="39.9521" y2="38.5373" stroke="black" stroke-width="2"/>
+								<line x1="12.3749" y1="38.5379" x2="38.5379" y2="12.3749" stroke="black" stroke-width="2"/>
+							</svg>
                         </div>
 						
 						<div id="productImages" class="carousel slide carousel-fade" data-interval="false" data-touch="true" data-ride="carousel">

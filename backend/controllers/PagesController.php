@@ -77,9 +77,7 @@ class PagesController extends Controller
             return $this->redirect(['index']);
         }
         
-        $languages = Langs::findAll([
-            'publish' => 1,
-        ]);
+		$languages = Langs::find()->all();
 
         return $this->render('create', [
             'model' => $model,
@@ -110,9 +108,7 @@ class PagesController extends Controller
             }
         }
         
-        $languages = Langs::findAll([
-            'publish' => 1,
-        ]);
+        $languages = Langs::find()->all();
 
         return $this->render('update', [
             'model' => $model,

@@ -9,6 +9,7 @@
  * file that was distributed with this source code.
  */
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use dektrium\user\widgets\UserMenu;
 
@@ -17,18 +18,50 @@ use dektrium\user\widgets\UserMenu;
  */
 
 $user = Yii::$app->user->identity;
+
+$menuItems = [
+	[
+		'label' => Yii::t('front', 'Аккаунт'),
+		'url' => Url::to(['/account'])
+	],
+	[
+		'label' => Yii::t('front', 'Заказы'),
+		'url' => Url::to(['/orders'])
+	],
+	[
+		'label' => Yii::t('front', 'Избранное'),
+		'url' => Url::to(['/wishlist'])
+	],
+	[
+		'label' => Yii::t('front', 'Выйти'),
+		'url' => Url::to(['/logout']),
+		'options' => [
+			'data-method' => 'POST'
+		]
+	],
+];
+
 ?>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">
-            <?= Html::img($user->profile->getAvatarUrl(24), [
-                'class' => 'img-rounded',
-                'alt' => $user->username,
-            ]) ?>
-            <?= $user->username ?>
-        </h3>
-    </div>
-    <div class="panel-body">
-        <?= UserMenu::widget() ?>
-    </div>
+
+<div id="user-menu">
+<?php
+	foreach ($menuItems as $menuItem){
+		$active = $menuItem['url'] == Url::to();
+?>
+		<div class="mb-1 pb-1_5">
+			<a href="<?= $menuItem['url'] ?>" class="h1 ttfirsneue font-weight-light text-uppercase text-decoration-none position-relative mb-0 <?= $active ? 'border-bottom' : '' ?>" 
+			<?php 
+				if ($menuItem['options']){
+					foreach ($menuItem['options'] as $key => $val){
+						echo $key . '="' . $val . '" ';
+					}
+				}
+			?>
+			>
+				<?= $menuItem['label'] ?>
+			</a>
+		</div>
+<?php
+	}
+?>
 </div>

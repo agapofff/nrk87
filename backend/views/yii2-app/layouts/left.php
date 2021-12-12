@@ -184,6 +184,16 @@
                     'url' => ['/pages'],
                 ];
             }
+			
+            if (
+                Yii::$app->user->can('/help/*')
+            ){
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Помощь'),
+                    'icon' => 'question',
+                    'url' => ['/help'],
+                ];
+            }
             
             if (
                 Yii::$app->user->can('/boutiques/*')

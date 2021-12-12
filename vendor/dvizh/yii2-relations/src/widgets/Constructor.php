@@ -23,7 +23,14 @@ class Constructor extends \yii\base\Widget
         
         if($relations = $this->model->getRelations()) {
             foreach($relations->all() as $related) {
-                $js .= 'dvizh.relations.renderRow("'.str_replace('\\', '\\\\', $related::className()).'", "'.Html::encode($related->getId()).'", "'.Html::encode($related->getName()).'");';
+				$imgSrc = null;
+				$image = $related->getImage();
+				if ($image){
+					$cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_50x50.jpg';
+					$imgSrc = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('50x50');
+				}
+				
+                $js .= 'dvizh.relations.renderRow("'.str_replace('\\', '\\\\', $related::className()).'", "'.Html::encode($related->getId()).'", "'.Html::encode(json_decode($related->getName())->{Yii::$app->language}).'", "'.$imgSrc.'");';
             }
         }
         

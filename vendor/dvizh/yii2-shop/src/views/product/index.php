@@ -121,8 +121,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     'value' => function($model){
                         $name = json_decode($model->name)->{Yii::$app->language};
-                        if ($image = $model->getImage()->getUrl('50x50')){
-                            return Html::a(Html::tag('div', Html::tag('div', Html::img($image), [
+						$image = $model->getImage();
+                        if ($image){
+							$cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_50x50.jpg';
+							
+                            return Html::a(Html::tag('div', Html::tag('div', Html::img(file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('50x50')), [
                                 'class' => 'media-left'
                             ]) . Html::tag('div', $name, [
                                 'class' => 'media-body media-middle text-left'
@@ -287,6 +290,117 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ])
                             ), [
                                 'available',
+                                'id' => $data->id
+                            ], [
+                                'class' => 'pjax'
+                            ]
+                        );
+                    },
+                ],
+				
+                [
+                    'attribute' => 'is_new',
+                    'format' => 'raw',
+                    'contentOptions' => [
+                        'class' => 'text-center'
+                    ],
+                    'headerOptions' => [
+                        'class' => 'text-center',
+                        'style' => 'min-width: 90px'
+                    ],
+                    'filter' => Html::activeDropDownList(
+                        $searchModel,
+                        'is_new',
+                        [
+                            0 => Yii::t('back', 'Нет'),
+                            1 => Yii::t('back', 'Да'),
+                        ], [
+                            'class' => 'form-control',
+                            'prompt' => Yii::t('back', 'Все'),
+                        ]
+                    ),
+                    'value' => function($data){
+                        return Html::a(
+                            Html::tag('big', 
+                                Html::tag('span', '', [
+                                    'class' => 'glyphicon ' . ( $data->is_new ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                ])
+                            ), [
+                                'new',
+                                'id' => $data->id
+                            ], [
+                                'class' => 'pjax'
+                            ]
+                        );
+                    },
+                ],
+				
+                [
+                    'attribute' => 'is_popular',
+                    'format' => 'raw',
+                    'contentOptions' => [
+                        'class' => 'text-center'
+                    ],
+                    'headerOptions' => [
+                        'class' => 'text-center',
+                        'style' => 'min-width: 90px'
+                    ],
+                    'filter' => Html::activeDropDownList(
+                        $searchModel,
+                        'is_popular',
+                        [
+                            0 => Yii::t('back', 'Нет'),
+                            1 => Yii::t('back', 'Да'),
+                        ], [
+                            'class' => 'form-control',
+                            'prompt' => Yii::t('back', 'Все'),
+                        ]
+                    ),
+                    'value' => function($data){
+                        return Html::a(
+                            Html::tag('big', 
+                                Html::tag('span', '', [
+                                    'class' => 'glyphicon ' . ( $data->is_popular ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                ])
+                            ), [
+                                'popular',
+                                'id' => $data->id
+                            ], [
+                                'class' => 'pjax'
+                            ]
+                        );
+                    },
+                ],
+				
+                [
+                    'attribute' => 'is_promo',
+                    'format' => 'raw',
+                    'contentOptions' => [
+                        'class' => 'text-center'
+                    ],
+                    'headerOptions' => [
+                        'class' => 'text-center',
+                        'style' => 'min-width: 90px'
+                    ],
+                    'filter' => Html::activeDropDownList(
+                        $searchModel,
+                        'is_promo',
+                        [
+                            0 => Yii::t('back', 'Нет'),
+                            1 => Yii::t('back', 'Да'),
+                        ], [
+                            'class' => 'form-control',
+                            'prompt' => Yii::t('back', 'Все'),
+                        ]
+                    ),
+                    'value' => function($data){
+                        return Html::a(
+                            Html::tag('big', 
+                                Html::tag('span', '', [
+                                    'class' => 'glyphicon ' . ( $data->is_promo ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                ])
+                            ), [
+                                'promo',
                                 'id' => $data->id
                             ], [
                                 'class' => 'pjax'

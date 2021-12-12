@@ -328,9 +328,9 @@ return [
             ],
         ],
         
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
+        // 'errorHandler' => [
+            // 'errorAction' => 'site/error',
+        // ],
         
 		'view' => [
 			'theme' => [
@@ -427,7 +427,7 @@ return [
 		
         'assetsAutoCompress' => [
             'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
-            'enabled' => true,
+            'enabled' => false,
             'readFileTimeout' => 3,
             'jsCompress' => true,
             'jsCompressFlaggedComments' => true,
@@ -522,7 +522,7 @@ return [
 					'pattern' => 'catalog/<collectionSlug>/<categorySlug>',
 					'route' => 'catalog',
 					'defaults' => [
-						'collectionSlug' => null,
+						'collectionSlug' => null, // 'aw-2022',
 						'categorySlug' => null,
 					],
 				],
@@ -545,7 +545,9 @@ return [
                 'gps' => 'site/gps',
                 'lookbook' => 'site/lookbook',
                 'about-mars' => 'site/about-mars',
-                'contacts/<slug>' => 'site/boutiques',
+                // 'contacts/<slug>' => 'site/boutiques',
+				'contacts' => 'site/contacts',
+				'help' => 'site/help',
                 
                 'test/<slug>' => 'test/index',
                 'test/<slug>/<action>' => 'test/<action>',
@@ -563,6 +565,8 @@ return [
 				'sitemap' => 'site/sitemap',
                 
                 'curl' => 'curl/index',
+				
+				'wishlist' => 'wishlist/index',
 
                 // '<controller>/<action>' => '<controller>/<action>',
                 '<slug>' => 'pages/index',

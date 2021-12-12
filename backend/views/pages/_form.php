@@ -117,24 +117,28 @@ use kartik\switchinput\SwitchInput;
         foreach ($languages as $key => $lang){
     ?>
             <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="text_<?= $lang->code ?>_tab">
-                <?= \yii\imperavi\Widget::widget([
+                <?= \vova07\imperavi\Widget::widget([
                         'id' => 'pages_text_'.$lang->code,
+                        'name' => 'pages_text_'.$lang->code,
                         'value' => json_decode($model->text)->{$lang->code},
-                        'plugins' => [
-                            'fontcolor',
-                        ],
-                        'options' => [
+                        'settings' => [
                             'lang' => Yii::$app->language,
-                            'buttonsHide' => [
-                                // 'html',
-                                'image',
-                                'file',
-                            ],
+                            // 'buttonsHide' => [
+                                // 'file',
+                            // ],
                             'minHeight' => 400,
                             'maxHeight' => 600,
-                            // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
+                            'imageUpload' => Url::toRoute(['/site/image-upload']),
+                            'imageDelete' => Url::toRoute(['/site/image-delete']),
+							'imageManagerJson' => Url::to(['/site/images-get']),
+							'plugins' => [
+								'fullscreen',
+							],
                         ],
-                        'htmlOptions' => [
+						'plugins' => [
+							'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
+						],
+                        'options' => [
                             'class' => 'json_field',
                             'data' => [
                                 'field' => 'pages-text',

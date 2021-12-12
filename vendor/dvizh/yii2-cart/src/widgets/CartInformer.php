@@ -49,8 +49,10 @@ class CartInformer extends \yii\base\Widget
         }
         
         return Html::tag($this->htmlTag, $this->text, [
-                'href' => $this->offerUrl,
-                'class' => "dvizh-cart-informer {$this->cssClass}",
-        ]);
+				'href' => $this->offerUrl,
+				'class' => "dvizh-cart-informer {$this->cssClass}",
+				'data-count' => $cart->getCount(),
+				'data-cost' => $cart->getCost(),
+			]);
     }
 }

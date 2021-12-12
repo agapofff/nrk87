@@ -17,14 +17,11 @@
 	
 ?>
 
-<div class="container my-4 my-lg-5">
-    
-    <h1 class="text-center font-weight-light acline my-4 my-lg-5 py-4 py-lg-5">
-        <?= $this->title ?>
-    </h1>
+<div class="container">
     
 	<div class="row justify-content-center">
-		<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+	
+		<div class="col-xs-12 col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-5">
 
 			<?= $this->render('/_alert', ['module' => Yii::$app->getModule('user')]) ?>
 
@@ -43,13 +40,13 @@
 				<?= $form
                         ->field($model, 'login', [
                             'options' => [
-                                'class' => 'form-group mb-5 position-relative floating-label',
+                                'class' => 'form-group mb-3 position-relative floating-label',
                             ],
                             'template' => '{input}{label}{hint}{error}',
                         ])
                         ->textInput([
                             'autofocus' => 'autofocus',
-                            'class' => 'form-control form-control-lg mb-0 px-0',
+                            'class' => 'form-control mb-0 px-0',
                             'autocomplete' => rand(),
                             'tabindex' => '1',
                             'required' => true,
@@ -61,7 +58,7 @@
 				<?= $form
                         ->field($model, 'password', [
                             'inputOptions' => [
-                                'class' => 'form-control form-control-lg mb-0 px-0',
+                                'class' => 'form-control mb-0 px-0',
                                 'tabindex' => '2',
                                 'required' => true,
                                 'autocomplete' => rand(),
@@ -77,15 +74,28 @@
                 ?>
                 
                 <?= Html::hiddenInput('lang', Yii::$app->language) ?>
-
-				<div class="form-group text-center my-5">
-					<?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Вход'),
-						[
-                            'class' => 'btn-nrk',
-                            'tabindex' => '4',
-                            'title' => Yii::t('front', 'Вход')
-                        ]
-					) ?>
+				
+				<div class="row no-gutters">
+					<div class="col-md-6">
+						<div class="mb-1_5">
+							<?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Вход'),
+								[
+									'class' => 'btn btn-primary btn-block text-uppercase py-1',
+									'tabindex' => '4',
+									'title' => Yii::t('front', 'Вход')
+								]
+							) ?>
+						</div>
+						<div class="mb-2">
+							<?= Html::a(Yii::t('front', 'Регистрация'), ['/register'], [
+									'class' => 'btn btn-outline-primary btn-block text-uppercase py-1',
+								])
+							?>
+						</div>
+						<div class="mb-2">
+							<?= Html::a(Yii::t('front', 'Забыли пароль?'), ['/request'])?>
+						</div>
+					</div>
 				</div>
 				
 				<?= Connect::widget([
@@ -93,22 +103,6 @@
 				]) ?>
 
             <?php ActiveForm::end(); ?>
-            
-            <div class="row justify-content-center">
-                <div class="col-auto text-center">
-                    <p><?= Html::a(Yii::t('front', 'Регистрация'), ['/register']) ?></p>
-                </div>
-            <?php if ($module->enablePasswordRecovery){ ?>
-                <div class="col-auto text-center">
-                    <p><?= Html::a(Yii::t('front', 'Забыли пароль?'), ['/request']) ?></p>
-                </div>
-            <?php } ?>
-            <?php if ($module->enableConfirmation){ ?>
-                <div class="col-auto text-center">
-                    <p><?= Html::a(Yii::t('front', 'Не получили письмо с подтверждением регистрации?'), ['/resend']) ?></p>
-                </div>
-            <?php } ?>
-            </div>
 
 		</div>
 	</div>

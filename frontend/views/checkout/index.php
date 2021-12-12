@@ -5,34 +5,44 @@
     use dvizh\order\widgets\OrderForm;
   
     use yii\web\View;
+	
+	$this->registerCss('
+		@media (min-width: 992px){
+			body {
+				background: linear-gradient(to right, white 50%, #F9F9F9 50%);
+			}
+		}
+	');
 ?>
-<div class="container my-4 my-lg-5 pt-4 pt-lg-5">
-    <div class="row">
-        <div class="col col-sm-11 col-md-10 col-lg-8 mx-auto">
-            <div class="row">
-                <div class="col-12">
-                    <?= ElementsList::widget([
-                            'type' => 'checkout',
-                            'currency' => $currency,
-                            'lang' => Yii::$app->language,                
-                        ]);
-                    ?>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 text-right">
-                    <?= CartInformer::widget([
-                            'currency' => $currency
-                        ]); ?>
-                </div>
-            </div>
-            
+<div class="container-fluid mb-7 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
+    <div class="row justify-content-center">
+        <div class="col col-sm-10 col-md-8 col-lg-6 pr-1_5">
+			<?= OrderForm::widget();?>
+        </div>
+		<div class="col-lg-6 d-none d-lg-block pl-1_5">
+			<div class="sticky-top" style="top:100px">
+				<div class="row">
+					<div class="col-12">
+						<?= ElementsList::widget([
+								'type' => 'checkout',
+								'currency' => $currency,
+								'lang' => Yii::$app->language,                
+							]);
+						?>
+					</div>
+					<div class="col-12 text-right">
+						<?= CartInformer::widget([
+								'currency' => $currency
+							]);
+						?>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 </div>
             
-<?=OrderForm::widget();?>
+
 
 
 

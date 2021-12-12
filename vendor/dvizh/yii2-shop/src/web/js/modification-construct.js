@@ -18,7 +18,7 @@ dvizh.modificationconstruct = {
         var options = $('.dvizh-cart-buy-button'+modelId).data('options');
         var csrfToken = yii.getCsrfToken();
         // $('.dvizh-shop-price-' + modelId).css('opacity', 0.3);
-        $('.dvizh-cart-buy-button').show();
+        $('.dvizh-cart-buy-button').removeAttr('disabled');
         jQuery.ajax({
             url: dvizh.modificationconstruct.dvizhShopUpdatePriceUrl, 
             type: 'post',
@@ -40,14 +40,25 @@ dvizh.modificationconstruct = {
                     $('.dvizh-cart-buy-button')
                         .attr('data-price', data.modification.price[0])
                         .attr('data-comment', data.modification.sku)
-                        .show();
+                        .removeAttr('disabled');
+						
+					$('.btn-wishlist')
+						.attr('data-size', data.modification.name.split(' | ')[0])
+						.removeAttr('disabled');
+						
+					wishlistCheck();
                 } else {
                     $('.dvizh-shop-price').html(data.product_price);
+					
                     $('.dvizh-cart-buy-button')
                         .attr('data-price', data.product_price)
-                        .hide();
+                        .attr('disabled', true);
+						
+					$('.btn-wishlist').addAttr('disabled', true);
 
                     outOfStock();
+					
+
                 }
                 // $('.dvizh-shop-price-' + modelId).css('opacity', 1);
 
