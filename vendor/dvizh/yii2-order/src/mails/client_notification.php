@@ -57,82 +57,21 @@
 
 
 <h1 style="
-	font-family: 'Montserrat', Helvetica, Arial, sans-serif; 
-	font-size: 22px; 
-	line-height: 1.5; 
-	font-weight: 300; 
-	width: 100%; 
-	max-width: 600px; 
 	text-align: center; 
-	text-transform: uppercase; 
 ">
-	<?= Yii::t('front', 'Дорогой друг, благодарим тебя за покупку на сайте') ?> <?= Yii::$app->name ?>
+	<?= Yii::t('front', 'Ваш заказ успешно оформлен') ?>
 </h1>
 
 <br>
 <br>
 
-<p style="
-	font-family: 'Montserrat', Helvetica, Arial, sans-serif; 
-	font-size: 16px; 
-	line-height: 1.5; 
-	font-weight: normal; 
-	text-align: center; 
-	max-width: 600px; 
-	text-transform: uppercase;
-">
+<p>
     <?= Yii::t('front', 'Ваш заказ принят, и мы свяжемся с Вами в ближайшее время для подтверждения заказа.') ?>
 </p>
 
 <br>
 
-<p style="
-	font-family: 'Montserrat', Helvetica, Arial, sans-serif; 
-	font-size: 16px; 
-	line-height: 1.5; 
-	font-weight: normal; 
-	max-width: 600px; 
-">
-    <?= Yii::t('front', 'Спасибо, что вносишь свой вклад в наше общее дело и заботишься о сохранении экологии планеты. И, вероятно, как и мы, поддерживаешь идею колонизации Марса.') ?>
-</p>
-
-<p style="
-	font-family: 'Montserrat', Helvetica, Arial, sans-serif; 
-	font-size: 16px; 
-	line-height: 1.5; 
-	font-weight: normal; 
-	max-width: 600px; 
-">
-    <?= Yii::t('front', 'Кстати, тебе известно, что самая высокая гора Красной планеты называется Олимп и в два с лишним раза выше нашего Эвереста (21 км)? К 2050 году мы планируем открыть свой первый марсианский бутик, и, вполне возможно, он будет находиться в этом районе.') ?>
-</p>
-
-<br>
-
-<p style="
-	font-family: 'Montserrat', Helvetica, Arial, sans-serif; 
-	font-size: 16px; 
-	line-height: 1.5; 
-	font-weight: normal; 
-	text-align: center; 
-	max-width: 600px; 
-	text-transform: uppercase; 
-">
-    <?= Yii::t('front', 'В ожидании заказа предлагаем тебе принять участие в <a href="{0}">конкурсе от {1}</a>', [
-		Url::to(['/scan-to-win'], true),
-		Yii::$app->name
-	]) ?>
-</p>
-
-<br>
-<br>
-
 <h3 style="
-	font-family: 'Montserrat', Helvetica, Arial, sans-serif; 
-	font-size: 22px; 
-	line-height: 1.5; 
-	font-weight: 300; 
-	width: 100%; 
-	max-width: 600px; 
 	text-align: center; 
 ">
 	<?= Yii::t('front', 'Заказ') ?> <?= $model->id ?>
@@ -282,17 +221,3 @@
 </h3>
 
 <br>
-<br>
-
-<p style="
-	font-family: 'Montserrat', Helvetica, Arial, sans-serif; 
-	font-size: 18px; 
-	line-height: 1.5; 
-	font-weight: normal; 
-	margin: 0 0 20px; 
-	padding: 0; 
-	text-align: center; 
-	max-width: 600px; 
-">
-	<?= Yii::t('front', 'Мы любим Вас до Марса и обратно') ?> :)
-</p>

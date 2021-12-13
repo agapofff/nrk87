@@ -4,33 +4,30 @@
 
 <?php $this->beginPage() ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" style="font-family: Montserrat, Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;">
+<html xmlns="http://www.w3.org/1999/xhtml" style="font-family: Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;">
 	<head>
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<?php $this->head() ?>
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 		<style>
-			@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
 			* {
-				font-family: Montserrat, Helvetica, Arial, sans-serif;
+				font-family: Helvetica, Arial, sans-serif;
 			}
 			*, body, h1, h2, h3, h4, a, p, div, table, tr, td {
-				color: #ffffff !important;
+				color: #000 !important;
 			}
 			p, td, div {
-				font-size: 18px;
+				font-size: 16px;
 			}
 			h1 {
-				font-size: 48px;
+				font-size: 30px;
 			}
 		</style>
 	</head>
-	<body bgcolor="#000000">
-		<div bgcolor="#000000" style="
+	<body bgcolor="#fff">
+		<div bgcolor="#fff" style="
 			position: relative;
-			font-family: Montserrat, Helvetica, Arial, sans-serif; 
+			font-family: Helvetica, Arial, sans-serif; 
 			font-size: 100%; 
 			line-height: 1.6; 
 			-webkit-font-smoothing: antialiased; 
@@ -39,13 +36,10 @@
 			height: 100%; 
 			margin: 0; 
 			padding: 0; 
-			background-color: #000000; 
-			background-image: url('<?= Url::to('/images/email/email_bg_mars.jpg', true) ?>');
-			background-position: center top;
-			background-repeat: no-repeat;
+			background-color: #fff;
 		">
 			<table class="body-wrap" style="
-				font-family: Montserrat, Helvetica, Arial, sans-serif; 
+				font-family: Helvetica, Arial, sans-serif; 
 				font-size: 100%; 
 				line-height: 1.6; 
 				width: 100%; 
@@ -53,14 +47,14 @@
 				padding: 20px;
 			">
 				<tr style="
-					font-family: Montserrat, Helvetica, Arial, sans-serif; 
+					font-family: Helvetica, Arial, sans-serif; 
 					font-size: 100%; 
 					line-height: 1.6; 
 					margin: 0; 
 					padding: 0;
 				">
 					<td style="
-						font-family: Montserrat, Helvetica, Arial, sans-serif; 
+						font-family: Helvetica, Arial, sans-serif; 
 						font-size: 100%; 
 						line-height: 1.6; 
 						margin: 30px 0; 
@@ -75,14 +69,14 @@
 					</td>
 				</tr>
 				<tr style="
-					font-family: Montserrat, Helvetica, Arial, sans-serif; 
+					font-family: Helvetica, Arial, sans-serif; 
 					font-size: 100%; 
 					line-height: 1.6; 
 					margin: 0; 
 					padding: 0;
 				">
 					<td class="container" style="
-						font-family: Montserrat, Helvetica, Arial, sans-serif; 
+						font-family: Helvetica, Arial, sans-serif; 
 						font-size: 100%; 
 						line-height: 1.6; 
 						display: block !important; 
@@ -90,10 +84,10 @@
 						clear: both !important; 
 						margin: 0 auto; 
 						padding: 0; 
-						color: #ffffff; 
+						color: #000; 
 					">
 						<div class="content" style="
-							font-family: Montserrat, Helvetica, Arial, sans-serif; 
+							font-family: Helvetica, Arial, sans-serif; 
 							font-size: 100%; 
 							line-height: 1.6; 
 							max-width: 600px; 
@@ -102,7 +96,7 @@
 							padding: 20px;
 						">
 							<table style="
-								font-family: Montserrat, Helvetica, Arial, sans-serif; 
+								font-family: Helvetica, Arial, sans-serif; 
 								font-size: 100%; 
 								line-height: 1.6; 
 								width: 100%; 
@@ -110,19 +104,19 @@
 								padding: 0;
 							">
 								<tr style="
-									font-family: Montserrat, Helvetica, Arial, sans-serif;
+									font-family: Helvetica, Arial, sans-serif;
 									font-size: 100%; 
 									line-height: 1.6; 
 									margin: 0; 
 									padding: 0;
 								">
 									<td style="
-										font-family: Montserrat, Helvetica, Arial, sans-serif; 
+										font-family: Helvetica, Arial, sans-serif; 
 										font-size: 100%; 
 										line-height: 1.6; 
 										margin: 0; 
 										padding: 0; 
-										color: #ffffff; 
+										color: #000; 
 									">
 										<?php $this->beginBody() ?>
 										<?= $content ?>
@@ -133,7 +127,7 @@
 						</div>
 					</td>
 					<td style="
-						font-family: Montserrat, Helvetica, Arial, sans-serif; 
+						font-family: Helvetica, Arial, sans-serif; 
 						font-size: 100%; 
 						line-height: 1.6; 
 						margin: 0; 
@@ -142,49 +136,8 @@
 				</tr>
 			</table>
 			
-			<table style="
-				font-family: Montserrat, Helvetica, Arial, sans-serif; 
-				font-size: 100%; 
-				line-height: 1.6; 
-				width: 100%; 
-				clear: both !important; 
-				margin: 0; 
-				padding: 0;
-				background-color: #000000; 
-				background-image: url('<?= Url::to('/images/email/email_bg_surface.jpg', true) ?>');
-				background-position: center center;
-				background-repeat: no-repeat;
-			">
-				<tr>
-					<td class="container" style="
-						font-family: Montserrat, Helvetica, Arial, sans-serif; 
-						font-size: 22px; 
-						font-weight: 300;
-						line-height: 1.6; 
-						display: block !important; 
-						max-width: 600px !important; 
-						clear: both !important; 
-						margin: 0 auto; 
-						padding: 30px;
-						text-align: center;
-					">
-
-							<a href="<?= Url::to('/login', true) ?>" style="
-								font-family: Montserrat, Helvetica, Arial, sans-serif; 
-								font-size: 22px; 
-								font-weight: 300;
-								text-decoration: underline;
-								text-transform: uppercase;
-							">
-								<?= Yii::t('front', 'Войти в личный кабинет') ?>
-							</a>
-
-					</td>
-				</tr>
-			</table>
-			
 			<table class="footer-wrap" style="
-				font-family: Montserrat, Helvetica, Arial, sans-serif; 
+				font-family: Helvetica, Arial, sans-serif; 
 				font-size: 100%; 
 				line-height: 1.6; 
 				width: 100%; 
@@ -193,21 +146,21 @@
 				padding: 0;
 			">
 				<tr style="
-					font-family: Montserrat, Helvetica, Arial, sans-serif; 
+					font-family: Helvetica, Arial, sans-serif; 
 					font-size: 100%; 
 					line-height: 1.6; 
 					margin: 0; 
 					padding: 0;
 				">
 					<td style="
-						font-family: Montserrat, Helvetica, Arial, sans-serif; 
+						font-family: Helvetica, Arial, sans-serif; 
 						font-size: 100%; 
 						line-height: 1.6; 
 						margin: 0; 
 						padding: 0;
 					"></td>
 					<td class="container" style="
-						font-family: Montserrat, Helvetica, Arial, sans-serif; 
+						font-family: Helvetica, Arial, sans-serif; 
 						font-size: 100%; 
 						line-height: 1.6; 
 						display: block !important; 
@@ -217,7 +170,7 @@
 						padding: 0;
 					">
 						<div class="content" style="
-							font-family: Montserrat, Helvetica, Arial, sans-serif; 
+							font-family: Helvetica, Arial, sans-serif; 
 							font-size: 100%; 
 							line-height: 1.6; 
 							max-width: 600px; 
@@ -226,7 +179,7 @@
 							padding: 20px;
 						">
 							<table style="
-								font-family: Montserrat, Helvetica, Arial, sans-serif; 
+								font-family: Helvetica, Arial, sans-serif; 
 								font-size: 100%; 
 								line-height: 1.6; 
 								width: 100%; 
@@ -234,24 +187,24 @@
 								padding: 0;
 							">
 								<tr style="
-									font-family: Montserrat, Helvetica, Arial, sans-serif; 
+									font-family: Helvetica, Arial, sans-serif; 
 									font-size: 100%; 
 									line-height: 1.6; 
 									margin: 0; 
 									padding: 0;
 								">
 									<td align="center" style="
-										font-family: Montserrat, Helvetica, Arial, sans-serif; 
+										font-family: Helvetica, Arial, sans-serif; 
 										font-size: 100%; 
 										line-height: 1.6; 
 										margin: 0; 
 										padding: 0;
 									">
 										<p style="
-											font-family: Montserrat, Helvetica, Arial, sans-serif; 
+											font-family: Helvetica, Arial, sans-serif; 
 											font-size: 12px; 
 											line-height: 1.6; 
-											color: #fff; 
+											color: #000; 
 											font-weight: normal; 
 											margin: 0 0 10px; 
 											padding: 0;

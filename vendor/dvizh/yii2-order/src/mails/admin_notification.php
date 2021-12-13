@@ -66,7 +66,9 @@
 
 ?>
 
-<h1 style="text-align: center"><?= Yii::t('front', 'Заказ'); ?> <?= $model->id ?></h1>
+<h3 style="text-align: center">
+	<?= Yii::t('front', 'Заказ'); ?> <?= $model->id ?>
+</h3>
 
 <ul>
     <li>

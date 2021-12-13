@@ -31,15 +31,17 @@ class WishlistController extends \yii\web\Controller
         ];
     }
     
-    public function actionIndex()
+    public function actionIndex($product_id = null, $size = null)
     {
+		if ($product_id && $size){
+			$this->actionRemove($product_id, $size);
+		}
+		
 		$wishlist = Wishlist::findAll([
 			'user_id' => Yii::$app->user->id
 		]);
 		
-		$products = Product::findAll([
-			'id' => ArrayHelper::getColumn($wishlist, 'product_id')
-		]);
+		$products = Product::find()->all();
 			
 		$modifications = (new Query())
 			->select([
@@ -70,12 +72,34 @@ class WishlistController extends \yii\web\Controller
 	
 		$prices = ArrayHelper::map($modifications, 'product_id', 'price');
 		$pricesOld = ArrayHelper::map($modifications, 'product_id', 'price_old');
+
+		$items = [];
 		
+		if ($wishlist){
+			foreach ($wishlist as $wish){
+				$product = array_values(array_filter($products, function($prod) use ($wish){
+					return $prod->id == $wish->product_id;
+				}))[0];
+
+				$image = $product->getImage();
+				$cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_200x200.jpg';
+				$productImage = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('200x200');
+				
+				$items[] = [
+					'id' => $wish->id,
+					'product_id' => $wish->product_id,
+					'size' => $wish->size,
+					'name' => json_decode($product->name)->{Yii::$app->language},
+					'image' => $productImage,
+					'slug' => $product->slug,
+					'price' => $prices[$wish->product_id],
+					'priceOld' => $pricesOld[$wish->product_id],
+				];
+			}
+		}
+
         return $this->render('index', [
-			'wishlist' => $wishlist,
-			'products' => $products,
-			'prices' => $prices,
-			'prices_old' => $pricesOld,
+			'items' => $items,
 		]);
 	}
 	

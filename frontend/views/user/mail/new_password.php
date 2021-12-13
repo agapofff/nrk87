@@ -18,15 +18,15 @@ use yii\helpers\Html;
  */
 
 ?>
-<p style="font-family: 'Montserrat', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
+<p>
     <?= Yii::t('front', 'Здравствуйте') ?>,
 </p>
 
-<p style="font-family: 'Montserrat', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
+<p>
     <?= Yii::t('front', 'Для Вашей учётной записи на сайте {0} был изменён пароль', Yii::$app->name) ?>.
     <?= Yii::t('front', 'Автоматически сгенерированный пароль для Вашей учётной записи') ?>: <strong><?= $user->password ?></strong>
 </p>
 
-<p style="font-family: 'Montserrat', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
+<p>
     <?= Yii::t('front', 'Если Вы не отправляли этот запрос, просто проигнорируйте это письмо') ?>.
 </p>
