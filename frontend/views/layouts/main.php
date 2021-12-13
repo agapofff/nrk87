@@ -511,15 +511,18 @@
 						<ul class="nav flex-column my-auto w-100">
 							<?php							
 								foreach ($menuItems as $menuItem){
-									$activeMenu = $menuItem['url'] == Url::to();
+									$activeMenu = false;
+									if (isset($menuItem['url'])){
+										$activeMenu = $menuItem['url'] == Url::to();
+									}
 							?>
 									<li class="nav-item <?= $menuItem['class'] ?> <?= $activeMenu ? 'active' : '' ?>">
 									<?php
-										if ($menuItem['url']){
+										if (isset($menuItem['url'])){
 									?>
 											<a href="<?= $menuItem['url'] ?>" class="nav-link text-uppercase p-0 mx-1 my-1 <?= $activeMenu ? 'text-underline' : 'text-decoration-none' ?>"
 												<?php 
-													if ($menuItem['options']){
+													if (isset($menuItem['options'])){
 														foreach ($menuItem['options'] as $optionKey => $optionVal){
 															echo $optionKey . '="' . $optionVal . '" ';
 														}
