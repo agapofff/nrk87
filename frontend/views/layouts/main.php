@@ -252,7 +252,7 @@
 								?>
 										<a href="<?= $menuItem['url'] ?>" class="nav-link text-uppercase px-0 pb-0 <?= $activeMenu ? 'text-underline' : 'text-decoration-none' ?>"
 											<?php 
-												if ($menuItem['options']){
+												if (isset($menuItem['options'])){
 													foreach ($menuItem['options'] as $optionKey => $optionVal){
 														echo $optionKey . '="' . $optionVal . '" ';
 													}
