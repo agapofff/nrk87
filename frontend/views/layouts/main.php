@@ -80,19 +80,23 @@
 	$menuItems = [
 		[
 			'label' => Yii::t('front', 'О нас'),
-			'url' => Url::to(['/about'])
+			'url' => Url::to(['/about']),
+			'class' => '',
 		],
 		[
 			'label' => Yii::t('front', 'Каталог'),
-			'url' => Url::to(['/catalog'])
+			'url' => Url::to(['/catalog']),
+			'class' => '',
 		],
 		[
 			'label' => Yii::t('front', 'Помощь'),
-			'url' => Url::to(['/help'])
+			'url' => Url::to(['/help']),
+			'class' => '',
 		],
 		[
 			'label' => Yii::t('front', 'Контакты'),
-			'url' => Url::to(['/contacts'])
+			'url' => Url::to(['/contacts']),
+			'class' => '',
 		],
 		[
 			'label' => '<hr>',
@@ -459,11 +463,11 @@
 									'class' => 'text-decoration-none mr-4'
 								])
 							?>
-							<?= Html::a(Yii::t('front', 'Privacy policy'), ['/user-agreement'], [
+							<?= Html::a(Yii::t('front', 'Privacy policy'), ['/privacy-policy'], [
 									'class' => 'text-decoration-none mr-4'
 								])
 							?>
-							<?= Html::a(Yii::t('front', 'Terms and conditions'), ['/terms-and-conditions'], [
+							<?= Html::a(Yii::t('front', 'Terms and conditions'), ['/user-agreement'], [
 									'class' => 'text-decoration-none mr-4'
 								])
 							?>
