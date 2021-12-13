@@ -244,7 +244,10 @@
 					<ul class="nav navbar-nav">
 						<?php							
 							foreach ($menuItems as $menuItem){
-								$activeMenu = $menuItem['url'] == Url::to();
+								$activeMenu = false;
+								if (isset($menuItem['url'])){
+									$activeMenu = $menuItem['url'] == Url::to();
+								}
 						?>
 								<li class="nav-item mr-lg-1 mr-xl-2 mr-xxl-3 <?= $menuItem['class'] ?> <?= $activeMenu ? 'active' : '' ?>">
 								<?php
