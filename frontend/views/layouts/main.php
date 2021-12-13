@@ -251,7 +251,7 @@
 						?>
 								<li class="nav-item mr-lg-1 mr-xl-2 mr-xxl-3 <?= $menuItem['class'] ?> <?= $activeMenu ? 'active' : '' ?>">
 								<?php
-									if ($menuItem['url']){
+									if (isset($menuItem['url'])){
 								?>
 										<a href="<?= $menuItem['url'] ?>" class="nav-link text-uppercase px-0 pb-0 <?= $activeMenu ? 'text-underline' : 'text-decoration-none' ?>"
 											<?php 
