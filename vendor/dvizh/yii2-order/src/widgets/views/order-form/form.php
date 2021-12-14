@@ -614,7 +614,7 @@
         
         function setDeliveryParams(data){
 			var params = JSON.parse(data);
-			if (params.hasOwnProperty(total)){
+			if (params !== null && 'total' in params){
 				$('#total').text(params.total);
 				$('#order_total').show();
 				$('#delivery_price').text(params.price);
