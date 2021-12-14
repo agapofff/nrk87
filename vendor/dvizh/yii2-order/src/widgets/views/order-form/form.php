@@ -37,6 +37,9 @@
 					<?= Yii::t('front', 'Контактная информация') ?>
 				</p>
 			</div>
+	<?php
+		if (Yii::$app->user->isGuest){
+	?>
 			<div class="col-auto">
 				<p>
 					<?= Yii::t('front', 'Уже есть аккаунт?') ?>
@@ -44,6 +47,9 @@
 					<?= Html::a(Yii::t('front', 'Войти'), ['/login']) ?>
 				</p>
 			</div>
+	<?php
+		}
+	?>
 		</div>
             
 		<?= $form
