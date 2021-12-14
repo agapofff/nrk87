@@ -43,10 +43,10 @@ $this->title = Yii::t('front', 'Контакты');
 						<?= Yii::t('front', 'Адрес') ?>
 					</p>
 					<p class="mb-0_5">
-						<?= Yii::$app->params['contacts']['full_address'][0] ?>
+						<?= Yii::t('front', Yii::$app->params['contacts']['full_address'][0]) ?>
 					</p>
 					<p class="mb-0_5">
-						<?= Yii::$app->params['contacts']['full_address'][1] ?>
+						<?= Yii::t('front', Yii::$app->params['contacts']['full_address'][1]) ?>
 					</p>
 				</div>
 				<div class="col-md-6 mb-3">
