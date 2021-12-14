@@ -144,29 +144,32 @@ class OrderForm extends \yii\base\Widget
             'country_id' => $country_id,
             'city_id' => $city_id,
         ]);
-        $shippings = json_decode($shippingsJson);
-        
-        $deliveryList = ArrayHelper::map($shippings->delivery, 'id', 'text');
-        $pickupsList = ArrayHelper::map($shippings->pickups, 'id', 'text');
+		
+		if ($shippingsJson){
+			$shippings = json_decode($shippingsJson);
+			
+			$deliveryList = ArrayHelper::map($shippings->delivery, 'id', 'text');
+			$pickupsList = ArrayHelper::map($shippings->pickups, 'id', 'text');
         
 // echo \yii\helpers\VarDumper::dump($pickupsList, 9999, true); exit;
         
-        if ($shippings->delivery){
-            $orderModel->shipping_type_id = 1;
-            $delivery_id = $shippings->delivery[0]->id;
-            $delivery_name = $shippings->delivery[0]->text;
-        } else if ($shippings->pickups){
-            $orderModel->shipping_type_id = 2;
-            $delivery_id = $shippings->pickups[0]->id;
-            $delivery_name = $shippings->pickups[0]->text;
-        }
-        
-        $delivery_cost = $shippings->details->{$delivery_id}->cost;
-        $delivery_price = $shippings->details->{$delivery_id}->price;
-        $delivery_time = $shippings->details->{$delivery_id}->time;
-        $delivery_image = $shippings->details->{$delivery_id}->image;
-        $delivery_comment = $shippings->details->{$delivery_id}->comment;
-        $total = $shippings->details->{$delivery_id}->total;
+			if ($shippings->delivery){
+				$orderModel->shipping_type_id = 1;
+				$delivery_id = $shippings->delivery[0]->id;
+				$delivery_name = $shippings->delivery[0]->text;
+			} else if ($shippings->pickups){
+				$orderModel->shipping_type_id = 2;
+				$delivery_id = $shippings->pickups[0]->id;
+				$delivery_name = $shippings->pickups[0]->text;
+			}
+			
+			$delivery_cost = $shippings->details->{$delivery_id}->cost;
+			$delivery_price = $shippings->details->{$delivery_id}->price;
+			$delivery_time = $shippings->details->{$delivery_id}->time;
+			$delivery_image = $shippings->details->{$delivery_id}->image;
+			$delivery_comment = $shippings->details->{$delivery_id}->comment;
+			$total = $shippings->details->{$delivery_id}->total;
+		}
         
         $lang_id = Yii::$app->runAction('checkout/get-lang-id');
         
