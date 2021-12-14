@@ -240,7 +240,9 @@ form[disabled] {
 	margin-left: -24px !important;
 }
 
-
+#pagecontent {
+	min-height: 50vh;
+}
 
 #nav {
     -webkit-transition: all .3s ease;
