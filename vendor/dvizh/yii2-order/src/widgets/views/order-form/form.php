@@ -655,7 +655,8 @@
             $('#order-form').find('.required').each(function(){
                 if ($(this).find('input, select, textarea').val() == ''){
                     errors = true;
-                    var message = " . (Yii::$app->language == 'ru' ? "'" . Yii::t('front', 'Заполните') . " «' + $(this).find('label').text() + '»';" : "'«' + $(this).find('label').text() + '» ' + '" . Yii::t('front', 'не может быть пустым') . "';") . "
+                    var label = $(this).find('label').text() === 'Стоимость доставки' ? '" . Yii::t('front', 'Способ доставки') . "' : $(this).find('label').text(),
+						message = " . (Yii::$app->language == 'ru' ? "'" . Yii::t('front', 'Заполните') . " «' + label + '»';" : "'«' + label + '» ' + '" . Yii::t('front', 'не может быть пустым') . "';") . "
                     toastr.error(message);
                     return false;
                 }
