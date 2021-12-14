@@ -320,7 +320,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 						</div>
 					</div>
 					<div class="modal-body">
-						<div id="size-grid" class="">
+						<div id="size-grid" class="table-responsive">
 							<?= str_replace('<table>', '<table class="table product-sizes">', $sizes) ?>
 						</div>
 					</div>
