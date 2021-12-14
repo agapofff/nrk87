@@ -204,16 +204,33 @@ class CheckoutController extends \yii\web\Controller
 						strpos($shipping->delivery_type->name, $operator) !== false ? '' : ' ' . $operator
 					)));
 					
+					$deliveryType = $shipping->delivery_type->pickup ? 'pickups' : 'delivery';
+					
 					if ($q){
 						if (mb_stripos($text, $q) === false){
 							continue;
 						}
 					}
 					
-					$deliveries[$shipping->delivery_type->pickup ? 'pickups' : 'delivery'][] = [
-						'id' => $shipping->id,
-						'text' => $text
-					];
+					// убрать дубли
+					$alreadySet = false;
+					foreach ($deliveries[$deliveryType] as $delivery){
+						if ($delivery['text'] == $text){
+							$alreadySet = true;
+						}
+					}
+					
+					// убрать Никольскую
+					if (strpos($text, 'Никольская') !== false){
+						$alreadySet = true;
+					}
+					
+					if (!$alreadySet){
+						$deliveries[$deliveryType][] = [
+							'id' => $shipping->id,
+							'text' => $text
+						];
+					}
 					
 					$details[$shipping->id] = [
 						'cost' => $shipping->cost,
