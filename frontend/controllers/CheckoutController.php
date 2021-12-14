@@ -165,98 +165,100 @@ class CheckoutController extends \yii\web\Controller
         $total = 0;
         $products = [];
         $elements = Yii::$app->cart->elements;
-        
-        foreach ($elements as $element){
-            $products[] = [
-                'goods' => $element->getComment(),
-                'quantity' => $element->getCount()
-            ];
-            $total += ($element->getCount() * $element->getPrice());
-        }
+			
+		if ($elements){
+			foreach ($elements as $element){
+				$products[] = [
+					'goods' => $element->getComment(),
+					'quantity' => $element->getCount()
+				];
+				$total += ($element->getCount() * $element->getPrice());
+			}
 
-        $deliveryJson = Yii::$app->runAction('curl', [
-            'url' => 'https://www.sessia.com/api/market/delivery-cost',
-            'post' => true,
-            'params' => json_encode([
-                'country' => $country_id,
-                'city' => $city_id,
-                'products' => $products,
-            ])
-        ]);
+			$deliveryJson = Yii::$app->runAction('curl', [
+				'url' => 'https://www.sessia.com/api/market/delivery-cost',
+				'post' => true,
+				'params' => json_encode([
+					'country' => $country_id,
+					'city' => $city_id,
+					'products' => $products,
+				])
+			]);
 
-        if ($deliveryJson){
-            $deliveries = [
-                'delivery' => [],
-                'pickups' => []
-            ];
-            $details = [];
-            $deliveryJson = str_replace('\r\n', '<br>', $deliveryJson);
-            $shippings = json_decode($deliveryJson);
-// echo \yii\helpers\VarDumper::dump($shippings, 999, true); exit;
-            foreach ($shippings as $shipping)
-            {
-                // if (!$shipping->cost){
-                    // continue;
-                // }
-                $operator = substr($shipping->delivery_type->delivery_service->name, 0, strpos($shipping->delivery_type->delivery_service->name, ' '));
-                $text = str_replace('<br>', ' ', ($shipping->delivery_type->pickup ? $shipping->comment : $shipping->delivery_type->name . (
-                    strpos($shipping->delivery_type->name, $operator) !== false ? '' : ' ' . $operator
-                )));
-                
-                if ($q){
-                    if (mb_stripos($text, $q) === false){
-                        continue;
-                    }
-                }
-                
-                $deliveries[$shipping->delivery_type->pickup ? 'pickups' : 'delivery'][] = [
-                    'id' => $shipping->id,
-                    'text' => $text
-                ];
-                
-                $details[$shipping->id] = [
-                    'cost' => $shipping->cost,
-                    'price' => Yii::$app->formatter->asCurrency($shipping->cost, Yii::$app->params['currency']),
-                    'image' => isset($shipping->image) ? 'https://sessia.com' . $shipping->image : '',
-                    'comment' => $shipping->comment,
-                    'time' => (isset($shipping->delivery_time_from) ? Yii::t('front', 'от {0} до {1} дней', [
-                        $shipping->delivery_time_from,
-                        $shipping->delivery_time_to
-                    ]) : ''),
-                    'delivery_service' => [
-                        'id' => $shipping->delivery_type->delivery_service->id,
-                        'name' => $shipping->delivery_type->delivery_service->name,
-                    ],
-                    'sum' => ($total + $shipping->cost),
-                    'total' => Yii::$app->formatter->asCurrency(($total + $shipping->cost), Yii::$app->params['currency']),
-                ];
-            }
-            
-            $return = [
-                'delivery' => $deliveries['delivery'],
-                'pickups' => $deliveries['pickups'],
-                'details' => $details,
-            ];
-            
-            switch ($type){
-                case 'pickups':
-                    return json_encode([
-                        'results' => $return['pickups']
-                    ]);
-                    break;
-                case 'delivery':
-                    return json_encode([
-                        'results' => $return['delivery']
-                    ]);
-                    break;
-                case 'details':
-                    return json_encode($return['details'][$shipping_id]);
-                    break;
-                default:
-                    return json_encode($return);
-                    break;
-            }
-        }
+			if ($deliveryJson){
+				$deliveries = [
+					'delivery' => [],
+					'pickups' => []
+				];
+				$details = [];
+				$deliveryJson = str_replace('\r\n', '<br>', $deliveryJson);
+				$shippings = json_decode($deliveryJson);
+	// echo \yii\helpers\VarDumper::dump($shippings, 999, true); exit;
+				foreach ($shippings as $shipping)
+				{
+					// if (!$shipping->cost){
+						// continue;
+					// }
+					$operator = substr($shipping->delivery_type->delivery_service->name, 0, strpos($shipping->delivery_type->delivery_service->name, ' '));
+					$text = str_replace('<br>', ' ', ($shipping->delivery_type->pickup ? $shipping->comment : $shipping->delivery_type->name . (
+						strpos($shipping->delivery_type->name, $operator) !== false ? '' : ' ' . $operator
+					)));
+					
+					if ($q){
+						if (mb_stripos($text, $q) === false){
+							continue;
+						}
+					}
+					
+					$deliveries[$shipping->delivery_type->pickup ? 'pickups' : 'delivery'][] = [
+						'id' => $shipping->id,
+						'text' => $text
+					];
+					
+					$details[$shipping->id] = [
+						'cost' => $shipping->cost,
+						'price' => Yii::$app->formatter->asCurrency($shipping->cost, Yii::$app->params['currency']),
+						'image' => isset($shipping->image) ? 'https://sessia.com' . $shipping->image : '',
+						'comment' => $shipping->comment,
+						'time' => (isset($shipping->delivery_time_from) ? Yii::t('front', 'от {0} до {1} дней', [
+							$shipping->delivery_time_from,
+							$shipping->delivery_time_to
+						]) : ''),
+						'delivery_service' => [
+							'id' => $shipping->delivery_type->delivery_service->id,
+							'name' => $shipping->delivery_type->delivery_service->name,
+						],
+						'sum' => ($total + $shipping->cost),
+						'total' => Yii::$app->formatter->asCurrency(($total + $shipping->cost), Yii::$app->params['currency']),
+					];
+				}
+				
+				$return = [
+					'delivery' => $deliveries['delivery'],
+					'pickups' => $deliveries['pickups'],
+					'details' => $details,
+				];
+				
+				switch ($type){
+					case 'pickups':
+						return json_encode([
+							'results' => $return['pickups']
+						]);
+						break;
+					case 'delivery':
+						return json_encode([
+							'results' => $return['delivery']
+						]);
+						break;
+					case 'details':
+						return json_encode($return['details'][$shipping_id]);
+						break;
+					default:
+						return json_encode($return);
+						break;
+				}
+			}
+		}
         
         return false;
     }
