@@ -613,12 +613,8 @@
         }
         
         function setDeliveryParams(data){
-console.log('delivery params');
-console.log(data);
-			if (data === null){
-				location.reload();
-			} else {
-				var params = JSON.parse(data);
+			var params = JSON.parse(data);
+			if (params.hasOwnProperty(total)){
 				$('#total').text(params.total);
 				$('#order_total').show();
 				$('#delivery_price').text(params.price);
@@ -629,6 +625,8 @@ console.log(data);
 				$('#delivery_image').toggleClass('d-none', params.image === '');
 				$('[data-field=\"delivery_cost\"]').val(params.cost);
 				$('[data-field=\"delivery_comment\"]').val(params.comment);
+			} else {
+				location.reload();
 			}
         }
         
