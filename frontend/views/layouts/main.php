@@ -441,9 +441,9 @@
 				
 				<div class="col-10 col-md-3">
 					<p>
-						<?= Yii::$app->params['contacts']['full_address'][0] ?>
+						<?= Yii::t('front', Yii::$app->params['contacts']['full_address'][0]) ?>
 						<br>
-						<?= Yii::$app->params['contacts']['full_address'][1] ?>
+						<?= Yii::t('front', Yii::$app->params['contacts']['full_address'][1]) ?>
 					</p>
 					<br>
 					<p>
