@@ -23,6 +23,8 @@ if ($images){
 $product_name = json_decode($model->name)->{Yii::$app->language};
 $h1 = Yii::$app->params['h1'] ?: $product_name;
 $this->title = Yii::$app->params['title'] ?: $product_name . ' - ' . Yii::t('front', 'Купить в интернет-магазине') . ' ' . Yii::$app->name;
+
+$sizes = json_decode($model->sizes)->{Yii::$app->language};
 ?>
 
 <div class="container-fluid mb-5 px-lg-2 px-xl-3 px-xxl-5" itemscope itemtype="http://schema.org/Product">
@@ -155,35 +157,13 @@ $this->title = Yii::$app->params['title'] ?: $product_name . ' - ' . Yii::t('fro
 				</div>
 
 		<?php
-			if ($sizes = json_decode($model->sizes)->{Yii::$app->language}){
+			if ($sizes){
 		?>
 				<p>
 					<a href="#sizes" data-toggle="modal" title="<?= Yii::t('front', 'Размерная сетка') ?>" class="text-uppercase">
 						<?= Yii::t('front', 'Размерная сетка') ?>
 					</a>
 				</p>
-				<div id="sizes" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="w-100 text-center font-weight-light">
-									<?= Yii::t('front', 'Размерная сетка') ?>
-								</h4>
-								<div class="btn-modal-close rounded-circle overflow-hidden" data-dismiss="modal">
-									<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<line x1="13.7891" y1="12.3744" x2="39.9521" y2="38.5373" stroke="black" stroke-width="2"/>
-										<line x1="12.3749" y1="38.5379" x2="38.5379" y2="12.3749" stroke="black" stroke-width="2"/>
-									</svg>
-								</div>
-							</div>
-							<div class="modal-body">
-								<div id="size-grid" class="">
-									<?= str_replace('<table>', '<table class="table product-sizes">', $sizes) ?>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 		<?php
 			}
 		?>
@@ -318,6 +298,35 @@ $this->title = Yii::$app->params['title'] ?: $product_name . ' - ' . Yii::t('fro
 		}
 	?>
 	
+<?php
+	}
+?>
+
+<?php
+	if ($sizes){
+?>
+		<div id="sizes" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="w-100 text-center font-weight-light">
+							<?= Yii::t('front', 'Размерная сетка') ?>
+						</h4>
+						<div class="btn-modal-close rounded-circle overflow-hidden" data-dismiss="modal">
+							<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<line x1="13.7891" y1="12.3744" x2="39.9521" y2="38.5373" stroke="black" stroke-width="2"/>
+								<line x1="12.3749" y1="38.5379" x2="38.5379" y2="12.3749" stroke="black" stroke-width="2"/>
+							</svg>
+						</div>
+					</div>
+					<div class="modal-body">
+						<div id="size-grid" class="">
+							<?= str_replace('<table>', '<table class="table product-sizes">', $sizes) ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 <?php
 	}
 ?>
