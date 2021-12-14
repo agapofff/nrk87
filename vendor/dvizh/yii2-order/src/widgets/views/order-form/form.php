@@ -617,6 +617,11 @@
             if ($('#order-form').find('.has-error').length > 0){
                 errors = true;
                 var message = $('#order-form').find('.has-error').first().find('.help-block').text();
+				
+				if (message = 'Заполните \"Стоимость доставки\"'){
+					message = '" . Yii::t('front', 'Заполните') . "«" . Yii::t('front', 'Адрес доставки') . "»';
+				}
+				
                 toastr.error(message);
                 return false;
             } 
