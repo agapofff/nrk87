@@ -329,11 +329,6 @@ $(document).on('click', '.dropdown-change-select', function(){
 });
 
 
-// показ корзины при изменении
-$(document).on('dvizhCartChanged', function(){
-	$('#mini-cart').modal('show');
-});
-
 
 // wishlist
 wishlistCheck = function(){

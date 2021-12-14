@@ -491,6 +491,7 @@
 </div>
 
 
+
 <?php
     $this->registerJs(
     "
@@ -567,9 +568,14 @@
                     NProgress.start();
                 },
                 success: function(response){
-                    setDeliveryParams(response);
+					if (response == null){
+						location.reload();
+					} else {
+						setDeliveryParams(response);
+					}
                 },
                 error: function(response){
+					console.log('Ошибка расчёта доставки');
                     console.log(response);
                     toastr.error('" . Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже') . "');
                 },
@@ -578,6 +584,16 @@
                 }
             });
         }
+		
+		$(document).on('dvizhCartChanged', function(){
+			if ($('#order-shipping_type_id').val() === '1'){
+				$('#delivery').trigger('change');
+			} else if ($('#order-shipping_type_id').val() === '2'){
+				$('#pickup').trigger('change');
+			} else {
+				location.reload();
+			}
+		});
         
         function clearDeliveryParams(){
             $('#order_total').hide();
@@ -597,17 +613,23 @@
         }
         
         function setDeliveryParams(data){
-            var params = JSON.parse(data);
-            $('#total').text(params.total);
-            $('#order_total').show();
-            $('#delivery_price').text(params.price);
-            $('#delivery_time').text(params.time);
-            $('#delivery_comment').html(params.comment);
-            $('#delivery_comment').toggleClass('d-none', params.comment === '');
-            $('#delivery_image img').attr('src', params.image);
-            $('#delivery_image').toggleClass('d-none', params.image === '');
-            $('[data-field=\"delivery_cost\"]').val(params.cost);
-            $('[data-field=\"delivery_comment\"]').val(params.comment);
+console.log('delivery params');
+console.log(data);
+			if (data === null){
+				location.reload();
+			} else {
+				var params = JSON.parse(data);
+				$('#total').text(params.total);
+				$('#order_total').show();
+				$('#delivery_price').text(params.price);
+				$('#delivery_time').text(params.time);
+				$('#delivery_comment').html(params.comment);
+				$('#delivery_comment').toggleClass('d-none', params.comment === '');
+				$('#delivery_image img').attr('src', params.image);
+				$('#delivery_image').toggleClass('d-none', params.image === '');
+				$('[data-field=\"delivery_cost\"]').val(params.cost);
+				$('[data-field=\"delivery_comment\"]').val(params.comment);
+			}
         }
         
         function toggleAddress(){

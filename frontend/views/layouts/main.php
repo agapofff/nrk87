@@ -694,6 +694,16 @@
 		/></noscript>
 		<!-- End Facebook Pixel Code -->
 
+<?php
+	if (Yii::$app->controller->id != 'checkout'){
+		$this->registerJs("
+			// показ корзины при изменении
+			$(document).on('dvizhCartChanged', function(){
+				$('#mini-cart').modal('show');
+			});
+		", View::POS_READY);
+	}
+?>
 
 
     <?php $this->endBody() ?>
