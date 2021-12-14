@@ -289,7 +289,7 @@ form[disabled] {
 #menu .modal-content,
 #mini-cart .modal-dialog,
 #mini-cart .modal-content {
-	min-width: 400px;
+	min-width: 350px;
 }
 .modal.fade:not(.show) .modal-dialog.left-0 {
     transform: translate(-100%, 0) !important;

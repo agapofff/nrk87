@@ -463,10 +463,10 @@
 		</div>
 		
 		<div class="row my-5 align-items-center">
-			<div class="col-6">
+			<div class="col-sm-6 py-0_5">
 				<?= Html::a(Yii::t('front', 'Назад в корзину'), ['/cart']) ?>
 			</div>
-			<div id="order_submit" class="col-6 text-center">
+			<div id="order_submit" class="col-sm-6 text-center">
 				<?= Html::submitButton(Yii::t('front', 'Перейти к оплате'), [
 						'class' => 'btn btn-lg btn-primary btn-block py-1 text-uppercase ttfirsneue text-nowrap',
 					])
