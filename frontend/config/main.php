@@ -328,9 +328,9 @@ return [
             ],
         ],
         
-        // 'errorHandler' => [
-            // 'errorAction' => 'site/error',
-        // ],
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
         
 		'view' => [
 			'theme' => [
@@ -427,7 +427,7 @@ return [
 		
         'assetsAutoCompress' => [
             'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
-            'enabled' => false,
+            'enabled' => true,
             'readFileTimeout' => 3,
             'jsCompress' => true,
             'jsCompressFlaggedComments' => true,
@@ -537,23 +537,23 @@ return [
                 // 'cart/<action>' => 'cart/<action>',
                 
                 'cookies-notification-shown' => 'site/cookies-notification-shown',
-                'fashion-show' => 'site/fashion-show',
-                'register-to-show' => 'site/register-to-show',
+                // 'fashion-show' => 'site/fashion-show',
+                // 'register-to-show' => 'site/register-to-show',
                 'about' => 'site/about',
                 'vote' => 'site/vote',
-                'expedition' => 'site/mars-form',
-                'gps' => 'site/gps',
-                'lookbook' => 'site/lookbook',
-                'about-mars' => 'site/about-mars',
+                // 'expedition' => 'site/mars-form',
+                // 'gps' => 'site/gps',
+                // 'lookbook' => 'site/lookbook',
+                // 'about-mars' => 'site/about-mars',
                 // 'contacts/<slug>' => 'site/boutiques',
 				'contacts' => 'site/contacts',
 				'help' => 'site/help',
                 
-                'test/<slug>' => 'test/index',
-                'test/<slug>/<action>' => 'test/<action>',
+                // 'test/<slug>' => 'test/index',
+                // 'test/<slug>/<action>' => 'test/<action>',
                 
-                'scan-to-win' => 'scan-to-win/index',
-                'scan-to-win/choose-winner' => 'scan-to-win/choose-winner',
+                // 'scan-to-win' => 'scan-to-win/index',
+                // 'scan-to-win/choose-winner' => 'scan-to-win/choose-winner',
                 
                 'orders' => 'orders/index',
                 'orders/<id>' => 'orders/view',
