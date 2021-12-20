@@ -55,7 +55,7 @@ class SynchroController extends \yii\web\Controller
                                         foreach ($prices as $price){
                                             if ($price->item_id == $modification->id){
                                                 $price->price = isset($good['price']) ? (int)$good['price'] : 0;
-                                                $price->price_old = isset($good['retail_price']) ? (int)$good['retail_price'] : 0;
+                                                // $price->price_old = isset($good['retail_price']) ? (int)$good['retail_price'] : 0;
                                                 $price->available = $good['is_purchasable'] ? 'yes' : 'no';
                                                 $price->save();
                                             }

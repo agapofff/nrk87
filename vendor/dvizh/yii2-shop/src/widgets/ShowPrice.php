@@ -39,7 +39,7 @@ class ShowPrice extends \yii\base\Widget
             Html::tag('del',
                 Yii::$app->formatter->asCurrency($priceOld, Yii::$app->params['currency']),
                 [
-                    'class' => 'dvizh-shop-price-old dvizh-shop-price-old-{$this->model->id} {$this->cssClass} mr-4 ' . ($priceOld > 0 ? 'd-inline': 'd-none'),
+                    'class' => 'dvizh-shop-price-old dvizh-shop-price-old-{$this->model->id} {$this->cssClass} ttfirsneue mr-2 ' . ($priceOld > 0 ? 'd-inline': 'd-none'),
                 ]
             )
             .
