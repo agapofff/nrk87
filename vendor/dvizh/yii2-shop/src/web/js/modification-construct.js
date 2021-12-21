@@ -46,6 +46,8 @@ dvizh.modificationconstruct = {
 						.attr('data-size', data.modification.name.split(' | ')[0])
 						.removeAttr('disabled');
 						
+					$('.select-size-note').hide();
+						
 					wishlistCheck();
                 } else {
                     $('.dvizh-shop-price').html(data.product_price);
@@ -55,6 +57,8 @@ dvizh.modificationconstruct = {
                         .attr('disabled', true);
 						
 					$('.btn-wishlist').addAttr('disabled', true);
+					
+					$('.select-size-note').show();
 
                     outOfStock();
 					

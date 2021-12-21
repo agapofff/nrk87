@@ -219,9 +219,9 @@
         
     <?php $this->beginBody() ?>
         
-        <nav id="nav" class="navbar navbar-expand-lg <?= $isMainpage ? 'navbar-dark dark' : 'navbar-light bg-white' ?> bg-transparent fixed-top py-0 mt-0_5 mt-lg-1_5 px-0_5 px-lg-0">
+        <nav id="nav" class="navbar navbar-expand-lg <?= $isMainpage ? 'navbar-dark dark' : 'navbar-light' ?> bg-transparent fixed-top py-0 mt-0_5 mt-lg-1 px-0_5 px-lg-0">
         
-            <div id="nav-container" class="container-fluid py-1_5 px-lg-2 px-xl-3 px-xxl-5">
+            <div id="nav-container" class="container-fluid py-2 py-lg-3 px-lg-2 px-xl-3 px-xxl-5">
 
 				<button class="btn btn-link text-decoration-none p-0 d-lg-none" type="button" data-toggle="modal" data-target="#menu" aria-label="<?= Yii::t('front', 'Меню') ?>">
 					<span class="white">
@@ -276,7 +276,7 @@
 					</ul>
 				</div>
                 
-                <div id="logo" class="mx-auto mt-lg-0_25 navbar-brand">
+                <div id="logo" class="mx-auto navbar-brand d-flex h-100 align-items-center">
                     <a href="<?= Url::home(true) ?>">
                         <?= Html::img('/images/logo_white.svg', [
 								'class' => 'white',

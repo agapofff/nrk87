@@ -47,7 +47,7 @@
 
 <div class="container-fluid pb-0_5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
 	<hr>
-	<h2 class="h1 mt_1_5 ttfirsneue text-uppercase">
+	<h2 class="h1 mt_1_5 ttfirsneue font-weight-light text-uppercase">
 		<?= Html::a(Yii::t('front', 'Каталог'), ['/catalog'], [
 				'class' => 'text-decoration-none'
 			]);
@@ -86,7 +86,7 @@
 			'class' => 'd-block w-100 pointer-events-none'
 		])
 	?>
-	<div class="container-fluid position-absolute wv-100 pb-0_5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5 mt-3 mt-md-4 mt-lg-5 mt-xl-6 mt-xxl-7" style="
+	<div class="container-fluid position-absolute pb-0_5 mt-1_5 pl-lg-2 pl-xl-3 pl-xxl-6 pr-2 pr-lg-2 pr-xl-2 pr-xxl-0 mt-3 mt-md-4 mt-lg-5 mt-xl-6 mt-xxl-7" style="
 		top: 0;
 		left: 0;
 	">
@@ -96,7 +96,7 @@
 					<?= Yii::t('front', 'Кто мы') ?>
 				</h3>
 			</div>
-			<div class="col-md-6 col-lg-6 col-xl-5 col-xxl-4">
+			<div class="col-md-6 col-lg-5 col-xl-4 col-xxl-3">
 				<p class="text-white">
 					<?= Yii::t('front', 'NRK87 clothing is minimalistic, where technology, fashion relevance and principles of sustainable development intersect.') ?>
 				</p>
@@ -106,7 +106,7 @@
 				<p class="text-white">
 					<?= Yii::t('front', 'For those who are looking for themselves, and responsibly and consciously relate to our planet. For those who believe in technology, and also for those who dream of walking on Mars.') ?>
 				</p>
-				<div class="mt-3">
+				<div class="mt-3 text-right text-xl-left">
 					<?= Html::a(Yii::t('front', 'Узнать больше'), ['/about'], [
 							'class' => 'btn btn-outline-primary text-uppercase text-white border-light bg-transparent px-2 py-1'
 						]);

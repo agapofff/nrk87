@@ -61,17 +61,17 @@ mainMenuStyle = function(){
 
     $('#nav')
 		.toggleClass('hidden', offset > 20 && offset > prevScroll)
-		.toggleClass('shadow-sm', offset > 20)
-		.toggleClass('mt-0_5 mt-lg-1_5 bg-transparent', offset < 20);
+		.toggleClass('sticky', offset > 20)
+		.toggleClass('mt-0_5 mt-lg-1 bg-transparent', offset < 20);
 		
 	if ($('#nav').is('.dark')){
-		if (offset > $(window).height()/2){
+		if (offset > $(window).height()){
 			$('#nav')
 				.removeClass('navbar-dark bg-transparent')
-				.addClass('navbar-light bg-white shadow-sm');
+				.addClass('navbar-light');
 		} else {
 			$('#nav')
-				.removeClass('navbar-light bg-white shadow-sm')
+				.removeClass('navbar-light')
 				.addClass('navbar-dark bg-transparent');
 		}
 	}
@@ -256,14 +256,14 @@ function owlCarouselInit(item){
 					$(this).appendTo($(item));
 				});
 			}
-            imageZoom();
+            // imageZoom();
 		},
         onDragged: function(){
-            imageZoom();
+            // imageZoom();
         },
         onChanged: function(event){
             $(item).attr('data-item', event.item.index ? event.item.index-1 : event.item.index);
-            imageZoom();
+            // imageZoom();
         },
 	});
 }
@@ -286,17 +286,17 @@ $(document).on('click.bs.dropdown.data-api', '.dropdown-menu', function(e){
 
 
 // зум изображений товаров
-function imageZoom(){
-	$('.zoom').each(function(){
-		$(this).zoom({
-			url: $(this).data('url') ? $(this).data('url') : $(this).parent('img').attr('src'),
-			magnify: 3,
-			touch: false,
-		});
-	});	 
-}
+// function imageZoom(){
+	// $('.zoom').each(function(){
+		// $(this).zoom({
+			// url: $(this).data('url') ? $(this).data('url') : $(this).parent('img').attr('src'),
+			// magnify: 3,
+			// touch: false,
+		// });
+	// });	 
+// }
 $(document).ready(function(){
-	imageZoom();
+	// imageZoom();
 	Fancybox.bind('.fancybox', {
 		Image: {
 			fit: 'cover',

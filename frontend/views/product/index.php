@@ -103,31 +103,32 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 				</div>
 				
 				<div class="row mb-4">
-					<div class="product-buy col-sm-6 col-md-12 col-lg-6 mb-1">
+					<div class="product-buy col-sm-6 col-md-12 col-lg-6 mb-0_5">
 						<?= BuyButton::widget([
 								'model' => $model,
 								'htmlTag' => 'button',
 								'cssClass' => 'btn btn-lg btn-primary btn-block py-1 text-uppercase ttfirsneue text-nowrap',
 							]);
 						?>
+						<span class="select-size-note">
+							<?= Yii::t('front', 'Выберите размер') ?>
+						</span>
 					</div>
-					<div class="price-options col-sm-6 col-md-12 col-lg-6 mb-1">
-						<div class="row">
-							<div class="col">
-								<?= ChangeOptions::widget([
-										'model' => $model,
-										'type' => 'select',
-									]);
-								?>
-							</div>
-							<div id="product-wishlist" class="col-auto">
-								<?= $this->render('@frontend/views/wishlist/product', [
-									'product_id' => $model->id
-								]) ?>
-							</div>
-						</div>
+					<div class="price-options col-sm-6 col-md-12 col-lg-6 mb-0_5">
+						<?= ChangeOptions::widget([
+								'model' => $model,
+								'type' => 'select',
+							]);
+						?>
+					</div>
+					<div id="product-wishlist" class="col-auto mb-0_5">
+						<?= $this->render('@frontend/views/wishlist/product', [
+								'product_id' => $model->id
+							])
+						?>
 					</div>
 				</div>
+				
 		<?php
 			}
 		?>

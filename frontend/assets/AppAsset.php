@@ -49,7 +49,7 @@ class AppAsset extends AssetBundle
         // 'js/skrollr.min.js',
         // 'https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js',
         
-        'js/jquery.zoom.js',
+        // 'js/jquery.zoom.js',
 		'js/fancybox.umd.js',
         'js/nprogress.js',
         // 'js/headroom.min.js',
