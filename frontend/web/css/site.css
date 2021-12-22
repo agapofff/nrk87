@@ -246,6 +246,9 @@ form[disabled] {
 	-webkit-backdrop-filter: blur(40px);
 	-moz-backdrop-filter: blur(40px);
 	backdrop-filter: blur(40px);
+	-webkit-filter: blur(40px);
+	-moz-filter: blur(40px); 
+	filter: blur(40px);
 }
 #nav.hidden {
     -webkit-transform: translateY(-100%);
