@@ -328,6 +328,15 @@ $(document).on('click', '.dropdown-change-select', function(){
 	$element.dropdown('hide');
 });
 
+// показ нотификации выбора размера
+$('.product-buy, #product-wishlist').click(function(event){
+	event.preventDefault();
+    if ($(this).children().is(':disabled')){
+        $('.select-size-note').show();
+		return false;
+    }
+});
+
 
 
 // wishlist

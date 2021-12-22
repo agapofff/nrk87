@@ -223,6 +223,10 @@ form[disabled] {
     transform: rotate(90deg);
 }
 
+.btn-primary.disabled, 
+.btn-primary:disabled {
+	pointer-events: none;
+}
 
 #logo {
 	position: absolute;
@@ -245,10 +249,9 @@ form[disabled] {
 	background: linear-gradient(277.04deg, rgba(255, 255, 255, 0.3) 5.54%, rgba(255, 255, 255, 0.1) 72.66%);
 	-webkit-backdrop-filter: blur(40px);
 	-moz-backdrop-filter: blur(40px);
+	-o-backdrop-filter: blur(40px);
 	backdrop-filter: blur(40px);
-	-webkit-filter: blur(40px);
-	-moz-filter: blur(40px); 
-	filter: blur(40px);
+	
 }
 #nav.hidden {
     -webkit-transform: translateY(-100%);

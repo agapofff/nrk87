@@ -40,6 +40,7 @@ dvizh.cart = {
                 itemPrice = jQuery(self).data('price'),
                 itemOptions = jQuery(self).data('options'),
                 itemComment = jQuery(self).attr('data-comment');
+				
             dvizh.cart.addElement(itemModelName, itemId, itemCount, itemPrice, itemOptions, url, itemComment);
 
             return false;

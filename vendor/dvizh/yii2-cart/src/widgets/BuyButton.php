@@ -59,6 +59,7 @@ class BuyButton extends \yii\base\Widget
             'title' => $this->text,
             'style' => '',
 			'disabled' => true,
+			// 'type' => 'button',
         ]);
     }
 }
