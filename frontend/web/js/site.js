@@ -61,8 +61,7 @@ mainMenuStyle = function(){
 
     $('#nav')
 		.toggleClass('hidden', offset > 20 && offset > prevScroll)
-		.toggleClass('sticky', offset > 100)
-		.toggleClass('blur', offset > 100 && offset < prevScroll)
+		.toggleClass('sticky blur', offset > 100)
 		.toggleClass('mt-0_5 mt-lg-1 bg-transparent', offset < 20);
 		
 	if ($('#nav').is('.dark')){
