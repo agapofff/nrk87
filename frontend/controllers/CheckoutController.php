@@ -225,6 +225,15 @@ class CheckoutController extends \yii\web\Controller
 						$alreadySet = true;
 					}
 					
+					// убрать все пункты самовывоза, кроме склада - и переименовать склад
+					if ($deliveryType == 'pickups'){
+						if (strpos($text, 'Склад Freedom International Group') !== false){
+							$text = 'г. Москва, ул. Краснобогатырская, д.89, стр.1 (метро Преображенская площадь)';
+						} else {
+							continue;
+						}
+					}
+					
 					if (!$alreadySet){
 						$deliveries[$deliveryType][] = [
 							'id' => $shipping->id,
@@ -236,17 +245,24 @@ class CheckoutController extends \yii\web\Controller
 						'cost' => $shipping->cost,
 						'price' => Yii::$app->formatter->asCurrency($shipping->cost, Yii::$app->params['currency']),
 						'image' => isset($shipping->image) ? 'https://sessia.com' . $shipping->image : '',
-						'comment' => $shipping->comment,
+						'comment' => str_replace('Freedom International Group', 'Freedom Group Int.', 
+							$shipping->comment
+						),
 						'time' => (isset($shipping->delivery_time_from) ? Yii::t('front', 'от {0} до {1} дней', [
 							$shipping->delivery_time_from,
 							$shipping->delivery_time_to
 						]) : ''),
 						'delivery_service' => [
 							'id' => $shipping->delivery_type->delivery_service->id,
-							'name' => $shipping->delivery_type->delivery_service->name,
+							'name' => str_replace('FIG', 'FGI', 
+								$shipping->delivery_type->delivery_service->name
+							),
 						],
 						'sum' => ($total + $shipping->cost),
 						'total' => Yii::$app->formatter->asCurrency(($total + $shipping->cost), Yii::$app->params['currency']),
+						'lat' => $shipping->lat,
+						'lon' => $shipping->lng,
+						'text' => $text,
 					];
 				}
 				

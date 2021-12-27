@@ -54,6 +54,7 @@ class AppAsset extends AssetBundle
         'js/nprogress.js',
         // 'js/headroom.min.js',
         // 'js/jQuery.headroom.js',
+		
         'js/site.js',
     ];
     public $depends = [

@@ -208,6 +208,8 @@
 		<?php
 			}
 		?>
+		
+		<script src="https://api-maps.yandex.ru/2.1/?apikey=ba64904a-6f6b-42da-82b6-4483c98a8114&lang=ru_RU" type="text/javascript"></script>
         
     </head>
     <body>
@@ -704,7 +706,8 @@
 		", View::POS_READY);
 	}
 ?>
-
+	
+		
 
     <?php $this->endBody() ?>
     </body>

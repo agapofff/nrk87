@@ -349,12 +349,7 @@
 			<?= $delivery_comment ?>
 		</p>
 		
-		<p id="delivery_image" class="text-center<?= $delivery_image ? '' : ' d-none' ?>">
-			<?= Html::img($delivery_image, [
-					'class' => 'img-fluid',
-				]);
-			?>
-		</p>
+		<p id="delivery_image" style="height: 500px; display: none;"></p>
 		
 		<div id="address" class="row justify-content-center mt-2">
 			<div class="col-12">
@@ -594,6 +589,19 @@
 				location.reload();
 			}
 		});
+		
+		function setMap(lat, lon, name, comment){
+			var map = new ymaps.Map('delivery_image', {
+					center: [lat, lon],
+					zoom: 15
+				}, {
+					autoFitToViewport: 'always'
+				});
+			map.balloon.open([lat, lon], {
+				contentHeader: name,
+				contentBody: comment,
+			});
+		}
         
         function clearDeliveryParams(){
             $('#order_total').hide();
@@ -602,8 +610,9 @@
             $('#delivery_time').text(' ');
             $('#delivery_comment').html('');
             $('#delivery_comment').addClass('d-none');
-            $('#delivery_image img').attr('src', '');
-            $('#delivery_image').addClass('d-none');
+			$('#delivery_image')
+				.empty()
+				.hide();
             $('[data-field=\"delivery_cost\"]').val('');
             $('[data-field=\"delivery_comment\"]').val('');
             $('[data-field=\"postcode\"]').val('');
@@ -621,8 +630,8 @@
 				$('#delivery_time').text(params.time);
 				$('#delivery_comment').html(params.comment);
 				$('#delivery_comment').toggleClass('d-none', params.comment === '');
-				$('#delivery_image img').attr('src', params.image);
-				$('#delivery_image').toggleClass('d-none', params.image === '');
+				ymaps.ready(setMap(params.lat, params.lon, params.delivery_service.name, '<p>' + params.comment + '</p><p>' + params.text + '</p>'));
+				$('#delivery_image').show();
 				$('[data-field=\"delivery_cost\"]').val(params.cost);
 				$('[data-field=\"delivery_comment\"]').val(params.comment);
 			} else {
