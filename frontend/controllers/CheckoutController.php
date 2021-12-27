@@ -245,7 +245,7 @@ class CheckoutController extends \yii\web\Controller
 						'cost' => $shipping->cost,
 						'price' => Yii::$app->formatter->asCurrency($shipping->cost, Yii::$app->params['currency']),
 						'image' => isset($shipping->image) ? 'https://sessia.com' . $shipping->image : '',
-						'comment' => str_replace('Freedom International Group', 'Freedom Group Int.', 
+						'comment' => str_replace('Freedom International Group', 'NRK87.', 
 							$shipping->comment
 						),
 						'time' => (isset($shipping->delivery_time_from) ? Yii::t('front', 'от {0} до {1} дней', [
@@ -254,7 +254,7 @@ class CheckoutController extends \yii\web\Controller
 						]) : ''),
 						'delivery_service' => [
 							'id' => $shipping->delivery_type->delivery_service->id,
-							'name' => str_replace('FIG', 'FGI', 
+							'name' => str_replace('FIG', 'NRK87.', 
 								$shipping->delivery_type->delivery_service->name
 							),
 						],
