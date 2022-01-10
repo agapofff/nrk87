@@ -100,7 +100,6 @@ class WishlistController extends \yii\web\Controller
 
         return $this->render('index', [
 			'items' => $items,
-			'size' => null,
 		]);
 	}
 	

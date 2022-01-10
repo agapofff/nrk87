@@ -40,7 +40,7 @@
 			<?= Yii::t('front', 'Работаем по всему миру') ?>
 		</div>
 		<div class="col-4 text-right">
-			<?= date('Y') ?>
+			EST.2019
 		</div>
 	</div>
 </div>
