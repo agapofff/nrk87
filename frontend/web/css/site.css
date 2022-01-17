@@ -423,6 +423,9 @@ form[disabled] {
 	display: block;
 }
 
+#product-characteristics p {
+    margin-bottom: 0;
+}
 
 #sizeSelect:after {
 	border: none;

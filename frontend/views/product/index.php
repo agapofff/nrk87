@@ -145,13 +145,13 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 				<div class="row mb-1">
 					<div class="product-features col-sm-6 col-md-12 col-lg-6 mb-2">
 						<p class="text-uppercase font-weight-normal mb-1_5"><?= Yii::t('front', 'Характеристики') ?></p>
-						<div style="opacity: 0.6">
+						<div id="product-characteristics" style="opacity: 0.6">
 							<?= json_decode($model->short_text)->{Yii::$app->language} ?>
 						</div>
 					</div>
 					<div class="product-description col-sm-6 col-md-12 col-lg-6 mb-2">
 						<p class="text-uppercase font-weight-normal mb-1_5"><?= Yii::t('front', 'Описание') ?></p>
-						<div itemprop="description" style="opacity: 0.6">
+						<div id="product-description" itemprop="description" style="opacity: 0.6">
 							<?= json_decode($model->text)->{Yii::$app->language} ?>
 						</div>
 					</div>
