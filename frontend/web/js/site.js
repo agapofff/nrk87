@@ -53,7 +53,7 @@ $(document).on('click', '*[data-toggle="lightbox"], .lightbox', function(e){
 prevScroll = 0;
 
 $(window).scroll(function(){
-	mainMenuStyle();
+	// mainMenuStyle();
 });
 
 mainMenuStyle = function(){
@@ -79,7 +79,7 @@ mainMenuStyle = function(){
 }
 
 $(document).ready(function(){
-	mainMenuStyle();
+	// mainMenuStyle();
 });
 
 

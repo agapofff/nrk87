@@ -221,7 +221,7 @@
         
     <?php $this->beginBody() ?>
         
-        <nav id="nav" class="navbar navbar-expand-lg <?= $isMainpage ? 'navbar-dark dark' : 'navbar-light' ?> bg-transparent fixed-top py-0 mt-0_5 mt-lg-1 px-0_5 px-lg-0">
+        <nav id="nav" class="navbar navbar-expand-lg <?= $isMainpage ? 'navbar-dark dark' : 'navbar-light' ?> bg-transparent position-absolute top-0 left-0 right-0 py-0 mt-0_5 mt-lg-1 px-0_5 px-lg-0">
         
             <div id="nav-container" class="container-fluid py-2 py-lg-3 px-lg-2 px-xl-3 px-xxl-5">
 
