@@ -960,12 +960,8 @@ $store_types = Yii::$app->params['store_types'];
             foreach ($images as $image){
         ?>
                 <img src="<?= $image->getUrl('x500') ?>" loading="lazy">
-                <img src="<?= $image->getUrl('x600') ?>" loading="lazy">
-                <img src="<?= $image->getUrl('700x1000') ?>" loading="lazy">
                 <img src="<?= $image->getUrl('x1000') ?>" loading="lazy">
-                <img src="<?= $image->getUrl('x1200') ?>" loading="lazy">
                 <img src="<?= $image->getUrl('x1500') ?>" loading="lazy">
-                <img src="<?= $image->getUrl('x2000') ?>" loading="lazy">
                 <img src="<?= $image->getUrl('x2500') ?>" loading="lazy">
         <?php
             }
