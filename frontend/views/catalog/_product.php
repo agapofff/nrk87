@@ -7,13 +7,13 @@
 ?>
 
     <div class="card bg-transparent border-0 product">
-        <div class="card-body px-sm-3 px-md-4 px-lg-5 px-xl-6 px-xxl-7">
+        <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-4 px-xxl-5">
             <a href="<?= Url::to(['/product/'.$model->slug]) ?>">
 				<?php
 					$image = $model->getImage();
-					$cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_700x1000.jpg';
+					$cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_1000x1000.jpg';
 				?>
-				<img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('700x1000') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
+				<img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('1000x1000') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
             </a>
             <p class="text-center mt-1_5 mb-0_5">
 				<?= $product_name ?>
