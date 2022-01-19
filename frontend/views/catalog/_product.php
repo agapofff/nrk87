@@ -11,9 +11,9 @@
             <a href="<?= Url::to(['/product/'.$model->slug]) ?>">
 				<?php
 					$image = $model->getImage();
-					$cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_1000x1000.jpg';
+					$cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1000.jpg';
 				?>
-				<img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('1000x1000') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
+				<img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x1000') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
             </a>
             <p class="text-center mt-1_5 mb-0_5">
 				<?= $product_name ?>
