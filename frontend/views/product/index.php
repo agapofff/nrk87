@@ -97,7 +97,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 							'cssClass' => 'lead font-weight-normal ttfirsneue',
 							'model' => $model,
 							'price' => $price,
-							'priceOld' => $priceOld,
+							// 'priceOld' => $priceOld,
 						])
 					?>
 				</div>

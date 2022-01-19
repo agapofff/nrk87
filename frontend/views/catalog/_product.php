@@ -20,7 +20,7 @@
 			</p>
             <p class="price text-center">
             <?php if (isset($prices_old[$model->id]) && (int)$prices_old[$model->id] > 0){ ?>
-                <del class="text-muted"><?= Yii::$app->formatter->asCurrency((int)$prices_old[$model->id], Yii::$app->params['currency']) ?></del>&nbsp;
+                <del class="text-muted d-none"><?= Yii::$app->formatter->asCurrency((int)$prices_old[$model->id], Yii::$app->params['currency']) ?></del>&nbsp;
             <?php } ?>
             <?php if (isset($prices[$model->id]) && (int)$prices[$model->id] > 0){ ?>
                 <?= Yii::$app->formatter->asCurrency((int)$prices[$model->id], Yii::$app->params['currency']) ?>
