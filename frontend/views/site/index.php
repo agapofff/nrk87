@@ -32,6 +32,7 @@
 	background: url('/images/main/banner_mobile_<?= $coverIdMobile ?>.jpg') center center / cover no-repeat;
 "></div>
 
+<!--
 <div class="container-fluid mb-7 pb-0_5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
 	<div class="row">
 		<div class="col-8 text-uppercase">
@@ -41,6 +42,29 @@
 		</div>
 		<div class="col-4 text-right">
 			EST.2019
+		</div>
+	</div>
+</div>
+-->
+
+<div class="container-fluid mb-15 mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
+    background: url('/images/main/ellipse.png') center center /cover no-repeat;
+">
+	<div class="row">
+		<div class="col-12">
+    <?php
+        $text = preg_split('/\r\n|\r|\n/', Yii::t('front', 'GPS-wear 
+        for those 
+        who dream 
+        of Mars'));
+        foreach ($text as $k => $txt) {
+    ?>
+			<h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 <?= $k % 2 ? 'text-right' : 'text-left' ?>">
+				<?= $txt ?>
+			</h1>
+    <?php
+        }
+    ?>
 		</div>
 	</div>
 </div>

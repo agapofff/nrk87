@@ -558,6 +558,9 @@ return [
                 'orders' => 'orders/index',
                 'orders/<id>' => 'orders/view',
                 
+                'blog' => 'blog/index',
+                'blog/<slug>' => 'blog/post',
+                
                 'synchro' => 'synchro/index', // !!!!!!!!!!!!!!!!!!!!!!!!!
 				
 				'facebook-conversions' => 'facebook-conversions/index',

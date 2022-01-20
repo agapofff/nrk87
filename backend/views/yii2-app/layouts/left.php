@@ -25,6 +25,33 @@
         } else {
             
             if (
+                (
+                    Yii::$app->user->can('/source-message/*')
+                    || Yii::$app->user->can('/source-message/index')
+                ) && (
+                    Yii::$app->user->can('/message/*')
+                    || Yii::$app->user->can('/message/index')
+                )
+            ){
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Локализация'),
+                    'icon' => 'globe',
+                    'items' => [
+                        [
+                            'label' => Yii::t('back', 'Константы'),
+                            'icon' => 'language',
+                            'url' => ['/source-message'],
+                        ],
+                        [
+                            'label' => Yii::t('back', 'Переводы'),
+                            'icon' => 'exchange',
+                            'url' => ['/message']
+                        ],
+                    ],
+                ];
+            }
+            
+            if (
                 Yii::$app->user->can('/shop/*')
                 || Yii::$app->user->can('/shop/category/*')
                 || Yii::$app->user->can('/shop/category/index')
@@ -176,6 +203,28 @@
             }
             
             if (
+                Yii::$app->user->can('/blog/*')
+                && Yii::$app->user->can('/blog-categories/*')
+            ){
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Блог'),
+                    'icon' => 'bold',
+                    'items' => [
+                        [
+                            'label' => Yii::t('back', 'Посты'),
+                            'icon' => 'file-text-o',
+                            'url' => ['/blog'],
+                        ],
+                        [
+                            'label' => Yii::t('back', 'Категории'),
+                            'icon' => 'copy',
+                            'url' => ['/blog-categories']
+                        ],
+                    ],
+                ];
+            }
+            
+            if (
                 Yii::$app->user->can('/pages/*')
             ){
                 $menuItems[] = [
@@ -195,15 +244,7 @@
                 ];
             }
             
-            if (
-                Yii::$app->user->can('/boutiques/*')
-            ){
-                $menuItems[] = [
-                    'label' => Yii::t('back', 'Бутики'),
-                    'icon' => 'shopping-bag',
-                    'url' => ['/boutiques'],
-                ];
-            }
+
             
             if (
                 Yii::$app->user->can('/tests/*')
@@ -307,31 +348,14 @@
             }
             
             if (
-                (
-                    Yii::$app->user->can('/source-message/*')
-                    || Yii::$app->user->can('/source-message/index')
-                ) && (
-                    Yii::$app->user->can('/message/*')
-                    || Yii::$app->user->can('/message/index')
-                )
+                Yii::$app->user->can('/boutiques/*')
             ){
                 $menuItems[] = [
-                    'label' => Yii::t('back', 'Локализация'),
-                    'icon' => 'globe',
-                    'items' => [
-                        [
-                            'label' => Yii::t('back', 'Константы'),
-                            'icon' => 'language',
-                            'url' => ['/source-message'],
-                        ],
-                        [
-                            'label' => Yii::t('back', 'Переводы'),
-                            'icon' => 'exchange',
-                            'url' => ['/message']
-                        ],
-                    ],
+                    'label' => Yii::t('back', 'Бутики'),
+                    'icon' => 'shopping-bag',
+                    'url' => ['/boutiques'],
                 ];
-            }
+            }            
             
             if (Yii::$app->user->can('/user/admin/*')){
                 $menuItems[] = [

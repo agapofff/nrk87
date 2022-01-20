@@ -53,7 +53,7 @@ $(document).on('click', '*[data-toggle="lightbox"], .lightbox', function(e){
 prevScroll = 0;
 
 $(window).scroll(function(){
-	// mainMenuStyle();
+	mainMenuStyle();
 });
 
 mainMenuStyle = function(){
@@ -61,17 +61,21 @@ mainMenuStyle = function(){
 
     $('#nav')
 		.toggleClass('hidden', offset > 20 && offset > prevScroll)
-		.toggleClass('sticky blur', offset > 100)
+		.toggleClass('shadow-sm bg-white', offset > 20)
 		.toggleClass('mt-0_5 mt-lg-1 bg-transparent', offset < 20);
+        
+    $('#nav-container')
+		.toggleClass('py-1 py-lg-2', offset > 20)
+		.toggleClass('py-2 py-lg-3', offset < 20);
 		
 	if ($('#nav').is('.dark')){
-		if (offset > $(window).height()){
+		if (offset > $(window).height()/2){
 			$('#nav')
 				.removeClass('navbar-dark bg-transparent')
-				.addClass('navbar-light');
+				.addClass('navbar-light bg-white shadow-sm');
 		} else {
 			$('#nav')
-				.removeClass('navbar-light')
+				.removeClass('navbar-light bg-white shadow-sm')
 				.addClass('navbar-dark bg-transparent');
 		}
 	}
@@ -79,7 +83,7 @@ mainMenuStyle = function(){
 }
 
 $(document).ready(function(){
-	// mainMenuStyle();
+	mainMenuStyle();
 });
 
 

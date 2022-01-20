@@ -1,9 +1,5 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \frontend\models\ContactForm */
-
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
@@ -15,7 +11,6 @@ $this->title = Yii::t('front', 'О нас');
 ?>
 
 <div class="container-fluid mb-5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
-    
 	<div class="row">
 		<div class="col-12">
 			<h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
