@@ -47,20 +47,42 @@
 </div>
 -->
 
-<div class="container-fluid mb-15 mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
+<div class="container-fluid mb-10 pt-5 pb-5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
     background: url('/images/main/ellipse.png') center center /cover no-repeat;
 ">
 	<div class="row">
 		<div class="col-12">
     <?php
-        $text = preg_split('/\r\n|\r|\n/', Yii::t('front', 'GPS-wear 
-        for those 
-        who dream 
-        of Mars'));
+        $text = preg_split('/\r\n|\r|\n/', Yii::t('front', 'GPS-одежда
+для тех
+кто мечтает
+о Марсе'));
         foreach ($text as $k => $txt) {
     ?>
-			<h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 <?= $k % 2 ? 'text-right' : 'text-left' ?>">
+			<h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 position-relative <?= $k % 2 ? 'text-right' : 'text-left' ?>">
 				<?= $txt ?>
+                <?php
+                    if ($k == 1) {
+                ?>
+                        <div class="d-none d-xl-block" style="
+                            position: absolute;
+                            top: 40px;
+                            left: 15px;
+                            max-width: 400px;
+                            float: left;
+                            font-family: Helvetica;
+                            font-size: 16px;
+                            font-weight: normal;
+                            line-height: 20.8px;
+                            text-decoration: none;
+                            text-transform: none;
+                            text-align: left;
+                        ">
+                            <?= Yii::t('front', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultrices dignissim lorem cursus commodo sit nunc. Dictumst purus eu odio risus, sollicitudin risus cras id. Odio egestas convallis tortor nec  lorem diam morbi convallis. Est tellus ultrices sed sagittis') ?>
+                        </div>
+                <?php
+                    }
+                ?>
 			</h1>
     <?php
         }
