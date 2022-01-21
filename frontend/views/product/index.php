@@ -79,7 +79,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 		
 		<div class="col-12 col-md-6">
 		
-			<div class="sticky-top" style="top:80px">
+			<div class="sticky-top" style="top:100px">
 			
 				<h1 class="ttfirsneue font-weight-light mb-3" itemprop="name">
 					<?= $h1 ?>

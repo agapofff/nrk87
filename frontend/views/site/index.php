@@ -53,14 +53,11 @@
 	<div class="row">
 		<div class="col-12">
     <?php
-        $text = preg_split('/\r\n|\r|\n/', Yii::t('front', 'GPS-одежда
-для тех
-кто мечтает
-о Марсе'));
+        $text = explode('|', Yii::t('front', 'GPS-одежда | для тех | кто мечтает | о Марсе'));
         foreach ($text as $k => $txt) {
     ?>
 			<h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 position-relative <?= $k % 2 ? 'text-right' : 'text-left' ?>">
-				<?= $txt ?>
+				<?= trim($txt) ?>
                 <?php
                     if ($k == 1) {
                 ?>
