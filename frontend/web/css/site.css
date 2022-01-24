@@ -231,6 +231,11 @@ body[data-c="blog"][data-a="index"] footer hr {
 .btn-primary:disabled {
 	pointer-events: none;
 }
+.btn-warning:hover,
+.btn-warning:active,
+.btn-warning:focus {
+    background-color: #D6751C !important;
+}
 
 #logo {
 	position: absolute;
