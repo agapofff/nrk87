@@ -29,6 +29,13 @@ $(document).on('click', '.loading', function(){
 $.mask.definitions['_'] = "[0-9]";
 
 
+$(document).ready(function(){
+    if (location.href.includes('#')){
+        $('a[href="#' + location.href.split('#')[1] + '"]').trigger('click');
+    }
+});
+
+
 // уведомления
 toastr.options = {
 	tapToDismiss: true,
@@ -40,10 +47,20 @@ toastr.options = {
 
 
 // модальные окна
-$(document).on('click', '*[data-toggle="lightbox"], .lightbox', function(e){
+$(document).on('click', '[data-toggle="lightbox"], .lightbox', function(e){
 	e.preventDefault();
 	$(this).ekkoLightbox({
 		alwaysShowClose: true,
+        loadingMessage: false,
+        disableExternalCheck: false,
+        onShow: function(){
+            this._$modalDialog.prepend('<div class="modal-loader position-absolute top-0 left-0 right-0 bottom-0 d-flex align-items-center justify-content-center bg-white" style="z-index: 3"><div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status"><span class="sr-only">Загрузка...</span></div></div>');
+        },
+        onShown: function(){
+            setTimeout(function(){
+                $('.modal-loader').remove();
+            }, 500);
+        }
 	});
 });
 
@@ -65,7 +82,7 @@ mainMenuStyle = function(){
 		.toggleClass('mt-0_5 mt-lg-1 bg-transparent', offset < 20);
         
     $('#nav-container')
-		.toggleClass('py-1 py-lg-2', offset > 20)
+		.toggleClass('py-1_5 py-lg-2', offset > 20)
 		.toggleClass('py-2 py-lg-3', offset < 20);
 		
 	if ($('#nav').is('.dark')){
@@ -360,6 +377,31 @@ $(document).on('click', '.btn-wishlist', function(){
 	}, function(){
 		wishlistCheck();
 	});
+});
+
+
+// blog
+$(document).on('click', '.blog-category', function(){
+    var category = $(this).data('category');
+    
+    $('.blog-category').addClass('opacity-50');
+    $(this).removeClass('opacity-50');
+    
+    if (category === 'all') {
+        $('.blog-post').show();
+    } else {
+        $('.blog-post').each(function(){
+            $(this).toggle($(this).data('category') === category);
+        });
+    }
+});
+
+
+// бегущая строка
+$('.marquee').marquee({
+    duration: 10000,
+    startVisible: true,
+    duplicated: true
 });
 
 

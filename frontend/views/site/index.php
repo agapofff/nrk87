@@ -58,6 +58,25 @@
     ?>
 			<h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 position-relative <?= $k % 2 ? 'text-right' : 'text-left' ?>">
 				<?= trim($txt) ?>
+                
+                <?php
+                    if ($k == 0) {
+                        echo Html::tag('span', date('Y'), [
+                            'style' => '
+                                position: absolute;
+                                top: 40px;
+                                right: 100px;
+                                font-family: Helvetica;
+                                font-size: 16px;
+                                font-weight: normal;
+                                line-height: 20.8px;
+                                text-decoration: none;
+                                text-transform: none;
+                            ',
+                        ]);
+                    }
+                ?>
+                
                 <?php
                     if ($k == 1) {
                 ?>

@@ -212,7 +212,7 @@
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=ba64904a-6f6b-42da-82b6-4483c98a8114&lang=ru_RU" type="text/javascript"></script>
         
     </head>
-    <body>
+    <body data-c="<?= Yii::$app->controller->id ?>" data-a="<?= Yii::$app->controller->action->id ?>">
 	
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJWR5X2"
@@ -396,12 +396,14 @@
                 ]
             ]) ?>
 
-            <?= $content ?>
+            <div id="content">
+                <?= $content ?>
+            </div>
             
         </div>
 
 
-        <footer class="container-fluid mt-7 px-lg-2 px-xl-3 px-xxl-5">
+        <footer class="container-fluid pt-7 px-lg-2 px-xl-3 px-xxl-5">
             
 			<div class="row justify-content-between">
 			
@@ -432,12 +434,21 @@
 				
 				<div class="col-5 col-md-2 order-md-last text-right">
 					<a href="<?= Url::home(true) ?>">
-						<?= Html::img('/images/logo_black.svg', [
+                <?php
+                    if (Yii::$app->controller->id == 'blog' && Yii::$app->controller->action->id == 'index'){
+						echo Html::img('/images/logo_white.svg', [
 								'style' => '
 									width: 54px;
 								',
-							])
-						?>
+							]);                        
+                    } else {
+						echo Html::img('/images/logo_black.svg', [
+								'style' => '
+									width: 54px;
+								',
+							]);
+                    }
+				?>
 					</a>
 				</div>
 				
@@ -489,7 +500,7 @@
 		
 		
 		
-		<div class="modal p-0 fade" id="menu" tabindex="-1" aria-labelledby="menuLabel" aria-hidden="true">
+		<div class="modal side p-0 fade" id="menu" tabindex="-1" aria-labelledby="menuLabel" aria-hidden="true">
 			<div class="modal-dialog position-absolute top-0 bottom-0 left-0 border-0 m-0">
 				<div class="modal-content m-0 border-0 vh-100">
 					<div class="modal-header align-items-center flex-nowrap pl-1 pr-2">
@@ -561,7 +572,7 @@
 		</div>
 		
 		
-		<div class="modal p-0 fade" id="mini-cart" tabindex="-1" aria-labelledby="miniCartLabel" aria-hidden="true">
+		<div class="modal side p-0 fade" id="mini-cart" tabindex="-1" aria-labelledby="miniCartLabel" aria-hidden="true">
 			<div class="modal-dialog position-absolute top-0 bottom-0 right-0 max-vw-50 border-0 m-0">
 				<div class="modal-content m-0 border-0 vh-100 vw-50">
 					<div class="modal-header align-items-center flex-nowrap py-md-2 pt-lg-3 pt-xl-4 pt-xxl-5 px-md-1 px-lg-2 px-xl-3">

@@ -41,7 +41,7 @@ dvizh.modificationconstruct = {
                         .attr('data-price', data.modification.price[0])
                         .attr('data-comment', data.modification.sku)
                         .removeClass('btn-primary')
-                        .addClass('btn-warning')
+                        .addClass('bg-orange')
                         .removeAttr('disabled');
 						
 					$('.btn-wishlist')
@@ -56,7 +56,7 @@ dvizh.modificationconstruct = {
 					
                     $('.dvizh-cart-buy-button')
                         .attr('data-price', data.product_price)
-                        .removeClass('btn-warning')
+                        .removeClass('bg-orange')
                         .addClass('btn-primary')
                         .attr('disabled', true);
 						

@@ -18,11 +18,14 @@ class BlogController extends \yii\web\Controller
             'active' => 1
         ]);
         
-        $posts = Blog::findAll([
-            'active' => 1
-        ])->orderBy([
-            'date_published' => SORT_DESC
-        ]);
+        $posts = Blog::find()
+            ->where([
+                'active' => 1
+            ])
+            ->orderBy([
+                'date_published' => SORT_DESC
+            ])
+            ->all();
         
         return $this->render('index', [
             'categories' => $categories,
@@ -42,7 +45,7 @@ class BlogController extends \yii\web\Controller
             ->one();
             
         return $this->render('post', [
-            'model' => $post,
+            'post' => $post,
         ]);
     }
     

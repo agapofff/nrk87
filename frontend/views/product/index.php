@@ -38,11 +38,11 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 			<?php
 				foreach ($images as $key => $image){
 					$cachedImageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1500.jpg';
-					$cachedImageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1500.jpg';
+					$cachedImageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x2500.jpg';
 			?>
 					<div class="col-12 mt-1 overflow-hidden">
-						<a href="#images" data-toggle="modal" class="d-block overflow-hidden zoom" data-url="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMax) ? $cachedImageMax : $image->getUrl('x1500') ?>">
-							<img <?php if ($key == 0){?> itemprop="image" <?php } ?> src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x1500') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
+						<a href="#images" data-toggle="modal" class="d-block overflow-hidden zoom" data-url="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMax) ? $cachedImageMax : $image->getUrl('x2500') ?>">
+							<img <?php if ($key == 0){?> itemprop="image" <?php } ?> src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x1500') ?>" class="d-block w-100" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
 						</a>
 					</div>
 			<?php

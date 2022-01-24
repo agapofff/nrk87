@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
         'fonts/helvetica/css/fonts.css',
         'fonts/ttfirsneue/css/fonts.css',
         'css/nprogress.css',
+        // 'css/ekko-lightbox.css',
 		'css/fancybox.css',
         'css/site.css',
     ];
@@ -50,8 +51,10 @@ class AppAsset extends AssetBundle
         // 'https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js',
         
         // 'js/jquery.zoom.js',
+		'js/ekko-lightbox.js',
 		'js/fancybox.umd.js',
         'js/nprogress.js',
+        'js/jquery.marquee.min.js',
         // 'js/headroom.min.js',
         // 'js/jQuery.headroom.js',
 		
