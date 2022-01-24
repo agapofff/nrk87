@@ -233,8 +233,12 @@ body[data-c="blog"][data-a="index"] footer hr {
 }
 .btn-warning:hover,
 .btn-warning:active,
-.btn-warning:focus {
+.btn-warning:focus,
+.btn-hover-warning:hover,
+.btn-hover-warning:active,
+.btn-hover-warning:focus {
     background-color: #D6751C !important;
+    border-color: #D6751C !important;
 }
 
 #logo {

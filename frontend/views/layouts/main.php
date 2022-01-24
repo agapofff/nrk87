@@ -612,7 +612,7 @@
 								<?= Html::a(Yii::t('front', 'Оформить заказ'), [
 											'/checkout'
 										], [
-											'class' => 'btn btn-primary btn-block py-1 my-2 mini-cart-checkout-link',
+											'class' => 'btn btn-primary btn-hover-warning btn-block py-1 my-2 mini-cart-checkout-link',
 										]
 									)
 								?>

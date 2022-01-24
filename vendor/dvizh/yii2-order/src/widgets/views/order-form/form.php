@@ -460,7 +460,7 @@
 		<div class="row my-5 align-items-center">
 			<div id="order_submit" class="col-sm-6 text-center order-lg-last">
 				<?= Html::submitButton(Yii::t('front', 'Перейти к оплате'), [
-						'class' => 'btn btn-lg btn-primary btn-block py-1 text-uppercase ttfirsneue text-nowrap',
+						'class' => 'btn btn-lg btn-primary btn-hover-warning btn-block py-1 text-uppercase ttfirsneue text-nowrap',
 					])
 				?>
 			</div>
