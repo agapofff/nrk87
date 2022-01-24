@@ -47,6 +47,8 @@ dvizh.modificationconstruct = {
 					$('.btn-wishlist')
 						.attr('data-size', data.modification.name.split(' | ')[0])
 						.removeAttr('disabled');
+                        
+                    $('#product-wishlist-container').find('svg').attr('fill', '#D6751C');
 						
 					$('.select-size-note').hide();
 						

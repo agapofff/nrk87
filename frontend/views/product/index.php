@@ -121,7 +121,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 							]);
 						?>
 					</div>
-					<div class="col-auto mb-0_5">
+					<div id="product-wishlist-container" class="col-auto mb-0_5">
 						<?= $this->render('@frontend/views/wishlist/product', [
 								'product_id' => $model->id
 							])

@@ -433,6 +433,10 @@ body[data-c="blog"][data-a="index"] footer hr {
 .btn-wishlist[data-action="remove"] div:last-child {
 	display: inline;
 }
+.btn-wishlist:disabled {
+    color: #000;
+    opacity: 1;
+}
 
 
 .help span span:last-child {

@@ -475,15 +475,15 @@
 					<hr>
 					<div class="row justify-content-between">
 						<div class="col-12 col-lg-auto">
-							<?= Html::a(Yii::t('front', 'Cookies'), ['/cookie-policy'], [
+							<?= Html::a(Yii::t('front', 'Файлы cookies'), ['/cookie-policy'], [
 									'class' => 'text-decoration-none mr-4'
 								])
 							?>
-							<?= Html::a(Yii::t('front', 'Privacy policy'), ['/privacy-policy'], [
+							<?= Html::a(Yii::t('front', 'Политика конфиденциальности'), ['/privacy-policy'], [
 									'class' => 'text-decoration-none mr-4'
 								])
 							?>
-							<?= Html::a(Yii::t('front', 'Terms and conditions'), ['/user-agreement'], [
+							<?= Html::a(Yii::t('front', 'Условия и положения'), ['/user-agreement'], [
 									'class' => 'text-decoration-none mr-4'
 								])
 							?>
