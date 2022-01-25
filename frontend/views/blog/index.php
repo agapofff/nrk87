@@ -16,16 +16,9 @@ $this->title = Yii::t('front', 'Блог');
 ">
 	<div class="row">
 		<div class="col-12">
-    <?php
-        $text = explode('|', Yii::t('front', 'Там'));
-        foreach ($text as $k => $txt) {
-    ?>
-			<h1 class="ttfirsneue text-uppercase display-2 mb-0 position-relative <?= $k ? '' : 'd-inline-block' ?>" style="line-height:1">
-				<?= trim($txt) ?>
-            
-        <?php
-            if ($k == 0) {
-        ?>
+			<h1 class="ttfirsneue text-uppercase display-2 mb-0 position-relative d-inline-block">
+				<?= Yii::t('front', 'Блог') ?>
+
                 <div class="d-none d-sm-block" style="
                     position: absolute;
                     top: 9%;
@@ -42,9 +35,6 @@ $this->title = Yii::t('front', 'Блог');
                 ">
                     <?= str_replace('|', '<br>', Yii::t('front', 'Узнайте | о последних достижениях | в исследовании Марса')); ?>
                 </div>
-        <?php
-            }
-        ?>
 			</h1>
     <?php
         }
