@@ -94,7 +94,7 @@
                             text-transform: none;
                             text-align: left;
                         ">
-                            <?= Yii::t('front', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultrices dignissim lorem cursus commodo sit nunc. Dictumst purus eu odio risus, sollicitudin risus cras id. Odio egestas convallis tortor nec  lorem diam morbi convallis. Est tellus ultrices sed sagittis') ?>
+                            <?= Yii::t('front', 'Мы решили создать коллекцию одежды со встроенными GPS-трекерами, с помощью которых можно не только легко найти человека, но и связаться с ним в любую минуту. Вы сможете чувствовать себя спокойно и уверенно, а значит, появится время творить, мечтать и делать мир вокруг лучше.') ?>
                         </div>
                 <?php
                     }
@@ -105,6 +105,17 @@
     ?>
 		</div>
 	</div>
+</div>
+
+<div class="position-relative mt-5 mb-10 pt-5 pb-7 bg-warning">
+    <div class="marquee h2 font-weight-light text-white">
+        <?= Yii::t('front', 'Температура') ?> 32
+        &nbsp;&nbsp;&nbsp;
+        12:32 <?= Yii::t('front', 'Лето') ?>
+        &nbsp;&nbsp;&nbsp;
+        <?= Yii::t('front', 'Следующий запуск на Марс 2 марта') ?>
+        &nbsp;&nbsp;&nbsp;
+    </div>
 </div>
 
 <div class="container-fluid pb-0_5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
@@ -148,7 +159,7 @@
 			'class' => 'd-block w-100 pointer-events-none'
 		])
 	?>
-	<div class="container-fluid position-absolute pb-0_5 mt-1_5 pl-lg-2 pl-xl-3 pl-xxl-6 pr-2 pr-lg-2 pr-xl-2 pr-xxl-0 mt-3 mt-md-4 mt-lg-5 mt-xl-6 mt-xxl-7" style="
+	<div class="container-fluid position-absolute pb-0_5 pl-lg-2 pl-xl-3 pl-xxl-5 pr-lg-2 pr-xl-3 pr-xxl-5 mt-1_5 mt-3 mt-md-4 mt-lg-5 mt-xl-6 mt-xxl-7" style="
 		top: 0;
 		left: 0;
 	">
@@ -160,20 +171,11 @@
 			</div>
 			<div class="col-md-6 col-lg-5 col-xl-4 col-xxl-3">
 				<p class="text-white">
-					<?= Yii::t('front', 'NRK87 clothing is minimalistic, where technology, fashion relevance and principles of sustainable development intersect.') ?>
+					<?= Yii::t('front', 'NRK87. – fashion tech wear бренд.') ?>
 				</p>
 				<p class="text-white">
-					<?= Yii::t('front', 'High-tech fabrics, integrated GPS and NFC (near field communications) labels, unique color solutions, and natural graphics create a ready-made positive environment for the self-realization of those who truly care.') ?>
+					<?= Yii::t('front', 'Для тех, кто ищет себя, ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу.') ?>
 				</p>
-				<p class="text-white">
-					<?= Yii::t('front', 'For those who are looking for themselves, and responsibly and consciously relate to our planet. For those who believe in technology, and also for those who dream of walking on Mars.') ?>
-				</p>
-				<div class="mt-3 text-right text-xl-left">
-					<?= Html::a(Yii::t('front', 'Узнать больше'), ['/about'], [
-							'class' => 'btn btn-outline-primary text-uppercase text-white border-light bg-transparent px-2 py-1'
-						]);
-					?>
-				</div>
 			</div>
 		</div>
 	</div>
