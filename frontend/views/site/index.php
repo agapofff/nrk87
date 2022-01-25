@@ -107,7 +107,7 @@
 	</div>
 </div>
 
-<div class="position-relative mt-5 mb-10 pt-5 pb-7 bg-warning">
+<div class="position-relative mt-5 mb-10 pt-5 pb-8 bg-warning">
     <div class="marquee h2 font-weight-light text-white">
         <?= Yii::t('front', 'Температура') ?> 32
         &nbsp;&nbsp;&nbsp;
