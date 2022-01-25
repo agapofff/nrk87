@@ -61,7 +61,7 @@
                 
                 <?php
                     if ($k == 0) {
-                        echo Html::tag('span', date('Y'), [
+                        echo Html::tag('span', 'EST. 2018', [
                             'style' => '
                                 position: absolute;
                                 top: 40px;

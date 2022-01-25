@@ -41,7 +41,7 @@ $this->title = Yii::t('front', 'О нас');
 			</p>
 		</div>
 	</div>
-	
+	<!-- 
 	<div class="row">
 		<div class="col-12">
 			<div class="position-relative mb-8 mb-md-5">
@@ -72,6 +72,6 @@ $this->title = Yii::t('front', 'О нас');
 			</div>
 		</div>
 	</div>
-
+    -->
 
 </div>

@@ -214,6 +214,9 @@ form[disabled] {
     pointer-events: none;
 }
 
+body {
+    overflow-x: hidden;
+}
 
 body[data-c="blog"][data-a="index"] footer {
     background: #C95731;
