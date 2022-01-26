@@ -78,7 +78,7 @@ mainMenuStyle = function(){
 
     $('#nav')
 		.toggleClass('hidden', offset > 20 && offset > prevScroll)
-		.toggleClass('shadow-sm bg-white', offset > 20)
+		.toggleClass('scrolling bg-white', offset > 20)
 		.toggleClass('mt-0_5 mt-lg-1 bg-transparent', offset < 20);
         
     $('#nav-container')

@@ -248,7 +248,17 @@ body[data-c="blog"][data-a="index"] footer hr {
 	position: absolute;
 	top: 0;
 	left: 50%;
-	margin-left: -24px !important;
+    transform: -webkit-translateX(-50%);
+    transform: -moz-translateX(-50%);
+    transform: translateX(-50%);
+}
+#logo img {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}
+#nav.scrolling #logo img {
+    width: 40px !important;
 }
 
 #pagecontent {
@@ -869,3 +879,10 @@ div[data-select2] label {
 }
 
 
+.ymaps-layers-pane {
+	filter: grayscale(1);
+	-ms-filter: grayscale(1);
+	-webkit-filter: grayscale(1);
+	-moz-filter: grayscale(1);
+	-o-filter: grayscale(1);
+}
