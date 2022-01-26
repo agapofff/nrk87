@@ -92,7 +92,7 @@
                             position: absolute;
                             top: 40px;
                             left: 15px;
-                            max-width: 400px;
+                            max-width: 470px;
                             float: left;
                             font-family: Helvetica;
                             font-size: 16px;
