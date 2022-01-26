@@ -174,7 +174,7 @@
 	">
 		<div class="row justify-content-between">
 			<div class="col-md-6">
-				<h3 class="h1 ttfirsneue text-uppercase text-white">
+				<h3 class="h1 ttfirsneue text-uppercase font-weight-light text-white">
 					<?= Yii::t('front', 'Кто мы') ?>
 				</h3>
 			</div>

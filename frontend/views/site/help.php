@@ -30,12 +30,12 @@ $this->title = Yii::t('front', 'Помощь');
 		if ($models){
 			foreach ($models as $model){
 	?>
-				<a href="#help<?= $model->id ?>" class="text-uppercase font-weight-bold text-decoration-none d-block mt-3 help" data-toggle="collapse">
+				<a href="#help<?= $model->id ?>" class="text-uppercase font-weight-light text-decoration-none d-block mt-3 help" data-toggle="collapse">
 					<span class="float-right">
 						<span>+</span>
 						<span>-</span>
 					</span>
-					<?= json_decode($model->name)->{Yii::$app->language} ?>
+                    <?= json_decode($model->name)->{Yii::$app->language} ?>
 				</a>
 				<hr class="mt-1_5 py-0">
 				<div id="help<?= $model->id ?>" class="collapse mt-3 mb-5">
