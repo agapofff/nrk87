@@ -350,9 +350,9 @@ $(document).on('click', '.dropdown-change-select', function(){
 });
 
 // показ нотификации выбора размера
-$('.product-buy, #product-wishlist').click(function(event){
+$('.dvizh-cart-buy-button, .product-buy, #product-wishlist').click(function(event){
 	event.preventDefault();
-    if ($(this).children().is(':disabled')){
+    if ($(this).is(':disabled') || $(this).children().is(':disabled')){
         $('.select-size-note').show();
 		return false;
     }

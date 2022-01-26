@@ -107,7 +107,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 						<?= BuyButton::widget([
 								'model' => $model,
 								'htmlTag' => 'button',
-								'cssClass' => 'btn btn-lg btn-primary btn-block py-1 text-uppercase ttfirsneue text-nowrap',
+								'cssClass' => 'btn btn-lg btn-outline-secondary btn-block py-1 text-uppercase ttfirsneue text-nowrap',
 							]);
 						?>
 						<span class="select-size-note" style="display:none">

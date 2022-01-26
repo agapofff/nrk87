@@ -37,18 +37,20 @@ dvizh.modificationconstruct = {
                 if (data.modification && (data.modification.amount > 0 | data.modification.amount == null) && data.modification.price[0] > 0) {
                     $('.dvizh-shop-price')
                         .html(data.modification.price[1]);
+                        
                     $('.dvizh-cart-buy-button')
                         .attr('data-price', data.modification.price[0])
                         .attr('data-comment', data.modification.sku)
-                        .removeClass('btn-primary')
-                        .addClass('btn-warning')
+                        .removeClass('btn-outline-secondary')
+                        .addClass('btn-primary btn-hover-warning')
                         .removeAttr('disabled');
 						
 					$('.btn-wishlist')
 						.attr('data-size', data.modification.name.split(' | ')[0])
+                        .addClass('text-hover-warning')
 						.removeAttr('disabled');
                         
-                    $('#product-wishlist-container').find('svg').attr('fill', '#D6751C');
+                    // $('#product-wishlist-container').find('svg').attr('fill', '#D6751C');
 						
 					$('.select-size-note').hide();
 						
@@ -58,11 +60,13 @@ dvizh.modificationconstruct = {
 					
                     $('.dvizh-cart-buy-button')
                         .attr('data-price', data.product_price)
-                        .removeClass('btn-warning')
-                        .addClass('btn-primary')
+                        .removeClass('btn-primary btn-hover-warning')
+                        .addClass('btn-outline-secondary')
                         .attr('disabled', true);
 						
-					$('.btn-wishlist').addAttr('disabled', true);
+					$('.btn-wishlist')
+                        .removeClass('text-hover-warning')
+                        .addAttr('disabled', true);
 					
 					$('.select-size-note').show();
 
