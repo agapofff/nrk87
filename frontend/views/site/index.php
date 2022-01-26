@@ -56,15 +56,15 @@
 -->
 
 <div class="container-fluid mb-10 pt-5 pb-5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
-    background: url('/images/main/ellipse.png') center center /cover no-repeat;
+    background: url('/images/main/ellipse<?= Yii::$app->language == 'ru' ? '_ru' : '' ?>.png') center center /cover no-repeat;
 ">
 	<div class="row">
 		<div class="col-12">
     <?php
-        $text = explode('|', Yii::t('front', 'GPS-одежда | для тех | кто мечтает | о Марсе'));
+        $text = explode('|', Yii::t('front', 'GPS-одежда | для тех, | кто мечтает | о Марсе'));
         foreach ($text as $k => $txt) {
     ?>
-			<h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 position-relative <?= $k % 2 ? 'text-right' : 'text-left' ?>">
+			<h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 position-relative <?= $k % 2 ? ($k == 3 && Yii::$app->language == 'ru' ? 'text-left' : 'text-right') : 'text-left' ?>">
 				<?= trim($txt) ?>
                 
                 <?php
