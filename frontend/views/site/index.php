@@ -17,16 +17,24 @@
 		return $id;
 	}
 	
-	$coverId = getCoverId(Yii::$app->session->get('coverId'), 6);
+	$coverId = getCoverId(Yii::$app->session->get('coverId'), 4);
 	$coverIdMobile = getCoverId(Yii::$app->session->get('coverIdMobile'), 4);
 // echo '<div class="d-none">' . Yii::$app->session->get('coverIdMobile') . ' - ' . $coverIdMobile . '</div>';
 	Yii::$app->session->set('coverId', $coverId);
 	Yii::$app->session->set('coverIdMobile', $coverIdMobile);
 ?>
-
+<!--
 <div class="vw-100 vh-100 d-none d-md-block pointer-events-none" style="
 	background: url('/images/main/banner_<?= $coverId ?>.jpg') center center / cover no-repeat;
 "></div>
+-->
+<div class="vw-100 d-none d-md-block pointer-events-none">
+    <?= Html::img('/images/main/banner_new_' . $coverId . '.jpg', [
+            'class' => 'd-block w-100',
+            'alt' => Yii::$app->id . ' - ' . Yii::$app->name
+        ])
+    ?>
+</div>
 
 <div class="vw-100 vh-100 d-md-none pointer-events-none" style="
 	background: url('/images/main/banner_mobile_<?= $coverIdMobile ?>.jpg') center center / cover no-repeat;
