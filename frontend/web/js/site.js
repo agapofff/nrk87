@@ -89,10 +89,10 @@ mainMenuStyle = function(){
 		if (offset > $(window).height()/2){
 			$('#nav')
 				.removeClass('navbar-dark bg-transparent')
-				.addClass('navbar-light bg-white shadow-sm');
+				.addClass('navbar-light bg-white shadow-sm-');
 		} else {
 			$('#nav')
-				.removeClass('navbar-light bg-white shadow-sm')
+				.removeClass('navbar-light bg-white shadow-sm-')
 				.addClass('navbar-dark bg-transparent');
 		}
 	}
