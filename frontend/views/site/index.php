@@ -3,7 +3,7 @@
     use yii\helpers\Url;
     use yii\helpers\Html;
     
-    $title = Yii::$app->name;
+    $title = Yii::$app->id . ' - ' . Yii::$app->name;
 
     $this->title = Yii::$app->params['title'] ?: $title;
     
@@ -116,8 +116,8 @@
 	</div>
 </div>
 
-<div class="position-relative mt-5 mb-10 pt-5 pb-8 bg-warning">
-    <div class="marquee h2 font-weight-light text-white">
+<div class="position-relative mt-5 mb-10 bg-warning d-flex align-items-center" style="height: 100px">
+    <div class="marquee h3 m-0 font-weight-light text-white">
         <?= Yii::t('front', 'Температура') ?> 32
         &nbsp;&nbsp;&nbsp;
         12:32 <?= Yii::t('front', 'Лето') ?>
@@ -185,6 +185,12 @@
 				<p class="text-white">
 					<?= Yii::t('front', 'Для тех, кто ищет себя, ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу.') ?>
 				</p>
+				<div class="mt-3 text-right text-xl-left">
+					<?= Html::a(Yii::t('front', 'Узнать больше'), ['/about'], [
+							'class' => 'btn btn-outline-primary text-uppercase text-white border-light bg-transparent px-2 py-1'
+						]);
+					?>
+				</div>
 			</div>
 		</div>
 	</div>

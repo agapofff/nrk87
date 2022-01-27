@@ -21,9 +21,9 @@ $this->title = Yii::t('front', 'Блог');
 
                 <div class="d-none d-sm-block" style="
                     position: absolute;
-                    top: 9%;
+                    top: 15%;
                     left: 110%;
-                    width: 200px;
+                    width: 400px;
                     float: left;
                     font-family: Helvetica;
                     font-size: 16px;
@@ -33,12 +33,9 @@ $this->title = Yii::t('front', 'Блог');
                     text-transform: none;
                     text-align: left;
                 ">
-                    <?= str_replace('|', '<br>', Yii::t('front', 'Узнайте | о последних достижениях | в исследовании Марса')); ?>
+                    <?= str_replace('|', '<br>', Yii::t('front', 'Свежие новости | проекта NRK87.')); ?>
                 </div>
 			</h1>
-    <?php
-        }
-    ?>
 		</div>
 	</div>
 </div>
@@ -78,8 +75,8 @@ $this->title = Yii::t('front', 'Блог');
                     <div class="blog-post" data-category="<?= $post->category->slug ?>">
                         <a href="<?= Url::to(['/blog/' . $post->slug]) ?>" class="text-decoration-none" 
                             data-toggle="lightbox" 
-                            data-title="<?= json_decode($post->publisher)->{Yii::$app->language} ?>" 
-                            data-footer="<?= Yii::$app->formatter->asDatetime($post->date_published, 'php:d.m.Y') ?>" 
+                            data-title="<?= json_decode($post->name)->{Yii::$app->language} ?>" 
+                            data-footer="<?= json_decode($post->publisher)->{Yii::$app->language} ?>, <?= Yii::$app->formatter->asDatetime($post->date_published, 'php:d.m.Y') ?>" 
                             data-remote="<?= Url::to(['/blog/' . $post->slug]) ?> #blog-post"
                             data-modal-class="side p-0" 
                             data-modal-dialog-class="position-absolute top-0 bottom-0 right-0 max-vw-50 border-0 m-0" 
@@ -89,8 +86,8 @@ $this->title = Yii::t('front', 'Блог');
                             data-modal-title-class="ttfirsneue h5 m-0 font-weight-light" 
                             data-close-button-class="p-0 float-none" 
                             data-close-button-content="<svg width='53' height='53' viewBox='0 0 53 53' fill='none' xmlns='http://www.w3.org/2000/svg'><line x1='13.7891' y1='12.3744' x2='39.9521' y2='38.5373' stroke='black' stroke-width='2'></line><line x1='12.3749' y1='38.5379' x2='38.5379' y2='12.3749' stroke='black' stroke-width='2'></line></svg>" 
-                            data-modal-body-class="h-100 overflow-y-scroll py-0 px-md-1 px-lg-2 px-xl-3" 
-                            data-modal-footer-class="px-md-1 px-lg-2 px-xl-3 py-md-2 text-left" 
+                            data-modal-body-class="h-100 overflow-y-scroll py-0 px-md-1 px-lg-2 px-xl-3 hide-h1" 
+                            data-modal-footer-class="px-md-1 px-lg-2 px-xl-3 py-md-2" 
                         >
                             <div class="row py-0_5">
                                 <div class="col-auto">
