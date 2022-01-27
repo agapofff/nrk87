@@ -257,13 +257,13 @@ body[data-c="blog"][data-a="index"] footer hr {
     background-color: #D6751C !important;
 }
 
-ul {
+#content ul {
     list-style: none;
 }
-ul li:before {
+#content ul li:before {
     content: '—';
-    position: relative;
-    left: -5px;
+    position: absolute;
+    left: 1.5rem;
 }
 
 #logo {

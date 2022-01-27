@@ -13,7 +13,7 @@
 <div class="container-fluid mb-5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
     <div class="row">
         <?= Html::tag('h1', $h1, [
-            'class' => 'mb-5 w-100 font-weight-light',
+            'class' => 'h3 mb-5 w-100 font-weight-light',
         ]) ?>
         <div id="page-content" class="col-12">
             <?= $text ?>
