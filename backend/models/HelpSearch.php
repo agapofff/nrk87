@@ -46,6 +46,11 @@ class HelpSearch extends Help
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=>[
+                'defaultOrder'=>[
+                    'ordering' => SORT_ASC
+                ]
+            ]
         ]);
 
         $this->load($params);
