@@ -475,15 +475,21 @@
 					<hr>
 					<div class="row justify-content-between">
 						<div class="col-12 col-lg-auto">
-							<?= Html::a(Yii::t('front', 'Файлы cookies'), ['/cookie-policy'], [
+							<?= Html::a(Yii::t('front', 'Файлы cookies'), [
+                                    '/cookie-policy'
+                                ], [
 									'class' => 'text-decoration-none mr-4'
 								])
 							?>
-							<?= Html::a(Yii::t('front', 'Политика конфиденциальности'), ['/privacy-policy'], [
+							<?= Html::a(Yii::t('front', 'Политика конфиденциальности'), [
+                                    '/privacy-policy'
+                                ], [
 									'class' => 'text-decoration-none mr-4'
 								])
 							?>
-							<?= Html::a(Yii::t('front', 'Условия и положения'), ['/user-agreement'], [
+							<?= Html::a(Yii::t('front', 'Публичная оферта'), [
+                                    '/public-offer'
+                                ], [
 									'class' => 'text-decoration-none mr-4'
 								])
 							?>
@@ -629,9 +635,9 @@
 		</div>
 		
         
-        <?php
-            if (!Yii::$app->session->get('cookiesNotificationShown')){
-        ?>
+    <?php
+        if (!Yii::$app->session->get('cookiesNotificationShown')) {
+    ?>
             <div id="cookiesNotification" class="fixed-bottom w-100 pb-2">
                 <div class="container-fluid">
                     <div class="row align-items-center justify-content-center">
@@ -666,9 +672,9 @@
                     </div>
                 </div>
             </div>            
-        <?php
-            }
-        ?>
+    <?php
+        }
+    ?>
 		
 		
 		<!-- Yandex.Metrika counter -->
