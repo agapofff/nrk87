@@ -15,7 +15,7 @@
         <?= Html::tag('h1', $h1, [
             'class' => 'h3 mb-5 w-100 font-weight-light',
         ]) ?>
-        <div id="page-content" class="col-12">
+        <div id="page-content" class="col-sm-10 col-md-8 col-lg-7 col-xl-6 col-xxl-5">
             <?= $text ?>
         </div>
     </div>
