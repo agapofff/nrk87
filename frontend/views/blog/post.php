@@ -17,7 +17,7 @@ $this->title = json_decode($post->name)->{Yii::$app->language};
                 </h1>
             </div>
             <div id="blog-post-content" class="col-12">
-                <?= str_replace('<img ', '<img class="img-fluid" loading="lazy" ', json_decode($post->text)->{Yii::$app->language}) ?>
+                <?= str_replace('<img ', '<img class="img-fluid mx-auto" loading="lazy" ', json_decode($post->text)->{Yii::$app->language}) ?>
             </div>
         </div>
 	</div>
