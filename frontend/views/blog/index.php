@@ -10,34 +10,36 @@ $this->title = Yii::t('front', 'Блог');
 
 ?>
 
-<div class="container-fluid mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
+<div class="mt-1_5" style="
     height: 55vw;
     background: url('/images/blog/mountains.jpg') center bottom /cover no-repeat;
 ">
-	<div class="row">
-		<div class="col-12">
-			<h1 class="ttfirsneue text-uppercase display-2 mb-0 position-relative d-inline-block">
-				<?= Yii::t('front', 'Блог') ?>
+    <div class="container-fluid px-lg-2 px-xl-3 px-xxl-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="ttfirsneue text-uppercase display-2 mb-0 position-relative d-inline-block">
+                    <?= Yii::t('front', 'Блог') ?>
 
-                <div class="d-none d-sm-block" style="
-                    position: absolute;
-                    top: 15%;
-                    left: 110%;
-                    width: 400px;
-                    float: left;
-                    font-family: Helvetica;
-                    font-size: 16px;
-                    font-weight: normal;
-                    line-height: 20.8px;
-                    text-decoration: none;
-                    text-transform: none;
-                    text-align: left;
-                ">
-                    <?= str_replace('|', '<br>', Yii::t('front', 'Свежие новости | проекта NRK87.')); ?>
-                </div>
-			</h1>
-		</div>
-	</div>
+                    <div class="d-none d-sm-block" style="
+                        position: absolute;
+                        top: 15%;
+                        left: 110%;
+                        width: 400px;
+                        float: left;
+                        font-family: Helvetica;
+                        font-size: 16px;
+                        font-weight: normal;
+                        line-height: 20.8px;
+                        text-decoration: none;
+                        text-transform: none;
+                        text-align: left;
+                    ">
+                        <?= str_replace('|', '<br>', Yii::t('front', 'Свежие новости | проекта NRK87.')); ?>
+                    </div>
+                </h1>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="blog-container" class="position-relative px-0 py-5">
