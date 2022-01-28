@@ -180,7 +180,7 @@
 			</div>
 			<div class="col-md-6 col-lg-5 col-xl-4 col-xxl-3">
 				<p class="text-white">
-					<?= Yii::t('front', 'NRK87. – fashion tech wear бренд.') ?>
+					<?= Yii::$app->id ?> - <?= Yii::t('front', 'fashion tech wear бренд') ?>
 				</p>
 				<p class="text-white">
 					<?= Yii::t('front', 'Для тех, кто ищет себя, ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу.') ?>

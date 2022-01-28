@@ -17,7 +17,7 @@ $this->title = Yii::t('front', 'О нас');
 				<?= Yii::t('front', 'О нас') ?>
 			</h1>
 		</div>
-		<div class="col-12 mt-5 col-md-9 col-lg-10">
+		<div class="col-12 mt-5 col-md-9 col-lg-10 col-xl-11">
 			<h2 class="h2 mb-0 font-weight-light">
 				<?= Yii::$app->id ?> - <?= Yii::t('front', 'fashion tech wear бренд') ?>. <?= Yii::t('front', 'Для тех, кто ищет себя, и ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу.') ?>
 			</h2>
@@ -32,13 +32,13 @@ $this->title = Yii::t('front', 'О нас');
     ?>
     <div class="container-fluid mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
         position: absolute;
-        top: 50%;
+        top: 57%;
         left: 0;
         right: 0;
     ">
         <div class="row">
-            <div class="col-12 col-sm-11 offet-sm-1 col-md-10 offset-md-2 col-lg-9 offset-lg-3 col-xl-7 offset-xl-4 col-xxl-5 osset-xxl-6">
-                <h2 class="ttfirsneue h2 text-uppercase text-white mb-0">
+            <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-3 col-xl-6 offset-xl-6 col-xxl-4 offet-xxl-6">
+                <h2 class="ttfirsneue h2 mb-2 text-uppercase font-weight-light text-white">
                     <?= Yii::t('front', 'Земля') ?>
                 </h2>
                 <p class="mb-0 font-weight-light text-white">
