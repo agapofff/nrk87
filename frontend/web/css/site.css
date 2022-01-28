@@ -491,6 +491,23 @@ input[name="shipping_type_switcher"]:checked ~ label {
 	display: block;
 }
 
+
+#about-earth {
+    position: relative;
+    margin-top: -15em;
+    z-index: -1;
+}
+#about-earth:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+
 #product-characteristics p {
     margin-bottom: 0;
 }

@@ -99,6 +99,11 @@
 			'class' => '',
 		],
 		[
+			'label' => Yii::t('front', 'Блог'),
+			'url' => Url::to(['/blog']),
+			'class' => '',
+		],
+		[
 			'label' => '<hr>',
 			'class' => 'd-lg-none',
 		],

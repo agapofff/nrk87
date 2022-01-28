@@ -171,7 +171,7 @@ class SiteController extends Controller
     }
     
     
-    public function actionAbout()
+    public function actionAbout($v = '')
     {
         $founder = Pages::findOne([
             'slug' => 'founder'
@@ -197,7 +197,7 @@ class SiteController extends Controller
             'slug' => 'valley-mariner'
         ]);
 
-        return $this->render('about', [
+        return $this->render('about' . $v, [
             'founder' => $founder,
             'brand' => $brand,
             'philosophy' => $philosophy,
