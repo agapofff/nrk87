@@ -25,19 +25,16 @@ $this->title = Yii::t('front', 'О нас');
 	</div>
 </div>
 
-<div id="about-earth">
+<div id="about-earth" class="position-relative">
     <?= Html::img('/images/about/earth.jpg', [
             'class' => 'd-block w-100',
         ])
     ?>
-    <div class="container-fluid mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
-        position: absolute;
+    <div class="container-fluid position-absolute left-0 right-0 mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
         top: 57%;
-        left: 0;
-        right: 0;
     ">
         <div class="row">
-            <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-3 col-xl-6 offset-xl-6 col-xxl-4 offet-xxl-6">
+            <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-3 col-xl-5 offset-xl-6 col-xxl-4 offet-xxl-6">
                 <h2 class="ttfirsneue h2 mb-2 text-uppercase font-weight-light text-white">
                     <?= Yii::t('front', 'Земля') ?>
                 </h2>
@@ -49,60 +46,70 @@ $this->title = Yii::t('front', 'О нас');
     </div>
 </div>
 
-<img src="/images/about/about0.jpg" class="d-block w-100">
+<div id="about-mars" class="position-relative">
+    <?= Html::img('/images/about/mars.jpg', [
+            'class' => 'd-block w-100',
+        ])
+    ?>
+    <div class="container-fluid position-absolute left-0 right-0 mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
+        top: -10%;
+    ">
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-3 col-xl-6 offset-xl-3 col-xxl-4 offet-xxl-3">
+                <h2 class="ttfirsneue h2 mb-2 text-uppercase font-weight-light">
+                    <?= Yii::t('front', 'Марс') ?>
+                </h2>
+                <p class="mb-0 font-weight-light">
+                    <?= Yii::t('front', 'Марс – уже не сюжет из фантастического кино. И мы непременно будем на красной планете. Желание сделать лучше всегда приводило человечество к новым горизонтам. У нас есть такое желание. И значит, мы уверены в том, что технологии и вдохновение помогут нам позаботиться о близких, сохранить Землю для будущих поколений и сделать следующий шаг в освоении Вселенной.') ?>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="container-fluid mb-7 mt-5  px-lg-2 px-xl-3 px-xxl-5">	
-	<div class="row mb-6 justify-content-start">
-		<div class="col-12 col-md-9">
-			<h2 class="h1 mb-0 font-weight-light">
-				<?= Yii::t('front', 'Для тех, кто ищет себя, и ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу.') ?>
-			</h2>
-		</div>
-	</div>
-	
-	<div class="row justify-content-end mb-5">
-		<div class="col-12 col-sm-6 col-md-4 col-lg-3">
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultrices dignissim lorem cursus commodo sit nunc. Dictumst purus eu odio risus, sollicitudin risus cras id. Odio egestas convallis tortor nec  lorem diam morbi convallis. Est tellus ultrices sed sagittis  
-			</p>
-		</div>
-		<div class="col-12 col-sm-6 col-md-4 col-lg-3">
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultrices dignissim lorem cursus commodo sit nunc. Dictumst purus eu odio risus,  
-			</p>
-		</div>
-	</div>
-	<!-- 
-	<div class="row">
-		<div class="col-12">
-			<div class="position-relative mb-8 mb-md-5">
-				<svg width="100%" viewBox="0 0 100 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="ttfirsneue">
-					<text x="0%" y="36.5" font-size="36.5" font-weight="300">AW22</text>
-				</svg>
-				<?= Html::img('/images/about/about1.png', [
-						'style' => '
-							position: absolute;
-							top: 47%;
-							left: 47%;
-							width: 67vw;
-							transform: translate(-59%, -53%);
-							pointer-events: none;
-						',
-					])
-				?>
-				<div class="row justify-content-end position-absolute" style="top: 70%">
-					<div class="col-12 col-md-5 col-lg-5 col-xl-4 col-xxl-3">
-						<h1 class="mb-3">
-							<?= Yii::t('front', 'Марс') ?>
-						</h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultrices dignissim lorem cursus commodo sit nunc. Dictumst purus eu odio risus, sollicitudin risus cras id. Odio egestas convallis tortor nec  lorem diam morbi convallis. Est tellus ultrices sed sagittis  
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-    -->
+<div id="about-technology" class="position-relative">
+    <?= Html::img('/images/about/technology.jpg', [
+            'class' => 'd-block w-100',
+        ])
+    ?>
+    <div class="container-fluid position-absolute left-0 right-0 mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
+        top: 0;
+    ">
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-3 col-xl-5 offset-xl-7 col-xxl-4 offet-xxl-7">
+                <h2 class="ttfirsneue h2 mb-2 text-uppercase font-weight-light text-white">
+                    <?= Yii::t('front', 'Технология') ?>
+                </h2>
+                <p class="font-weight-light text-white">
+                    <?= Yii::t('front', '«Мы совместили натуральные полотна с высокотехнологичными тканями. Фактически создали синергию между уличным стилем и технической одеждой – это одна из главных особенностей NRK87. У марки есть ведущая айдентика и неиллюзорные задачи, связанные с Марсом, ряд которых уже выполняется – более подробно с реализациями миссий можно ознакомиться на официальном сайте бренда. Вся одежда обладает выверенными деталями, где нет случайных элементов. Начиная от шнура под вешалку на куртки, который сделан из альпинистской ткани и заканчивая приборами GPS, встроенными в коллекцию. Каждая вещь NRK87. – это исключительно лимитированное издание. Мы не содержим огромные фабрики и не размещаем заказ в больших цехах. Вся продукция NRK87. создаётся небольшой командой профессионалов. Мы не берём материалов больше, чем нужно, не растрачиваем понапрасну ресурс планеты и не используем вредных технологий»') ?>
+                </p>
+                <p class="font-weight-light text-white">
+                    <strong><?= Yii::t('front', 'Эрик Амбар') ?></strong> - <?= Yii::t('front', 'креативный директор бренда') ?>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div id="about-fgi" class="position-relative mb-7">
+    <?= Html::img('/images/about/nasa.jpg', [
+            'class' => 'd-block w-100',
+        ])
+    ?>
+    <div class="container-fluid position-absolute left-0 right-0 mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
+        top: 7%;
+    ">
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-3 col-xl-6 offset-xl-3 col-xxl-4 offet-xxl-3">
+                <h2 class="ttfirsneue h2 mb-2 text-uppercase font-weight-light text-white">
+                    <?= Yii::t('front', 'FREEDOM GROUP') ?>
+                </h2>
+                <p class="mb-0 font-weight-light text-white">
+                    <?= Yii::t('front', 'Бренд авторской одежды NRK87. входит в состав экосистемы международной инвестиционной компании Freedom International Group и находится под ее прямым управлением. Экосистема Freedom Group развивается в 17 государствах, включая США, Гонконг, Вьетнам и страны Европы. В инвестиционном портфеле компании – 48 проектов, общая стоимость активов оценивается в 2,5 млрд долларов.') ?>
+                    <br>
+                    <?= Yii::t('front', 'Президент Freedom International Group – Нарек Сираканян.') ?>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
