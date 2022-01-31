@@ -399,7 +399,7 @@ $(document).on('click', '.blog-category', function(){
 
 // бегущая строка
 $('.marquee').marquee({
-    duration: 10000,
+    duration: 20000,
     startVisible: true,
     duplicated: true
 });

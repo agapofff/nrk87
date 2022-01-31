@@ -116,10 +116,10 @@
 	</div>
 </div>
 
-<div class="position-relative mt-5 mb-10 bg-warning d-flex align-items-center" style="height: 100px">
+<div class="position-relative mt-5 mb-10 bg-warning pt-1_5" style="height: 100px">
     <div class="marquee h3 m-0 font-weight-light text-white">
         <?= Yii::t('front', 'Диаметр Марса: 6,799 км {0} Масса: 6,39 х 10^23 кг {0} Луны: 2 {0} Дистанция от Солнца: 227,943,824 км {0} Длительность 1 года: 687 земных дней {0} Температура: от -87 до -5 °C', [
-            '&nbsp;&nbsp;&nbsp;'
+            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
         ]) ?>
     </div>
 </div>

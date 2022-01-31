@@ -558,8 +558,8 @@ return [
                 'orders' => 'orders/index',
                 'orders/<id>' => 'orders/view',
                 
-                'blog' => 'blog/index',
-                'blog/<slug>' => 'blog/post',
+                'news' => 'blog/index',
+                'news/<slug>' => 'blog/post',
                 
                 'synchro' => 'synchro/index', // !!!!!!!!!!!!!!!!!!!!!!!!!
 				

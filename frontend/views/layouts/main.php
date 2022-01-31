@@ -99,8 +99,8 @@
 			'class' => '',
 		],
 		[
-			'label' => Yii::t('front', 'Блог'),
-			'url' => Url::to(['/blog']),
+			'label' => Yii::t('front', 'Новости'),
+			'url' => Url::to(['/news']),
 			'class' => '',
 		],
 		[

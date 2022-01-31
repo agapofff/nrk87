@@ -4,7 +4,7 @@ use yii\web\View;
 use yii\helpers\Url;
 use yii\helpers\Html;
 
-$this->title = Yii::t('front', 'Блог');
+$this->title = Yii::t('front', 'Новости');
 
 // $this->params['breadcrumbs'][] = $this->title;
 
@@ -17,25 +17,8 @@ $this->title = Yii::t('front', 'Блог');
     <div class="container-fluid px-lg-2 px-xl-3 px-xxl-5">
         <div class="row">
             <div class="col-12">
-                <h1 class="ttfirsneue text-uppercase display-2 mb-0 position-relative d-inline-block">
-                    <?= Yii::t('front', 'Блог') ?>
-
-                    <div class="d-none d-sm-block" style="
-                        position: absolute;
-                        top: 15%;
-                        left: 110%;
-                        width: 400px;
-                        float: left;
-                        font-family: Helvetica;
-                        font-size: 16px;
-                        font-weight: normal;
-                        line-height: 20.8px;
-                        text-decoration: none;
-                        text-transform: none;
-                        text-align: left;
-                    ">
-                        <?= str_replace('|', '<br>', Yii::t('front', 'Свежие новости | проекта NRK87.')); ?>
-                    </div>
+                <h1 class="ttfirsneue text-uppercase display-2 mb-0 position-relative d-inline-block red_dot">
+                    <?= Yii::t('front', 'Новости') ?>
                 </h1>
             </div>
         </div>
@@ -44,12 +27,9 @@ $this->title = Yii::t('front', 'Блог');
 
 <div id="blog-container" class="position-relative px-0 py-5">
     <div class="marquee h2 font-weight-light text-white">
-        <?= Yii::t('front', 'Температура') ?> 32
-        &nbsp;&nbsp;&nbsp;
-        12:32 <?= Yii::t('front', 'Лето') ?>
-        &nbsp;&nbsp;&nbsp;
-        <?= Yii::t('front', 'Следующий запуск на Марс 2 марта') ?>
-        &nbsp;&nbsp;&nbsp;
+        <?= Yii::t('front', 'бегущая строка', [
+            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+        ]) ?>
     </div>
     
     <div class="container-fluid">
@@ -75,11 +55,11 @@ $this->title = Yii::t('front', 'Блог');
                 foreach ($posts as $post) {
             ?>
                     <div class="blog-post" data-category="<?= $post->category->slug ?>">
-                        <a href="<?= Url::to(['/blog/' . $post->slug]) ?>" class="text-decoration-none" 
+                        <a href="<?= Url::to(['/news/' . $post->slug]) ?>" class="text-decoration-none" 
                             data-toggle="lightbox" 
                             data-title="<?= json_decode($post->name)->{Yii::$app->language} ?>" 
                             data-footer="<?= json_decode($post->publisher)->{Yii::$app->language} ?>, <?= Yii::$app->formatter->asDatetime($post->date_published, 'php:d.m.Y') ?>" 
-                            data-remote="<?= Url::to(['/blog/' . $post->slug]) ?> #blog-post"
+                            data-remote="<?= Url::to(['/news/' . $post->slug]) ?> #blog-post"
                             data-modal-class="side p-0" 
                             data-modal-dialog-class="position-absolute top-0 bottom-0 right-0 max-vw-50 border-0 m-0" 
                             data-modal-content-class="m-0 border-0 vh-100 vw-50" 
