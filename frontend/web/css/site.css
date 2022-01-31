@@ -46,6 +46,7 @@ button,
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
     outline: none !important;
+    box-shadow: none !important;
 }
 
 .container-fluid {

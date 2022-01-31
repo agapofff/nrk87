@@ -118,12 +118,9 @@
 
 <div class="position-relative mt-5 mb-10 bg-warning d-flex align-items-center" style="height: 100px">
     <div class="marquee h3 m-0 font-weight-light text-white">
-        <?= Yii::t('front', 'Температура') ?> 32
-        &nbsp;&nbsp;&nbsp;
-        12:32 <?= Yii::t('front', 'Лето') ?>
-        &nbsp;&nbsp;&nbsp;
-        <?= Yii::t('front', 'Следующий запуск на Марс 2 марта') ?>
-        &nbsp;&nbsp;&nbsp;
+        <?= Yii::t('front', 'Диаметр Марса: 6,799 км {0} Масса: 6,39 х 10^23 кг {0} Луны: 2 {0} Дистанция от Солнца: 227,943,824 км {0} Длительность 1 года: 687 земных дней {0} Температура: от -87 до -5 °C', [
+            '&nbsp;&nbsp;&nbsp;'
+        ]) ?>
     </div>
 </div>
 
