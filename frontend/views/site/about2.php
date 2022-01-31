@@ -23,7 +23,7 @@ $this->title = Yii::t('front', 'О нас');
 
 <div class="container-fluid mb-7 mt-5 px-lg-2 px-xl-3 px-xxl-5">
 	<div class="row justify-content-start">
-		<div class="col-12 col-md-9">
+		<div class="col-12">
 			<h2 class="display-3 mb-0 font-weight-light">
 				<?= Yii::$app->id ?> - <?= Yii::t('front', 'fashion tech wear бренд') ?>. 
                 <?= Yii::t('front', 'Для тех, кто ищет себя, ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу. Своей миссией бренд {0} выбрал продвижение ценностей мира и ответственность за сохранение природы и судьбу человечества, предметное размышление о взаимосвязи прошлого и настоящего. И взгляд в будущее.', [
@@ -91,8 +91,9 @@ $this->title = Yii::t('front', 'О нас');
         $('body').scrollspy({
             target: '#about-nav',
             offset: 400
-        }).on('activate.bs.scrollspy', function (e) {
-console.log('tet');
+        });
+        $(window).on('activate.bs.scrollspy', function (e) {
+console.log(e);
         });
     ", View::POS_READY);
 ?>

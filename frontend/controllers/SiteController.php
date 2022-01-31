@@ -172,7 +172,7 @@ class SiteController extends Controller
     }
     
     
-    public function actionAbout($v = '')
+    public function actionAbout($v = 1)
     {
         $founder = Pages::findOne([
             'slug' => 'founder'
