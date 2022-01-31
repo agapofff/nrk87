@@ -156,7 +156,7 @@
 	</div>
 </div>
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center d-none">
 	<?= Html::a(Yii::t('front', 'Смотреть еще'), ['/catalog'], [
 			'class' => 'btn btn-outline-primary text-uppercase px-2 py-1'
 		]);

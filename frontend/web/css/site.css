@@ -457,6 +457,19 @@ input[name="shipping_type_switcher"]:checked ~ label {
     pointer-events: none;
 }
 
+.nav-pills {
+    border-left: 1px solid rgba(0, 0, 0, .2);
+}
+.nav-pills .nav-link {
+    opacity: .5;
+    border-left: 2px solid transparent;
+}
+.nav-pills .nav-link.active {
+    opacity: 1;
+    background: transparent !important;
+    color: #000 !important;
+    border-color: #000;
+}
 
 .red_dot:after {
 	content: '';

@@ -92,7 +92,8 @@ class SiteController extends Controller
     {
 		$products = Product::find()
 			->where([
-				'is_promo' => 1
+				'is_promo' => 1,
+                'active' => 1
 			])
 			->orderBy(new Expression('rand()'))
 			->all();

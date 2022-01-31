@@ -217,7 +217,7 @@
 		<script src="https://api-maps.yandex.ru/2.1/?apikey=ba64904a-6f6b-42da-82b6-4483c98a8114&lang=ru_RU" type="text/javascript"></script>
         
     </head>
-    <body data-c="<?= Yii::$app->controller->id ?>" data-a="<?= Yii::$app->controller->action->id ?>">
+    <body data-c="<?= Yii::$app->controller->id ?>" data-a="<?= Yii::$app->controller->action->id ?>" class="position-relative" >
 	
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJWR5X2"
