@@ -17,9 +17,9 @@ $this->title = Yii::t('front', 'О нас');
 				<?= Yii::t('front', 'О нас') ?>
 			</h1>
 		</div>
-		<div class="col-12 mt-5 col-md-9 col-lg-10 col-xl-11">
-			<h2 class="h2 mb-0 font-weight-light">
-				<?= Yii::$app->id ?> - <?= Yii::t('front', 'fashion tech wear бренд') ?>. <?= Yii::t('front', 'Для тех, кто ищет себя, и ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу.') ?>
+		<div class="col-12 mt-5">
+			<h2 class="display-3 mb-0 font-weight-light">
+				<?= Yii::$app->id ?> - <?= Yii::t('front', 'fashion tech wear бренд') ?>. <?= Yii::t('front', 'Для тех, кто ищет себя, ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу.') ?>
 			</h2>
 		</div>
 	</div>
@@ -35,7 +35,7 @@ $this->title = Yii::t('front', 'О нас');
     ">
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-3 col-xl-5 offset-xl-6 col-xxl-4 offet-xxl-6">
-                <h2 class="ttfirsneue h2 mb-2 text-uppercase font-weight-light text-white">
+                <h2 class="ttfirsneue h2 mb-1 text-uppercase font-weight-light text-white">
                     <?= Yii::t('front', 'Земля') ?>
                 </h2>
                 <p class="mb-0 font-weight-light text-white">
@@ -56,7 +56,7 @@ $this->title = Yii::t('front', 'О нас');
     ">
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-3 col-xl-6 offset-xl-3 col-xxl-4 offet-xxl-3">
-                <h2 class="ttfirsneue h2 mb-2 text-uppercase font-weight-light">
+                <h2 class="ttfirsneue h2 mb-1 text-uppercase font-weight-light">
                     <?= Yii::t('front', 'Марс') ?>
                 </h2>
                 <p class="mb-0 font-weight-light">
@@ -77,11 +77,13 @@ $this->title = Yii::t('front', 'О нас');
     ">
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-3 col-xl-5 offset-xl-7 col-xxl-4 offet-xxl-7">
-                <h2 class="ttfirsneue h2 mb-2 text-uppercase font-weight-light text-white">
+                <h2 class="ttfirsneue h2 mb-1 text-uppercase font-weight-light text-white">
                     <?= Yii::t('front', 'Технология') ?>
                 </h2>
                 <p class="font-weight-light text-white">
-                    <?= Yii::t('front', '«Мы совместили натуральные полотна с высокотехнологичными тканями. Фактически создали синергию между уличным стилем и технической одеждой – это одна из главных особенностей NRK87. У марки есть ведущая айдентика и неиллюзорные задачи, связанные с Марсом, ряд которых уже выполняется – более подробно с реализациями миссий можно ознакомиться на официальном сайте бренда. Вся одежда обладает выверенными деталями, где нет случайных элементов. Начиная от шнура под вешалку на куртки, который сделан из альпинистской ткани и заканчивая приборами GPS, встроенными в коллекцию. Каждая вещь NRK87. – это исключительно лимитированное издание. Мы не содержим огромные фабрики и не размещаем заказ в больших цехах. Вся продукция NRK87. создаётся небольшой командой профессионалов. Мы не берём материалов больше, чем нужно, не растрачиваем понапрасну ресурс планеты и не используем вредных технологий»') ?>
+                    <?= Yii::t('front', '«Мы совместили натуральные полотна с высокотехнологичными тканями. Фактически создали синергию между уличным стилем и технической одеждой – это одна из главных особенностей {0} У марки есть ведущая айдентика и неиллюзорные задачи, связанные с Марсом, ряд которых уже выполняется – более подробно с реализациями миссий можно ознакомиться на официальном сайте бренда. Вся одежда обладает выверенными деталями, где нет случайных элементов. Начиная от шнура под вешалку на куртки, который сделан из альпинистской ткани и заканчивая приборами GPS, встроенными в коллекцию. Каждая вещь {0} – это исключительно лимитированное издание. Мы не содержим огромные фабрики и не размещаем заказ в больших цехах. Вся продукция {0} создаётся небольшой командой профессионалов. Мы не берём материалов больше, чем нужно, не растрачиваем понапрасну ресурс планеты и не используем вредных технологий»', [
+                        Yii::$app->id
+                    ]) ?>
                 </p>
                 <p class="font-weight-light text-white">
                     <strong><?= Yii::t('front', 'Эрик Амбар') ?></strong> - <?= Yii::t('front', 'креативный директор бренда') ?>.
@@ -101,13 +103,15 @@ $this->title = Yii::t('front', 'О нас');
     ">
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1 col-lg-9 offset-lg-3 col-xl-6 offset-xl-3 col-xxl-4 offet-xxl-3">
-                <h2 class="ttfirsneue h2 mb-2 text-uppercase font-weight-light text-white">
+                <h2 class="ttfirsneue h2 mb-1 text-uppercase font-weight-light text-white">
                     <?= Yii::t('front', 'FREEDOM GROUP') ?>
                 </h2>
                 <p class="mb-0 font-weight-light text-white">
-                    <?= Yii::t('front', 'Бренд авторской одежды NRK87. входит в состав экосистемы международной инвестиционной компании Freedom International Group и находится под ее прямым управлением. Экосистема Freedom Group развивается в 17 государствах, включая США, Гонконг, Вьетнам и страны Европы. В инвестиционном портфеле компании – 48 проектов, общая стоимость активов оценивается в 2,5 млрд долларов.') ?>
+                    <?= Yii::t('front', 'Бренд авторской одежды {0} входит в состав экосистемы международной инвестиционной компании Freedom International Group и находится под ее прямым управлением. Экосистема Freedom Group развивается в 17 государствах, включая США, Гонконг, Вьетнам и страны Европы. В инвестиционном портфеле компании – 48 проектов, общая стоимость активов оценивается в 2,5 млрд долларов.', [
+                        Yii::$app->id
+                    ]) ?>
                     <br>
-                    <?= Yii::t('front', 'Президент Freedom International Group – Нарек Сираканян.') ?>
+                    <?= Yii::t('front', 'Президент Freedom International Group') ?> - <?= Yii::t('front', 'Нарек Сираканян') ?>.
                 </p>
             </div>
         </div>
