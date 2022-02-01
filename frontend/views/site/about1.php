@@ -109,11 +109,12 @@ $this->title = Yii::t('front', 'О нас');
                 <h2 class="ttfirsneue h2 mb-1 text-uppercase font-weight-light text-white">
                     <?= Yii::t('front', 'FREEDOM GROUP') ?>
                 </h2>
-                <p class="mb-0 font-weight-light text-white">
+                <p class="font-weight-light text-white">
                     <?= Yii::t('front', 'Бренд авторской одежды {0} входит в состав экосистемы международной инвестиционной компании Freedom International Group и находится под ее прямым управлением. Экосистема Freedom Group развивается в 17 государствах, включая США, Гонконг, Вьетнам и страны Европы. В инвестиционном портфеле компании – 48 проектов, общая стоимость активов оценивается в 2,5 млрд долларов.', [
                         Yii::$app->id
                     ]) ?>
-                    <br>
+                </p>
+                <p class="mb-0 font-weight-light text-white">
                     <?= Yii::t('front', 'Президент Freedom International Group') ?> - <?= Yii::t('front', 'Нарек Сираканян') ?>.
                 </p>
             </div>
