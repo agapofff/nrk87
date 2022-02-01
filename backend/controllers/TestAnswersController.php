@@ -8,19 +8,13 @@ use backend\models\TestAnswersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
 use backend\models\Langs;
 use backend\models\Tests;
 use backend\models\TestQuestions;
 
-/**
- * TestAnswersController implements the CRUD actions for TestAnswers model.
- */
 class TestAnswersController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -33,10 +27,6 @@ class TestAnswersController extends Controller
         ];
     }
 
-    /**
-     * Lists all TestAnswers models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new TestAnswersSearch();
@@ -57,12 +47,6 @@ class TestAnswersController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single TestAnswers model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -70,11 +54,6 @@ class TestAnswersController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new TestAnswers model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new TestAnswers();
@@ -105,13 +84,6 @@ class TestAnswersController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing TestAnswers model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -144,13 +116,6 @@ class TestAnswersController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing TestAnswers model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete($id)
     {
         if ($this->findModel($id)->delete()) {
@@ -162,13 +127,6 @@ class TestAnswersController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the TestAnswers model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return TestAnswers the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = TestAnswers::findOne($id)) !== null) {

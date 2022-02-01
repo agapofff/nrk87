@@ -4,22 +4,11 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%boutiques}}".
- *
- * @property int|null $id
- * @property string $name
- * @property string $description
- * @property int $category
- */
 class Boutiques extends \yii\db\ActiveRecord
 {
     
     public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%boutiques}}';
@@ -36,9 +25,6 @@ class Boutiques extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -48,9 +34,6 @@ class Boutiques extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [

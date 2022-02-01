@@ -4,34 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%countries}}".
- *
- * @property int $id
- * @property int $publish
- * @property int $selected
- * @property int $value
- * @property string $code
- * @property int $lang_id
- * @property int $country_id
- * @property string $name
- */
 class Countries extends \yii\db\ActiveRecord
 {
     
     public $saveAndExit = 0;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%countries}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -42,9 +24,6 @@ class Countries extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [

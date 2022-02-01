@@ -10,14 +10,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * MarsFormController implements the CRUD actions for MarsForm model.
- */
 class MarsFormController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -30,10 +25,6 @@ class MarsFormController extends Controller
         ];
     }
 
-    /**
-     * Lists all MarsForm models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new MarsFormSearch();
@@ -48,12 +39,6 @@ class MarsFormController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single MarsForm model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -61,11 +46,6 @@ class MarsFormController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new MarsForm model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new MarsForm();
@@ -93,13 +73,6 @@ class MarsFormController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing MarsForm model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -118,13 +91,6 @@ class MarsFormController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing MarsForm model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -132,13 +98,6 @@ class MarsFormController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the MarsForm model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return MarsForm the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = MarsForm::findOne($id)) !== null) {

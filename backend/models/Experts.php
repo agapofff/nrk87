@@ -4,35 +4,17 @@ namespace backend\models;
 use yii\web\UploadedFile;
 use Yii;
 
-/**
- * This is the model class for table "{{%experts}}".
- *
- * @property int $id
- * @property string $title_ru
- * @property string $title_vi
- * @property string $description_ru
- * @property string $description_vi
- * @property string $image
- * @property string $created_at
- * @property string $updated_at
- */
 class Experts extends \yii\db\ActiveRecord
 {
     
     public $imageFile;
     public $saveAndExit = 0;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%experts}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -44,9 +26,6 @@ class Experts extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [

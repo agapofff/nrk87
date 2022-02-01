@@ -8,17 +8,11 @@ use backend\models\TestsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
 use backend\models\Langs;
 
-/**
- * TestsController implements the CRUD actions for Tests model.
- */
 class TestsController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -31,10 +25,6 @@ class TestsController extends Controller
         ];
     }
 
-    /**
-     * Lists all Tests models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new TestsSearch();
@@ -46,12 +36,6 @@ class TestsController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Tests model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -59,11 +43,6 @@ class TestsController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Tests model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Tests();
@@ -88,13 +67,6 @@ class TestsController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing Tests model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -121,13 +93,6 @@ class TestsController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Tests model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete($id)
     {
         if ($this->findModel($id)->delete()) {
@@ -139,13 +104,6 @@ class TestsController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Tests model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Tests the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Tests::findOne($id)) !== null) {
@@ -154,8 +112,6 @@ class TestsController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
-    
-    
     
     public function actionActive($id)
     {

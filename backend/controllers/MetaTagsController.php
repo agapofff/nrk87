@@ -9,14 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * MetaTagsController implements the CRUD actions for MetaTags model.
- */
 class MetaTagsController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+    
     public function behaviors()
     {
         return [
@@ -29,10 +24,6 @@ class MetaTagsController extends Controller
         ];
     }
 
-    /**
-     * Lists all MetaTags models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new MetaTagsSearch();
@@ -44,12 +35,6 @@ class MetaTagsController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single MetaTags model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -57,11 +42,6 @@ class MetaTagsController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new MetaTags model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new MetaTags();
@@ -82,13 +62,6 @@ class MetaTagsController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing MetaTags model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -109,14 +82,7 @@ class MetaTagsController extends Controller
             'model' => $model,
         ]);
     }
-
-    /**
-     * Deletes an existing MetaTags model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+    
     public function actionDelete($id)
     {
         if ($this->findModel($id)->delete()) {
@@ -128,13 +94,6 @@ class MetaTagsController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the MetaTags model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return MetaTags the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = MetaTags::findOne($id)) !== null) {
@@ -149,6 +108,7 @@ class MetaTagsController extends Controller
         $model = $this->findModel($id);
         $model->active = $model->active ? 0 : 1;
         $model->save();
+        
         if (!Yii::$app->request->isAjax) {
             return $this->redirect(['index']);
         }

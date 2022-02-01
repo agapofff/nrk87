@@ -10,14 +10,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * ScanToWinCodesController implements the CRUD actions for ScanToWinCodes model.
- */
 class ScanToWinCodesController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -30,10 +25,6 @@ class ScanToWinCodesController extends Controller
         ];
     }
 
-    /**
-     * Lists all ScanToWinCodes models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new ScanToWinCodesSearch();
@@ -55,12 +46,6 @@ class ScanToWinCodesController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single ScanToWinCodes model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -68,11 +53,6 @@ class ScanToWinCodesController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new ScanToWinCodes model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new ScanToWinCodes();
@@ -87,6 +67,7 @@ class ScanToWinCodesController extends Controller
                 if ($checkOrder->status == 'success') {
                     $quantity = 0;
                     $response = $checkOrder->message;
+                    
                     if (isset($response->content)) {
                         foreach ($response->content as $content) {
                             $quantity += $content->quantity;
@@ -121,13 +102,6 @@ class ScanToWinCodesController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing ScanToWinCodes model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -152,13 +126,6 @@ class ScanToWinCodesController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing ScanToWinCodes model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete($id)
     {
         if ($this->findModel($id)->delete()) {
@@ -170,13 +137,6 @@ class ScanToWinCodesController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the ScanToWinCodes model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return ScanToWinCodes the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = ScanToWinCodes::findOne($id)) !== null) {

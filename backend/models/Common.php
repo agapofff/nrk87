@@ -1,37 +1,21 @@
 <?php
 
 namespace backend\models;
-use yii\web\UploadedFile;
 
 use Yii;
+use yii\web\UploadedFile;
 
-/**
- * This is the model class for table "{{%common}}".
- *
- * @property int $id
- * @property string $parameter
- * @property string $title_ru
- * @property string $title_vi
- * @property string $created_at
- * @property string $updated_at
- */
 class Common extends \yii\db\ActiveRecord
 {
     
     public $imageFile;
     public $backgroundFile;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%common}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -44,9 +28,6 @@ class Common extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -73,9 +54,15 @@ class Common extends \yii\db\ActiveRecord
     {
         if ($this->validate()) {
             switch ($field) {
-                case 'image': $folder = 'main/'; break;
-                case 'background': $folder = 'backgrounds/'; break;
-                default: $folder = ''; break;
+                case 'image': 
+                    $folder = 'main/'; 
+                    break;
+                case 'background': 
+                    $folder = 'backgrounds/'; 
+                    break;
+                default: 
+                    $folder = ''; 
+                    break;
             }
             $this->{$field.'File'}->saveAs(Yii::getAlias('@frontend') . '/web/images/' . $folder . $fileName . '.' . $this->{$field.'File'}->extension);
             return true;

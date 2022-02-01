@@ -4,34 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%answers}}".
- *
- * @property int $id
- * @property int $question_id
- * @property string $title_ru
- * @property string $title_vi
- * @property string $created_at
- * @property string $updated_at
- *
- * @property Questions $question
- */
 class Answers extends \yii\db\ActiveRecord
 {
     
     public $saveAndExit = 0;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%answers}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -43,9 +25,6 @@ class Answers extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -58,11 +37,6 @@ class Answers extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Question]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getQuestions()
     {
         return $this->hasOne(Questions::className(), ['id' => 'question_id']);

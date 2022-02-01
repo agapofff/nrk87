@@ -9,14 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * PastEventsController implements the CRUD actions for PastEvents model.
- */
 class PastEventsController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -29,10 +24,6 @@ class PastEventsController extends Controller
         ];
     }
 
-    /**
-     * Lists all PastEvents models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new PastEventsSearch();
@@ -44,11 +35,6 @@ class PastEventsController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new PastEvents model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new PastEvents();
@@ -67,13 +53,6 @@ class PastEventsController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing PastEvents model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -95,13 +74,6 @@ class PastEventsController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing PastEvents model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete($id)
     {
         if ($this->findModel($id)->delete()) {
@@ -113,13 +85,6 @@ class PastEventsController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the PastEvents model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return PastEvents the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = PastEvents::findOne($id)) !== null) {

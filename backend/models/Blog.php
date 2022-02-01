@@ -4,21 +4,6 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%blog}}".
- *
- * @property int $id
- * @property int $active
- * @property string $date_published
- * @property string|null $name
- * @property int $category_id
- * @property string|null $description
- * @property string|null $text
- * @property string|null $publisher
- * @property string|null $alias
- *
- * @property BlogCategories $category
- */
 class Blog extends \yii\db\ActiveRecord
 {
     
@@ -40,17 +25,11 @@ class Blog extends \yii\db\ActiveRecord
         ];
     }
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%blog}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -63,9 +42,6 @@ class Blog extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -81,11 +57,6 @@ class Blog extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Category]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getCategory()
     {
         return $this->hasOne(BlogCategories::className(), ['id' => 'category_id']);

@@ -6,20 +6,14 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-
 use yii\helpers\Url;
 use yii\web\UploadedFile;
 use yii\web\BadRequestHttpException;
 use yii\base\DynamicModel;
 
-/**
- * Site controller
- */
 class SiteController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -57,9 +51,6 @@ class SiteController extends Controller
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function actions()
     {
         return [
@@ -68,7 +59,7 @@ class SiteController extends Controller
             ],
             'images-get' => [
                 'class' => 'vova07\imperavi\actions\GetImagesAction',
-                'url' => 'http://nrk87/images/upload',
+                'url' => Yii::$app->request->hostInfo . '/images/upload',
                 'path' => '@images/upload',
                 'options' => [
                     'only' => [
@@ -82,7 +73,7 @@ class SiteController extends Controller
             ],
             'image-upload' => [
                 'class' => 'vova07\imperavi\actions\UploadFileAction',
-                'url' => 'http://nrk87/images/upload', // Url::home(true) . 'images/',
+                'url' => Yii::$app->request->hostInfo . '/images/upload', // Url::home(true) . 'images/',
                 'path' => '@images/upload',
                 'uploadOnlyImage' => false,
                 'unique' => false,
@@ -91,27 +82,18 @@ class SiteController extends Controller
             ],
             'image-delete' => [
                 'class' => 'vova07\imperavi\actions\DeleteFileAction',
-                'url' => 'http://nrk87/images/upload/',
+                'url' => Yii::$app->request->hostInfo . '/images/upload/',
                 'path' => '@images/upload',
             ],
         ];
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
+
     public function actionIndex()
     {
         return $this->render('index');
     }
 
-    /**
-     * Login action.
-     *
-     * @return string
-     */
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -132,18 +114,12 @@ class SiteController extends Controller
         }
     }
 
-    /**
-     * Logout action.
-     *
-     * @return string
-     */
     public function actionLogout()
     {
         Yii::$app->user->logout();
 
         return $this->goHome();
     }
-    
     
     public function actionSaveRedactorImg($sub = 'main')
     {

@@ -4,31 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "help".
- *
- * @property int $id
- * @property string $name
- * @property string $content
- * @property int $active
- * @property int $ordering
- */
 class Help extends \yii\db\ActiveRecord
 {
     
     public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%help}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -38,9 +23,6 @@ class Help extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [

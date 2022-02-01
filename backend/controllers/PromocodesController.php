@@ -9,14 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * PromocodesController implements the CRUD actions for Promocodes model.
- */
 class PromocodesController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -29,10 +24,6 @@ class PromocodesController extends Controller
         ];
     }
 
-    /**
-     * Lists all Promocodes models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new PromocodesSearch();
@@ -44,12 +35,6 @@ class PromocodesController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Promocodes model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -57,11 +42,6 @@ class PromocodesController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Promocodes model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Promocodes();
@@ -81,13 +61,6 @@ class PromocodesController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing Promocodes model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -109,13 +82,6 @@ class PromocodesController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Promocodes model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete($id)
     {
         if ($this->findModel($id)->delete()) {
@@ -127,13 +93,6 @@ class PromocodesController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Promocodes model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Promocodes the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Promocodes::findOne($id)) !== null) {
