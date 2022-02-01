@@ -41,9 +41,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 					$cachedImageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x2500.jpg';
 			?>
 					<div class="col-12 mt-1 overflow-hidden">
-						<a href="#images" data-toggle="modal" class="d-block overflow-hidden zoom" data-url="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMax) ? $cachedImageMax : $image->getUrl('x2500') ?>">
-							<img <?php if ($key == 0){?> itemprop="image" <?php } ?> src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x1500') ?>" class="d-block w-100" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
-						</a>
+                        <img <?php if ($key == 0){?> itemprop="image" <?php } ?> src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x1500') ?>" class="d-block w-100" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
 					</div>
 			<?php
 				}
@@ -226,101 +224,20 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 
 
 <?php
-	if ($images){
-?>
-        <div id="images" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="btn-modal-close rounded-circle overflow-hidden" data-dismiss="modal">
-							<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<line x1="13.7891" y1="12.3744" x2="39.9521" y2="38.5373" stroke="black" stroke-width="2"/>
-								<line x1="12.3749" y1="38.5379" x2="38.5379" y2="12.3749" stroke="black" stroke-width="2"/>
-							</svg>
-                        </div>
-						
-						<div id="productImages" class="carousel slide carousel-fade" data-interval="false" data-touch="true" data-ride="carousel">
-							<div class="carousel-inner">
-						<?php
-							foreach ($images as $key => $image){
-								$cachedImageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1500.jpg';
-								$cachedImageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x2500.jpg';
-						?>
-								<div class="carousel-item<?= $key ? '' : ' active' ?>">
-									<div class="row h-100">
-										<div class="col-12 h-100 text-center overflow-hidden zoom" data-url="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMax) ? $cachedImageMax : $image->getUrl('x2500') ?>">
-											<img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x1500') ?>" class="img-fluid rounded" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
-										</div>
-									</div>
-								</div>
-						<?php
-							}
-						?>
-							</div>
-							<a class="carousel-control-prev" href="#productImages" role="button" data-slide="prev" style="left: -6em">
-								<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<circle cx="25" cy="25" r="24.75" stroke="white" stroke-width="0.5"/>
-									<path d="M21.6863 25.0006L27.5598 28.3917L27.5598 21.6096L21.6863 25.0006Z" fill="white"/>
-								</svg>
-							</a>
-							<a class="carousel-control-next" href="#productImages" role="button" data-slide="next" style="right: -6em">
-								<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<circle r="24.75" transform="matrix(-1 0 0 1 25 25)" stroke="white" stroke-width="0.5"/>
-									<path d="M28.3137 25.0006L22.4402 28.3917L22.4402 21.6096L28.3137 25.0006Z" fill="white"/>
-								</svg>
-							</a>
-						</div>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-		
-	<?php
-		foreach ($images as $key => $image){
-			$cachedImageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1500.jpg';
-	?>
-			<div id="image_<?= $key ?>" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-body">
-							<div class="btn-modal-close rounded-circle overflow-hidden" data-dismiss="modal">
-								<svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<line x1="1.49418" y1="0.738243" x2="39.6779" y2="38.922" stroke="white"/>
-									<line x1="0.787072" y1="38.9223" x2="38.9708" y2="0.73856" stroke="white"/>
-								</svg>
-							</div>
-							<img id="img_<?= $key ?>" src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x1500') ?>" class="img-fluid zoom-touch" data-fancybox>
-						</div>
-					</div>
-				</div>
-			</div>
-	<?php
-		}
-	?>
-	
-<?php
-	}
-?>
-
-<?php
 	if ($sizes){
 ?>
-		<div id="sizes" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="w-100 text-center font-weight-light">
+		<div id="sizes" class="modal p-0 fade" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog max-vw-50 border-0 mx-auto my-0" role="document">
+				<div class="modal-content m-0 border-0 vh-100 vw-50">
+					<div class="modal-header align-items-center flex-nowrap py-md-2 px-md-1 px-lg-2 px-xl-3">
+						<span class="ttfirsneue h5 m-0 font-weight-light">
 							<?= Yii::t('front', 'Размерная сетка') ?>
-						</h4>
-						<div class="btn-modal-close rounded-circle overflow-hidden" data-dismiss="modal">
-							<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<line x1="13.7891" y1="12.3744" x2="39.9521" y2="38.5373" stroke="black" stroke-width="2"/>
-								<line x1="12.3749" y1="38.5379" x2="38.5379" y2="12.3749" stroke="black" stroke-width="2"/>
-							</svg>
-						</div>
+						</span>
+						<button type="button" class="close p-0 float-none" data-dismiss="modal">
+							<svg width='53' height='53' viewBox='0 0 53 53' fill='none' xmlns='http://www.w3.org/2000/svg'><line x1='13.7891' y1='12.3744' x2='39.9521' y2='38.5373' stroke='black' stroke-width='2'></line><line x1='12.3749' y1='38.5379' x2='38.5379' y2='12.3749' stroke='black' stroke-width='2'></line></svg>
+						</button>
 					</div>
-					<div class="modal-body">
+					<div class="modal-body h-100 overflow-y-scroll py-0 px-md-1 px-lg-2 px-xl-3 hide-h1">
 						<div id="size-grid" class="table-responsive">
 							<?= str_replace('<table>', '<table class="table product-sizes">', $sizes) ?>
 						</div>
