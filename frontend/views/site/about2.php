@@ -97,7 +97,6 @@ $this->title = Yii::t('front', 'О нас');
         function setActiveScrollBlock() {
             $('.about-content').addClass('opacity-50');
             $($('.nav-link.active').attr('href')).removeClass('opacity-50');
-console.log($('.nav-link.active').attr('href'));
         }
         setActiveScrollBlock();
         
