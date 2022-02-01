@@ -74,11 +74,12 @@ $this->title = Yii::t('front', 'О нас');
                 </p>
             </div>
             <div id="fgi" class="about-content opacity-50">
-                <p class="mb-0 font-weight-light">
+                <p class="font-weight-light">
                     <?= Yii::t('front', 'Бренд авторской одежды {0} входит в состав экосистемы международной инвестиционной компании Freedom International Group и находится под ее прямым управлением. Экосистема Freedom Group развивается в 17 государствах, включая США, Гонконг, Вьетнам и страны Европы. В инвестиционном портфеле компании – 48 проектов, общая стоимость активов оценивается в 2,5 млрд долларов.', [
                         Yii::$app->id
                     ]) ?>
-                    <br>
+                </p>
+                <p class="mb-0 font-weight-light">
                     <?= Yii::t('front', 'Президент Freedom International Group') ?> - <?= Yii::t('front', 'Нарек Сираканян') ?>.
                 </p>
             </div>
