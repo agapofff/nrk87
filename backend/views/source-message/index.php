@@ -83,21 +83,21 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'text-right'
                 ],
                 'buttons' => [
-                    'update' => function($url, $model){
+                    'update' => function($url, $model) {
                         return Html::a('', $url, [
                             'class' => 'glyphicon glyphicon-pencil btn btn-primary btn-xs',
                             'title' => Yii::t('back', 'Изменить'),
                             'data-pjax' => 0,
                         ]);
                     },
-                    'translations' => function ($url, $model){
+                    'translations' => function ($url, $model) {
                         return Html::a('', '/admin/message?MessageSearch[id]='.$model->id, [
                             'class' => 'glyphicon glyphicon-text-size btn btn-info btn-xs',
                             'title' => Yii::t('back', 'Переводы'),
                             'data-pjax' => 0,
                         ]);
                     },
-                    'delete' => function($url, $model){
+                    'delete' => function($url, $model) {
                         return Html::a('', $url, [
                             'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',
                             'title' => Yii::t('back', 'Удалить'),

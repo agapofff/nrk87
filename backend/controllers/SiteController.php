@@ -28,20 +28,20 @@ class SiteController extends Controller
                 'rules' => [
                     [
                         'actions' => [
-							'login', 
-							'error', 
-							'curl', 
-							'images-get',
-							'image-upload',
-							'image-delete',
-						],
+                            'login', 
+                            'error', 
+                            'curl', 
+                            'images-get',
+                            'image-upload',
+                            'image-delete',
+                        ],
                         'allow' => true,
                     ],
                     [
                         'actions' => [
-							'logout',
-							'index'
-						],
+                            'logout',
+                            'index'
+                        ],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -66,34 +66,34 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-			'images-get' => [
-				'class' => 'vova07\imperavi\actions\GetImagesAction',
-				'url' => 'http://nrk87/images/upload',
-				'path' => '@images/upload',
-				'options' => [
-					'only' => [
-						'*.jpg', 
-						'*.jpeg', 
-						'*.png', 
-						'*.gif', 
-						// '*.ico'
-					]
-				],
-			],
-			'image-upload' => [
-				'class' => 'vova07\imperavi\actions\UploadFileAction',
-				'url' => 'http://nrk87/images/upload', // Url::home(true) . 'images/',
-				'path' => '@images/upload',
-				'uploadOnlyImage' => false,
-				'unique' => false,
-				'replace' => true,
-				'translit' => true,
-			],
-			'image-delete' => [
-				'class' => 'vova07\imperavi\actions\DeleteFileAction',
-				'url' => 'http://nrk87/images/upload/',
-				'path' => '@images/upload',
-			],
+            'images-get' => [
+                'class' => 'vova07\imperavi\actions\GetImagesAction',
+                'url' => 'http://nrk87/images/upload',
+                'path' => '@images/upload',
+                'options' => [
+                    'only' => [
+                        '*.jpg', 
+                        '*.jpeg', 
+                        '*.png', 
+                        '*.gif', 
+                        // '*.ico'
+                    ]
+                ],
+            ],
+            'image-upload' => [
+                'class' => 'vova07\imperavi\actions\UploadFileAction',
+                'url' => 'http://nrk87/images/upload', // Url::home(true) . 'images/',
+                'path' => '@images/upload',
+                'uploadOnlyImage' => false,
+                'unique' => false,
+                'replace' => true,
+                'translit' => true,
+            ],
+            'image-delete' => [
+                'class' => 'vova07\imperavi\actions\DeleteFileAction',
+                'url' => 'http://nrk87/images/upload/',
+                'path' => '@images/upload',
+            ],
         ];
     }
 
@@ -150,7 +150,7 @@ class SiteController extends Controller
         $this->enableCsrfValidation = false;
         // if (Yii::$app->request->isPost) {
             $dir = Yii::getAlias('@storageUrl') . '/' . $sub . '/';
-            if (!file_exists($dir)){
+            if (!file_exists($dir)) {
                 FileHelper::createDirectory($dir);
             }
      
@@ -159,20 +159,20 @@ class SiteController extends Controller
             $model = new DynamicModel(compact('file'));
             $model->addRule('file', 'image')->validate();
      
-            if ($model->hasErrors()){
+            if ($model->hasErrors()) {
                 $result = [
                     'error' => $model->getFirstError('file')
                 ];
             } else {
                 $model->file->name = strtotime('now') . '_' . Yii::$app->getSecurity()->generateRandomString(6) . '.' . $model->file->extension;
-                if ($model->file->saveAs($dir . $model->file->name)){
+                if ($model->file->saveAs($dir . $model->file->name)) {
                     $imag = Yii::$app->image->load($dir . $model->file->name);
                     $imag->resize(100, NULL, Yii\image\drivers\Image::PRECISE)->save($dir . $model->file->name, 85);
      
                     $result = [
-						'filelink' => $result_link . $model->file->name, 
-						'filename' => $model->file->name
-					];
+                        'filelink' => $result_link . $model->file->name, 
+                        'filename' => $model->file->name
+                    ];
                 } else {
                     $result = [
                         'error' => Yii::t('back', 'Ошибка загрузки файла')
@@ -191,15 +191,15 @@ class SiteController extends Controller
     public function actionCurl ($url, $post = null, $params = null, $json = null)
     {
         $curl = new \linslin\yii2\curl\Curl();
-        if ($params){
-            if ($post){
+        if ($params) {
+            if ($post) {
                 $curl->setPostParams(\yii\helpers\Json::decode($params));
             } else {
                 $curl->setGetParams(\yii\helpers\Json::decode($params));
             }
         }
         $response = $post ? $curl->post($url) : $curl->get($url);
-        if ($curl->errorCode === null){
+        if ($curl->errorCode === null) {
             return $response;
         }
         

@@ -49,9 +49,9 @@ use kartik\switchinput\SwitchInput;
             ?>
             <ul class="nav nav-pills nav-justified">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                     <a href="#name_<?= $lang->code ?>_tab" aria-controls="name_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
                 </li>
         <?php
@@ -60,9 +60,9 @@ use kartik\switchinput\SwitchInput;
             </ul>
             <div class="tab-content">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
                     <?= Html::input(
                             'text',
                             'name_'.$lang->code,
@@ -108,7 +108,7 @@ use kartik\switchinput\SwitchInput;
                     'class' => 'btn btn-success btn-lg'
                 ]) ?>
                 
-                <?php if ($model->id){ ?>
+                <?php if ($model->id) { ?>
                     <?= Html::submitButton(Html::tag('span', '', [
                         'class' => 'glyphicon glyphicon-floppy-remove'
                     ]) . '&nbsp;' . Yii::t('back', 'Сохранить и закрыть'), [

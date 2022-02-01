@@ -46,7 +46,7 @@ use yii\helpers\ArrayHelper;
             <?= $form
                     ->field($model, 'country')
                     ->dropDownList(ArrayHelper::map($countries, 'id', 'name'), [
-                        'options' => ArrayHelper::map($countries, 'id', function($data){
+                        'options' => ArrayHelper::map($countries, 'id', function($data) {
                             return [
                                 'data-code' => $data['code'],
                                 'data-icon' => $data['icon'],
@@ -164,7 +164,7 @@ use yii\helpers\ArrayHelper;
     ?>
     
     <?php
-        if (Yii::$app->session->hasFlash('success')){
+        if (Yii::$app->session->hasFlash('success')) {
             $this->registerJs(
                 'toastr.success("'.Yii::$app->session->getFlash('success').'");
                 registrationSuccess();',
@@ -175,7 +175,7 @@ use yii\helpers\ArrayHelper;
     ?>
     
     <?php
-        if (Yii::$app->session->hasFlash('error')){
+        if (Yii::$app->session->hasFlash('error')) {
             $this->registerJs(
                 'toastr.error("'.Yii::$app->session->getFlash('error').'");',
                 View::POS_READY,

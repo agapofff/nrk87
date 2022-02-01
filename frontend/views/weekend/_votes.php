@@ -10,7 +10,7 @@
     <div class="row align-items-center">
 <?php
     $i = 0;
-    foreach ($results as $result){
+    foreach ($results as $result) {
         $percent = ($result['votes'] / $sum) * 100;
 ?>
         <div class="col-12">
@@ -28,7 +28,7 @@
     <div class="row justify-content-end align-items-center mt-3">
 <?php
     $i = 0;
-    foreach ($results as $result){
+    foreach ($results as $result) {
 ?>
         <div class="col-12 col-md-6 col-lg-5 col-xl-4 text-left">
             <span class="badge badge-pill rounded-pill badge-<?= Yii::$app->params['colors'][$i] ?>">&nbsp;</span>
@@ -43,7 +43,7 @@
 </div>
 
 <?php
-    if (Yii::$app->session->hasFlash('success')){
+    if (Yii::$app->session->hasFlash('success')) {
         $this->registerJs(
             'toastr.success("'.Yii::$app->session->getFlash('success').'");
             registrationSuccess();',
@@ -54,7 +54,7 @@
 ?>
 
 <?php
-    if (Yii::$app->session->hasFlash('error')){
+    if (Yii::$app->session->hasFlash('error')) {
         $this->registerJs(
             'toastr.error("'.Yii::$app->session->getFlash('error').'");',
             View::POS_READY,

@@ -72,7 +72,7 @@
                 <div class="row">
                 
             <?php
-                if ($product){
+                if ($product) {
             ?>
                     <div class="col-12 col-xl-8 mb-5">
                     
@@ -109,7 +109,7 @@
                                     
                                         <div class="row justify-content-between">
                                     <?php 
-                                        if ($price){
+                                        if ($price) {
                                     ?>
                                             <div class="col-auto">
                                                 <p class="lead">
@@ -120,7 +120,7 @@
                                         }
                                     ?>
                                     <?php
-                                        if ($previous){
+                                        if ($previous) {
                                     ?>
                                             <div class="col-auto text-right">
                                             
@@ -148,7 +148,7 @@
             ?>
             
             <?php
-                if ($current){
+                if ($current) {
             ?>
                     
                     <div class="col-12 col-xl-3 offset-xl-1">
@@ -178,7 +178,7 @@
                         <div id="scan-to-win" class="my-4 my-lg-5">
                         
                         <?php
-                            if (Yii::$app->user->isGuest){
+                            if (Yii::$app->user->isGuest) {
                         ?>
                         
                             <?= Html::a(Html::tag('span') . Yii::t('front', 'Зарегистрироваться'), [
@@ -239,19 +239,19 @@
                         </div>
                         
                 <?php
-                    if (!empty($codes)){
+                    if (!empty($codes)) {
                 ?>
                         <div class="my-4 my-lg-5">
                             <p class="h2 acline">
                                 <?= Yii::t('front', 'Мои коды') ?>
                             </p>
                         <?php
-                            foreach ($codes as $code){
+                            foreach ($codes as $code) {
                         ?>
                                 <p class="h3 acline 
-									<?php if ($code['won']){ ?>text-success<?php } ?> 
-									<?php if (!$code['active']){ ?>text-line-through<?php } ?>
-								">
+                                    <?php if ($code['won']) { ?>text-success<?php } ?> 
+                                    <?php if (!$code['active']) { ?>text-line-through<?php } ?>
+                                ">
                                     <?= $code['id'] ?>
                                 </p>
                         <?php
@@ -287,7 +287,7 @@
     </div>
 
     <?php
-        if ($previous){
+        if ($previous) {
     ?>
         <div id="prev" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -303,16 +303,16 @@
                         <div id="pastDrawings" class="carousel slide" data-interval="false" data-touch="true" data-ride="carousel">
                             <div class="carousel-inner">
                         <?php
-                            foreach ($previous as $key => $prev){
+                            foreach ($previous as $key => $prev) {
                                 $product = null;
-                                if ($products){
-                                    foreach ($products as $prod){
-                                        if ($prod->id == $prev->product_id){
+                                if ($products) {
+                                    foreach ($products as $prod) {
+                                        if ($prod->id == $prev->product_id) {
                                             $product = $prod;
                                             break;
                                         }
                                     }
-                                    if ($product){
+                                    if ($product) {
                         ?>
                                         <div class="carousel-item<?= $key ? '' : ' active' ?>">
 

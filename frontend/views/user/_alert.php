@@ -17,10 +17,10 @@
 ?>
 
 <?php 
-    if ($module->enableFlashMessages){
+    if ($module->enableFlashMessages) {
         foreach (Yii::$app->session->getAllFlashes() as $type => $message)
         {
-            if (in_array($type, ['success', 'danger', 'warning', 'info'])){
+            if (in_array($type, ['success', 'danger', 'warning', 'info'])) {
 ?>
                 <div class="text-center">
                     <p class="lead"><?= $message ?></p>

@@ -28,12 +28,12 @@
 
     <?php
     /*
-        foreach (Yii::$app->params['languages'] as $key => $lang){
+        foreach (Yii::$app->params['languages'] as $key => $lang) {
             $active = $key == Yii::$app->language ? 'active' : '';
     ?>
             <div class="flag d-flex align-items-center justify-content-center <?= $active ?>">
     <?php
-            if ($key == Yii::$app->language){
+            if ($key == Yii::$app->language) {
                 echo Html::tag('span', $key) . Html::img('/images/langs/' . $key . '.png');
             } else {
                 $subdomain = (isset($lang['alias']) && $lang['alias'] ? $lang['alias'] : $key) . '.';

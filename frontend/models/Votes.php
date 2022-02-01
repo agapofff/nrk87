@@ -77,26 +77,26 @@ class Votes extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Questions::className(), ['id' => 'question_id']);
     }
-	
-	
+    
+    
     public function getResults($question_id)
     {
-		$results = [];
-		
-		$asks = Yii::$app->db->createCommand("SELECT A.name, count(V.answer_id) as votes FROM {{%votes}} as V, {{%answers}} as A WHERE V.answer_id = A.id AND V.question_id = :question_id GROUP BY V.answer_id ORDER BY votes DESC")
-			->bindValue(':question_id', $question_id)
-			->queryAll();
-			
-		if ($asks){
-			$sum = array_sum(ArrayHelper::getColumn($asks, 'votes'));
-			foreach ($asks as $ask){
-				$results[] = [
-					'name' => Yii::t('front', $ask['name']),
-					'votes' => $ask['votes'],
-					'percent' => round(($ask['votes'] / $sum) * 100)
-				];
-			}
-		}
+        $results = [];
+        
+        $asks = Yii::$app->db->createCommand("SELECT A.name, count(V.answer_id) as votes FROM {{%votes}} as V, {{%answers}} as A WHERE V.answer_id = A.id AND V.question_id = :question_id GROUP BY V.answer_id ORDER BY votes DESC")
+            ->bindValue(':question_id', $question_id)
+            ->queryAll();
+            
+        if ($asks) {
+            $sum = array_sum(ArrayHelper::getColumn($asks, 'votes'));
+            foreach ($asks as $ask) {
+                $results[] = [
+                    'name' => Yii::t('front', $ask['name']),
+                    'votes' => $ask['votes'],
+                    'percent' => round(($ask['votes'] / $sum) * 100)
+                ];
+            }
+        }
             
         return $results;
     }

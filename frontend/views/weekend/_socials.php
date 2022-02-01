@@ -20,7 +20,7 @@
                         </span>
                     </div>
                     <div class="col-auto my-3">
-                        <?php if (Yii::$app->language == 'ru'){ ?>
+                        <?php if (Yii::$app->language == 'ru') { ?>
                             <a href="https://www.facebook.com/f3forum/" target="_blank" class="btn-social lg fb mr-4"></a>
                             <!-- <a href="#" target="_blank" class="socials__item ok"></a> -->
                             <a href="https://vk.com/f3tour_online" target="_blank" class="btn-social lg vk mr-4"></a>

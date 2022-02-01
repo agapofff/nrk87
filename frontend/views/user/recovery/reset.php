@@ -26,52 +26,52 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
 
-	<div class="row justify-content-center">
-	
-		<div class="col-xs-12 col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-5">
-		
-			<?php 
-				$form = ActiveForm::begin([
-					'id' => 'password-recovery-form',
-					// 'action' => str_replace('/' . Yii::$app->language, '', Url::to()),
-					'enableAjaxValidation' => true,
-					'enableClientValidation' => false,
-				]);
-			?>
+    <div class="row justify-content-center">
+    
+        <div class="col-xs-12 col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-5">
+        
+            <?php 
+                $form = ActiveForm::begin([
+                    'id' => 'password-recovery-form',
+                    // 'action' => str_replace('/' . Yii::$app->language, '', Url::to()),
+                    'enableAjaxValidation' => true,
+                    'enableClientValidation' => false,
+                ]);
+            ?>
 
-				<?= $form
-						->field($model, 'password', [
-							'inputOptions' => [
-								'autofocus' => 'autofocus',
-								'class' => 'form-control form-control-lg mb-0 px-0',
-								'tabindex' => '2',
-								'required' => true,
-							],
-							'options' => [
-								'class' => 'form-group mb-5 position-relative floating-label',
-							],
-							'template' => '{input}{label}{error}'
-						]
-					)
-					->passwordInput()
-					->label(Yii::t('front', 'Новый пароль'));
-				?>
-				
-				<?= Html::hiddenInput('lang', Yii::$app->language) ?>
+                <?= $form
+                        ->field($model, 'password', [
+                            'inputOptions' => [
+                                'autofocus' => 'autofocus',
+                                'class' => 'form-control form-control-lg mb-0 px-0',
+                                'tabindex' => '2',
+                                'required' => true,
+                            ],
+                            'options' => [
+                                'class' => 'form-group mb-5 position-relative floating-label',
+                            ],
+                            'template' => '{input}{label}{error}'
+                        ]
+                    )
+                    ->passwordInput()
+                    ->label(Yii::t('front', 'Новый пароль'));
+                ?>
+                
+                <?= Html::hiddenInput('lang', Yii::$app->language) ?>
 
-				<div class="row no-gutters">
-					<div class="col-md-6">
-						<?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Сохранить'),
-							[
-								'class' => 'btn btn-primary btn-block text-uppercase py-1',
-								'tabindex' => '4',
-								'title' => Yii::t('front', 'Сохранить')
-							]
-						) ?>
-					</div>
-				</div>
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Сохранить'),
+                            [
+                                'class' => 'btn btn-primary btn-block text-uppercase py-1',
+                                'tabindex' => '4',
+                                'title' => Yii::t('front', 'Сохранить')
+                            ]
+                        ) ?>
+                    </div>
+                </div>
 
-			<?php ActiveForm::end(); ?>
+            <?php ActiveForm::end(); ?>
         </div>
     </div>
 </div>

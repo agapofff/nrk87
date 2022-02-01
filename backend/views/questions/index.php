@@ -122,28 +122,28 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'text-center'
                 ],
                 'buttons' => [
-                    'update' => function ($url, $model){
+                    'update' => function ($url, $model) {
                         return Html::a('', $url, [
                             'class' => 'glyphicon glyphicon-pencil btn btn-primary btn-xs',
                             'title' => Yii::t('back', 'Изменить'),
                             'data-pjax' => 0,
                         ]);
                     },
-                    'answers' => function ($url, $model){
+                    'answers' => function ($url, $model) {
                         return Html::a('', '/admin/answers?AnswersSearch[question_id]='.$model->id, [
                             'class' => 'glyphicon glyphicon-list btn btn-info btn-xs',
                             'title' => Yii::t('back', 'Ответы'),
                             'data-pjax' => 0,
                         ]);
                     },
-                    'results' => function ($url, $model){
+                    'results' => function ($url, $model) {
                         return Html::a('', '/admin/votes?VotesSearch[question_id]='.$model->id, [
                             'class' => 'glyphicon glyphicon-signal btn btn-warning btn-xs',
                             'title' => Yii::t('back', 'Результаты'),
                             'data-pjax' => 0,
                         ]);
                     },
-                    'delete' => function ($url, $model){
+                    'delete' => function ($url, $model) {
                         return Html::a('', $url, [
                             'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',
                             'title' => Yii::t('back', 'Удалить'),

@@ -1,14 +1,14 @@
 <?php
-	use yii\helpers\Html;
-	use yii\helpers\Url;
-	use yii\helpers\ArrayHelper;
-	use yii\widgets\ActiveForm;
-	use yii\widgets\Pjax;
+    use yii\helpers\Html;
+    use yii\helpers\Url;
+    use yii\helpers\ArrayHelper;
+    use yii\widgets\ActiveForm;
+    use yii\widgets\Pjax;
     use yii\web\View;
     
     $this->title = $meta ? $meta->title : json_decode($test->name)->{Yii::$app->language};
     $heading = $meta ? $meta->h1 : $this->title;
-    if ($meta){
+    if ($meta) {
         $this->registerMetaTag([
             'name' => 'description',
             'content' => $meta->description
@@ -51,7 +51,7 @@
             <div class="row justify-content-between position-relative">
             
             <?php
-                if ($finish){
+                if ($finish) {
             ?>
                 
                     <div class="col-12 col-md-10 col-lg-8 col-xl-6" style="position: absolute; z-index: 1">
@@ -103,7 +103,7 @@
             ?>
             
                 <?php
-                    if ($start){
+                    if ($start) {
                 ?>
                 
                     <div id="start">
@@ -146,13 +146,13 @@
                     }
                 ?>
             
-                    <div class="col-12 col-md-6 col-xl-5 test" <?php if ($start){?>style="display:none"<?php } ?>>
+                    <div class="col-12 col-md-6 col-xl-5 test" <?php if ($start) {?>style="display:none"<?php } ?>>
                         
                         <p>
                             <?= Yii::t('front', 'Вопрос') ?> <?= $questionNumber ?>
                         </p>
                     <?php
-                        if ($answered){
+                        if ($answered) {
                     ?>
                             <h2 class="display-2 acline my-5">
                                 <?= Yii::t('front', $correct ? 'Правильно' : 'Неправильно') ?>!
@@ -183,10 +183,10 @@
                     
                     </div>
                     
-                    <div class="col-12 col-md-6 col-xl-4 test" <?php if ($start){?>style="display:none"<?php } ?>>
+                    <div class="col-12 col-md-6 col-xl-4 test" <?php if ($start) {?>style="display:none"<?php } ?>>
                     
                     <?php
-                        if ($answered){
+                        if ($answered) {
                     ?>
                     
                         <?= Html::beginTag('div', [
@@ -206,7 +206,7 @@
                                 <?= json_decode($question->description)->{Yii::$app->language} ?>
                                 
                                 <?php
-                                    if ($questionImage){
+                                    if ($questionImage) {
                                         echo Html::img($questionImage, [
                                             'class' => 'img-fluid my-4',
                                         ]);
@@ -236,11 +236,11 @@
                             
                                 <?= $form
                                         ->field($model, 'answer_id')
-                                        ->radioList(ArrayHelper::map($answers, 'id', function($answer){
+                                        ->radioList(ArrayHelper::map($answers, 'id', function($answer) {
                                                 return json_decode($answer->name)->{Yii::$app->language};
                                             }),
                                             [
-                                                'item' => function($index, $label, $name, $checked, $value) use ($questionNumber){
+                                                'item' => function($index, $label, $name, $checked, $value) use ($questionNumber) {
                                                     return '
                                                         <div class="custom-control custom-radio d-block w-100 mb-4">
                                                             <input type="radio" name="' . $name . '" class="custom-control-input" id="question-' . $questionNumber . '-' . $value . '" value="' . $value . '">

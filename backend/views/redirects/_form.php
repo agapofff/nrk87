@@ -88,7 +88,7 @@ use kartik\alert\AlertBlock;
                 'class' => 'btn btn-success btn-lg'
             ]) ?>
             
-            <?php if ($model->id){ ?>
+            <?php if ($model->id) { ?>
                 <?= Html::submitButton(Html::tag('span', '', [
                     'class' => 'glyphicon glyphicon-floppy-remove'
                 ]) . '&nbsp;' . Yii::t('back', 'Сохранить и закрыть'), [
@@ -107,7 +107,7 @@ use kartik\alert\AlertBlock;
 <?php
     $this->registerJs("
         var shortLink = '". str_replace(Yii::$app->request->baseUrl, '', Url::home(true)) . hash('crc32', date('Y-m-d H:i:s')) . "';
-        $('.btn-switch').change(function(){
+        $('.btn-switch').change(function() {
             $('#redirects-link_from').val(this.value === '1' ? shortLink : '');
         });
         ",

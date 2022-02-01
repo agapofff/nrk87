@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="owl-carousel owl-theme" data-items="1-2-2-2-2-2" data-dots="true" data-nav="true" data-autoheight="false">
                             <?php
-                                foreach ($pastEvents as $event){
+                                foreach ($pastEvents as $event) {
                                     $link_parts = explode('/', explode('?', $event->{'video_'.Yii::$app->language})[0]);
                             ?>
                                 <div class="col-12">

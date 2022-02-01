@@ -79,9 +79,9 @@ use dvizh\gallery\widgets\Gallery;
             ?>
             <ul class="nav nav-pills nav-justified">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                     <a href="#name_<?= $lang->code ?>_tab" aria-controls="name_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
                 </li>
         <?php
@@ -90,9 +90,9 @@ use dvizh\gallery\widgets\Gallery;
             </ul>
             <div class="tab-content">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
                     <?= Html::input(
                             'text',
                             'name_'.$lang->code,
@@ -124,7 +124,7 @@ use dvizh\gallery\widgets\Gallery;
 
             <?= $form
                     ->field($model, 'category_id')
-                    ->dropDownList(ArrayHelper::map($categories, 'id', function($category){
+                    ->dropDownList(ArrayHelper::map($categories, 'id', function($category) {
                         return json_decode($category['name'])->{Yii::$app->language};
                     }))
             ?>
@@ -155,9 +155,9 @@ use dvizh\gallery\widgets\Gallery;
             ?>
             <ul class="nav nav-pills nav-justified">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                     <a href="#description_<?= $lang->code ?>_tab" aria-controls="description_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
                 </li>
         <?php
@@ -166,9 +166,9 @@ use dvizh\gallery\widgets\Gallery;
             </ul>
             <div class="tab-content">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="description_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="description_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
                     <?= Html::input(
                             'text',
                             'description_'.$lang->code,
@@ -203,9 +203,9 @@ use dvizh\gallery\widgets\Gallery;
             ?>
             <ul class="nav nav-pills nav-justified">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                     <a href="#text_<?= $lang->code ?>_tab" aria-controls="text_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
                 </li>
         <?php
@@ -214,9 +214,9 @@ use dvizh\gallery\widgets\Gallery;
             </ul>
             <div class="tab-content">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="text_<?= $lang->code ?>_tab">
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="text_<?= $lang->code ?>_tab">
                     <?= \vova07\imperavi\Widget::widget([
                             'id' => 'blog_text_'.$lang->code,
                             'name' => 'blog_text_'.$lang->code,
@@ -266,9 +266,9 @@ use dvizh\gallery\widgets\Gallery;
             ?>
             <ul class="nav nav-pills nav-justified">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                     <a href="#publisher_<?= $lang->code ?>_tab" aria-controls="publisher_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
                 </li>
         <?php
@@ -277,9 +277,9 @@ use dvizh\gallery\widgets\Gallery;
             </ul>
             <div class="tab-content">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="publisher_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="publisher_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
                     <?= Html::input(
                             'text',
                             'publisher_'.$lang->code,
@@ -317,7 +317,7 @@ use dvizh\gallery\widgets\Gallery;
                     'class' => 'btn btn-success btn-lg'
                 ]) ?>
                 
-                <?php if ($model->id){ ?>
+                <?php if ($model->id) { ?>
                     <?= Html::submitButton(Html::tag('span', '', [
                         'class' => 'glyphicon glyphicon-floppy-remove'
                     ]) . '&nbsp;' . Yii::t('back', 'Сохранить и закрыть'), [

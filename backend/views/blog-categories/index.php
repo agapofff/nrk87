@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($data){
+                    'value' => function($data) {
                         return Html::a(
                             Html::tag('big', 
                                 Html::tag('span', '', [
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'attribute' => 'name',
                     'format' => 'raw',
-                    'value' => function($model){
+                    'value' => function($model) {
                         return Html::a(json_decode($model->name)->{Yii::$app->language}, [
                             'update',
                             'id' => $model->id,
@@ -102,14 +102,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'class' => 'text-center'
                     ],
                     'buttons' => [
-                        'update' => function ($url, $model){
+                        'update' => function ($url, $model) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-pencil btn btn-primary btn-xs',
                                 'title' => Yii::t('back', 'Изменить'),
                                 'data-pjax' => 0,
                             ]);
                         },
-                        'delete' => function ($url, $model){
+                        'delete' => function ($url, $model) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',
                                 'title' => Yii::t('back', 'Удалить'),

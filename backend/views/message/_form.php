@@ -75,9 +75,9 @@ use kartik\alert\AlertBlock;
                     var lang = $('#message-language input:checked').val(),
                         text = $('#message-id option:selected').text();
                         
-                    if (lang === 'kz'){
+                    if (lang === 'kz') {
                         lang = 'kk';
-                    } else if (lang === 'ua'){
+                    } else if (lang === 'ua') {
                         lang = 'uk';
                     }
                     
@@ -92,16 +92,16 @@ use kartik\alert\AlertBlock;
                                 lang: lang
                             })
                         },
-                        success: function(data){
+                        success: function(data) {
                             var response = JSON.parse(data);
-                            if (response.status === 200 && response.message === 'OK'){
+                            if (response.status === 200 && response.message === 'OK') {
                                 $('#message-translation').val(response.data);
                             } else {
                                 alert(response.message);
                                 console.log(data);
                             }
                         },
-                        error: function(data){
+                        error: function(data) {
                             var response = JSON.parse(data);
                             alert(response.message);
                             console.log(data);
@@ -129,7 +129,7 @@ use kartik\alert\AlertBlock;
                 'class' => 'btn btn-success btn-lg'
             ]) ?>
             
-            <?php if ($model->id){ ?>
+            <?php if ($model->id) { ?>
                 <?= Html::submitButton(Html::tag('span', '', [
                     'class' => 'glyphicon glyphicon-floppy-remove'
                 ]) . '&nbsp;' . Yii::t('back', 'Сохранить и закрыть'), [

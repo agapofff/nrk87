@@ -15,7 +15,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     
-	'on beforeRequest' => function(){
+    'on beforeRequest' => function() {
         // добавляем активные языки из базы в модуль переключения языков
         // $langs = Yii::$app->db->createCommand('SELECT * FROM {{%langs}} WHERE publish = 1')->queryAll();
         // $languages = \yii\helpers\ArrayHelper::map($langs, 'code', 'code');

@@ -6,7 +6,7 @@
     <div class="container-fluid px-lg-5">
         <div class="row align-items-center">
             <div class="col-4 col-xl-4 text-nowrap">
-            <?php if (Yii::$app->language == 'ru'){ ?>
+            <?php if (Yii::$app->language == 'ru') { ?>
                 <a href="https://www.facebook.com/f3forum/" target="_blank" class="btn-social fb mr-1 mr-sm-3"></a>
                 <!-- <a href="#" target="_blank" class="btn-social ok"></a> -->
                 <a href="https://vk.com/f3tour_online" target="_blank" class="btn-social vk mr-1 mr-sm-3"></a>

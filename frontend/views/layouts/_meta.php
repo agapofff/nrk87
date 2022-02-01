@@ -9,17 +9,17 @@
         ])
         ->one();
         
-    if ($meta){
-        if ($meta->title){
+    if ($meta) {
+        if ($meta->title) {
             $this->title = $meta->title;
         }
-        if ($meta->description){
+        if ($meta->description) {
             $this->registerMetaTag([
                 'name' => 'description',
                 'content' => $meta->description
             ]);
         }
-        if ($meta->h1){
+        if ($meta->h1) {
             $this->params['h1'] = $meta->h1;
         }
     }

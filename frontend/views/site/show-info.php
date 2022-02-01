@@ -1,11 +1,11 @@
 <?php
 
-	use yii\helpers\Url;
-	use yii\helpers\Html;
+    use yii\helpers\Url;
+    use yii\helpers\Html;
     use yii\web\View;
     use yii\widgets\Pjax;
 
-	$this->title = Yii::t('front', 'Марс ближе, чем ты думаешь') . ' - ' . Yii::$app->name;
+    $this->title = Yii::t('front', 'Марс ближе, чем ты думаешь') . ' - ' . Yii::$app->name;
 
 ?>
 
@@ -80,7 +80,7 @@
             
             <div class="col-12 text-center my-5">
             <?php
-                if (Yii::$app->user->isGuest){
+                if (Yii::$app->user->isGuest) {
                     echo Html::a(Html::tag('span') . Yii::t('front', 'Зарегистрироваться'), [
                             '/register'
                         ], [

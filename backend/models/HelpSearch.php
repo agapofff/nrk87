@@ -69,7 +69,7 @@ class HelpSearch extends Help
         ]);
 
         $query
-			->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'content', $this->content]);
 
         return $dataProvider;

@@ -73,7 +73,7 @@ class MarsFormController extends Controller
         $users = User::find()->all();
         
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно создан'));
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка создания элемента'));

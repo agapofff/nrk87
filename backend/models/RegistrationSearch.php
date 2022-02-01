@@ -67,12 +67,12 @@ class RegistrationSearch extends Registration
             'country' => $this->country,
         ]);
         
-		if(!empty($this->datetime) && strpos($this->datetime, '-') !== false) {
-			$datetime = explode('-', $this->datetime);
-			$start_date = explode('.', trim($datetime[0]));
-			$end_date = explode('.', trim($datetime[1]));
-			$query->andFilterWhere(['between', 'datetime', $start_date[2].'-'.$start_date[1].'-'.$start_date[0].' 00:00:00', $end_date[2].'-'.$end_date[1].'-'.$end_date[0].' 23:59:59']);
-		}
+        if(!empty($this->datetime) && strpos($this->datetime, '-') !== false) {
+            $datetime = explode('-', $this->datetime);
+            $start_date = explode('.', trim($datetime[0]));
+            $end_date = explode('.', trim($datetime[1]));
+            $query->andFilterWhere(['between', 'datetime', $start_date[2].'-'.$start_date[1].'-'.$start_date[0].' 00:00:00', $end_date[2].'-'.$end_date[1].'-'.$end_date[0].' 23:59:59']);
+        }
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'phone', $this->phone])

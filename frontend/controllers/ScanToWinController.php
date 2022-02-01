@@ -54,8 +54,8 @@ class ScanToWinController extends \yii\web\Controller
             ])
             ->all();
             
-        if ($previous){
-            foreach ($previous as $prev){
+        if ($previous) {
+            foreach ($previous as $prev) {
                 $profile = Profile::findOne([
                     'user_id' => $prev->winner_id
                 ]);
@@ -66,24 +66,24 @@ class ScanToWinController extends \yii\web\Controller
             }
         }
         
-        if ($current){
-            if ($scanToWinCodes->load(Yii::$app->request->post())){
+        if ($current) {
+            if ($scanToWinCodes->load(Yii::$app->request->post())) {
                 $scanToWinCodes->user_id = Yii::$app->user->id;
                 $scanToWinCodes->status = 1;
                 $scanToWinCodes->created_at = $scanToWinCodes->updated_at = date('Y-m-d H:i:s');
                 
-                if ($checkOrder = $scanToWinCodes->checkOrder($scanToWinCodes->order_id)){
+                if ($checkOrder = $scanToWinCodes->checkOrder($scanToWinCodes->order_id)) {
                     $checkOrder = json_decode($checkOrder);
-                    if ($checkOrder->status == 'success'){
+                    if ($checkOrder->status == 'success') {
                         $quantity = 0;
                         $response = $checkOrder->message;
-                        if (isset($response->content)){
+                        if (isset($response->content)) {
                             foreach ($response->content as $content) {
                                 $quantity += $content->quantity;
                             }
                         }
 
-                        for ($i = 0; $i < $quantity; $i++){
+                        for ($i = 0; $i < $quantity; $i++) {
                             $model = new ScanToWinCodes();
                             $model->user_id = Yii::$app->user->id;
                             $model->status = 1;
@@ -98,7 +98,7 @@ class ScanToWinController extends \yii\web\Controller
                         $scanToWinCodes->order_id = null;
                     } else {
                         Yii::$app->session->setFlash('error', $checkOrder->message);
-                        if ($checkOrder->code == 2){
+                        if ($checkOrder->code == 2) {
                             $orderNotFound = true;
                         }
                     }
@@ -133,12 +133,12 @@ class ScanToWinController extends \yii\web\Controller
                 
             $countCodes = $scanToWinCodes->getCountCodes();
                 
-            if ($userCodes = $scanToWinCodes->getUserCodes(Yii::$app->user->id)){
-                foreach ($userCodes as $userCode){
+            if ($userCodes = $scanToWinCodes->getUserCodes(Yii::$app->user->id)) {
+                foreach ($userCodes as $userCode) {
                     $won = false;
-                    if ($previous){
-                        foreach ($previous as $prev){
-                            if ($prev->code_id == $userCode->id){
+                    if ($previous) {
+                        foreach ($previous as $prev) {
+                            if ($prev->code_id == $userCode->id) {
                                 $won = true;
                                 break;
                             }
@@ -152,7 +152,7 @@ class ScanToWinController extends \yii\web\Controller
                 }
             }
 
-            if ($new){
+            if ($new) {
                 Yii::$app->mailer
                     ->compose('@common/mail/scan-to-win/new.php', [
                         'date_start' => Yii::$app->formatter->asDate($current->date_start, 'dd/MM'),
@@ -198,7 +198,7 @@ class ScanToWinController extends \yii\web\Controller
     
     public function actionChooseWinner($i)
     {
-        if ($i != '58f81bcf6d30494e99368c813e073cb6'){
+        if ($i != '58f81bcf6d30494e99368c813e073cb6') {
             return false;
         }
         
@@ -214,16 +214,16 @@ class ScanToWinController extends \yii\web\Controller
             ])
             ->one();
     
-        if ($current){
+        if ($current) {
             $scanToWinCodes = new ScanToWinCodes();
             
             $winnersCodes = $scanToWinCodes->getWinnersCodes();
             $winnersUsers = $scanToWinCodes->getWinnersUsers();
             
             $winner = ScanToWinCodes::find()
-				->where([
-					'status' => 1
-				])
+                ->where([
+                    'status' => 1
+                ])
                 ->andWhere([
                     'not in', 'id', $winnersCodes
                 ])
@@ -239,7 +239,7 @@ class ScanToWinController extends \yii\web\Controller
             $current->winner_id = $winUser;
             $current->code_id = $winCode;
             
-            if ($current->save()){
+            if ($current->save()) {
                 $user = User::findOne([
                     'id' => $winUser
                 ]);
@@ -288,10 +288,10 @@ class ScanToWinController extends \yii\web\Controller
                     ])
                     ->setSubject(Yii::t('front', 'Вы победили в розыгрыше') . ' ' . Yii::$app->name)
                     ->send();
-					
-				ScanToWinCodes::updateAll([
-					'status' => 0
-				]);
+                    
+                ScanToWinCodes::updateAll([
+                    'status' => 0
+                ]);
             } else {
                 Yii::$app->mailer
                     ->compose()

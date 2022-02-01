@@ -106,7 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 [
                     'attribute' => 'product_id',
-                    'value' => function($model) use ($products){
+                    'value' => function($model) use ($products) {
                         return json_decode(ArrayHelper::getValue(ArrayHelper::map($products, 'id', 'name'), $model->product_id))->{Yii::$app->language};
                     },
                     'format' => 'raw',
@@ -120,14 +120,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'contentOptions' => [
                         'class' => 'text-center'
                     ],
-                    'filter' => ArrayHelper::map($products, 'id', function($product){
+                    'filter' => ArrayHelper::map($products, 'id', function($product) {
                         return json_decode($product->name)->{Yii::$app->language};
                     }),
                 ],
                 
                 [
                     'attribute' => 'winner_id',
-                    'value' => function($model) use ($users){
+                    'value' => function($model) use ($users) {
                         return ArrayHelper::getValue(ArrayHelper::map($users, 'id', 'username'), $model->winner_id);
                     },
                     'format' => 'raw',
@@ -147,7 +147,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'attribute' => 'code_id',
                     'format' => 'raw',
-                    'value' => function($model) use ($scanToWinCodes){
+                    'value' => function($model) use ($scanToWinCodes) {
                         return $scanToWinCodes->getCode($model->code_id);
                     },
                     'filterInputOptions' => [
@@ -200,21 +200,21 @@ $this->params['breadcrumbs'][] = $this->title;
                         'class' => 'text-center'
                     ],
                     'buttons' => [
-                        'update' => function ($url, $model){
+                        'update' => function ($url, $model) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-pencil btn btn-primary btn-xs',
                                 'title' => Yii::t('back', 'Изменить'),
                                 'data-pjax' => 0,
                             ]);
                         },
-                        'codes' => function ($url, $model){
+                        'codes' => function ($url, $model) {
                             return Html::a('', '/admin/scan-to-win-codes?ScanToWinSearch[lottery_id]='.$model->id, [
                                 'class' => 'glyphicon glyphicon-barcode btn btn-info btn-xs',
                                 'title' => Yii::t('back', 'Коды'),
                                 'data-pjax' => 0,
                             ]);
                         },
-                        'delete' => function ($url, $model){
+                        'delete' => function ($url, $model) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',
                                 'title' => Yii::t('back', 'Удалить'),

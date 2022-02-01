@@ -11,21 +11,21 @@ $this->title = Yii::t('front', 'О нас');
 ?>
 
 <div class="container-fluid mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
-	<div class="row">
-		<div class="col-12">
-			<h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
-				<?= Yii::t('front', 'О нас') ?>
-			</h1>
-		</div>
-		<div class="col-12 mt-5">
-			<h2 class="display-3 mb-0 font-weight-light">
-				<?= Yii::$app->id ?> - <?= Yii::t('front', 'fashion tech wear бренд') ?>. 
+    <div class="row">
+        <div class="col-12">
+            <h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
+                <?= Yii::t('front', 'О нас') ?>
+            </h1>
+        </div>
+        <div class="col-12 mt-5">
+            <h2 class="display-3 mb-0 font-weight-light">
+                <?= Yii::$app->id ?> - <?= Yii::t('front', 'fashion tech wear бренд') ?>. 
                 <?= Yii::t('front', 'Для тех, кто ищет себя, ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу. Своей миссией бренд {0} выбрал продвижение ценностей мира и ответственность за сохранение природы и судьбу человечества, предметное размышление о взаимосвязи прошлого и настоящего. И взгляд в будущее.', [
                     Yii::$app->id
                 ]) ?>
-			</h2>
-		</div>
-	</div>
+            </h2>
+        </div>
+    </div>
 </div>
 
 <div id="about-earth" class="position-relative">

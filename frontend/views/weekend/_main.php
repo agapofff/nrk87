@@ -25,7 +25,7 @@
             <div class="col-12 col-lg-4 text-center text-lg-right pr-lg-0 align-self-start align-self-lg-center">
                 <div class="row justify-content-center justify-content-sm-start justify-content-lg-end">
                     <div class="col-12 col-sm-6 col-md-5 col-lg-10 col-xl-9 pr-lg-0">
-                    <?php if ($stream->publish){ ?>
+                    <?php if ($stream->publish) { ?>
                         <?= Html::a(Yii::t('front', 'Смотреть трансляцию'), '#stream', [
                             'class' => 'btn btn-primary btn-lg btn-block rounded-pill text-light mt-5 scroll'
                         ]) ?>

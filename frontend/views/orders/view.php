@@ -16,7 +16,7 @@
         </div>
     </div>
 <?php
-    if ($order){
+    if ($order) {
 ?>
     <div class="row my-4 my-lg-5">
         <div class="col-12 col-md-6">
@@ -66,8 +66,8 @@
         <div class="col-12 col-md-6">
             <div class="dl-horizontal">
         <?php
-            foreach ($fields as $field){
-                if ($fieldValue = ArrayHelper::getValue(ArrayHelper::map($fieldValues, 'field_id', 'value'), $field->id)){
+            foreach ($fields as $field) {
+                if ($fieldValue = ArrayHelper::getValue(ArrayHelper::map($fieldValues, 'field_id', 'value'), $field->id)) {
         ?>
                     <dt>
                         <?= Yii::t('front', $field->description) ?>
@@ -76,7 +76,7 @@
                         <?= $field->id == 11 ? Yii::$app->formatter->asCurrency($fieldValue, $currency) : $fieldValue ?>
                     </dd>
         <?php
-                    if ($field->id == 8 && $order->address){
+                    if ($field->id == 8 && $order->address) {
         ?>
                         <dt>
                             <?= Yii::t('front', 'Адрес') ?>
@@ -114,7 +114,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    foreach ($elements as $key => $element){
+                    foreach ($elements as $key => $element) {
                         $product_link = Url::to(['/product/' . $element->product->slug], true);
                 ?>
                     <tr>

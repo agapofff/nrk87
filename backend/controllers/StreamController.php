@@ -33,7 +33,7 @@ class StreamController extends Controller
         $model = $this->findModel(1);
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));

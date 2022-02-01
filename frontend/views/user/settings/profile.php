@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $this->title ?>
     </h1>
 
-	<div class="row justify-content-start">
+    <div class="row justify-content-start">
         
         <div class="col-12 col-md-4 col-lg-3 mb-5">
             <div class="row d-flex d-md-block justify-content-center justify-content-md-start">
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         
-		<div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
             
             <?php $form = ActiveForm::begin([
                     'id' => 'profile-form',
@@ -138,7 +138,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     0 => Yii::t('front', 'Женский'),
                                 ],
                                 [
-                                    'item' => function($index, $label, $name, $checked, $value){
+                                    'item' => function($index, $label, $name, $checked, $value) {
                                         return '
                                             <div class="custom-control custom-radio d-inline mr-4">
                                                 <input type="radio" name="' . $name . '" class="custom-control-input" ' . ($checked ? 'checked': '') . ' id="' . $name . $value . '" value="' . $value . '">

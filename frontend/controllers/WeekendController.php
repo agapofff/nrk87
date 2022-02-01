@@ -83,7 +83,7 @@ class WeekendController extends \yii\web\Controller
         $common = Common::findOne(1);
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 
                 $mail2client = Yii::$app->mailer->compose('registrationClient', [
                         'common' => $common,
@@ -153,7 +153,7 @@ class WeekendController extends \yii\web\Controller
         ])->one();
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('front', 'Спасибо, Ваш голос принят!'));
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('front', 'Проголосовать не удалось. Попробуйте ещё раз чать позже.'));

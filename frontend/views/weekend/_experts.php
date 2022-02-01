@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="col-12 col-xl-8">
-            <?php foreach ($experts as $expert){ ?>
+            <?php foreach ($experts as $expert) { ?>
                 <div class="row">
                     <div class="col-12 col-md-5 col-xl-6 align-self-center">
                         <?= Html::img([$expert->image], [

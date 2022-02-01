@@ -59,7 +59,7 @@ use kartik\alert\AlertBlock;
                 ])
         ?>
         <div id="experts-imagefile-embed" class="form-group">
-        <?php if ($model->image){ ?>
+        <?php if ($model->image) { ?>
             <img src="<?= $model->image ?>" class="img-responsive">
         <?php } ?>
         </div>
@@ -96,7 +96,7 @@ use kartik\alert\AlertBlock;
                 'class' => 'btn btn-success btn-lg'
             ]) ?>
             
-            <?php if ($model->id){ ?>
+            <?php if ($model->id) { ?>
                 <?= Html::submitButton(Html::tag('span', '', [
                     'class' => 'glyphicon glyphicon-floppy-remove'
                 ]) . '&nbsp;' . Yii::t('back', 'Сохранить и закрыть'), [

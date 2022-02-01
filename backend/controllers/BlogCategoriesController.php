@@ -10,14 +10,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\Langs;
 
-/**
- * BlogCategoriesController implements the CRUD actions for BlogCategories model.
- */
 class BlogCategoriesController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -30,10 +25,6 @@ class BlogCategoriesController extends Controller
         ];
     }
 
-    /**
-     * Lists all BlogCategories models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new BlogCategoriesSearch();
@@ -48,12 +39,6 @@ class BlogCategoriesController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single BlogCategories model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -61,18 +46,13 @@ class BlogCategoriesController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new BlogCategories model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new BlogCategories();
         $model->loadDefaultValues();
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно создан'));
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка создания элемента'));
@@ -80,7 +60,7 @@ class BlogCategoriesController extends Controller
             return $this->redirect(['index']);
         }
         
-		$languages = Langs::find()->all();
+        $languages = Langs::find()->all();
 
         return $this->render('create', [
             'model' => $model,
@@ -88,25 +68,18 @@ class BlogCategoriesController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing BlogCategories model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
             }
 
-            if ($model->saveAndExit){
+            if ($model->saveAndExit) {
                 return $this->redirect(['index']);
             }
         }
@@ -119,16 +92,9 @@ class BlogCategoriesController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing BlogCategories model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete($id)
     {
-        if ($this->findModel($id)->delete()){
+        if ($this->findModel($id)->delete()) {
             Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно удалён'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка удаления элемента'));
@@ -137,13 +103,6 @@ class BlogCategoriesController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the BlogCategories model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return BlogCategories the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = BlogCategories::findOne($id)) !== null) {
@@ -159,13 +118,13 @@ class BlogCategoriesController extends Controller
         $model = $this->findModel($id);
         $model->active = $model->active ? 0 : 1;
         
-        if ($model->save()){
+        if ($model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
 
-        if (Yii::$app->request->isAjax){
+        if (Yii::$app->request->isAjax) {
             $this->actionIndex();
         } else {
             return $this->redirect(['index']);

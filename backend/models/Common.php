@@ -71,8 +71,8 @@ class Common extends \yii\db\ActiveRecord
     
     public function upload($fileName, $field)
     {
-        if ($this->validate()){
-            switch ($field){
+        if ($this->validate()) {
+            switch ($field) {
                 case 'image': $folder = 'main/'; break;
                 case 'background': $folder = 'backgrounds/'; break;
                 default: $folder = ''; break;

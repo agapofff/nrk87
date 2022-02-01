@@ -1514,28 +1514,28 @@
             $msg = [
                 'en' => $enVal,
             ];
-            foreach ($vi as $viKey => $viVal){
-                if ($viKey == $enKey){
+            foreach ($vi as $viKey => $viVal) {
+                if ($viKey == $enKey) {
                     $msg['vi'] = $viVal;
                 }
             }
-            foreach ($de as $deKey => $deVal){
-                if ($deKey == $enKey){
+            foreach ($de as $deKey => $deVal) {
+                if ($deKey == $enKey) {
                     $msg['de'] = $deVal;
                 }
             }
-            foreach ($kz as $kzKey => $kzVal){
-                if ($kzKey == $enKey){
+            foreach ($kz as $kzKey => $kzVal) {
+                if ($kzKey == $enKey) {
                     $msg['kz'] = $kzVal;
                 }
             }
-            foreach ($uz as $uzKey => $uzVal){
-                if ($uzKey == $enKey){
+            foreach ($uz as $uzKey => $uzVal) {
+                if ($uzKey == $enKey) {
                     $msg['uz'] = $uzVal;
                 }
             }
-            foreach ($ua as $uaKey => $uaVal){
-                if ($uaKey == $enKey){
+            foreach ($ua as $uaKey => $uaVal) {
+                if ($uaKey == $enKey) {
                     $msg['ua'] = $uaVal;
                 }
             }

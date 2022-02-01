@@ -15,7 +15,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
 
 
 <h1 class="display-3 acline text-center my-5">
-	<?= $h1 ?>
+    <?= $h1 ?>
 </h1>
 
 
@@ -27,11 +27,11 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
         
             <div class="row align-items-center">
             <?php
-                if ($images){
+                if ($images) {
             ?>
                 <div class="col-12 col-sm-8 p-0 position-absolute h-100 cover">
                 <?php
-                    foreach ($images as $image){
+                    foreach ($images as $image) {
                 ?>
                         <img data-src="<?= $image->getUrl() ?>" alt="<?= $title ?> <?= Yii::$app->name ?>" class="lazyload pointer-events-none">
                 <?php
@@ -47,23 +47,23 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                     <h2 class="display-1 acline my-5 text-nowrap">
                         <?= $title ?>
                     </h2>
-					
-					<?php
-						if ($category->id == 17){
-					?>
-							<h3 class="display-3 acline my-5">
-								<?= Yii::t('front', 'Coming soon...') ?>
-							</h3>
-					<?php
-						}
-					?>
+                    
+                    <?php
+                        if ($category->id == 17) {
+                    ?>
+                            <h3 class="display-3 acline my-5">
+                                <?= Yii::t('front', 'Coming soon...') ?>
+                            </h3>
+                    <?php
+                        }
+                    ?>
                     
                 <?php
-                    if ($subCategories){
+                    if ($subCategories) {
                 ?>
                     <div class="row">
                     <?php
-                        foreach ($subCategories as $subCategory){
+                        foreach ($subCategories as $subCategory) {
                     ?>
                         <div class="col-12 col-sm-6 my-2">
                             <?= Html::a(json_decode($subCategory->name)->{Yii::$app->language}, [

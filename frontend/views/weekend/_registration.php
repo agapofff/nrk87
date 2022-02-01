@@ -8,7 +8,7 @@
             <div class="modal-header">
                 <h5 class="modal-title h2 font-weight-bold"><?= Yii::t('front', 'Регистрация') ?></h5>
                 <div class="modal-close" data-dismiss="modal" aria-label="<?= Yii::t('front', 'Закрыть') ?>">
-				</div>
+                </div>
             </div>
             <div class="modal-body">
                 <?= $this->render('registration',[

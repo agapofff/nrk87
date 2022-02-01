@@ -10,16 +10,16 @@ return [
 
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
-		'assetsAutoCompress',
+        'assetsAutoCompress',
         'log',
         'languagesDispatcher',
-		'devicedetect',
+        'devicedetect',
     ],
     'controllerNamespace' => 'frontend\controllers',
     'sourceLanguage' => 'ru',
     'language' => 'ru',
-	'on beforeRequest' => function(){
-		
+    'on beforeRequest' => function() {
+        
         $pathInfo = Yii::$app->request->pathInfo;
         $query = Yii::$app->request->queryString;
         if (!empty($pathInfo) && substr($pathInfo, -1) === '/') {
@@ -46,7 +46,7 @@ return [
         
         
         // 301-е редиректы
-		if (Yii::$app->request->pathInfo){
+        if (Yii::$app->request->pathInfo) {
 
             $query = (new \Yii\db\Query())
                 ->select('*')
@@ -56,7 +56,7 @@ return [
                     'link_from' => Yii::$app->request->absoluteUrl
                 ])
                 ->one();
-            if (!$query){
+            if (!$query) {
                 $query = (new \Yii\db\Query())
                     ->select('*')
                     ->from('{{%redirects}}')
@@ -67,19 +67,19 @@ return [
                     ->one();
             }
             
-            if ($query){
+            if ($query) {
                 Yii::$app->getResponse()->redirect($query['link_to'], 301);
                 Yii::$app->end();
             }
-		}
+        }
         
         
         // редиректы товаров на новые адреса с ЧПУ
-        if (strpos(Yii::$app->request->pathInfo, 'product') !== false){
+        if (strpos(Yii::$app->request->pathInfo, 'product') !== false) {
             $link = explode('product/', Yii::$app->request->pathInfo);
-            if (count($link) > 1){
+            if (count($link) > 1) {
                 $productId = explode('/', $link[1])[0];
-                if (is_numeric($productId)){
+                if (is_numeric($productId)) {
                     $query = (new \Yii\db\Query())
                         ->select('*')
                         ->from('{{%shop_product}}')
@@ -87,7 +87,7 @@ return [
                             'like', 'sku', $productId
                         ])
                         ->one();
-                    if ($query){
+                    if ($query) {
                         $linkTo = str_replace($productId, $query['slug'], Yii::$app->request->absoluteUrl);
                         Yii::$app->getResponse()->redirect($linkTo, 301);
                         Yii::$app->end();
@@ -103,7 +103,7 @@ return [
             // ->createCommand('SELECT * FROM {{%langs}} WHERE code = :code')
             // ->bindValue(':code', Yii::$app->language)
             // ->queryOne();
-        // if (Yii::$app->request->cookies->getValue('currency') != $lang['currency']){
+        // if (Yii::$app->request->cookies->getValue('currency') != $lang['currency']) {
             // Yii::$app->response->cookies->add(new \yii\web\Cookie([
                 // 'name' => 'currency',
                 // 'value' => $lang['currency'],
@@ -114,12 +114,12 @@ return [
         // Yii::$app->params['currency'] = Yii::$app->request->cookies->getValue('currency');
         // Yii::$app->params['currency'] = $lang['currency'];
         
-		
+        
         $store_type = Yii::$app->params['default_store_type'];
-		
+        
         // кладём дефолтный тип магазина в куки
-		
-        if (!Yii::$app->request->cookies->has('store_type')){
+        
+        if (!Yii::$app->request->cookies->has('store_type')) {
             Yii::$app->response->cookies->add(new \yii\web\Cookie([
                 'name' => 'store_type',
                 'value' => $store_type,
@@ -132,7 +132,7 @@ return [
         $promo = Yii::$app->request->get('promo');
         
         // кладём промокод в куки
-        if ($promo && Yii::$app->request->cookies->getValue('promo') != $promo){
+        if ($promo && Yii::$app->request->cookies->getValue('promo') != $promo) {
             Yii::$app->response->cookies->add(new \yii\web\Cookie([
                 'name' => 'promo',
                 'value' => $promo,
@@ -141,59 +141,59 @@ return [
         }
         
         // переключение магазина
-        if ($promo){
+        if ($promo) {
             // $store = Yii::$app->db
                 // ->createCommand('SELECT * FROM {{%promocodes}} WHERE code = :code')
                 // ->bindValue(':code', $promo)
                 // ->queryOne();
-			$store = \backend\models\Promocodes::find()
-				->where('code = :code', [
-					':code' => $promo
-				])
-				->one();
-            if ($store){
-				$store_type = $store->type;
-                if (Yii::$app->request->cookies->getValue('store_type') != $store_type){
+            $store = \backend\models\Promocodes::find()
+                ->where('code = :code', [
+                    ':code' => $promo
+                ])
+                ->one();
+            if ($store) {
+                $store_type = $store->type;
+                if (Yii::$app->request->cookies->getValue('store_type') != $store_type) {
                     Yii::$app->response->cookies->add(new \yii\web\Cookie([
                         'name' => 'store_type',
                         'value' => $store_type,
                     ]));
                     // Yii::$app->cart->truncate();
-					$redirect = true;
+                    $redirect = true;
                 }
             }
         }
-		
-		
-		// обработка ссылок из приложения
-		if ($storeId = Yii::$app->request->get('store')){
-			$store = \backend\models\Stores::find()
-				->where('store_id = :store_id', [
-					':store_id' => $storeId
-				])
-				->one();
-            if ($store){
-				$store_type = $store->type;
-                if (Yii::$app->request->cookies->getValue('store_type') != $store_type){
+        
+        
+        // обработка ссылок из приложения
+        if ($storeId = Yii::$app->request->get('store')) {
+            $store = \backend\models\Stores::find()
+                ->where('store_id = :store_id', [
+                    ':store_id' => $storeId
+                ])
+                ->one();
+            if ($store) {
+                $store_type = $store->type;
+                if (Yii::$app->request->cookies->getValue('store_type') != $store_type) {
                     Yii::$app->response->cookies->add(new \yii\web\Cookie([
                         'name' => 'store_type',
                         'value' => $store_type,
                     ]));
                     // Yii::$app->cart->truncate();
-					$redirect = true;
+                    $redirect = true;
                 }
             }
-		}
+        }
 
-		
         
-        if ($redirect){
+        
+        if ($redirect) {
             Yii::$app->response->redirect(Yii::$app->request->absoluteUrl, 301)->send();
             Yii::$app->end();
         }
 
 
-		Yii::$app->params['store_type'] = Yii::$app->request->cookies->getValue('store_type', $store_type);
+        Yii::$app->params['store_type'] = Yii::$app->request->cookies->getValue('store_type', $store_type);
         
         
         
@@ -208,36 +208,36 @@ return [
             ])
             ->one();
             
-        if ($meta){
-            if ($meta->title){
+        if ($meta) {
+            if ($meta->title) {
                 Yii::$app->params['title'] = $meta->title;
             }
-            if ($meta->description){
+            if ($meta->description) {
                 Yii::$app->params['description'] = $meta->description;
             }
-            if ($meta->h1){
+            if ($meta->h1) {
                 Yii::$app->params['h1'] = $meta->h1;
             }
         }
-		
         
-	},
-			
+        
+    },
+            
 
-    'on afterAction' => function(){
+    'on afterAction' => function() {
         
         // переадресация главных страниц на языковую локаль
         
-		if (strpos(Yii::$app->request->absoluteUrl, Yii::$app->language) === false){
-			$homeUrl = \yii\helpers\Url::home(true);
-			$localeUrl = preg_replace("#/$#", "", str_replace($homeUrl, $homeUrl . Yii::$app->language . '/', Yii::$app->request->absoluteUrl));
+        if (strpos(Yii::$app->request->absoluteUrl, Yii::$app->language) === false) {
+            $homeUrl = \yii\helpers\Url::home(true);
+            $localeUrl = preg_replace("#/$#", "", str_replace($homeUrl, $homeUrl . Yii::$app->language . '/', Yii::$app->request->absoluteUrl));
 
-			Yii::$app->response->redirect($localeUrl, 301);
-			Yii::$app->end();
-		}
-		
-		// $langs = \backend\models\Langs::find()->select('code')->column();
-        // if (empty(array_intersect(explode('/', Yii::$app->request->absoluteUrl), $langs))){
+            Yii::$app->response->redirect($localeUrl, 301);
+            Yii::$app->end();
+        }
+        
+        // $langs = \backend\models\Langs::find()->select('code')->column();
+        // if (empty(array_intersect(explode('/', Yii::$app->request->absoluteUrl), $langs))) {
             // Yii::$app->response->redirect($localeUrl, 301);
             // Yii::$app->end();
         // }
@@ -248,12 +248,12 @@ return [
         // $currency = \backend\models\Langs::findOne([
             // 'code' => Yii::$app->language
         // ])->currency;
-		
-		// if (!Yii::$app->request->cookies->has('currency') || Yii::$app->request->cookies->getValue('currency') != $currency){
-			// Yii::$app->response->cookies->add(new \yii\web\Cookie([
-				// 'name' => 'currency',
-				// 'value' => $currency,
-			// ]));
+        
+        // if (!Yii::$app->request->cookies->has('currency') || Yii::$app->request->cookies->getValue('currency') != $currency) {
+            // Yii::$app->response->cookies->add(new \yii\web\Cookie([
+                // 'name' => 'currency',
+                // 'value' => $currency,
+            // ]));
             // Yii::$app->getResponse()->redirect(Yii::$app->request->absoluteUrl, 301);
             // Yii::$app->end();
         // }
@@ -269,10 +269,10 @@ return [
             'value' => Yii::$app->params['store_types'][Yii::$app->params['store_type']]
         ])->id;
 
-        if ($cartElements = Yii::$app->cart->elements){
-            foreach ($cartElements as $element){
-                if ($options = $element->getOptions()){
-                    if ($options[3] != $lang || $options[4] != $store_type){
+        if ($cartElements = Yii::$app->cart->elements) {
+            foreach ($cartElements as $element) {
+                if ($options = $element->getOptions()) {
+                    if ($options[3] != $lang || $options[4] != $store_type) {
                         Yii::$app->cart->truncate();
                         Yii::$app->response->redirect(Yii::$app->request->absoluteUrl, 301);
                         // Yii::$app->end();
@@ -283,7 +283,7 @@ return [
         
         
         // кладём язык в базу
-        if (!Yii::$app->user->isGuest){
+        if (!Yii::$app->user->isGuest) {
             $user = \dektrium\user\models\User::findOne(Yii::$app->user->identity->id);
             $user->lang = Yii::$app->language;
             $user->save();
@@ -297,8 +297,8 @@ return [
             'baseUrl' => '',
             // 'class' => 'klisl\languages\Request',
             'csrfParam' => '_csrf-frontend',
-			'cookieValidationKey' => 'Rb96MyfFjM3RfzzXQDD5kzgwzlPYFbv6',
-			// 'enableCookieValidation' => false,
+            'cookieValidationKey' => 'Rb96MyfFjM3RfzzXQDD5kzgwzlPYFbv6',
+            // 'enableCookieValidation' => false,
         ],
         
         'assetManager' => [
@@ -332,13 +332,13 @@ return [
             'errorAction' => 'site/error',
         ],
         
-		'view' => [
-			'theme' => [
-				'pathMap' => [
-					'@dektrium/user/views' => '@frontend/views/user'
-				],
-			],
-		],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@dektrium/user/views' => '@frontend/views/user'
+                ],
+            ],
+        ],
         
         'languagesDispatcher' => [
             'class' => 'cetver\LanguagesDispatcher\Component',
@@ -351,10 +351,10 @@ return [
                     // Detects a language based on host name
                     'class' => 'cetver\LanguagesDispatcher\handlers\HostNameHandler',
                     'request' => 'request', // optional, the Request component ID.                    
-                    'hostMap' => function(){
+                    'hostMap' => function() {
                         $langs = \backend\models\Langs::find()->select('code')->column();
                         $hostMap = [];
-                        foreach ($langs as $lang){
+                        foreach ($langs as $lang) {
                             $hostMap[yii\helpers\Url::to(['/'], true) . $lang] = $lang;
                         }
                         return $hostMap;
@@ -424,7 +424,7 @@ return [
 
             ],
         ],
-		
+        
         'assetsAutoCompress' => [
             'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
             'enabled' => false,
@@ -449,15 +449,15 @@ return [
                 'maxNumberRows' => 50000,
             ],
         ],
-		
-		'devicedetect' => [
-			'class' => 'alexandernst\devicedetect\DeviceDetect'
-		],
+        
+        'devicedetect' => [
+            'class' => 'alexandernst\devicedetect\DeviceDetect'
+        ],
 
         'urlManager' => [
             /*
             'rules' => [
-				'' => 'site/index',
+                '' => 'site/index',
                 'login' => 'user/security/login',
                 'register' => 'user/registration/register',
                 'resend' => 'user/registration/resend',
@@ -516,16 +516,16 @@ return [
                 // 'catalog/<slug>' => 'catalog/index',
                 // 'catalog/<slug>/<collection>' => 'catalog/index',
                 // '<catalog:(slug)>' => 'catalog/index',
-				
-				'catalog' => 'catalog/index',
-				[
-					'pattern' => 'catalog/<collectionSlug>/<categorySlug>',
-					'route' => 'catalog',
-					'defaults' => [
-						'collectionSlug' => null, // 'aw-2022',
-						'categorySlug' => null,
-					],
-				],
+                
+                'catalog' => 'catalog/index',
+                [
+                    'pattern' => 'catalog/<collectionSlug>/<categorySlug>',
+                    'route' => 'catalog',
+                    'defaults' => [
+                        'collectionSlug' => null, // 'aw-2022',
+                        'categorySlug' => null,
+                    ],
+                ],
                 
                 'product/<slug>' => 'product/index',
                 
@@ -546,8 +546,8 @@ return [
                 // 'lookbook' => 'site/lookbook',
                 // 'about-mars' => 'site/about-mars',
                 // 'contacts/<slug>' => 'site/boutiques',
-				'contacts' => 'site/contacts',
-				'help' => 'site/help',
+                'contacts' => 'site/contacts',
+                'help' => 'site/help',
                 
                 // 'test/<slug>' => 'test/index',
                 // 'test/<slug>/<action>' => 'test/<action>',
@@ -562,14 +562,14 @@ return [
                 'news/<slug>' => 'blog/post',
                 
                 'synchro' => 'synchro/index', // !!!!!!!!!!!!!!!!!!!!!!!!!
-				
-				'facebook-conversions' => 'facebook-conversions/index',
-				
-				'sitemap' => 'site/sitemap',
+                
+                'facebook-conversions' => 'facebook-conversions/index',
+                
+                'sitemap' => 'site/sitemap',
                 
                 'curl' => 'curl/index',
-				
-				'wishlist' => 'wishlist/index',
+                
+                'wishlist' => 'wishlist/index',
 
                 // '<controller>/<action>' => '<controller>/<action>',
                 '<slug>' => 'pages/index',

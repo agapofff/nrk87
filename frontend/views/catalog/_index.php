@@ -15,17 +15,17 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
 
 
 <h1 class="display-3 acline text-center my-5">
-	<?= $h1 ?>
+    <?= $h1 ?>
 </h1>
 
 
 <?php
     foreach ($categories as $key => $category)
     {
-        if ($key == 0 || $key == 2){
+        if ($key == 0 || $key == 2) {
     ?>
             <div id="collection_<?= $key ? '2020' : '2021' ?>" class="container">
-                <div class="row mt-4 mt-lg-5 <?php if ($key == 2){?>pt-4 pt-lg-5<?php } ?>">
+                <div class="row mt-4 mt-lg-5 <?php if ($key == 2) {?>pt-4 pt-lg-5<?php } ?>">
                     <div class="col-12 text-center pt-4 pt-lg-5">
                         <h2 class="display-1 acline">
                             <?= Yii::t('front', 'Коллекция') ?> <?= $key ? '2020' : '2021' ?>
@@ -45,11 +45,11 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                 
                     <div class="row align-items-center">
                     <?php
-                        if ($images[$category->id]){
+                        if ($images[$category->id]) {
                     ?>
                         <div class="col-12 col-sm-8 p-0 position-absolute h-100 cover">
                         <?php
-                            foreach ($images[$category->id] as $image){
+                            foreach ($images[$category->id] as $image) {
                         ?>
                                 <img src="<?= $image->getUrl() ?>" alt="<?= json_decode($category->name)->{Yii::$app->language} ?> <?= Yii::$app->name ?>" loading="lazy">
                         <?php
@@ -70,23 +70,23 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                                     ]
                                 ) ?>
                             </h3>
-							
-							<?php
-								if ($category->id == 17){
-							?>
-									<h3 class="display-3 acline my-5">
-										<?= Yii::t('front', 'Coming soon...') ?>
-									</h3>
-							<?php
-								}
-							?>
+                            
+                            <?php
+                                if ($category->id == 17) {
+                            ?>
+                                    <h3 class="display-3 acline my-5">
+                                        <?= Yii::t('front', 'Coming soon...') ?>
+                                    </h3>
+                            <?php
+                                }
+                            ?>
                             
                         <?php
-                            if ($subCategories[$category->id]){
+                            if ($subCategories[$category->id]) {
                         ?>
                             <div class="row">
                             <?php
-                                foreach ($subCategories[$category->id] as $subCategory){
+                                foreach ($subCategories[$category->id] as $subCategory) {
                             ?>
                                 <div class="col-12 col-sm-6 my-2">
                                     <?= Html::a(json_decode($subCategory->name)->{Yii::$app->language}, [

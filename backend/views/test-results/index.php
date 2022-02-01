@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     ),
                     'format' => 'raw',
-                    'value' => function($model){
+                    'value' => function($model) {
                         return Html::a(
                             Html::tag('big', 
                                 Html::tag('span', '', [
@@ -111,7 +111,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'attribute' => 'name',
                     'format' => 'raw',
-                    'value' => function($model){
+                    'value' => function($model) {
                         return Html::a(json_decode($model->name)->{Yii::$app->language}, [
                             'update',
                             'id' => $model->id,
@@ -134,14 +134,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filter' => Html::activeDropDownList(
                         $searchModel,
                         'test_id',
-                        ArrayHelper::map($tests, 'id', function($test){
+                        ArrayHelper::map($tests, 'id', function($test) {
                             return json_decode($test['name'])->{Yii::$app->language};
                         }), [
                             'class' => 'form-control',
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($model) use ($tests){
+                    'value' => function($model) use ($tests) {
                         $testName = json_decode(ArrayHelper::index($tests, 'id')[$model->test_id]->name)->{Yii::$app->language};
                         return Html::a($testName, [
                             '/tests/update',
@@ -163,14 +163,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'class' => 'text-center'
                     ],
                     'buttons' => [
-                        'update' => function($url, $model){
+                        'update' => function($url, $model) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-pencil btn btn-primary btn-xs',
                                 'title' => Yii::t('back', 'Изменить'),
                                 'data-pjax' => 0,
                             ]);
                         },
-                        'delete' => function($url, $model){
+                        'delete' => function($url, $model) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',
                                 'title' => Yii::t('back', 'Удалить'),

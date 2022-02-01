@@ -7,7 +7,7 @@ $this->title = Yii::$app->name;
 $weekendItems = [];
 $adminItems = [];
  
-if (Yii::$app->user->can('/common/*')){
+if (Yii::$app->user->can('/common/*')) {
     $weekendItems[] = [
         'label' => Yii::t('back', 'Основные параметры'),
         'icon' => 'gear',
@@ -15,7 +15,7 @@ if (Yii::$app->user->can('/common/*')){
     ];
 }
 
-if (Yii::$app->user->can('/stream/*')){
+if (Yii::$app->user->can('/stream/*')) {
     $weekendItems[] = [
         'label' => Yii::t('back', 'Онлайн-трансляция'),
         'icon' => 'youtube-play',
@@ -23,7 +23,7 @@ if (Yii::$app->user->can('/stream/*')){
     ];
 }
 
-if (Yii::$app->user->can('/experts/*')){
+if (Yii::$app->user->can('/experts/*')) {
     $weekendItems[] = [
         'label' => Yii::t('back', 'Эксперты'),
         'icon' => 'trophy',
@@ -31,7 +31,7 @@ if (Yii::$app->user->can('/experts/*')){
     ];
 }
 
-if (Yii::$app->user->can('/learn/*')){
+if (Yii::$app->user->can('/learn/*')) {
     $weekendItems[] = [
         'label' => Yii::t('back', 'Вы узнаете'),
         'icon' => 'graduation-cap',
@@ -39,7 +39,7 @@ if (Yii::$app->user->can('/learn/*')){
     ];
 }
 
-if (Yii::$app->user->can('/past-events/*')){
+if (Yii::$app->user->can('/past-events/*')) {
     $weekendItems[] = [
         'label' => Yii::t('back', 'Прошлые события'),
         'icon' => 'history',
@@ -47,7 +47,7 @@ if (Yii::$app->user->can('/past-events/*')){
     ];
 }
 
-if (Yii::$app->user->can('/questions/*')){
+if (Yii::$app->user->can('/questions/*')) {
     $weekendItems[] = [
         'label' => Yii::t('back', 'Голосования'),
         'icon' => 'pie-chart',
@@ -56,14 +56,14 @@ if (Yii::$app->user->can('/questions/*')){
 }
 
 /*
-if (Yii::$app->user->can('/answers/*')){
+if (Yii::$app->user->can('/answers/*')) {
     $weekendItems[] = [
         'label' => Yii::t('back', 'Ответы'),
         'icon' => 'list-ul',
         'url' => '/answers',
     ];
 }
-if (Yii::$app->user->can('/votes/*')){
+if (Yii::$app->user->can('/votes/*')) {
     $weekendItems[] = [
         'label' => Yii::t('back', 'Голоса'),
         'icon' => 'bar-chart',
@@ -72,7 +72,7 @@ if (Yii::$app->user->can('/votes/*')){
 }
 */
 
-if (Yii::$app->user->can('/registration/*')){
+if (Yii::$app->user->can('/registration/*')) {
     $weekendItems[] = [
         'label' => Yii::t('back', 'Регистрация'),
         'icon' => 'user-plus',
@@ -81,7 +81,7 @@ if (Yii::$app->user->can('/registration/*')){
 }
 
             
-if (Yii::$app->user->can('/user/admin/*')){
+if (Yii::$app->user->can('/user/admin/*')) {
     $adminItems[] = [
         'label' => Yii::t('back', 'Пользователи'),
         'icon' => 'users',
@@ -89,7 +89,7 @@ if (Yii::$app->user->can('/user/admin/*')){
     ];
 }
 
-if (Yii::$app->user->can('/rbac/*')){
+if (Yii::$app->user->can('/rbac/*')) {
     $adminItems[] = [
         'label' => Yii::t('back', 'Контроль доступа'),
         'icon' => 'key',
@@ -97,7 +97,7 @@ if (Yii::$app->user->can('/rbac/*')){
     ];
 }
 
-if (Yii::$app->user->can('/message/*')){
+if (Yii::$app->user->can('/message/*')) {
     $adminItems[] = [
         'label' => Yii::t('back', 'Локализация'),
         'icon' => 'globe',
@@ -105,7 +105,7 @@ if (Yii::$app->user->can('/message/*')){
     ];
 }
 
-if (Yii::$app->user->can('/countries/*')){
+if (Yii::$app->user->can('/countries/*')) {
     $adminItems[] = [
         'label' => Yii::t('back', 'Страны (для формы)'),
         'icon' => 'flag',
@@ -113,7 +113,7 @@ if (Yii::$app->user->can('/countries/*')){
     ];
 }
 
-if (Yii::$app->user->can('/gii/*') && YII_ENV_DEV){
+if (Yii::$app->user->can('/gii/*') && YII_ENV_DEV) {
     $adminItems[] = [
         'label' => Yii::t('back', 'Gii'),
         'icon' => 'file-code-o',
@@ -121,7 +121,7 @@ if (Yii::$app->user->can('/gii/*') && YII_ENV_DEV){
     ];
 }
 
-if (Yii::$app->user->can('/debug/*') && YII_ENV_DEV){
+if (Yii::$app->user->can('/debug/*') && YII_ENV_DEV) {
     $adminItems[] = [
         'label' => Yii::t('back', 'Debug'),
         'icon' => 'dashboard',
@@ -129,7 +129,7 @@ if (Yii::$app->user->can('/debug/*') && YII_ENV_DEV){
     ];
 }
 
-function renderItem ($item){
+function renderItem ($item) {
     return Html::tag('div',
             Html::tag('div',
                 Html::a(
@@ -156,13 +156,13 @@ $this->registerCss('h1 { display: none; }');
 ?>
     <div class="site-index text-center">
 <?php
-    if (!empty($weekendItems)){
+    if (!empty($weekendItems)) {
 ?>
         <div class="row text-center">
 <?php
         echo Html::tag('h2', Yii::t('back', 'Weekend'));
         echo Html::tag('br');
-        foreach ($weekendItems as $k => $item){
+        foreach ($weekendItems as $k => $item) {
             echo renderItem($item);
         }
 ?>
@@ -170,14 +170,14 @@ $this->registerCss('h1 { display: none; }');
 <?php
     }
     
-    if (!empty($adminItems)){
+    if (!empty($adminItems)) {
         echo Html::tag('br');
 ?>
         <div class="row">
 <?php
         echo Html::tag('h2', Yii::t('back', 'Администрирование'));
         echo Html::tag('br');
-        foreach ($adminItems as $k => $item){
+        foreach ($adminItems as $k => $item) {
             echo renderItem($item);
         }
 ?>

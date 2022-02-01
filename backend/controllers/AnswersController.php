@@ -10,15 +10,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-
-/**
- * AnswersController implements the CRUD actions for Answers model.
- */
 class AnswersController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -31,10 +25,6 @@ class AnswersController extends Controller
         ];
     }
 
-    /**
-     * Lists all Answers models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new AnswersSearch();
@@ -48,18 +38,13 @@ class AnswersController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Answers model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Answers();
         $questions = Questions::find()->all();
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно создан'));
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка создания элемента'));
@@ -73,26 +58,19 @@ class AnswersController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing Answers model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
         $questions = Questions::find()->all();
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
             }
 
-            if ($model->saveAndExit){
+            if ($model->saveAndExit) {
                 return $this->redirect(['index']);
             }
         }
@@ -103,16 +81,9 @@ class AnswersController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Answers model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete($id)
     {
-        if ($this->findModel($id)->delete()){
+        if ($this->findModel($id)->delete()) {
             Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно удалён'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка удаления элемента'));
@@ -121,13 +92,6 @@ class AnswersController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Answers model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Answers the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Answers::findOne($id)) !== null) {

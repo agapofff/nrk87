@@ -32,7 +32,7 @@
                     Yii::$app->user->can('/message/*')
                     || Yii::$app->user->can('/message/index')
                 )
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Локализация'),
                     'icon' => 'globe',
@@ -55,7 +55,7 @@
                 Yii::$app->user->can('/shop/*')
                 || Yii::$app->user->can('/shop/category/*')
                 || Yii::$app->user->can('/shop/category/index')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Категории'),
                     'icon' => 'indent',
@@ -67,7 +67,7 @@
                 Yii::$app->user->can('/shop/*')
                 || Yii::$app->user->can('/shop/product/*')
                 || Yii::$app->user->can('/shop/product/index')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Товары'),
                     'icon' => 'shopping-basket',
@@ -81,7 +81,7 @@
                 || Yii::$app->user->can('/order/order/index')
                 // || Yii::$app->user->can('/order/operator/*')
                 // || Yii::$app->user->can('/order/operator/index')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Заказы'),
                     'icon' => 'shopping-cart',
@@ -93,7 +93,7 @@
             if (
                 Yii::$app->user->can('/stores/*')
                 || Yii::$app->user->can('/stores/index')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Магазины'),
                     'icon' => 'shopping-bag',
@@ -104,7 +104,7 @@
             if (
                 Yii::$app->user->can('/promocodes/*')
                 || Yii::$app->user->can('/promocodes/index')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Промокоды'),
                     'icon' => 'hashtag',
@@ -117,7 +117,7 @@
                 // Yii::$app->user->can('/shop/*')
                 // || Yii::$app->user->can('/order/payment/*')
                 // || Yii::$app->user->can('/order/payment/index')
-            // ){
+            // ) {
                 // $menuItems[] = [
                     // 'label' => Yii::t('back', 'Транзакции'),
                     // 'icon' => 'money',
@@ -129,7 +129,7 @@
                 Yii::$app->user->can('/shop/*')
                 || Yii::$app->user->can('/order/shipping-type/*')
                 || Yii::$app->user->can('/order/shipping-type/index')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Способы доставки'),
                     'icon' => 'truck',
@@ -141,7 +141,7 @@
                 Yii::$app->user->can('/shop/*')
                 || Yii::$app->user->can('/order/payment-type/*')
                 || Yii::$app->user->can('/order/payment-type/index')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Способы оплаты'),
                     'icon' => 'credit-card',
@@ -152,7 +152,7 @@
             if (
                 Yii::$app->user->can('/shop/*')
                 || Yii::$app->user->can('/filter/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Фильтры'),
                     'icon' => 'filter',
@@ -163,7 +163,7 @@
             if (
                 Yii::$app->user->can('/shop/*')
                 || Yii::$app->user->can('/field/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Доп.поля'),
                     'icon' => 'pencil-square-o',
@@ -173,7 +173,7 @@
             
             if (
                 Yii::$app->user->can('/order/field/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Доп.поля заказа'),
                     'icon' => 'pencil-square',
@@ -184,7 +184,7 @@
             
             if (
                 Yii::$app->user->can('/meta-tags/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Мета-теги'),
                     'icon' => 'tags',
@@ -194,7 +194,7 @@
             
             if (
                 Yii::$app->user->can('/redirects/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Редиректы'),
                     'icon' => 'share-square-o',
@@ -205,7 +205,7 @@
             if (
                 Yii::$app->user->can('/blog/*')
                 && Yii::$app->user->can('/blog-categories/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Блог'),
                     'icon' => 'bold',
@@ -226,17 +226,17 @@
             
             if (
                 Yii::$app->user->can('/pages/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Страницы'),
                     'icon' => 'files-o',
                     'url' => ['/pages'],
                 ];
             }
-			
+            
             if (
                 Yii::$app->user->can('/help/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Помощь'),
                     'icon' => 'question',
@@ -251,7 +251,7 @@
                 && Yii::$app->user->can('/test-answers/*')
                 && Yii::$app->user->can('/test-questions/*')
                 && Yii::$app->user->can('/test-passings/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Тесты'),
                     'icon' => 'check-square-o',
@@ -287,7 +287,7 @@
             
             if (
                 Yii::$app->user->can('/scan-to-win/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Розыгрыши'),
                     'icon' => 'trophy',
@@ -315,7 +315,7 @@
                 Yii::$app->user->can('/votes/*')
                 || Yii::$app->user->can('/questions/*')
                 || Yii::$app->user->can('/answers/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Голосования'),
                     'icon' => 'pie-chart',
@@ -339,7 +339,7 @@
                 ];
             }
             
-            if (Yii::$app->user->can('/mars-form/*')){
+            if (Yii::$app->user->can('/mars-form/*')) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Заявки на экспедицию'),
                     'icon' => 'rocket',
@@ -349,7 +349,7 @@
             
             if (
                 Yii::$app->user->can('/boutiques/*')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Бутики'),
                     'icon' => 'shopping-bag',
@@ -357,7 +357,7 @@
                 ];
             }            
             
-            if (Yii::$app->user->can('/user/admin/*')){
+            if (Yii::$app->user->can('/user/admin/*')) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Пользователи'),
                     'icon' => 'users',
@@ -368,7 +368,7 @@
             if (
                 Yii::$app->user->can('/langs/*')
                 || Yii::$app->user->can('/langs/index')
-            ){
+            ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Языки'),
                     'icon' => 'flag',
@@ -376,7 +376,7 @@
                 ];
             }
             
-            if (Yii::$app->user->can('/rbac/*')){
+            if (Yii::$app->user->can('/rbac/*')) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Контроль доступа'),
                     'icon' => 'key',
@@ -405,7 +405,7 @@
                 ];
             }
             
-            if (Yii::$app->user->can('/gii/*') && YII_ENV_DEV){
+            if (Yii::$app->user->can('/gii/*') && YII_ENV_DEV) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Gii'),
                     'icon' => 'file-code-o',
@@ -413,7 +413,7 @@
                 ];
             }
             
-            if (Yii::$app->user->can('/debug/*')&& YII_ENV_DEV){
+            if (Yii::$app->user->can('/debug/*')&& YII_ENV_DEV) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Debug'),
                     'icon' => 'dashboard',

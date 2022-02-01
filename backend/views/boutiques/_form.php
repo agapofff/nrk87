@@ -74,9 +74,9 @@
             ?>
             <ul class="nav nav-pills nav-justified">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                     <a href="#name_<?= $lang->code ?>_tab" aria-controls="name_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
                 </li>
         <?php
@@ -85,9 +85,9 @@
             </ul>
             <div class="tab-content">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
                     <?= Html::input(
                             'text',
                             'name_'.$lang->code,
@@ -122,9 +122,9 @@
             ?>
             <ul class="nav nav-pills nav-justified">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                     <a href="#description_<?= $lang->code ?>_tab" aria-controls="description_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
                 </li>
         <?php
@@ -133,9 +133,9 @@
             </ul>
             <div class="tab-content">
         <?php
-            foreach ($languages as $key => $lang){
+            foreach ($languages as $key => $lang) {
         ?>
-                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="description_<?= $lang->code ?>_tab">
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="description_<?= $lang->code ?>_tab">
                     <?= \yii\imperavi\Widget::widget([
                             'id' => 'boutiques_description_'.$lang->code,
                             'value' => json_decode($model->description)->{$lang->code},
@@ -233,7 +233,7 @@
                     'class' => 'btn btn-success btn-lg'
                 ]) ?>
                 
-                <?php if ($model->id){ ?>
+                <?php if ($model->id) { ?>
                     <?= Html::submitButton(Html::tag('span', '', [
                         'class' => 'glyphicon glyphicon-floppy-remove'
                     ]) . '&nbsp;' . Yii::t('back', 'Сохранить и закрыть'), [
@@ -244,23 +244,23 @@
         
 
         <?php ActiveForm::end(); ?>
-		
+        
         <?php // формируем изображения заранее, до вывода на фронте ?>
         <div class="hidden">
         <?php
             $images = $model->getImages();
-            if ($images){
-				foreach ($images as $image){
+            if ($images) {
+                foreach ($images as $image) {
         ?>
-					<img src="<?= $image->getUrl('500x') ?>">
-					<img src="<?= $image->getUrl('400x300') ?>">
-					<img src="<?= $image->getUrl('600x400') ?>">
-					<img src="<?= $image->getUrl('1500x') ?>">
+                    <img src="<?= $image->getUrl('500x') ?>">
+                    <img src="<?= $image->getUrl('400x300') ?>">
+                    <img src="<?= $image->getUrl('600x400') ?>">
+                    <img src="<?= $image->getUrl('1500x') ?>">
         <?php
-				}
+                }
             }
         ?>
-        </div>		
+        </div>        
 
     </div>
 

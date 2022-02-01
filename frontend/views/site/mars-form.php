@@ -1,9 +1,9 @@
 <?php
-	use yii\helpers\Html;
-	use yii\helpers\Url;
-	use yii\helpers\ArrayHelper;
-	use yii\widgets\ActiveForm;
-	use yii\widgets\Pjax;
+    use yii\helpers\Html;
+    use yii\helpers\Url;
+    use yii\helpers\ArrayHelper;
+    use yii\widgets\ActiveForm;
+    use yii\widgets\Pjax;
     use yii\web\View;
     
     $title = Yii::t('front', 'Возможно, твое предназначение находится на другой планете.');
@@ -62,7 +62,7 @@
     <div class="row justify-content-center my-5">
     
 <?php
-    if ($sent){
+    if ($sent) {
 ?>
 
         <div class="col-12 text-center">
@@ -71,12 +71,12 @@
                 <?= Yii::t('front', 'Ваша заявка на участие в экспедиции на Марс была успешно отправлена') ?>
             </p>
         
-			<?= Html::a(Html::tag('span') . Yii::t('front', 'Вернуться на Главную'), '/' . Yii::$app->language, [
-					'class' => 'btn btn-nrk my-2',
-					'title' => Yii::t('front', 'Вернуться на Главную'),
-					'data-pjax' => 0
-				])
-			?>
+            <?= Html::a(Html::tag('span') . Yii::t('front', 'Вернуться на Главную'), '/' . Yii::$app->language, [
+                    'class' => 'btn btn-nrk my-2',
+                    'title' => Yii::t('front', 'Вернуться на Главную'),
+                    'data-pjax' => 0
+                ])
+            ?>
         
         </div>
     
@@ -120,7 +120,7 @@
                                     0 => Yii::t('front', 'Женский'),
                                 ],
                                 [
-                                    'item' => function($index, $label, $name, $checked, $value) use ($model){
+                                    'item' => function($index, $label, $name, $checked, $value) use ($model) {
                                         return '
                                             <div class="custom-control custom-radio d-inline mr-4">
                                                 <input type="radio" name="' . $name . '" class="custom-control-input" ' . ($value == $model->gender ? 'checked' : '') . ' id="' . $name . $value . '" value="' . $value . '">

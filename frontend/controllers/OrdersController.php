@@ -22,7 +22,7 @@ class OrdersController extends \yii\web\Controller
     
     public function actionIndex()
     {
-        if (Yii::$app->user->isGuest){
+        if (Yii::$app->user->isGuest) {
             return $this->redirect(['/login']);
         }
         
@@ -53,8 +53,8 @@ class OrdersController extends \yii\web\Controller
             ])
             ->one();
         
-        if ($order){
-            if ($order->user_id != Yii::$app->user->id){
+        if ($order) {
+            if ($order->user_id != Yii::$app->user->id) {
                 throw new ForbiddenHttpException(Yii::t('front', 'У Вас нет доступа к этой странице'));
             }
             
@@ -87,12 +87,12 @@ class OrdersController extends \yii\web\Controller
             $sizes = [];
             $lang = Yii::$app->language;
             
-            if ($elements){
-                foreach ($elements as $key => $element){
+            if ($elements) {
+                foreach ($elements as $key => $element) {
                     $modification = Modification::findOne([
                         'sku' => $element->description
                     ]);
-                    if ($modification){
+                    if ($modification) {
                         $sizes[$key] = explode('|', $modification->name)[0];
                         $lang = $modification->lang;
                     }

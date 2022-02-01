@@ -18,10 +18,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="help-create">
             <br>
             <?= $this->render('_form', [
-					'model' => $model,
-					'languages' => $languages,
-				])
-			?>
+                    'model' => $model,
+                    'languages' => $languages,
+                ])
+            ?>
             <br>
         </div>
     </div>

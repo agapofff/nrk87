@@ -43,7 +43,7 @@ class ScanToWinCodesController extends Controller
         
         $scanToWinCodes = new ScanToWinCodes();
         $codes = ScanToWinCodes::find()->asArray()->all();
-        foreach ($codes as $key => $code){
+        foreach ($codes as $key => $code) {
             $codes[$key]['code'] = $scanToWinCodes->getCode($code['id']);
         }
 
@@ -81,19 +81,19 @@ class ScanToWinCodesController extends Controller
         
         $users = User::find()->asArray()->all();
 
-        if ($model->load(Yii::$app->request->post())){
-            if ($checkOrder = $model->checkOrder($model->order_id)){
+        if ($model->load(Yii::$app->request->post())) {
+            if ($checkOrder = $model->checkOrder($model->order_id)) {
                 $checkOrder = json_decode($checkOrder);
-                if ($checkOrder->status == 'success'){
+                if ($checkOrder->status == 'success') {
                     $quantity = 0;
                     $response = $checkOrder->message;
-                    if (isset($response->content)){
+                    if (isset($response->content)) {
                         foreach ($response->content as $content) {
                             $quantity += $content->quantity;
                         }
                     }
 
-                    for ($i = 0; $i < $quantity; $i++){
+                    for ($i = 0; $i < $quantity; $i++) {
                         $code = new ScanToWinCodes();
                         $code->user_id = Yii::$app->user->id;
                         $code->status = 1;
@@ -106,7 +106,7 @@ class ScanToWinCodesController extends Controller
                     return $this->redirect(['index']);
                 } else {
                     Yii::$app->session->setFlash('error', $checkOrder->message);
-                    if ($checkOrder->code == 2){
+                    if ($checkOrder->code == 2) {
                         $orderNotFound = true;
                     }
                 }
@@ -135,13 +135,13 @@ class ScanToWinCodesController extends Controller
         $users = User::find()->asArray()->all();
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
             }
 
-            if ($model->saveAndExit){
+            if ($model->saveAndExit) {
                 return $this->redirect(['index']);
             }
         }
@@ -161,7 +161,7 @@ class ScanToWinCodesController extends Controller
      */
     public function actionDelete($id)
     {
-        if ($this->findModel($id)->delete()){
+        if ($this->findModel($id)->delete()) {
             Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно удалён'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка удаления элемента'));
@@ -192,13 +192,13 @@ class ScanToWinCodesController extends Controller
         $model = $this->findModel($id);
         $model->status = $model->status ? 0 : 1;
         
-        if ($model->save()){
+        if ($model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
 
-        if (Yii::$app->request->isAjax){
+        if (Yii::$app->request->isAjax) {
             $this->actionIndex();
         } else {
             return $this->redirect(['index']);

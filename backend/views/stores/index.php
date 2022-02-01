@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="stores-index">
 
     <?php
-        if (Yii::$app->user->can('/stores/create')){
+        if (Yii::$app->user->can('/stores/create')) {
             echo Html::a(Html::tag('span', '', [
                         'class' => 'glyphicon glyphicon-plus'
                     ]) . '&nbsp;' . Yii::t('back', 'Создать'), ['create'], [
@@ -62,8 +62,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'prompt' => Yii::t('back', 'Все'),
                     ]
                 ),
-                'value' => function($data){
-                    if (Yii::$app->user->can('/stores/active')){
+                'value' => function($data) {
+                    if (Yii::$app->user->can('/stores/active')) {
                         return Html::a(
                             Html::tag('big', 
                                 Html::tag('span', '', [
@@ -104,8 +104,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'name',
                 'format' => 'raw',
-                'value' => function($model){
-                    if (Yii::$app->user->can('/stores/update')){
+                'value' => function($model) {
+                    if (Yii::$app->user->can('/stores/update')) {
                         return Html::a($model->name, [
                             'update',
                             'id' => $model->id
@@ -137,7 +137,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'prompt' => Yii::t('back', 'Все'),
                     ]
                 ),
-                'value' => function($model){
+                'value' => function($model) {
                     return strtoupper($model->lang);
                 },
                 'headerOptions' => [
@@ -160,7 +160,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'prompt' => Yii::t('back', 'Все'),
                     ]
                 ),
-                'value' => function($data){
+                'value' => function($data) {
                     return ArrayHelper::getValue(Yii::$app->params['store_types'], $data->type);
                 },
                 'headerOptions' => [
@@ -207,8 +207,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'text-center'
                 ],
                 'buttons' => [
-                    'update' => function($url, $model){
-                        if (Yii::$app->user->can('/stores/update')){
+                    'update' => function($url, $model) {
+                        if (Yii::$app->user->can('/stores/update')) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-pencil btn btn-primary btn-xs',
                                 'title' => Yii::t('back', 'Изменить'),
@@ -216,8 +216,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]);
                         }
                     },
-                    'delete' => function($url, $model){
-                        if (Yii::$app->user->can('/stores/delete')){
+                    'delete' => function($url, $model) {
+                        if (Yii::$app->user->can('/stores/delete')) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',
                                 'title' => Yii::t('back', 'Удалить'),

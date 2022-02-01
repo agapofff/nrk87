@@ -15,9 +15,9 @@ use Yii;
  */
 class Help extends \yii\db\ActiveRecord
 {
-	
-	public $saveAndExit;
-	
+    
+    public $saveAndExit;
+    
     /**
      * {@inheritdoc}
      */

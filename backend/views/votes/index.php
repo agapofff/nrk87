@@ -11,7 +11,7 @@ use kartik\alert\AlertBlock;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = !empty($results) ? Yii::t('back', 'Результаты голосования') : Yii::t('back', 'Голоса');
-if (!empty($results)){
+if (!empty($results)) {
     $this->params['breadcrumbs'][] = ['label' => Yii::t('back', 'Вопросы'), 'url' => ['/questions']];
 }
 $this->params['breadcrumbs'][] = $this->title;
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="votes-index">
 
-    <?php if (empty($results)){ ?>
+    <?php if (empty($results)) { ?>
         <?= Html::a(Html::tag('span', '', [
             'class' => 'glyphicon glyphicon-plus'
         ]) . '&nbsp;' . Yii::t('back', 'Создать'), ['create'], [
@@ -35,12 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     <?php } ?>
     
-<?php if (!empty($results)){ ?>
+<?php if (!empty($results)) { ?>
     <div id="vote-results">
         <br>
     <?php
         $sum = array_sum(ArrayHelper::getColumn($results, 'votes'));
-        foreach ($results as $result){
+        foreach ($results as $result) {
             $percent = ($result['votes'] / $sum) * 100;
     ?>
         <div class="row">
@@ -128,14 +128,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'text-center'
                 ],
                 'buttons' => [
-                    'update' => function($url, $model){
+                    'update' => function($url, $model) {
                         return Html::a('', $url, [
                             'class' => 'glyphicon glyphicon-pencil btn btn-primary btn-xs',
                             'title' => Yii::t('back', 'Изменить'),
                             'data-pjax' => 0,
                         ]);
                     },
-                    'delete' => function($url, $model){
+                    'delete' => function($url, $model) {
                         return Html::a('', $url, [
                             'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',
                             'title' => Yii::t('back', 'Удалить'),

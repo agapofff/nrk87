@@ -90,74 +90,74 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-		$products = Product::find()
-			->where([
-				'is_promo' => 1,
+        $products = Product::find()
+            ->where([
+                'is_promo' => 1,
                 'active' => 1
-			])
-			->orderBy(new Expression('rand()'))
-			->all();
-			
-		$modifications = (new Query())
-			->select([
-				'product_id' => 'm.product_id',
-				'price' => 'p.price',
-				'price_old' => 'p.price_old',
-			])
-			->from([
-				'm' => '{{%shop_product_modification}}',
-				'p' => '{{%shop_price}}',
-			])
-			->where([
-				'm.available' => 1,
-			])
-			->andWhere(['like', 'm.name', Yii::$app->language])
-			->andWhere(['like', 'm.name', Yii::$app->params['store_types'][Yii::$app->params['store_type']]])
-			->andWhere('m.id = p.item_id')
-			->groupBy([
-				'product_id',
-				'price',
-				'price_old'
-			])
-			->all();
-			
-		Yii::$app->params['currency'] = \backend\models\Langs::findOne([
-			'code' => Yii::$app->language
-		])->currency;
-	
-		$prices = ArrayHelper::map($modifications, 'product_id', 'price');
-		$pricesOld = ArrayHelper::map($modifications, 'product_id', 'price_old');
-			
+            ])
+            ->orderBy(new Expression('rand()'))
+            ->all();
+            
+        $modifications = (new Query())
+            ->select([
+                'product_id' => 'm.product_id',
+                'price' => 'p.price',
+                'price_old' => 'p.price_old',
+            ])
+            ->from([
+                'm' => '{{%shop_product_modification}}',
+                'p' => '{{%shop_price}}',
+            ])
+            ->where([
+                'm.available' => 1,
+            ])
+            ->andWhere(['like', 'm.name', Yii::$app->language])
+            ->andWhere(['like', 'm.name', Yii::$app->params['store_types'][Yii::$app->params['store_type']]])
+            ->andWhere('m.id = p.item_id')
+            ->groupBy([
+                'product_id',
+                'price',
+                'price_old'
+            ])
+            ->all();
+            
+        Yii::$app->params['currency'] = \backend\models\Langs::findOne([
+            'code' => Yii::$app->language
+        ])->currency;
+    
+        $prices = ArrayHelper::map($modifications, 'product_id', 'price');
+        $pricesOld = ArrayHelper::map($modifications, 'product_id', 'price_old');
+            
         return $this->render('index', [
-			'products' => $products,
-			'prices' => $prices,
-			'prices_old' => $pricesOld,
-		]);
+            'products' => $products,
+            'prices' => $prices,
+            'prices_old' => $pricesOld,
+        ]);
         
     }
-	
-	
-	public function actionContacts()
-	{
+    
+    
+    public function actionContacts()
+    {
         return $this->render('contacts');
-	}
-	
-	
-	public function actionHelp()
-	{
-		$models = Help::find()
-			->where([
-				'active' => 1
-			])
-			->orderBy([
-				'ordering' => SORT_ASC
-			])
-			->all();
-		
-		return $this->render('help', [
-			'models' => $models,
-		]);
-	}
+    }
+    
+    
+    public function actionHelp()
+    {
+        $models = Help::find()
+            ->where([
+                'active' => 1
+            ])
+            ->orderBy([
+                'ordering' => SORT_ASC
+            ])
+            ->all();
+        
+        return $this->render('help', [
+            'models' => $models,
+        ]);
+    }
     
     
     public function actionGps()
@@ -202,12 +202,12 @@ class SiteController extends Controller
             'updated_at' => $now,
         ];
 
-        if ($model->save()){
-			$results = json_encode($model->getResults($question_id));
+        if ($model->save()) {
+            $results = json_encode($model->getResults($question_id));
             $response = [
                 'status' => 'success',
                 'message' => Yii::t('front', 'Спасибо, Ваш голос принят'),
-				'script' => 'showVoteResults(' . $results . ');',
+                'script' => 'showVoteResults(' . $results . ');',
             ];
         } else {
             $response = [
@@ -222,13 +222,13 @@ class SiteController extends Controller
     
     public function actionFashionShow()
     {
-        if (Yii::$app->request->isPost){
+        if (Yii::$app->request->isPost) {
             $profile = Profile::findOne([
                 'user_id' => Yii::$app->user->id
             ]);
             $profile->lottery = 'on';
             
-            if ($profile->save()){
+            if ($profile->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('front', 'Вы успешно зарегистрировались в конкурсе на посещение показа'));
             } else {
                 Yii::$app->session->setFlash('error', Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже'));
@@ -250,7 +250,7 @@ class SiteController extends Controller
             ])
             ->one();
         $sent = false;
-        if ($model){
+        if ($model) {
             $sent = true;
         } else {
             $model = new MarsForm();
@@ -260,7 +260,7 @@ class SiteController extends Controller
             $model->created_at = $model->updated_at = date('Y-m-d H:i:s');
             $model->gender = 1;
             
-            if (!Yii::$app->user->isGuest){
+            if (!Yii::$app->user->isGuest) {
                 $profile = Profile::findOne([
                     'user_id' => Yii::$app->user->id
                 ]);
@@ -270,9 +270,9 @@ class SiteController extends Controller
                 $model->user_id = Yii::$app->user->id;
             }
             
-            if ($model->load(Yii::$app->request->post())){            
+            if ($model->load(Yii::$app->request->post())) {            
                 if ($model->save())
-				{
+                {
                     $mail = Yii::$app->mailer->compose('@common/mail/registrationToMars', [
                             'model' => $model,   
                         ])
@@ -283,7 +283,7 @@ class SiteController extends Controller
                         ->setReplyTo(Yii::$app->params['senderEmail'])
                         ->setSubject(Yii::t('front', 'Заявка на участие в экспедиции') . ' - ' . Yii::$app->name)
                         ->send();
-						
+                        
                     $mail = Yii::$app->mailer->compose()
                         ->setFrom([
                             Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']
@@ -338,53 +338,53 @@ class SiteController extends Controller
     {
         return $this->render('about-mars');
     }
-	
-	
-	public function actionLookbook()
-	{
-		$images = [
-			'DSC06241',
-			'DSC06129',
-			'DSC06141',
-			'DSC06169',
-			'DSC06303',
-			'DSC06235',
-			'DSC06151',
-			'DSC06361',
-			'DSC06112',
-			'DSC06322',
-			'DSC06121',
-			'DSC06138',
-			'DSC06428',
-			'DSC06274',
-			'DSC06178',
-			'DSC06102',
-			'DSC06373',
-			'DSC06397',
-			'DSC06436',
-			'DSC06312',
-			'DSC06183',
-			'DSC05999-2',
-			'DSC06017',
-			'DSC05967',
-			'DSC05987',
-			'DSC05946',
-			'DSC06080',
-			'DSC05957',
-			'DSC06003',
-			'DSC05979',
-			'DSC06023',
-			'DSC06067',
-			'DSC06009',
-			'DSC06061',
-			'DSC05951',
-			'DSC06016',
-		];
-		
-		return $this->render('lookbook', [
-			'images' => $images
-		]);
-	}
+    
+    
+    public function actionLookbook()
+    {
+        $images = [
+            'DSC06241',
+            'DSC06129',
+            'DSC06141',
+            'DSC06169',
+            'DSC06303',
+            'DSC06235',
+            'DSC06151',
+            'DSC06361',
+            'DSC06112',
+            'DSC06322',
+            'DSC06121',
+            'DSC06138',
+            'DSC06428',
+            'DSC06274',
+            'DSC06178',
+            'DSC06102',
+            'DSC06373',
+            'DSC06397',
+            'DSC06436',
+            'DSC06312',
+            'DSC06183',
+            'DSC05999-2',
+            'DSC06017',
+            'DSC05967',
+            'DSC05987',
+            'DSC05946',
+            'DSC06080',
+            'DSC05957',
+            'DSC06003',
+            'DSC05979',
+            'DSC06023',
+            'DSC06067',
+            'DSC06009',
+            'DSC06061',
+            'DSC05951',
+            'DSC06016',
+        ];
+        
+        return $this->render('lookbook', [
+            'images' => $images
+        ]);
+    }
     
     
     
@@ -394,13 +394,13 @@ class SiteController extends Controller
         return true;
     }
     
-	
-	public function actionSitemap()
-	{
-		$categories = \dvizh\shop\models\Category::buildTree(true);
-		return $this->render('sitemap', [
-			'categories' => $categories,
-		]);
-	}
+    
+    public function actionSitemap()
+    {
+        $categories = \dvizh\shop\models\Category::buildTree(true);
+        return $this->render('sitemap', [
+            'categories' => $categories,
+        ]);
+    }
 
 }

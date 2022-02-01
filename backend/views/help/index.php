@@ -35,45 +35,45 @@ $this->params['breadcrumbs'][] = $this->title;
             ]);
         ?>
 
-		<?= GridView::widget([
-			'dataProvider' => $dataProvider,
-			'filterModel' => $searchModel,
-			'summary' => false,
-			'tableOptions' => [
-				'class' => 'table table-striped table-bordered' . (Yii::$app->request->get('sort') ? ' sortable' : '') . (substr(Yii::$app->request->get('sort'), 0, 1) == '-' ? ' desc' : ''),
-			],
-			'rowOptions' => function($model){
-				return [
-					'data-id' => $model->id,
-					'data-url' => Url::to([
-						'ordering',
-						'id' => $model->id
-					]),
-				];
-			},
-			'columns' => [
-				// ['class' => 'yii\grid\SerialColumn'],
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'summary' => false,
+            'tableOptions' => [
+                'class' => 'table table-striped table-bordered' . (Yii::$app->request->get('sort') ? ' sortable' : '') . (substr(Yii::$app->request->get('sort'), 0, 1) == '-' ? ' desc' : ''),
+            ],
+            'rowOptions' => function($model) {
+                return [
+                    'data-id' => $model->id,
+                    'data-url' => Url::to([
+                        'ordering',
+                        'id' => $model->id
+                    ]),
+                ];
+            },
+            'columns' => [
+                // ['class' => 'yii\grid\SerialColumn'],
 
-				// 'id',
-				
-				[
-					'attribute' => 'ordering',
-					'format' => 'html',
-					'filter' => false,
-					'value' => function($model){
-						return Html::tag('i', '', [
-							'class' => 'fa fa-sort ' . (Yii::$app->request->get('sort') ? 'text-info sort-handler' : 'text-muted')
-						]);
-					},
+                // 'id',
+                
+                [
+                    'attribute' => 'ordering',
+                    'format' => 'html',
+                    'filter' => false,
+                    'value' => function($model) {
+                        return Html::tag('i', '', [
+                            'class' => 'fa fa-sort ' . (Yii::$app->request->get('sort') ? 'text-info sort-handler' : 'text-muted')
+                        ]);
+                    },
                     'headerOptions' => [
                         'class' => 'text-center',
-						'style' => 'width: 50px;',
+                        'style' => 'width: 50px;',
                     ],
                     'contentOptions' => [
                         'class' => 'text-center'
                     ],
-				],
-				
+                ],
+                
                 [
                     'attribute' => 'active',
                     'format' => 'html',
@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($data){
+                    'value' => function($data) {
                         return Html::a(
                             Html::tag('big', 
                                 Html::tag('span', '', [
@@ -109,21 +109,21 @@ $this->params['breadcrumbs'][] = $this->title;
                         'class' => 'text-center'
                     ],
                 ],
-				
+                
                 [
                     'attribute' => 'name',
-					'format' => 'raw',
-					'value' => function($model){
-						return ;
-					},
-					'value' => function($model){
-						return Html::a(json_decode($model->name)->{Yii::$app->language}, [
-							'update',
-							'id' => $model->id
-						], [
-							'data-pjax' => 0,
-						]);
-					},
+                    'format' => 'raw',
+                    'value' => function($model) {
+                        return ;
+                    },
+                    'value' => function($model) {
+                        return Html::a(json_decode($model->name)->{Yii::$app->language}, [
+                            'update',
+                            'id' => $model->id
+                        ], [
+                            'data-pjax' => 0,
+                        ]);
+                    },
                     'headerOptions' => [
                         'class' => 'text-center'
                     ],
@@ -131,11 +131,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'class' => 'text-center'
                     ],
                 ],
-				
-				// 'content:ntext',
-				// 'category',
-				// 'active',
-				
+                
+                // 'content:ntext',
+                // 'category',
+                // 'active',
+                
 
 
                 [
@@ -145,14 +145,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'class' => 'text-center'
                     ],
                     'buttons' => [
-                        'update' => function($url, $model){
+                        'update' => function($url, $model) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-pencil btn btn-primary btn-xs',
                                 'title' => Yii::t('back', 'Изменить'),
                                 'data-pjax' => 0,
                             ]);
                         },
-                        'delete' => function($url, $model){
+                        'delete' => function($url, $model) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',
                                 'title' => Yii::t('back', 'Удалить'),
@@ -165,9 +165,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                     ]
                 ],
-			],
-		]);
-	?>
+            ],
+        ]);
+    ?>
 
     <?php Pjax::end(); ?>
 

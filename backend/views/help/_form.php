@@ -37,8 +37,8 @@ use kartik\alert\AlertBlock;
                     ],
                 ]);
         ?>
-		
-		
+        
+        
         <?= $form
                 ->field($model, 'name', [
                     'labelOptions' => [
@@ -51,9 +51,9 @@ use kartik\alert\AlertBlock;
         ?>
         <ul class="nav nav-pills nav-justified">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+            <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                 <a href="#name_<?= $lang->code ?>_tab" aria-controls="name_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
             </li>
     <?php
@@ -62,9 +62,9 @@ use kartik\alert\AlertBlock;
         </ul>
         <div class="tab-content">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
+            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
                 <?= Html::input(
                         'text',
                         'name_'.$lang->code,
@@ -84,7 +84,7 @@ use kartik\alert\AlertBlock;
         }
     ?>
         </div>
-		
+        
 
         <br>
         <?= $form
@@ -99,9 +99,9 @@ use kartik\alert\AlertBlock;
         ?>
         <ul class="nav nav-pills nav-justified">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+            <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                 <a href="#content_<?= $lang->code ?>_tab" aria-controls="content_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
             </li>
     <?php
@@ -110,9 +110,9 @@ use kartik\alert\AlertBlock;
         </ul>
         <div class="tab-content">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="content_<?= $lang->code ?>_tab">
+            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="content_<?= $lang->code ?>_tab">
                 <?= \vova07\imperavi\Widget::widget([
                         'id' => 'help_content_'.$lang->code,
                         'name' => 'help_content_'.$lang->code,
@@ -123,14 +123,14 @@ use kartik\alert\AlertBlock;
                             'maxHeight' => 600,
                             'imageUpload' => Url::toRoute(['/site/image-upload']),
                             'imageDelete' => Url::toRoute(['/site/image-delete']),
-							'imageManagerJson' => Url::to(['/site/images-get']),
-							'plugins' => [
-								'fullscreen',
-							],
+                            'imageManagerJson' => Url::to(['/site/images-get']),
+                            'plugins' => [
+                                'fullscreen',
+                            ],
                         ],
-						'plugins' => [
-							'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
-						],
+                        'plugins' => [
+                            'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
+                        ],
                         'options' => [
                             'class' => 'json_field',
                             'data' => [
@@ -147,12 +147,12 @@ use kartik\alert\AlertBlock;
         </div>
 
 
-		<?= $form
-				->field($model, 'ordering')
-				->hiddenInput()
-				->label(false)
-		?>
-		
+        <?= $form
+                ->field($model, 'ordering')
+                ->hiddenInput()
+                ->label(false)
+        ?>
+        
         <?= $form
                 ->field($model, 'saveAndExit')
                 ->hiddenInput(['class' => 'saveAndExit'])
@@ -167,7 +167,7 @@ use kartik\alert\AlertBlock;
                 'class' => 'btn btn-success btn-lg'
             ]) ?>
             
-            <?php if ($model->id){ ?>
+            <?php if ($model->id) { ?>
                 <?= Html::submitButton(Html::tag('span', '', [
                     'class' => 'glyphicon glyphicon-floppy-remove'
                 ]) . '&nbsp;' . Yii::t('back', 'Сохранить и закрыть'), [

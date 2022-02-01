@@ -44,7 +44,7 @@ class CatalogController extends \yii\web\Controller
         // $subCategories = [];
         // $images = [];
             
-        // if ($categories){
+        // if ($categories) {
             // foreach ($categories as $category)
             // {
                 // $subCategories[$category->id] = Category::find()
@@ -63,176 +63,176 @@ class CatalogController extends \yii\web\Controller
             // 'images' => $images,
         // ]);
     // }
-	
-	public function actionIndex($collectionSlug = null, $categorySlug = null)
-	{
-		$collIDs = [
-			16, // 2021
-			17, // 2021 дети
-			9, // 2020
-		];
-		
-		if ($collectionSlug && !in_array(Category::findOne(['slug' => $collectionSlug])->id, $collIDs)){
-			$categorySlug = $collectionSlug;
-			$collectionSlug = null;
-		}
-		
-		$collectionsIDs = $collectionSlug ? [Category::findOne(['slug' => $collectionSlug])->id] : $collIDs;
-		
-		$category = $categorySlug ? Category::findOne(['slug' => $categorySlug]) : null;
+    
+    public function actionIndex($collectionSlug = null, $categorySlug = null)
+    {
+        $collIDs = [
+            16, // 2021
+            17, // 2021 дети
+            9, // 2020
+        ];
+        
+        if ($collectionSlug && !in_array(Category::findOne(['slug' => $collectionSlug])->id, $collIDs)) {
+            $categorySlug = $collectionSlug;
+            $collectionSlug = null;
+        }
+        
+        $collectionsIDs = $collectionSlug ? [Category::findOne(['slug' => $collectionSlug])->id] : $collIDs;
+        
+        $category = $categorySlug ? Category::findOne(['slug' => $categorySlug]) : null;
 
-		$modifications = (new Query())
-			->select([
-				'product_id' => 'm.product_id',
-				'price' => 'p.price',
-				'price_old' => 'p.price_old',
-			])
-			->from([
-				'm' => '{{%shop_product_modification}}',
-				'p' => '{{%shop_price}}',
-			])
-			->where([
-				'm.available' => 1,
-				// 'm.lang' => Yii::$app->language,
-				// 'm.store_type' => Yii::$app->params['store_type'],
-			])
-			->andWhere(['like', 'm.name', Yii::$app->language])
-			->andWhere(['like', 'm.name', Yii::$app->params['store_types'][Yii::$app->params['store_type']]])
-			->andWhere('m.id = p.item_id')
-			->groupBy([
-				'product_id',
-				'price',
-				'price_old'
-			])
-			->all();
-	
-		$prices = ArrayHelper::map($modifications, 'product_id', 'price');
-		$pricesOld = ArrayHelper::map($modifications, 'product_id', 'price_old');
+        $modifications = (new Query())
+            ->select([
+                'product_id' => 'm.product_id',
+                'price' => 'p.price',
+                'price_old' => 'p.price_old',
+            ])
+            ->from([
+                'm' => '{{%shop_product_modification}}',
+                'p' => '{{%shop_price}}',
+            ])
+            ->where([
+                'm.available' => 1,
+                // 'm.lang' => Yii::$app->language,
+                // 'm.store_type' => Yii::$app->params['store_type'],
+            ])
+            ->andWhere(['like', 'm.name', Yii::$app->language])
+            ->andWhere(['like', 'm.name', Yii::$app->params['store_types'][Yii::$app->params['store_type']]])
+            ->andWhere('m.id = p.item_id')
+            ->groupBy([
+                'product_id',
+                'price',
+                'price_old'
+            ])
+            ->all();
+    
+        $prices = ArrayHelper::map($modifications, 'product_id', 'price');
+        $pricesOld = ArrayHelper::map($modifications, 'product_id', 'price_old');
 
-		$collections = [];
-		
-		foreach ($collectionsIDs as $collectionID)
-		{
-			$collectionCategories = [];
-			$collectionProductsIDs = [];
-			$products = null;
-			
-			$collection = Category::findOne([
-				'id' => $collectionID,
-				'active' => 1
-			]);
-			
-			if ($collection){
-			
-				$collectionProducts = $collection->products;
-				
-				if ($collectionProducts){
-					$collectionCategoriesIDs = [];
-					
-					foreach ($collectionProducts as $collectionProduct)
-					{
-						$collectionProductCategories = $collectionProduct->categories;
-						if ($collectionProductCategories){
-							foreach ($collectionProductCategories as $collectionProductCategory)
-							{
-								if ($collectionProductCategory->id != $collectionID){
-									$collectionCategoriesIDs[] = $collectionProductCategory->id;
-								}
-								if (!$categorySlug || $collectionProductCategory->slug == $categorySlug){
-									$collectionProductsIDs[] = $collectionProduct->id;
-								}
-							}
-						}
-					}
-					
-					$collectionCategoriesIDs = array_unique($collectionCategoriesIDs);
+        $collections = [];
+        
+        foreach ($collectionsIDs as $collectionID)
+        {
+            $collectionCategories = [];
+            $collectionProductsIDs = [];
+            $products = null;
+            
+            $collection = Category::findOne([
+                'id' => $collectionID,
+                'active' => 1
+            ]);
+            
+            if ($collection) {
+            
+                $collectionProducts = $collection->products;
+                
+                if ($collectionProducts) {
+                    $collectionCategoriesIDs = [];
+                    
+                    foreach ($collectionProducts as $collectionProduct)
+                    {
+                        $collectionProductCategories = $collectionProduct->categories;
+                        if ($collectionProductCategories) {
+                            foreach ($collectionProductCategories as $collectionProductCategory)
+                            {
+                                if ($collectionProductCategory->id != $collectionID) {
+                                    $collectionCategoriesIDs[] = $collectionProductCategory->id;
+                                }
+                                if (!$categorySlug || $collectionProductCategory->slug == $categorySlug) {
+                                    $collectionProductsIDs[] = $collectionProduct->id;
+                                }
+                            }
+                        }
+                    }
+                    
+                    $collectionCategoriesIDs = array_unique($collectionCategoriesIDs);
 
-					$collectionCategories = Category::find()
-						->where([
-							'id' => array_unique($collectionCategoriesIDs),
-							'active' => 1,
-						])
-						->orderBy([
-							'sort' => SORT_ASC
-						])
-						->all();
-						
-					$products = Product::findAll([
-						'active' => 1,
-						'id' => $collectionProductsIDs
-					]);
-					
-				}
-				
-				// if ($collection->id == 17 || $collection->id == 9){
-					// $images = $collection->getImages();
-				// } else {
-					// if ($categorySlug){
-						// $images = $category->getImages();
-					// } else {
-						// $images = $collection->getImages();
-					// }
-				// }
-				
-				if (!$categorySlug || ($categorySlug && $products)){
-					$collections[$collectionID] = [
-						'collection' => $collection,
-						'subCategories' => $collectionCategories,
-						'products' => $products,
-						// 'images' => $images,
-					];
-				}
-			}
-		}
-		
-		Yii::$app->params['currency'] = \backend\models\Langs::findOne([
-			'code' => Yii::$app->language
-		])->currency;
+                    $collectionCategories = Category::find()
+                        ->where([
+                            'id' => array_unique($collectionCategoriesIDs),
+                            'active' => 1,
+                        ])
+                        ->orderBy([
+                            'sort' => SORT_ASC
+                        ])
+                        ->all();
+                        
+                    $products = Product::findAll([
+                        'active' => 1,
+                        'id' => $collectionProductsIDs
+                    ]);
+                    
+                }
+                
+                // if ($collection->id == 17 || $collection->id == 9) {
+                    // $images = $collection->getImages();
+                // } else {
+                    // if ($categorySlug) {
+                        // $images = $category->getImages();
+                    // } else {
+                        // $images = $collection->getImages();
+                    // }
+                // }
+                
+                if (!$categorySlug || ($categorySlug && $products)) {
+                    $collections[$collectionID] = [
+                        'collection' => $collection,
+                        'subCategories' => $collectionCategories,
+                        'products' => $products,
+                        // 'images' => $images,
+                    ];
+                }
+            }
+        }
+        
+        Yii::$app->params['currency'] = \backend\models\Langs::findOne([
+            'code' => Yii::$app->language
+        ])->currency;
 
-		
-		if ($collectionSlug && $categorySlug){
-			$title = json_decode($collection->name)->{Yii::$app->language} . ' - ' . json_decode($category->name)->{Yii::$app->language};
-		} else if ($categorySlug){
-			$title = json_decode($category->name)->{Yii::$app->language};
-		} else if ($collectionSlug){
-			$title = json_decode($collection->name)->{Yii::$app->language};
-		} else {
-			$title = Yii::t('front', 'Каталог');
-		}
+        
+        if ($collectionSlug && $categorySlug) {
+            $title = json_decode($collection->name)->{Yii::$app->language} . ' - ' . json_decode($category->name)->{Yii::$app->language};
+        } else if ($categorySlug) {
+            $title = json_decode($category->name)->{Yii::$app->language};
+        } else if ($collectionSlug) {
+            $title = json_decode($collection->name)->{Yii::$app->language};
+        } else {
+            $title = Yii::t('front', 'Каталог');
+        }
 
-		return $this->render('index', [
-			'collections' => $collections,
-			'prices' => $prices,
-			'prices_old' => $pricesOld,
-			'collectionSlug' => $collectionSlug,
-			'categorySlug' => $categorySlug,
-			'category' => $category,
-			'title' => $title,
-		]);
+        return $this->render('index', [
+            'collections' => $collections,
+            'prices' => $prices,
+            'prices_old' => $pricesOld,
+            'collectionSlug' => $collectionSlug,
+            'categorySlug' => $categorySlug,
+            'category' => $category,
+            'title' => $title,
+        ]);
 
-	}
+    }
  
-	
+    
     public function actionCategory($categoryID = null, $collectionID = null)
     {
-		$collections = [9, 16, 17];
-		
-		if ($categoryID){
-			$category = Category::findOne([
-				'slug' => $categoryID
-			]);
-			if ($category){
-				if (in_array($category->id, $collections)){ // это коллекция
-					
-				} else { // это тип товара
-					
-				}
-			} else {
-				throw new NotFoundHttpException();
-			}
-		} else {
-			
-		}
+        $collections = [9, 16, 17];
+        
+        if ($categoryID) {
+            $category = Category::findOne([
+                'slug' => $categoryID
+            ]);
+            if ($category) {
+                if (in_array($category->id, $collections)) { // это коллекция
+                    
+                } else { // это тип товара
+                    
+                }
+            } else {
+                throw new NotFoundHttpException();
+            }
+        } else {
+            
+        }
 
 
         // $model = null;
@@ -297,11 +297,11 @@ class CatalogController extends \yii\web\Controller
         $prices = ArrayHelper::map($modifications, 'product_id', 'price');
         $pricesOld = ArrayHelper::map($modifications, 'product_id', 'price_old');
         
-        if (Yii::$app->params['hideNotAvailable']){
-            if (count($products)){
+        if (Yii::$app->params['hideNotAvailable']) {
+            if (count($products)) {
                 foreach ($products as $k => $product)
                 {
-                    if (json_decode(json_decode($product->sku)->{Yii::$app->language})->{Yii::$app->params['store_type']}){
+                    if (json_decode(json_decode($product->sku)->{Yii::$app->language})->{Yii::$app->params['store_type']}) {
                         continue;
                     } else {
                         unset($products[$k]);
@@ -329,9 +329,9 @@ class CatalogController extends \yii\web\Controller
         
         $imagesModel = $subCats ? $category : Category::findOne($category->parent_id ?: $category->id);
         
-		Yii::$app->params['currency'] = \backend\models\Langs::findOne([
-			'code' => Yii::$app->language
-		])->currency;
+        Yii::$app->params['currency'] = \backend\models\Langs::findOne([
+            'code' => Yii::$app->language
+        ])->currency;
 
         return $this->render('category', [
             'searchModel' => $searchModel,
@@ -417,7 +417,7 @@ class CatalogController extends \yii\web\Controller
                 // }
             // }
             
-            // if (!$in_stock){
+            // if (!$in_stock) {
                 // unset($products[$key]);
             // }            
         // }

@@ -24,7 +24,7 @@ class PagesController extends \yii\web\Controller
             ])
             ->one();
         
-        if ($page){
+        if ($page) {
             
             $meta = MetaTags::find()
                 ->where('link = :link', [

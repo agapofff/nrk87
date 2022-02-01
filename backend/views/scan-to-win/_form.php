@@ -68,7 +68,7 @@ use kartik\datecontrol\DateControl;
 
         <?= $form
                 ->field($model, 'product_id')
-                ->dropDownList(ArrayHelper::map($products, 'id', function($model){
+                ->dropDownList(ArrayHelper::map($products, 'id', function($model) {
                     return json_decode($model['name'])->{Yii::$app->language};
                 }))
                 ->label('Товар');
@@ -77,16 +77,16 @@ use kartik\datecontrol\DateControl;
         <?= $form
                 ->field($model, 'winner_id')
                 ->dropDownList(ArrayHelper::map($users, 'id', 'username'), [
-					'prompt' => ' --- ',
-				])
+                    'prompt' => ' --- ',
+                ])
                 // ->label(false)
         ?>
 
         <?= $form
                 ->field($model, 'code_id')
                 ->dropDownList(ArrayHelper::map($codes, 'id', 'code'), [
-					'prompt' => ' --- ',
-				])
+                    'prompt' => ' --- ',
+                ])
         ?>
 
         <?= $form
@@ -133,7 +133,7 @@ use kartik\datecontrol\DateControl;
                 'class' => 'btn btn-success btn-lg'
             ]) ?>
             
-            <?php if ($model->id){ ?>
+            <?php if ($model->id) { ?>
                 <?= Html::submitButton(Html::tag('span', '', [
                     'class' => 'glyphicon glyphicon-floppy-remove'
                 ]) . '&nbsp;' . Yii::t('back', 'Сохранить и закрыть'), [

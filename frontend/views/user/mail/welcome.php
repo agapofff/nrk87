@@ -22,37 +22,37 @@ use yii\helpers\Html;
 
 <h1 style="text-align: center;">
     <?= Yii::t('front', 'Благодарим Вас за регистрацию на сайте {0}', [
-			Yii::$app->name
-		])
-	?>
+            Yii::$app->name
+        ])
+    ?>
 </h1>
 
 <br>
 
 <p>
     <?php
-		if ($showPassword || $module->enableGeneratingPassword){
-	?>
-			<?= Yii::t('front', 'Автоматически сгенерированный пароль для Вашей учётной записи') ?>: 
-			<br>
-			<strong><?= $user->password ?></strong>
+        if ($showPassword || $module->enableGeneratingPassword) {
+    ?>
+            <?= Yii::t('front', 'Автоматически сгенерированный пароль для Вашей учётной записи') ?>: 
+            <br>
+            <strong><?= $user->password ?></strong>
     <?php
-		}
-	?>
+        }
+    ?>
 </p>
 
 <?php 
-	if ($token !== null){
+    if ($token !== null) {
 ?>
-		<p>
-			<?= Yii::t('front', 'Чтобы завершить регистрацию, пожалуйста, пройдите по ссылке ниже') ?>:
-		</p>
-		<p>
-			<?= Html::a(Html::encode($token->url), $token->url); ?>
-		</p>
-		<p>
-			<?= Yii::t('front', 'Если у Вас не получается перейти по ссылке, скопируйте её в адресную строку браузера') ?>.
-		</p>
+        <p>
+            <?= Yii::t('front', 'Чтобы завершить регистрацию, пожалуйста, пройдите по ссылке ниже') ?>:
+        </p>
+        <p>
+            <?= Html::a(Html::encode($token->url), $token->url); ?>
+        </p>
+        <p>
+            <?= Yii::t('front', 'Если у Вас не получается перейти по ссылке, скопируйте её в адресную строку браузера') ?>.
+        </p>
 <?php
-	}
+    }
 ?>

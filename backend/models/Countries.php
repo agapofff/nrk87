@@ -64,11 +64,11 @@ class Countries extends \yii\db\ActiveRecord
     
     public function unselect($id)
     {
-		return Yii::$app->db->createCommand("UPDATE {{%countries}} SET selected = 0 WHERE id <> :id")
-			->bindValues([
-				':id' => $id
-			])
-			->execute();
+        return Yii::$app->db->createCommand("UPDATE {{%countries}} SET selected = 0 WHERE id <> :id")
+            ->bindValues([
+                ':id' => $id
+            ])
+            ->execute();
     }
     
     

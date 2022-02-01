@@ -9,14 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * CountriesController implements the CRUD actions for Countries model.
- */
 class CountriesController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function behaviors()
     {
         return [
@@ -29,10 +24,6 @@ class CountriesController extends Controller
         ];
     }
 
-    /**
-     * Lists all Countries models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new CountriesSearch();
@@ -44,12 +35,6 @@ class CountriesController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Countries model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -57,18 +42,13 @@ class CountriesController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Countries model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Countries();
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
-                if ($model->selected){
+            if ($model->save()) {
+                if ($model->selected) {
                     $model->unselect($model->id);
                 }
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно создан'));
@@ -83,20 +63,13 @@ class CountriesController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing Countries model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
-                if ($model->selected){
+            if ($model->save()) {
+                if ($model->selected) {
                     $model->unselect($model->id);
                 }
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
@@ -104,7 +77,7 @@ class CountriesController extends Controller
                 Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
             }
 
-            if ($model->saveAndExit){
+            if ($model->saveAndExit) {
                 return $this->redirect(['index']);
             }
         }
@@ -114,16 +87,9 @@ class CountriesController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Countries model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete($id)
     {
-        if ($this->findModel($id)->delete()){
+        if ($this->findModel($id)->delete()) {
             Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно удалён'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка удаления элемента'));
@@ -138,14 +104,14 @@ class CountriesController extends Controller
         
         $model->selected = 1;
         
-        if ($model->save()){
+        if ($model->save()) {
             $model->unselect($id);
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
         
-        if (Yii::$app->request->isAjax){
+        if (Yii::$app->request->isAjax) {
             $this->actionIndex();
         } else {
             return $this->redirect(['index']);
@@ -158,27 +124,19 @@ class CountriesController extends Controller
         
         $model->publish = $model->publish ? 0 : 1;
         
-        if ($model->save()){
+        if ($model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
 
-        if (Yii::$app->request->isAjax){
+        if (Yii::$app->request->isAjax) {
             $this->actionIndex();
         } else {
             return $this->redirect(['index']);
         }
     }
     
-
-    /**
-     * Finds the Countries model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Countries the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Countries::findOne($id)) !== null) {

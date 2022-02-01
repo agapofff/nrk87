@@ -67,7 +67,7 @@ class ScanToWinStoresController extends Controller
         $model = new ScanToWinStores();
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно создан'));
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка создания элемента'));
@@ -92,13 +92,13 @@ class ScanToWinStoresController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()){
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
             }
 
-            if ($model->saveAndExit){
+            if ($model->saveAndExit) {
                 return $this->redirect(['index']);
             }
         }
@@ -117,7 +117,7 @@ class ScanToWinStoresController extends Controller
      */
     public function actionDelete($id)
     {
-        if ($this->findModel($id)->delete()){
+        if ($this->findModel($id)->delete()) {
             Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно удалён'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка удаления элемента'));
@@ -148,13 +148,13 @@ class ScanToWinStoresController extends Controller
         $model = $this->findModel($id);
         $model->active = $model->active ? 0 : 1;
         
-        if ($model->save()){
+        if ($model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
 
-        if (Yii::$app->request->isAjax){
+        if (Yii::$app->request->isAjax) {
             $this->actionIndex();
         } else {
             return $this->redirect(['index']);

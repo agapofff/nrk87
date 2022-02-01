@@ -17,9 +17,9 @@
 $this->title = $title;
 ?>
 <div class="container">
-	<div class="row justify-content-center">
-		<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
-			<?= $this->render('/_alert', ['module' => $module]); ?>
-		</div>
-	</div>
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+            <?= $this->render('/_alert', ['module' => $module]); ?>
+        </div>
+    </div>
 </div>

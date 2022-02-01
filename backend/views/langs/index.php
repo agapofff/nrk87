@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="langs-index">
 
     <?php
-        if (Yii::$app->user->can('/langs/create')){
+        if (Yii::$app->user->can('/langs/create')) {
             echo Html::a(Html::tag('span', '', [
                         'class' => 'glyphicon glyphicon-plus'
                     ]) . '&nbsp;' . Yii::t('back', 'Создать'), ['create'], [
@@ -60,8 +60,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             'prompt' => '---'
                         ]
                     ),
-                    'value' => function($data){
-                        if (Yii::$app->user->can('/langs/publish')){
+                    'value' => function($data) {
+                        if (Yii::$app->user->can('/langs/publish')) {
                             return Html::a(
                                 Html::tag('big', 
                                     Html::tag('span', '', [
@@ -91,8 +91,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'attribute' => 'name',
                     'format' => 'raw',
-                    'value' => function($model){
-                        if (Yii::$app->user->can('/langs/update')){
+                    'value' => function($model) {
+                        if (Yii::$app->user->can('/langs/update')) {
                             return Html::a($model->name, [
                                         'update',
                                         'id' => $model->id,
@@ -150,8 +150,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'class' => 'text-center'
                     ],
                     'buttons' => [
-                        'update' => function($url, $model){
-                            if (Yii::$app->user->can('/langs/update')){
+                        'update' => function($url, $model) {
+                            if (Yii::$app->user->can('/langs/update')) {
                                 return Html::a('', $url, [
                                     'class' => 'glyphicon glyphicon-pencil btn btn-primary btn-xs',
                                     'title' => Yii::t('back', 'Изменить'),
@@ -159,8 +159,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ]);
                             }
                         },
-                        'delete' => function($url, $model){
-                            if (Yii::$app->user->can('/langs/delete')){
+                        'delete' => function($url, $model) {
+                            if (Yii::$app->user->can('/langs/delete')) {
                                 return Html::a('', $url, [
                                     'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',
                                     'title' => Yii::t('back', 'Удалить'),

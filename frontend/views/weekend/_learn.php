@@ -12,7 +12,7 @@
                     </span>
                 </h2>
                 <div class="py-2 py-md-3 py-lg-4 py-xl-5">
-                <?php foreach ($learns as $learn){ ?>
+                <?php foreach ($learns as $learn) { ?>
                     <p class="h4 list pl-4 position-relative"><?= $learn->{'title_'.Yii::$app->language} ?></p>
                 <?php } ?>
                 </div>

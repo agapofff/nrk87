@@ -3,22 +3,22 @@
     use yii\helpers\Url;
     use yii\helpers\ArrayHelper;
     use dvizh\order\Module;
-	
-	$this->title = Yii::t('front', 'Заказы');
+    
+    $this->title = Yii::t('front', 'Заказы');
 ?>
 
 <div class="container-fluid mb-15 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
-	<div class="row">
-		<div class="col-lg-6 d-none d-lg-block mb-4">
-			<?= $this->render('@frontend/views/user/settings/_menu') ?>
-		</div>
-		<div class="col-lg-6">
-			<h1 class="ttfirsneue text-uppercase font-weight-light text-center d-lg-none mb-3">
-				<?= $this->title ?>
-			</h1>
-	<?php
-		if ($orders){
-	?>
+    <div class="row">
+        <div class="col-lg-6 d-none d-lg-block mb-4">
+            <?= $this->render('@frontend/views/user/settings/_menu') ?>
+        </div>
+        <div class="col-lg-6">
+            <h1 class="ttfirsneue text-uppercase font-weight-light text-center d-lg-none mb-3">
+                <?= $this->title ?>
+            </h1>
+    <?php
+        if ($orders) {
+    ?>
             <table class="table">
                 <thead>
                     <tr>
@@ -41,7 +41,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    foreach ($orders as $order){
+                    foreach ($orders as $order) {
                 ?>
                     <tr onclick="window.location.href='<?= Url::to(['/orders/' . $order->id]) ?>'" class="cursor-pointer">
                         <td class="text-center align-middle">
@@ -67,9 +67,9 @@
                 ?>
                 </tbody>
             </table>
-	<?php
-		}
-	?>
-		</div>
-	</div>
+    <?php
+        }
+    ?>
+        </div>
+    </div>
 </div>

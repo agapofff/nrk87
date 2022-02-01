@@ -29,7 +29,7 @@ class TestController extends \yii\web\Controller
             ])
             ->one();
         
-        if ($test){
+        if ($test) {
             
             $meta = MetaTags::find()
                 ->where('link = :link', [
@@ -66,12 +66,12 @@ class TestController extends \yii\web\Controller
             $model->created_at = $model->updated_at = date('Y-m-d H:i:s');
             
             if ($model->load(Yii::$app->request->post())) {
-                if ($model->save()){
+                if ($model->save()) {
                     $start = false;
                     $answered = true;
                     $model->updated_at = date('Y-m-d H:i:s');
                     $questionID = $model->question_id;
-                    if (TestAnswers::findOne($model->answer_id)->correct){
+                    if (TestAnswers::findOne($model->answer_id)->correct) {
                         $correct = true;
                     }
                 } else {
@@ -96,11 +96,11 @@ class TestController extends \yii\web\Controller
                     ->limit(1)
                     ->one();
                     
-                if ($lastUserAnswer){
+                if ($lastUserAnswer) {
                     $start = false;
-                    foreach ($questionsIds as $key => $id){
-                        if ($id == $lastUserAnswer->question_id){
-                            if ($lastUserAnswer->question_id == end($questionsIds)){
+                    foreach ($questionsIds as $key => $id) {
+                        if ($id == $lastUserAnswer->question_id) {
+                            if ($lastUserAnswer->question_id == end($questionsIds)) {
                                 $finish = true;
                             } else {
                                 $questionID = $questionsIds[$key+1];
@@ -135,7 +135,7 @@ class TestController extends \yii\web\Controller
             $model->test_id = $test->id;
             $model->question_id = $questionID;
             
-            if ($finish){
+            if ($finish) {
                 $start = false;
                 $allUserAnswers = TestPassings::find()
                     ->where([
@@ -154,10 +154,10 @@ class TestController extends \yii\web\Controller
                     
                 $allTestAnswers = TestAnswers::find()->all();
                 
-                foreach ($allUserAnswers as $userAnswer){
-                    foreach ($allTestAnswers as $testAnswer){
-                        if ($testAnswer->question_id == $userAnswer->question_id && $testAnswer->id == $userAnswer->answer_id){
-                            if ($testAnswer->correct){
+                foreach ($allUserAnswers as $userAnswer) {
+                    foreach ($allTestAnswers as $testAnswer) {
+                        if ($testAnswer->question_id == $userAnswer->question_id && $testAnswer->id == $userAnswer->answer_id) {
+                            if ($testAnswer->correct) {
                                 $right = $right + 1;
                             } else {
                                 $wrong = $wrong + 1;
@@ -173,9 +173,9 @@ class TestController extends \yii\web\Controller
                     'active' => 1,
                 ]);
                 
-                foreach ($results as $result){
+                foreach ($results as $result) {
                     $range = range($result->min, $result->max);
-                    if (in_array($right, $range)){
+                    if (in_array($right, $range)) {
                         $testResult = $result;
                         break;
                     }
@@ -219,7 +219,7 @@ class TestController extends \yii\web\Controller
             ])
             ->one();
         
-        if ($test){
+        if ($test) {
             $allUserAnswers = TestPassings::find()
                 ->where([
                     'test_id' => $test->id
@@ -235,8 +235,8 @@ class TestController extends \yii\web\Controller
                 ])
                 ->all();
                 
-            if ($allUserAnswers){
-                foreach ($allUserAnswers as $answer){
+            if ($allUserAnswers) {
+                foreach ($allUserAnswers as $answer) {
                     $answer->delete();
                 }
             }

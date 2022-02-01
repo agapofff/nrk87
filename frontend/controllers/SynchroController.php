@@ -37,23 +37,23 @@ class SynchroController extends \yii\web\Controller
             ])
             ->all();
         
-        if ($stores){
-            foreach ($stores as $store){
+        if ($stores) {
+            foreach ($stores as $store) {
                 $request = @file_get_contents('https://api.sessia.com/api/market/' . $store->store_id . '/showcase-tree');
-                if ($request){
-					$request = json_decode($request, true);
-                    foreach ($request as $val){
-                        if (isset($val['goods_list'])){
-                            foreach ($val['goods_list'] as $good){
-                                foreach ($modifications as $modification){
-                                    if ($modification->sku == $good['id']){
+                if ($request) {
+                    $request = json_decode($request, true);
+                    foreach ($request as $val) {
+                        if (isset($val['goods_list'])) {
+                            foreach ($val['goods_list'] as $good) {
+                                foreach ($modifications as $modification) {
+                                    if ($modification->sku == $good['id']) {
                                         $modification->available = $good['is_purchasable'] ? 1 : 0;
                                         $modification->amount = $good['is_purchasable'] ? 99 : 0;
-										$modification->code = $good['vendor_code'];
+                                        $modification->code = $good['vendor_code'];
                                         $modification->save();
                                         
-                                        foreach ($prices as $price){
-                                            if ($price->item_id == $modification->id){
+                                        foreach ($prices as $price) {
+                                            if ($price->item_id == $modification->id) {
                                                 $price->price = isset($good['price']) ? (int)$good['price'] : 0;
                                                 // $price->price_old = isset($good['retail_price']) ? (int)$good['retail_price'] : 0;
                                                 $price->available = $good['is_purchasable'] ? 'yes' : 'no';

@@ -104,7 +104,7 @@ use alexantr\colorpicker\ColorPicker;
         ?>
         
         <div id="common-imagefile-embed" class="form-group">
-            <?php if ($model->image){ ?>
+            <?php if ($model->image) { ?>
                 <img src="<?= $model->image ?>" class="img-responsive">
             <?php } ?>
         </div>
@@ -125,7 +125,7 @@ use alexantr\colorpicker\ColorPicker;
         ?>
         
         <div id="common-backgroundfile-embed" class="form-group">
-            <?php if ($model->background){ ?>
+            <?php if ($model->background) { ?>
                 <img src="<?= $model->background ?>" class="img-responsive">
             <?php } ?>
         </div>

@@ -1,34 +1,34 @@
 <?php
 
-	use yii\helpers\Html;
-	use yii\widgets\ActiveForm;
+    use yii\helpers\Html;
+    use yii\widgets\ActiveForm;
     use yii\web\View;
 
-	/**
-	 * @var yii\web\View $this
-	 * @var dektrium\user\models\ResendForm $model
-	 */
+    /**
+     * @var yii\web\View $this
+     * @var dektrium\user\models\ResendForm $model
+     */
 
-	$this->title = Yii::t('front', 'Подтверждение учётной записи');
-	$this->params['breadcrumbs'][] = $this->title;
+    $this->title = Yii::t('front', 'Подтверждение учётной записи');
+    $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container">
     
-	<div class="row justify-content-center">
-	
-		<div class="col-xs-12 col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-5">
-		
+    <div class="row justify-content-center">
+    
+        <div class="col-xs-12 col-sm-11 col-md-10 col-lg-9 col-xl-8 col-xxl-5">
+        
         <?php
-			$form = ActiveForm::begin([
-				'id' => 'resend-form',
+            $form = ActiveForm::begin([
+                'id' => 'resend-form',
                 // 'action' => '/resend',
-				'enableAjaxValidation' => true,
-				'enableClientValidation' => false,
-			]);
+                'enableAjaxValidation' => true,
+                'enableClientValidation' => false,
+            ]);
         ?>
 
-				<?= $form
+                <?= $form
                         ->field($model, 'email', [
                             'options' => [
                                 'class' => 'form-group mb-5 position-relative floating-label',
@@ -47,20 +47,20 @@
                 
                 <?= Html::hiddenInput('lang', Yii::$app->language) ?>
 
-				<div class="row no-gutters">
-					<div class="col-md-6">
-							<?= Html::submitButton(Html::tag('span') . Yii::t('front', 'Продолжить'), [
-									'class' => 'btn btn-primary btn-block py-1',
-									'title' => Yii::t('front', 'Продолжить'),
-								])
-							?>
-					</div>
-				</div>
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+                            <?= Html::submitButton(Html::tag('span') . Yii::t('front', 'Продолжить'), [
+                                    'class' => 'btn btn-primary btn-block py-1',
+                                    'title' => Yii::t('front', 'Продолжить'),
+                                ])
+                            ?>
+                    </div>
+                </div>
 
         <?php
-			ActiveForm::end();
+            ActiveForm::end();
         ?>
         
-		</div>
-	</div>
+        </div>
+    </div>
 </div>

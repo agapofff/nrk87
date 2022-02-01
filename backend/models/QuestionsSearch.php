@@ -63,19 +63,19 @@ class QuestionsSearch extends Questions
             'updated_at' => $this->updated_at,
         ]);
         
-		if(!empty($this->date_start) && strpos($this->date_start, '-') !== false) {
-			$date_start = explode('-', $this->date_start);
-			$start_date = explode('.', trim($date_start[0]));
-			$end_date = explode('.', trim($date_start[1]));
-			$query->andFilterWhere(['between', 'date_start', $start_date[2].'-'.$start_date[1].'-'.$start_date[0].' 00:00:00', $end_date[2].'-'.$end_date[1].'-'.$end_date[0].' 23:59:59']);
-		}
+        if(!empty($this->date_start) && strpos($this->date_start, '-') !== false) {
+            $date_start = explode('-', $this->date_start);
+            $start_date = explode('.', trim($date_start[0]));
+            $end_date = explode('.', trim($date_start[1]));
+            $query->andFilterWhere(['between', 'date_start', $start_date[2].'-'.$start_date[1].'-'.$start_date[0].' 00:00:00', $end_date[2].'-'.$end_date[1].'-'.$end_date[0].' 23:59:59']);
+        }
 
-		if(!empty($this->date_end) && strpos($this->date_end, '-') !== false) {
-			$date_end = explode('-', $this->date_end);
-			$start_date = explode('.', trim($date_end[0]));
-			$end_date = explode('.', trim($date_end[1]));
-			$query->andFilterWhere(['between', 'date_end', $start_date[2].'-'.$start_date[1].'-'.$start_date[0].' 00:00:00', $end_date[2].'-'.$end_date[1].'-'.$end_date[0].' 23:59:59']);
-		}
+        if(!empty($this->date_end) && strpos($this->date_end, '-') !== false) {
+            $date_end = explode('-', $this->date_end);
+            $start_date = explode('.', trim($date_end[0]));
+            $end_date = explode('.', trim($date_end[1]));
+            $query->andFilterWhere(['between', 'date_end', $start_date[2].'-'.$start_date[1].'-'.$start_date[0].' 00:00:00', $end_date[2].'-'.$end_date[1].'-'.$end_date[0].' 23:59:59']);
+        }
 
         $query->andFilterWhere(['like', 'name', $this->name]);
 

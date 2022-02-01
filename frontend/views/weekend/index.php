@@ -18,10 +18,10 @@
     
     // description
     $description = [$this->title];
-    foreach ($learns as $learn){
+    foreach ($learns as $learn) {
         $description[] = $learn->{'title_'.Yii::$app->language};
     }
-    if ($common->{'meta_description_'.Yii::$app->language}){
+    if ($common->{'meta_description_'.Yii::$app->language}) {
         $this->registerMetaTag([
             'name' => 'description',
             'content' => implode('. ', $description)
@@ -33,7 +33,7 @@
     }
     
     // body background
-    if ($common->background){
+    if ($common->background) {
         $this->registerCss("
             body {
                 background: url('".$common->background."') center center no-repeat;
@@ -43,7 +43,7 @@
     }
     
     // main image
-    if ($common->image){
+    if ($common->image) {
         $this->registerMetaTag([
             'name' => 'twitter:image',
             'content' => Url::to([$common->image, 'v' => time()])
@@ -128,13 +128,13 @@
         'stream' => $stream,
     ]);
     
-    if ($stream->publish){
+    if ($stream->publish) {
         echo $this->render('_stream', [
             'stream' => $stream,
         ]);
     }
     
-    if ($questions){
+    if ($questions) {
         echo $this->render('_questions', [
             'questions' => $questions,
             'answers' => $answers,

@@ -41,7 +41,7 @@
 
         <?= $form
                 ->field($model, 'test_id')
-                ->dropDownList(ArrayHelper::map($tests, 'id', function($test){
+                ->dropDownList(ArrayHelper::map($tests, 'id', function($test) {
                     return json_decode($test['name'])->{Yii::$app->language};
                 }))
         ?>
@@ -59,9 +59,9 @@
         ?>
         <ul class="nav nav-pills nav-justified">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+            <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                 <a href="#name_<?= $lang->code ?>_tab" aria-controls="name_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
             </li>
     <?php
@@ -70,9 +70,9 @@
         </ul>
         <div class="tab-content">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
+            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
                 <?= Html::input(
                         'text',
                         'name_'.$lang->code,
@@ -106,9 +106,9 @@
         ?>
         <ul class="nav nav-pills nav-justified">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+            <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                 <a href="#description_<?= $lang->code ?>_tab" aria-controls="description_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
             </li>
     <?php
@@ -117,9 +117,9 @@
         </ul>
         <div class="tab-content">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="description_<?= $lang->code ?>_tab">
+            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="description_<?= $lang->code ?>_tab">
                 <?= \yii\imperavi\Widget::widget([
                         'id' => 'testquestions-description_'.$lang->code,
                         'value' => json_decode($model->description)->{$lang->code},
@@ -176,9 +176,9 @@
         ?>
         <ul class="nav nav-pills nav-justified">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+            <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                 <a href="#text_right_<?= $lang->code ?>_tab" aria-controls="text_right_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
             </li>
     <?php
@@ -187,9 +187,9 @@
         </ul>
         <div class="tab-content">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="text_right_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
+            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="text_right_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
                 <?= Html::input(
                         'text',
                         'text_right_'.$lang->code,
@@ -223,9 +223,9 @@
         ?>
         <ul class="nav nav-pills nav-justified">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+            <li <?php if ($lang->code == Yii::$app->language) {?>class="active"<?php } ?>>
                 <a href="#text_wrong_<?= $lang->code ?>_tab" aria-controls="text_wrong_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
             </li>
     <?php
@@ -234,9 +234,9 @@
         </ul>
         <div class="tab-content">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="text_wrong_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
+            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) {?>active<?php } ?>" id="text_wrong_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
                 <?= Html::input(
                         'text',
                         'text_wrong_'.$lang->code,
@@ -283,7 +283,7 @@
                 'class' => 'btn btn-success btn-lg'
             ]) ?>
             
-            <?php if ($model->id){ ?>
+            <?php if ($model->id) { ?>
                 <?= Html::submitButton(Html::tag('span', '', [
                     'class' => 'glyphicon glyphicon-floppy-remove'
                 ]) . '&nbsp;' . Yii::t('back', 'Сохранить и закрыть'), [

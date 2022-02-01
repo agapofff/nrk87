@@ -159,7 +159,7 @@ class ScanToWinCodes extends \yii\db\ActiveRecord
     {
         if ($exists = ScanToWinCodes::findOne([
             'order_id' => $order_id
-        ])){
+        ])) {
             return json_encode([
                 'status' => 'error',
                 'code' => 1,
@@ -171,21 +171,21 @@ class ScanToWinCodes extends \yii\db\ActiveRecord
         $stores = ScanToWinStores::findAll([
             'active' => 1
         ]);
-        if ($stores){
+        if ($stores) {
             Yii::$app->controllerNamespace = 'frontend\controllers';
-            foreach ($stores as $store){
+            foreach ($stores as $store) {
                 $check = Yii::$app->runAction('curl', [
                     'url' => 'https://www.sessia.com/api/market/' . $store->store_id . '/orders/' . $order_id,
                 ]);
                 $order = json_decode($check, JSON_UNESCAPED_UNICODE);
-                if (in_array('id', $order) && $order['id'] == $order_id){
+                if (in_array('id', $order) && $order['id'] == $order_id) {
                     break;
                 } else {
                     unset($order);
                 }
             }
             
-            if (!isset($order)){
+            if (!isset($order)) {
                 return json_encode([
                     'status' => 'error',
                     'code' => 2,
@@ -193,7 +193,7 @@ class ScanToWinCodes extends \yii\db\ActiveRecord
                 ]);
             }
             
-            if (!in_array('payment_status', $order) || $order['payment_status'] != 100){
+            if (!in_array('payment_status', $order) || $order['payment_status'] != 100) {
                 return json_encode([
                     'status' => 'error',
                     'code' => 3,
@@ -201,7 +201,7 @@ class ScanToWinCodes extends \yii\db\ActiveRecord
                 ]);
             }
             
-            if (!in_array('bank_transaction_sum', $order) || $order['bank_transaction_sum'] < $store->sum){
+            if (!in_array('bank_transaction_sum', $order) || $order['bank_transaction_sum'] < $store->sum) {
                 return json_encode([
                     'status' => 'error',
                     'code' => 4,

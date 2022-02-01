@@ -41,28 +41,28 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form
                         ->field($model, 'email', [
-							'inputOptions' => [
-								'autofocus' => 'autofocus',
-								'class' => 'form-control mb-0 px-0',
-								'tabindex' => '2',
-								'required' => true,
-								'autocomplete' => rand(),
-								'placeholder' => ' ',
-							],
-							'options' => [
-								'class' => 'form-group mb-1 position-relative floating-label',
-							],
-							'template' => '{input}{label}{error}'
-						]
-					)
+                            'inputOptions' => [
+                                'autofocus' => 'autofocus',
+                                'class' => 'form-control mb-0 px-0',
+                                'tabindex' => '2',
+                                'required' => true,
+                                'autocomplete' => rand(),
+                                'placeholder' => ' ',
+                            ],
+                            'options' => [
+                                'class' => 'form-group mb-1 position-relative floating-label',
+                            ],
+                            'template' => '{input}{label}{error}'
+                        ]
+                    )
                 ?>
 
                 <?= $form
                         ->field($model, 'username', [
                             'template' => '{input}',
-							'options' => [
-								'class' => 'd-none',
-							],
+                            'options' => [
+                                'class' => 'd-none',
+                            ],
                         ])
                         ->hiddenInput()
                         ->label(false)
@@ -82,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <?php
-                    if ($module->enableGeneratingPassword == false){
+                    if ($module->enableGeneratingPassword == false) {
                 ?>
                     <?= $form
                             ->field(
@@ -95,30 +95,30 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 <?= Html::hiddenInput('lang', Yii::$app->language) ?>
 
-				<div class="row no-gutters">
-					<div class="col-md-6">
-						<div class="mb-2 mt-5">
-							<?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Зарегистрироваться'),
-								[
-									'class' => 'btn btn-primary btn-block text-uppercase py-1',
-									'tabindex' => '4',
-									'title' => Yii::t('front', 'Зарегистрироваться')
-								]
-							) ?>
-						</div>
-						<div class="mb-2 mt-3">
-							<?= Yii::t('front', 'Уже есть аккаунт?') ?> <?= Html::a(Yii::t('front', 'Войти'), ['/login']) ?>
-						</div>
-					</div>
-					<div class="col-12">
-						<div class="mb-2">
-							<?= Html::a(Yii::t('front', 'Не получили письмо с подтверждением регистрации?'), [
-									'/resend'
-								])
-							?>
-						</div>
-					</div>
-				</div>
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <div class="mb-2 mt-5">
+                            <?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Зарегистрироваться'),
+                                [
+                                    'class' => 'btn btn-primary btn-block text-uppercase py-1',
+                                    'tabindex' => '4',
+                                    'title' => Yii::t('front', 'Зарегистрироваться')
+                                ]
+                            ) ?>
+                        </div>
+                        <div class="mb-2 mt-3">
+                            <?= Yii::t('front', 'Уже есть аккаунт?') ?> <?= Html::a(Yii::t('front', 'Войти'), ['/login']) ?>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-2">
+                            <?= Html::a(Yii::t('front', 'Не получили письмо с подтверждением регистрации?'), [
+                                    '/resend'
+                                ])
+                            ?>
+                        </div>
+                    </div>
+                </div>
 
             <?php ActiveForm::end(); ?>
             
@@ -131,16 +131,16 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
     $this->registerJS("
         $('#registration-form')
-			.on('beforeValidateAttribute', function(event, attr, msg){
-				$('#register-form-username').val($('#register-form-email').val());
-			})
-			.on('beforeSubmit', function(event){
-				event.preventDefault();
-				if (!$('#agree').checked){
-					toastr.error('" . Yii::t('front', 'Необходимо согласиться') . "');
-					return false;
-				}
-			})
+            .on('beforeValidateAttribute', function(event, attr, msg) {
+                $('#register-form-username').val($('#register-form-email').val());
+            })
+            .on('beforeSubmit', function(event) {
+                event.preventDefault();
+                if (!$('#agree').checked) {
+                    toastr.error('" . Yii::t('front', 'Необходимо согласиться') . "');
+                    return false;
+                }
+            })
     ",
     View::POS_READY);
 ?>
