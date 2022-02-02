@@ -38,16 +38,16 @@ $this->title = Yii::t('front', 'О нас');
     <div class="row">
         <div class="col-md-6 d-none d-md-block">
             <nav id="about-nav" class="nav nav-pills flex-column sticky-top overflow-x-hidden" style="top: 100px">
-                <a class="nav-link display-3 bg-none text-black my-1 px-5 py-1" href="#earth">
+                <a class="nav-link about-nav display-3 bg-none text-black my-1 px-5 py-1" href="#earth">
                     <?= Yii::t('front', 'Земля') ?>
                 </a>
-                <a class="nav-link display-3 bg-none text-black my-1 px-5 py-1" href="#mars">
+                <a class="nav-link about-nav display-3 bg-none text-black my-1 px-5 py-1" href="#mars">
                     <?= Yii::t('front', 'Марс') ?>
                 </a>
-                <a class="nav-link display-3 bg-none text-black my-1 px-5 py-1" href="#technology">
+                <a class="nav-link about-nav display-3 bg-none text-black my-1 px-5 py-1" href="#technology">
                     <?= Yii::t('front', 'Технологии') ?>
                 </a>
-                <a class="nav-link display-3 bg-none text-black my-1 px-5 py-1" href="#fgi">
+                <a class="nav-link about-nav display-3 bg-none text-black my-1 px-5 py-1" href="#fgi">
                     <?= Yii::t('front', 'Freedom Group') ?>
                 </a>
             </nav>
@@ -94,7 +94,7 @@ $this->title = Yii::t('front', 'О нас');
         
         function setActiveScrollBlock() {
             $('.about-content').addClass('opacity-50');
-            $($('.nav-link.active').attr('href')).removeClass('opacity-50');
+            $($('.about-nav.active').attr('href')).removeClass('opacity-50');
         }
         setActiveScrollBlock();
         
@@ -102,7 +102,7 @@ $this->title = Yii::t('front', 'О нас');
             setActiveScrollBlock();
         });
         
-        $(document).on('click', '.nav-link', function (e) {
+        $(document).on('click', '.about-nav', function (e) {
             e.preventDefault();
             $([document.documentElement, document.body]).animate({
                 scrollTop: $($(this).attr('href')).offset().top - 290
