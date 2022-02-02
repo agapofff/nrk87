@@ -15,6 +15,8 @@ $this->title = Yii::t('back', 'Помощь');
 
 $this->params['breadcrumbs'][] = $this->title;
 
+$sort = Yii::$app->request->get('sort');
+
 ?>
 
 <div class="help-index">
@@ -40,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'filterModel' => $searchModel,
             'summary' => false,
             'tableOptions' => [
-                'class' => 'table table-striped table-bordered' . (Yii::$app->request->get('sort') ? ' sortable' : '') . (substr(Yii::$app->request->get('sort'), 0, 1) == '-' ? ' desc' : ''),
+                'class' => 'table table-striped table-bordered' . ($sort == 'ordering' || $sort == '-ordering' ? ' sortable' . (substr($sort, 0, 1) == '-' ? ' desc' : '') : ''),
             ],
             'rowOptions' => function ($model) {
                 return [
