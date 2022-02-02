@@ -13,7 +13,9 @@ use jino5577\daterangepicker\DateRangePicker;
 
 $this->title = Yii::t('back', 'Блог');
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
+
 <div class="blog-index">
 
     <?= Html::a(Html::tag('span', '', [
@@ -55,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($data) {
+                    'value' => function ($data) {
                         return Html::a(
                             Html::tag('big', 
                                 Html::tag('span', '', [
@@ -79,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'attribute' => 'name',
                     'format' => 'raw',
-                    'value' => function($model) {
+                    'value' => function ($model) {
                         return Html::a(json_decode($model->name)->{Yii::$app->language}, [
                             'update',
                             'id' => $model->id,
@@ -102,14 +104,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filter' => Html::activeDropDownList(
                         $searchModel,
                         'category_id',
-                        ArrayHelper::map($categories, 'id', function($category) {
+                        ArrayHelper::map($categories, 'id', function ($category) {
                             return json_decode($category['name'])->{Yii::$app->language};
                         }), [
                             'class' => 'form-control',
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($model) use ($categories) {
+                    'value' => function ($model) use ($categories) {
                         return json_decode(ArrayHelper::index($categories, 'id')[$model->category_id]->name)->{Yii::$app->language};
                     },
                     'headerOptions' => [
@@ -120,7 +122,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'attribute' => 'publisher',
                     'format' => 'raw',
-                    'value' => function($model) {
+                    'value' => function ($model) {
                         return json_decode($model->publisher)->{Yii::$app->language};
                     },
                     'filterInputOptions' => [

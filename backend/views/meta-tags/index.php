@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'prompt' => Yii::t('back', 'Все'),
                     ]
                 ),
-                'value' => function($data) {
+                'value' => function ($data) {
                     return Html::a(
                         Html::tag('big', 
                             Html::tag('span', '', [
@@ -92,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'link',
                 'format' => 'raw',
-                'value' => function($model) {
+                'value' => function ($model) {
                     return Html::a($model->link, [
                         'update',
                         'id' => $model->id

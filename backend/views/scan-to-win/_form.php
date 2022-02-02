@@ -68,7 +68,7 @@ use kartik\datecontrol\DateControl;
 
         <?= $form
                 ->field($model, 'product_id')
-                ->dropDownList(ArrayHelper::map($products, 'id', function($model) {
+                ->dropDownList(ArrayHelper::map($products, 'id', function ($model) {
                     return json_decode($model['name'])->{Yii::$app->language};
                 }))
                 ->label('Товар');

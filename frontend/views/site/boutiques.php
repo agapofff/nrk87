@@ -242,7 +242,7 @@
     <?php
         $this->registerJs(
             "
-                $('#boutique-place').on('changed.owl.carousel', function(e) {
+                $('#boutique-place').on('changed.owl.carousel', function (e) {
                     if (e.item) {
                         var answers = [8, 9, 10],
                             index = e.item.index - 1,
@@ -261,7 +261,7 @@
                     }
                 });
                 
-                $('.btn-map').on('click', function() {
+                $('.btn-map').on('click', function () {
                     var id = $(this).data('id');
                     $('#boutique-place').data('owl.carousel').to(id);
                 });
@@ -274,7 +274,7 @@
     <?php
         $this->registerJs(
             "
-                $(document).on('click', '.boutique-preview', function() {
+                $(document).on('click', '.boutique-preview', function () {
                     $('#' + $(this).find('img').attr('class')).modal('show');
                 });
             ",

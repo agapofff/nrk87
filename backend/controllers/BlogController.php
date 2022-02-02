@@ -54,6 +54,7 @@ class BlogController extends Controller
     {
         $model = new Blog();
         $model->loadDefaultValues();
+        $model->date_published = date('Y-m-d');
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {

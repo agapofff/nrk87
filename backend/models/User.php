@@ -4,50 +4,14 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%user}}".
- *
- * @property int $id
- * @property string $username
- * @property string $email
- * @property string $password_hash
- * @property string $auth_key
- * @property int|null $confirmed_at
- * @property string|null $unconfirmed_email
- * @property int|null $blocked_at
- * @property string|null $registration_ip
- * @property int $created_at
- * @property int $updated_at
- * @property int $flags
- * @property int|null $last_login_at
- * @property string|null $password_reset_token
- * @property int $status
- * @property string|null $first_name
- * @property string|null $last_name
- * @property string|null $phone
- * @property string|null $birthday
- * @property int $sex
- * @property string|null $comment
- * @property int $agree
- * @property int $lottery
- *
- * @property Profile $profile
- * @property SocialAccount[] $socialAccounts
- * @property Token[] $tokens
- */
 class User extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public static function tableName()
     {
         return '{{%user}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -64,9 +28,6 @@ class User extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -96,31 +57,16 @@ class User extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Profile]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getProfile()
     {
         return $this->hasOne(Profile::className(), ['user_id' => 'id']);
     }
 
-    /**
-     * Gets query for [[SocialAccounts]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getSocialAccounts()
     {
         return $this->hasMany(SocialAccount::className(), ['user_id' => 'id']);
     }
 
-    /**
-     * Gets query for [[Tokens]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getTokens()
     {
         return $this->hasMany(Token::className(), ['user_id' => 'id']);

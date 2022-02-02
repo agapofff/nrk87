@@ -9,6 +9,7 @@ class Common extends \yii\db\ActiveRecord
 {
     
     public $imageFile;
+    
     public $backgroundFile;
     
     public static function tableName()

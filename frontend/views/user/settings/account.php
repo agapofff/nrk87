@@ -216,7 +216,7 @@
 
 <?php
     $this->registerJs("
-        $('body').on('input', '#settings-form-new_password', function() {
+        $('body').on('input', '#settings-form-new_password', function () {
             $('#settings-form-current_password')
                 .attr('required', 'required')
                 .attr('aria-required', 'true');

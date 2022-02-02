@@ -4,50 +4,14 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%shop_product}}".
- *
- * @property int $id
- * @property int|null $category_id
- * @property int|null $producer_id
- * @property int|null $amount
- * @property string|null $related_products PHP serialize
- * @property string $name
- * @property string|null $code
- * @property string|null $text
- * @property string|null $short_text
- * @property int|null $is_new
- * @property int|null $is_popular
- * @property int|null $is_promo
- * @property string|null $images
- * @property string|null $available
- * @property int|null $sort
- * @property string|null $slug
- * @property string|null $related_ids
- * @property string|null $sku
- * @property string|null $barcode
- * @property string|null $video
- * @property string|null $vendor_code
- *
- * @property Lotteries[] $lotteries
- * @property ShopCategory $category
- * @property ShopProducer $producer
- * @property ShopProductModification[] $shopProductModifications
- * @property ShopProductToCategory[] $shopProductToCategories
- */
 class ShopProduct extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+    
     public static function tableName()
     {
         return '{{%shop_product}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -62,9 +26,6 @@ class ShopProduct extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -92,51 +53,26 @@ class ShopProduct extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Lotteries]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getLotteries()
     {
         return $this->hasMany(Lotteries::className(), ['product_id' => 'id']);
     }
 
-    /**
-     * Gets query for [[Category]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getCategory()
     {
         return $this->hasOne(ShopCategory::className(), ['id' => 'category_id']);
     }
 
-    /**
-     * Gets query for [[Producer]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getProducer()
     {
         return $this->hasOne(ShopProducer::className(), ['id' => 'producer_id']);
     }
 
-    /**
-     * Gets query for [[ShopProductModifications]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getShopProductModifications()
     {
         return $this->hasMany(ShopProductModification::className(), ['product_id' => 'id']);
     }
 
-    /**
-     * Gets query for [[ShopProductToCategories]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getShopProductToCategories()
     {
         return $this->hasMany(ShopProductToCategory::className(), ['product_id' => 'id']);

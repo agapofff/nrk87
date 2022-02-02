@@ -4,36 +4,14 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%test_passings}}".
- *
- * @property int $id
- * @property int $user_id
- * @property string $session
- * @property string $ip
- * @property int $test_id
- * @property int $question_id
- * @property int $answer_id
- * @property string $created_at
- * @property string $updated_at
- *
- * @property TestAnswers $answer
- * @property TestQuestions $question
- * @property Tests $test
- */
 class TestPassings extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public static function tableName()
     {
         return '{{%test_passings}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -47,9 +25,6 @@ class TestPassings extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -65,31 +40,16 @@ class TestPassings extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Answer]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getAnswer()
     {
         return $this->hasOne(TestAnswers::className(), ['id' => 'answer_id']);
     }
 
-    /**
-     * Gets query for [[Question]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getQuestion()
     {
         return $this->hasOne(TestQuestions::className(), ['id' => 'question_id']);
     }
 
-    /**
-     * Gets query for [[Test]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getTest()
     {
         return $this->hasOne(Tests::className(), ['id' => 'test_id']);

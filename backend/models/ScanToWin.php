@@ -4,39 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%scan_to_win}}".
- *
- * @property int $id
- * @property string|null $date_start
- * @property string|null $date_end
- * @property int|null $product_id
- * @property int|null $winner_id
- * @property int|null $code_id
- * @property int|null $users_count
- * @property int|null $codes_count
- * @property string|null $created_at
- * @property string|null $updated_at
- *
- * @property ShopProduct $product
- * @property User $winner
- */
 class ScanToWin extends \yii\db\ActiveRecord
 {
     
-    public $saveAndExit = 0;
+    public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%scan_to_win}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -48,9 +25,6 @@ class ScanToWin extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -84,7 +58,6 @@ class ScanToWin extends \yii\db\ActiveRecord
         return $this->hasOne(ScanToWinCodes::className(), ['id' => 'code_id']);
     }
     
-    
     public function getCountUsers(int $countUsers)
     {
         return str_replace(
@@ -95,7 +68,6 @@ class ScanToWin extends \yii\db\ActiveRecord
             ])
         );
     }
-    
 
     public function getCountCodes(int $countCodes)
     {
@@ -107,7 +79,6 @@ class ScanToWin extends \yii\db\ActiveRecord
             ])
         );
     }
-    
     
     public function getCurrent()
     {

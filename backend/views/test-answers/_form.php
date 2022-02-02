@@ -36,7 +36,7 @@
 
         <?= $form
                 ->field($model, 'question_id')
-                ->dropDownList(ArrayHelper::map($questions, 'id', function($question) {
+                ->dropDownList(ArrayHelper::map($questions, 'id', function ($question) {
                     return json_decode($question['name'])->{Yii::$app->language};
                 }))
         ?>

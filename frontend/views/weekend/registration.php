@@ -46,7 +46,7 @@ use yii\helpers\ArrayHelper;
             <?= $form
                     ->field($model, 'country')
                     ->dropDownList(ArrayHelper::map($countries, 'id', 'name'), [
-                        'options' => ArrayHelper::map($countries, 'id', function($data) {
+                        'options' => ArrayHelper::map($countries, 'id', function ($data) {
                             return [
                                 'data-code' => $data['code'],
                                 'data-icon' => $data['icon'],

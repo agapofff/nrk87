@@ -7,7 +7,7 @@ use Yii;
 class Blog extends \yii\db\ActiveRecord
 {
     
-    public $saveAndExit = 0;
+    public $saveAndExit;
 
     function behaviors()
     {

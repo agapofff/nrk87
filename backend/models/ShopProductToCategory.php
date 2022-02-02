@@ -4,29 +4,14 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%shop_product_to_category}}".
- *
- * @property int $id
- * @property int $product_id
- * @property int $category_id
- *
- * @property ShopProduct $product
- * @property ShopCategory $category
- */
 class ShopProductToCategory extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public static function tableName()
     {
         return '{{%shop_product_to_category}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -37,9 +22,6 @@ class ShopProductToCategory extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -49,21 +31,11 @@ class ShopProductToCategory extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Product]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getProduct()
     {
         return $this->hasOne(ShopProduct::className(), ['id' => 'product_id']);
     }
 
-    /**
-     * Gets query for [[Category]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getCategory()
     {
         return $this->hasOne(ShopCategory::className(), ['id' => 'category_id']);

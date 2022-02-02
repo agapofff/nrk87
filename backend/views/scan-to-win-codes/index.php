@@ -44,8 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 [
                     'attribute' => 'id',
-                    'value' => function($model) use ($codes) {
-                        return array_values(array_filter($codes, function($code, $key) use ($model) {
+                    'value' => function ($model) use ($codes) {
+                        return array_values(array_filter($codes, function ($code, $key) use ($model) {
                             return $code['id'] == $model->id;
                         }, ARRAY_FILTER_USE_BOTH))[0]['code'];
                     },
@@ -65,8 +65,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 [
                     'attribute' => 'user_id',
-                    'value' => function($model) use ($users) {
-                        return array_values(array_filter($users, function($user, $user_id) use ($model) {
+                    'value' => function ($model) use ($users) {
+                        return array_values(array_filter($users, function ($user, $user_id) use ($model) {
                             return $user['id'] == $model->user_id;
                         }, ARRAY_FILTER_USE_BOTH))[0]['username'];
                     },
@@ -112,7 +112,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($model) {
+                    'value' => function ($model) {
                         return Html::a(
                             Html::tag('big', 
                                 Html::tag('span', '', [

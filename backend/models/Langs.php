@@ -7,7 +7,7 @@ use Yii;
 class Langs extends \yii\db\ActiveRecord
 {
     
-    public $saveAndExit = 0;
+    public $saveAndExit;
     
     public static function tableName()
     {

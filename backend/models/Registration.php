@@ -4,34 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%registration}}".
- *
- * @property int $id
- * @property string $name
- * @property int $country
- * @property string $phone
- * @property string $email
- * @property string $promocode
- *
- * @property Countries $country0
- */
 class Registration extends \yii\db\ActiveRecord
 {
     
     public $saveAndExit = 0;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%registration}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -44,9 +26,6 @@ class Registration extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -63,11 +42,6 @@ class Registration extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Country0]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getCountries()
     {
         return $this->hasOne(Countries::className(), ['id' => 'country']);

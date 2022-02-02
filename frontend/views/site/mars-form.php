@@ -120,7 +120,7 @@
                                     0 => Yii::t('front', 'Женский'),
                                 ],
                                 [
-                                    'item' => function($index, $label, $name, $checked, $value) use ($model) {
+                                    'item' => function ($index, $label, $name, $checked, $value) use ($model) {
                                         return '
                                             <div class="custom-control custom-radio d-inline mr-4">
                                                 <input type="radio" name="' . $name . '" class="custom-control-input" ' . ($value == $model->gender ? 'checked' : '') . ' id="' . $name . $value . '" value="' . $value . '">

@@ -16,6 +16,7 @@ class FacebookConversionsController extends \yii\web\Controller
         $data = json_decode($data);
         
         $contents = [];
+        
         foreach ($data->contents as $content) {
             $contents[] = json_encode([
                 'id' => $content->id,

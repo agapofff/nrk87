@@ -6,14 +6,9 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use backend\models\TestPassings;
 
-/**
- * TestPassingsSearch represents the model behind the search form of `backend\models\TestPassings`.
- */
 class TestPassingsSearch extends TestPassings
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function rules()
     {
         return [
@@ -22,22 +17,12 @@ class TestPassingsSearch extends TestPassings
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
     public function search($params)
     {
         $query = TestPassings::find();

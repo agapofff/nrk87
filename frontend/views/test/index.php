@@ -236,11 +236,11 @@
                             
                                 <?= $form
                                         ->field($model, 'answer_id')
-                                        ->radioList(ArrayHelper::map($answers, 'id', function($answer) {
+                                        ->radioList(ArrayHelper::map($answers, 'id', function ($answer) {
                                                 return json_decode($answer->name)->{Yii::$app->language};
                                             }),
                                             [
-                                                'item' => function($index, $label, $name, $checked, $value) use ($questionNumber) {
+                                                'item' => function ($index, $label, $name, $checked, $value) use ($questionNumber) {
                                                     return '
                                                         <div class="custom-control custom-radio d-block w-100 mb-4">
                                                             <input type="radio" name="' . $name . '" class="custom-control-input" id="question-' . $questionNumber . '-' . $value . '" value="' . $value . '">

@@ -4,31 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%stores}}".
- *
- * @property int $id
- * @property int $active
- * @property string $lang
- * @property int $type
- * @property int $store_id
- */
 class Stores extends \yii\db\ActiveRecord
 {
     
     public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%stores}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -38,9 +23,6 @@ class Stores extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [

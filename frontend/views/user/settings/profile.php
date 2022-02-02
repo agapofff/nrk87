@@ -138,7 +138,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     0 => Yii::t('front', 'Женский'),
                                 ],
                                 [
-                                    'item' => function($index, $label, $name, $checked, $value) {
+                                    'item' => function ($index, $label, $name, $checked, $value) {
                                         return '
                                             <div class="custom-control custom-radio d-inline mr-4">
                                                 <input type="radio" name="' . $name . '" class="custom-control-input" ' . ($checked ? 'checked': '') . ' id="' . $name . $value . '" value="' . $value . '">

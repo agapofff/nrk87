@@ -8,7 +8,8 @@ class Experts extends \yii\db\ActiveRecord
 {
     
     public $imageFile;
-    public $saveAndExit = 0;
+    
+    public $saveAndExit;
     
     public static function tableName()
     {

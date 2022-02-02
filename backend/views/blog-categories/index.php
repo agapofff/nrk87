@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($data) {
+                    'value' => function ($data) {
                         return Html::a(
                             Html::tag('big', 
                                 Html::tag('span', '', [
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'attribute' => 'name',
                     'format' => 'raw',
-                    'value' => function($model) {
+                    'value' => function ($model) {
                         return Html::a(json_decode($model->name)->{Yii::$app->language}, [
                             'update',
                             'id' => $model->id,

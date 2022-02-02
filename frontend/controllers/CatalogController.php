@@ -3,10 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-
 use backend\models\Stores;
 use backend\models\Langs;
-
 use dvizh\shop\models\Product;
 use dvizh\shop\models\product\ProductSearch;
 // use dvizh\shop\events\ProductEvent;
@@ -14,18 +12,12 @@ use dvizh\shop\models\product\ProductSearch;
 // use dvizh\shop\models\Price;
 use dvizh\shop\models\Category;
 // use dvizh\shop\models\price\PriceSearch;
-
-
 // use dvizh\shop\models\Modification;
 // use dvizh\shop\models\modification\ModificationSearch;
-
 // use dvizh\filter\models\Filter;
-
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-
 use yii\data\ActiveDataProvider;
-
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
 
@@ -111,8 +103,7 @@ class CatalogController extends \yii\web\Controller
 
         $collections = [];
         
-        foreach ($collectionsIDs as $collectionID)
-        {
+        foreach ($collectionsIDs as $collectionID) {
             $collectionCategories = [];
             $collectionProductsIDs = [];
             $products = null;
@@ -123,18 +114,15 @@ class CatalogController extends \yii\web\Controller
             ]);
             
             if ($collection) {
-            
                 $collectionProducts = $collection->products;
                 
                 if ($collectionProducts) {
                     $collectionCategoriesIDs = [];
                     
-                    foreach ($collectionProducts as $collectionProduct)
-                    {
+                    foreach ($collectionProducts as $collectionProduct) {
                         $collectionProductCategories = $collectionProduct->categories;
                         if ($collectionProductCategories) {
-                            foreach ($collectionProductCategories as $collectionProductCategory)
-                            {
+                            foreach ($collectionProductCategories as $collectionProductCategory) {
                                 if ($collectionProductCategory->id != $collectionID) {
                                     $collectionCategoriesIDs[] = $collectionProductCategory->id;
                                 }
@@ -185,16 +173,16 @@ class CatalogController extends \yii\web\Controller
             }
         }
         
-        Yii::$app->params['currency'] = \backend\models\Langs::findOne([
+        Yii::$app->params['currency'] = Langs::findOne([
             'code' => Yii::$app->language
         ])->currency;
 
         
         if ($collectionSlug && $categorySlug) {
             $title = json_decode($collection->name)->{Yii::$app->language} . ' - ' . json_decode($category->name)->{Yii::$app->language};
-        } else if ($categorySlug) {
+        } elseif ($categorySlug) {
             $title = json_decode($category->name)->{Yii::$app->language};
-        } else if ($collectionSlug) {
+        } elseif ($collectionSlug) {
             $title = json_decode($collection->name)->{Yii::$app->language};
         } else {
             $title = Yii::t('front', 'Каталог');
@@ -299,8 +287,7 @@ class CatalogController extends \yii\web\Controller
         
         if (Yii::$app->params['hideNotAvailable']) {
             if (count($products)) {
-                foreach ($products as $k => $product)
-                {
+                foreach ($products as $k => $product) {
                     if (json_decode(json_decode($product->sku)->{Yii::$app->language})->{Yii::$app->params['store_type']}) {
                         continue;
                     } else {

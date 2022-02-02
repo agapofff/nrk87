@@ -4,30 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%redirects}}".
- *
- * @property int $id
- * @property int $type
- * @property string $link_from
- * @property string $link_to
- */
 class Redirects extends \yii\db\ActiveRecord
 {
     
-    public $saveAndExit = 0;
+    public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%redirects}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -37,9 +23,6 @@ class Redirects extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [

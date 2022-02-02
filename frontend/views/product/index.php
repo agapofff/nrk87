@@ -251,7 +251,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 
 <?php
     $this->registerJs("
-        outOfStock = function() {
+        outOfStock = function () {
             toastr.error('" . Yii::t('front', 'Нет в наличии') . "');
         }
     ");
@@ -260,7 +260,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 <?php
     $this->registerJS("
             // function setProductOptionsOnLoad() {
-                // $($('.dvizh-option-values-before').get().reverse()).each(function() {
+                // $($('.dvizh-option-values-before').get().reverse()).each(function () {
                     // $(this).trigger('change');
                 // });
             // }
@@ -269,7 +269,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
             
             var id,
                 options = {};
-            $('.dvizh-option').each(function() {
+            $('.dvizh-option').each(function () {
                 var option = $(this).find('.dvizh-option-values-before:first'),
                     optionId = $(option).data('filter-id'),
                     optionVal = $(option).val();
@@ -307,7 +307,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 
 <?php
     $this->registerJs("
-        $(document).on('click', '.dvizh-cart-buy-button', function() {
+        $(document).on('click', '.dvizh-cart-buy-button', function () {
             var id = $('.dvizh-cart-buy-button').attr('data-comment'),
                 name = '" . $product_name . "',
                 quantity = 1,

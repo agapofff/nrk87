@@ -92,7 +92,7 @@ use kartik\alert\AlertBlock;
                                 lang: lang
                             })
                         },
-                        success: function(data) {
+                        success: function (data) {
                             var response = JSON.parse(data);
                             if (response.status === 200 && response.message === 'OK') {
                                 $('#message-translation').val(response.data);
@@ -101,7 +101,7 @@ use kartik\alert\AlertBlock;
                                 console.log(data);
                             }
                         },
-                        error: function(data) {
+                        error: function (data) {
                             var response = JSON.parse(data);
                             alert(response.message);
                             console.log(data);

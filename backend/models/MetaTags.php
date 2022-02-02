@@ -4,31 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%meta_tags}}".
- *
- * @property int $id
- * @property string $link
- * @property string $title
- * @property string $description
- * @property string $h1
- */
 class MetaTags extends \yii\db\ActiveRecord
 {
     
-    public $saveAndExit = 0;
+    public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%meta_tags}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -39,9 +24,6 @@ class MetaTags extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [

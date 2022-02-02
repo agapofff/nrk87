@@ -6,14 +6,9 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use backend\models\TestAnswers;
 
-/**
- * TestAnswersSearch represents the model behind the search form of `backend\models\TestAnswers`.
- */
 class TestAnswersSearch extends TestAnswers
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function rules()
     {
         return [
@@ -23,22 +18,12 @@ class TestAnswersSearch extends TestAnswers
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
     public function search($params)
     {
         $query = TestAnswers::find();

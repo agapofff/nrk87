@@ -4,34 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%scan_to_win_stores}}".
- *
- * @property int $id
- * @property int $active
- * @property int $store_id
- * @property string $name
- * @property string $currency
- * @property float $sum
- * @property int $mlm
- * @property string $description
- */
 class ScanToWinStores extends \yii\db\ActiveRecord
 {
     
     public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%scan_to_win_stores}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -43,9 +25,6 @@ class ScanToWinStores extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [

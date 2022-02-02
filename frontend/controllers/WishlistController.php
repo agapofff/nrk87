@@ -77,7 +77,7 @@ class WishlistController extends \yii\web\Controller
         
         if ($wishlist) {
             foreach ($wishlist as $wish) {
-                $product = array_values(array_filter($products, function($prod) use ($wish) {
+                $product = array_values(array_filter($products, function ($prod) use ($wish) {
                     return $prod->id == $wish->product_id;
                 }))[0];
 

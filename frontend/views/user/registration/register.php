@@ -131,10 +131,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
     $this->registerJS("
         $('#registration-form')
-            .on('beforeValidateAttribute', function(event, attr, msg) {
+            .on('beforeValidateAttribute', function (event, attr, msg) {
                 $('#register-form-username').val($('#register-form-email').val());
             })
-            .on('beforeSubmit', function(event) {
+            .on('beforeSubmit', function (event) {
                 event.preventDefault();
                 if (!$('#agree').checked) {
                     toastr.error('" . Yii::t('front', 'Необходимо согласиться') . "');

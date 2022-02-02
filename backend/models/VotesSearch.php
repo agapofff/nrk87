@@ -1,23 +1,19 @@
 <?php
 
 namespace backend\models;
+
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use backend\models\Votes;
 
-/**
- * VotesSearch represents the model behind the search form of `backend\models\Votes`.
- */
 class VotesSearch extends Votes
 {
     
     public $questions;
+    
     public $answers;
     
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -27,22 +23,12 @@ class VotesSearch extends Votes
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
     public function search($params)
     {
         $query = Votes::find();

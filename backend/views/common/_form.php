@@ -4,12 +4,9 @@ use yii\helpers\Html;
 use yii\widgets\Pjax;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-
 use kartik\alert\AlertBlock;
-
 use kartik\datecontrol\Module;
 use kartik\datecontrol\DateControl;
-
 use alexantr\colorpicker\ColorPicker;
 
 /* @var $this yii\web\View */

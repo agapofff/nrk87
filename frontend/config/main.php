@@ -18,7 +18,7 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'sourceLanguage' => 'ru',
     'language' => 'ru',
-    'on beforeRequest' => function() {
+    'on beforeRequest' => function () {
         
         $pathInfo = Yii::$app->request->pathInfo;
         $query = Yii::$app->request->queryString;
@@ -224,7 +224,7 @@ return [
     },
             
 
-    'on afterAction' => function() {
+    'on afterAction' => function () {
         
         // переадресация главных страниц на языковую локаль
         
@@ -351,7 +351,7 @@ return [
                     // Detects a language based on host name
                     'class' => 'cetver\LanguagesDispatcher\handlers\HostNameHandler',
                     'request' => 'request', // optional, the Request component ID.                    
-                    'hostMap' => function() {
+                    'hostMap' => function () {
                         $langs = \backend\models\Langs::find()->select('code')->column();
                         $hostMap = [];
                         foreach ($langs as $lang) {

@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'prompt' => Yii::t('back', 'Все'),
                     ]
                 ),
-                'value' => function($data) {
+                'value' => function ($data) {
                     if (Yii::$app->user->can('/stores/active')) {
                         return Html::a(
                             Html::tag('big', 
@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'name',
                 'format' => 'raw',
-                'value' => function($model) {
+                'value' => function ($model) {
                     if (Yii::$app->user->can('/stores/update')) {
                         return Html::a($model->name, [
                             'update',
@@ -137,7 +137,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'prompt' => Yii::t('back', 'Все'),
                     ]
                 ),
-                'value' => function($model) {
+                'value' => function ($model) {
                     return strtoupper($model->lang);
                 },
                 'headerOptions' => [
@@ -160,7 +160,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'prompt' => Yii::t('back', 'Все'),
                     ]
                 ),
-                'value' => function($data) {
+                'value' => function ($data) {
                     return ArrayHelper::getValue(Yii::$app->params['store_types'], $data->type);
                 },
                 'headerOptions' => [
@@ -207,7 +207,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'text-center'
                 ],
                 'buttons' => [
-                    'update' => function($url, $model) {
+                    'update' => function ($url, $model) {
                         if (Yii::$app->user->can('/stores/update')) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-pencil btn btn-primary btn-xs',
@@ -216,7 +216,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]);
                         }
                     },
-                    'delete' => function($url, $model) {
+                    'delete' => function ($url, $model) {
                         if (Yii::$app->user->can('/stores/delete')) {
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',

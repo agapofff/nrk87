@@ -3,27 +3,20 @@
 namespace frontend\controllers;
 
 use Yii;
-
 use backend\models\Stores;
 use backend\models\Langs;
-
 use dvizh\shop\models\Product;
 use dvizh\shop\models\Category;
 use dvizh\order\models\Order;
 use dvizh\filter\models\FilterVariant;
-
 use dektrium\user\models\User;
 use dektrium\user\models\Profile;
-
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-
 use yii\data\ActiveDataProvider;
-
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
-
 use linslin\yii2\curl;
 
 class CheckoutController extends \yii\web\Controller
@@ -85,6 +78,7 @@ class CheckoutController extends \yii\web\Controller
                 ':id' => $id
             ])
             ->one();
+            
         $log_response = $order->getField(3);
         $paymentUrl = json_decode($log_response)->payment_url;
         return $this->redirect($paymentUrl);
@@ -98,6 +92,7 @@ class CheckoutController extends \yii\web\Controller
             'url' => 'https://api.sessia.com/api/language',
         ]);
         $langs = json_decode($langsJson);
+        
         foreach ($langs as $lang) {
             if ($lang->iso_code == Yii::$app->language) {
                 $langId = $lang->id;
@@ -112,6 +107,7 @@ class CheckoutController extends \yii\web\Controller
     {
         $elements = Yii::$app->cart->elements;        
         $products = [];
+        
         foreach ($elements as $element) {
             $products[] = [
                 'goods' => $element->getComment(),
@@ -194,8 +190,7 @@ class CheckoutController extends \yii\web\Controller
                 $deliveryJson = str_replace('\r\n', '<br>', $deliveryJson);
                 $shippings = json_decode($deliveryJson);
 
-                foreach ($shippings as $shipping)
-                {
+                foreach ($shippings as $shipping) {
                     $operator = substr($shipping->delivery_type->delivery_service->name, 0, strpos($shipping->delivery_type->delivery_service->name, ' '));
                     $text = str_replace('<br>', ' ', ($shipping->delivery_type->pickup ? $shipping->comment : $shipping->delivery_type->name . (
                         strpos($shipping->delivery_type->name, $operator) !== false ? '' : ' ' . $operator

@@ -4,32 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%scan_to_win_codes}}".
- *
- * @property int $id
- * @property int $user_id
- * @property int $order_id
- * @property int $status
- * @property string $created_at
- * @property string $updated_at
- */
 class ScanToWinCodes extends \yii\db\ActiveRecord
 {
     
     public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%scan_to_win_codes}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -40,9 +24,6 @@ class ScanToWinCodes extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -61,7 +42,6 @@ class ScanToWinCodes extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
     
-    
     public function getCode($id)
     {
         $code = 'A0000000';
@@ -69,7 +49,6 @@ class ScanToWinCodes extends \yii\db\ActiveRecord
         $str = substr($code, 0, -$symbols) . $id;
         return $str;
     }
-    
     
     public function getSecurePhone($phone)
     {
@@ -79,7 +58,6 @@ class ScanToWinCodes extends \yii\db\ActiveRecord
         $end = substr($phone, -4, 4);
         return '+' . $start . '******' . $end;
     }
-    
     
     public function getWinnersUsers()
     {

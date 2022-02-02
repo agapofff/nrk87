@@ -4,47 +4,26 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%shop_category}}".
- *
- * @property int $id
- * @property int|null $parent_id
- * @property string $name
- * @property string|null $code
- * @property string|null $slug
- * @property string|null $text
- * @property string|null $image
- * @property int $sort
- *
- * @property ShopProduct[] $shopProducts
- * @property ShopProductToCategory[] $shopProductToCategories
- */
 class ShopCategory extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+    
+    public $saveAndExit;
+
     public static function tableName()
     {
         return '{{%shop_category}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
-            [['parent_id', 'sort'], 'integer'],
+            [['parent_id', 'sort', 'saveAndExit'], 'integer'],
             [['name'], 'required'],
             [['name', 'text', 'image'], 'string'],
             [['code', 'slug'], 'string', 'max' => 255],
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -59,21 +38,11 @@ class ShopCategory extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[ShopProducts]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getShopProducts()
     {
         return $this->hasMany(ShopProduct::className(), ['category_id' => 'id']);
     }
 
-    /**
-     * Gets query for [[ShopProductToCategories]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getShopProductToCategories()
     {
         return $this->hasMany(ShopProductToCategory::className(), ['category_id' => 'id']);

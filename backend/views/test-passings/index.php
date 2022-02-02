@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($model) use ($users) {
+                    'value' => function ($model) use ($users) {
                         return ArrayHelper::index($users, 'id')[$model->user_id]->username;
                     },
                     'headerOptions' => [
@@ -99,14 +99,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filter' => Html::activeDropDownList(
                         $searchModel,
                         'test_id',
-                        ArrayHelper::map($tests, 'id', function($test) {
+                        ArrayHelper::map($tests, 'id', function ($test) {
                             return json_decode($test['name'])->{Yii::$app->language};
                         }), [
                             'class' => 'form-control',
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($model) use ($tests) {
+                    'value' => function ($model) use ($tests) {
                         $testName = json_decode(ArrayHelper::index($tests, 'id')[$model->test_id]->name)->{Yii::$app->language};
                         return Html::a($testName, [
                             '/tests/update',
@@ -127,14 +127,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filter' => Html::activeDropDownList(
                         $searchModel,
                         'question_id',
-                        ArrayHelper::map($questions, 'id', function($question) {
+                        ArrayHelper::map($questions, 'id', function ($question) {
                             return json_decode($question['name'])->{Yii::$app->language};
                         }), [
                             'class' => 'form-control',
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($model) use ($questions) {
+                    'value' => function ($model) use ($questions) {
                         $questionName = json_decode(ArrayHelper::index($questions, 'id')[$model->question_id]->name)->{Yii::$app->language};
                         return Html::a($questionName, [
                             '/test-questions/update',
@@ -155,14 +155,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filter' => Html::activeDropDownList(
                         $searchModel,
                         'answer_id',
-                        ArrayHelper::map($answers, 'id', function($answer) {
+                        ArrayHelper::map($answers, 'id', function ($answer) {
                             return json_decode($answer['name'])->{Yii::$app->language};
                         }), [
                             'class' => 'form-control',
                             'prompt' => Yii::t('back', 'Все'),
                         ]
                     ),
-                    'value' => function($model) use ($answers) {
+                    'value' => function ($model) use ($answers) {
                         $answerName = json_decode(ArrayHelper::index($answers, 'id')[$model->answer_id]->name)->{Yii::$app->language};
                         return Html::a($answerName, [
                             '/test-answers/update',

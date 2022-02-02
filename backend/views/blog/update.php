@@ -15,10 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="blog-update">
             <br>
             <?= $this->render('_form', [
-                'model' => $model,
-                'languages' => $languages,
-                'categories' => $categories,
-            ]) ?>
+                    'model' => $model,
+                    'languages' => $languages,
+                    'categories' => $categories,
+                ])
+            ?>
             <br>
         </div>
     </div>

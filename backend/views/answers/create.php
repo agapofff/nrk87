@@ -20,9 +20,10 @@ $model->updated_at = Date('Y-m-d H:i:s');
         <div class="answers-create">
             <br>
             <?= $this->render('_form', [
-                'model' => $model,
-                'questions' => $questions,
-            ]) ?>
+                    'model' => $model,
+                    'questions' => $questions,
+                ])
+            ?>
             <br>
         </div>
     </div>

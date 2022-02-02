@@ -107,7 +107,7 @@ use kartik\alert\AlertBlock;
 <?php
     $this->registerJs("
         var shortLink = '". str_replace(Yii::$app->request->baseUrl, '', Url::home(true)) . hash('crc32', date('Y-m-d H:i:s')) . "';
-        $('.btn-switch').change(function() {
+        $('.btn-switch').change(function () {
             $('#redirects-link_from').val(this.value === '1' ? shortLink : '');
         });
         ",

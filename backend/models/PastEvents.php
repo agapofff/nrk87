@@ -4,44 +4,26 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%past_events}}".
- *
- * @property int $id
- * @property string $title_ru
- * @property string $title_vi
- * @property string $event_date
- * @property string $created_at
- * @property string $updated_at
- */
 class PastEvents extends \yii\db\ActiveRecord
 {
     
-    public $saveAndExit = 0;
+    public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%past_events}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
             [['title_ru', 'title_vi', 'video_ru'], 'required'],
-            [['event_date', 'created_at', 'updated_at', 'saveAndExit'], 'safe'],
+            [['event_date', 'created_at', 'updated_at'], 'safe'],
             [['title_ru', 'title_vi', 'video_ru', 'video_vi'], 'string', 'max' => 255],
+            [['saveAndExit'], 'integer'],
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [

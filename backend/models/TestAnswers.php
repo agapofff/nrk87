@@ -4,35 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%test_answers}}".
- *
- * @property int $id
- * @property int $question_id
- * @property int $name
- * @property int $correct
- * @property string $created_at
- * @property string $updated_at
- *
- * @property TestQuestions $question
- * @property TestPassings[] $testPassings
- */
 class TestAnswers extends \yii\db\ActiveRecord
 {
     
     public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%test_answers}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -44,9 +25,6 @@ class TestAnswers extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -60,21 +38,11 @@ class TestAnswers extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Question]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getQuestion()
     {
         return $this->hasOne(TestQuestions::className(), ['id' => 'question_id']);
     }
 
-    /**
-     * Gets query for [[TestPassings]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getTestPassings()
     {
         return $this->hasMany(TestPassings::className(), ['answer_id' => 'id']);

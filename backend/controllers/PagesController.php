@@ -46,6 +46,7 @@ class PagesController extends Controller
     public function actionCreate()
     {
         $model = new Pages();
+        $model->loadDefaultValues();
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {

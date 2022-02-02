@@ -4,36 +4,16 @@ namespace backend\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%tests}}".
- *
- * @property int $id
- * @property string $name
- * @property string|null $description
- * @property string $created_at
- * @property string|null $updated_at
- * @property int $active
- *
- * @property TestPassings[] $testPassings
- * @property TestQuestions[] $testQuestions
- * @property TestResults[] $testResults
- */
 class Tests extends \yii\db\ActiveRecord
 {
     
     public $saveAndExit;
     
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return '{{%tests}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -44,8 +24,7 @@ class Tests extends \yii\db\ActiveRecord
             [['active'], 'integer'],
             [['slug'], 'string', 'max' => 30],
         ];
-    }
-    
+    }    
     
     function behaviors()
     {
@@ -56,9 +35,6 @@ class Tests extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -72,31 +48,19 @@ class Tests extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[TestPassings]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getTestPassings()
     {
         return $this->hasMany(TestPassings::className(), ['test_id' => 'id']);
     }
 
-    /**
-     * Gets query for [[TestQuestions]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getTestQuestions()
     {
         return $this->hasMany(TestQuestions::className(), ['test_id' => 'id']);
     }
     
-    
     public function getTestResults()
     {
         return $this->hasMany(TestResults::className(), ['test_id' => 'id']);
     }
-    
     
 }
