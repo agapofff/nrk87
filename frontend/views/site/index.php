@@ -19,7 +19,7 @@
     
     $coverId = getCoverId(Yii::$app->session->get('coverId'), 2);
     $coverIdMobile = getCoverId(Yii::$app->session->get('coverIdMobile'), 4);
-// echo '<div class="d-none">' . Yii::$app->session->get('coverIdMobile') . ' - ' . $coverIdMobile . '</div>';
+
     Yii::$app->session->set('coverId', $coverId);
     Yii::$app->session->set('coverIdMobile', $coverIdMobile);
 ?>
