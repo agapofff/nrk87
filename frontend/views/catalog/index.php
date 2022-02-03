@@ -12,24 +12,23 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
 ?>
 
 
-<div class="container-fluid mb-7 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
-    
-    <div class="row mb-5">
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-3 mb-md-7">
+    <div class="row">
         <div class="col-12">
             <h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
                 <?= Yii::t('front', 'Каталог') ?>
             </h1>
         </div>
     </div>
+</div>
 
-
-
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-3 mb-md-7">
 <?php
     foreach ($collections as $collection) {
 ?>
-        <div class="row mb-5">
+        <div class="row mb-md-5">
             <div class="col-auto">
-                <h2 class="h1 ttfirsneue text-uppercase font-weight-light mb-0">
+                <h2 class="display-3 ttfirsneue text-uppercase font-weight-light mb-0">
                     <?= Html::a(json_decode($collection['collection']->text)->{Yii::$app->language}, [
                             '/catalog/' . $collection['collection']->slug
                         ], [

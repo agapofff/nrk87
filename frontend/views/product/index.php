@@ -27,7 +27,7 @@ $this->title = Yii::$app->params['title'] ?: $product_name . ' - ' . Yii::t('fro
 $sizes = json_decode($model->sizes)->{Yii::$app->language};
 ?>
 
-<div class="container-fluid mb-5 px-lg-2 px-xl-3 px-xxl-5" itemscope itemtype="http://schema.org/Product">
+<div class="container-fluid mb-3 md-md-5 px-lg-2 px-xl-3 px-xxl-5" itemscope itemtype="http://schema.org/Product">
     
     <div class="row justify-content-center">
 
@@ -50,7 +50,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
             
             <div class="row d-md-none">
             
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-2">
                 
                     <div class="owl-carousel owl-theme owl-dots">
                     
@@ -78,7 +78,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
         
             <div class="sticky-top" style="top:100px">
             
-                <h1 class="ttfirsneue font-weight-light mb-3" itemprop="name">
+                <h1 class="ttfirsneue font-weight-light mb-2 mb-md-3" itemprop="name">
                     <?= $h1 ?>
                 </h1>
                 
@@ -86,7 +86,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
             if ($price && $model->available) {
         ?>
 
-                <div class="product-price mb-3" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <div class="product-price mb-2 mb-md-3" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                     <meta itemprop="price" content="<?= $price ?>">
                     <meta itemprop="priceCurrency" content="<?= Yii::$app->params['currency'] ?>">
                     <?= ShowPrice::widget([
@@ -99,7 +99,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                     ?>
                 </div>
                 
-                <div class="row mb-4">
+                <div class="row mb-2 mb-md-4">
                     <div class="product-buy col-sm-6 col-md-12 col-lg-6 mb-0_5">
                         <?= BuyButton::widget([
                                 'model' => $model,
@@ -133,7 +133,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
         <?php
             if ($model->code) {
         ?>
-                <div class="my-5 d-none">
+                <div class="my-3 my-md-5 d-none">
                     <p class="lead"><?= $model->code ?></p>
                 </div>
         <?php
@@ -146,7 +146,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                             <?= json_decode($model->short_text)->{Yii::$app->language} ?>
                         </div>
                     </div>
-                    <div class="product-description col-sm-6 col-md-12 col-lg-6 mb-2">
+                    <div class="product-description col-sm-6 col-md-12 col-lg-6 mb-md-2">
                         <p class="text-uppercase font-weight-normal mb-1_5"><?= Yii::t('front', 'Описание') ?></p>
                         <div id="product-description" itemprop="description" style="opacity: 0.6">
                             <?= json_decode($model->text)->{Yii::$app->language} ?>

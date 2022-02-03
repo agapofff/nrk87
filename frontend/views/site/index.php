@@ -18,7 +18,7 @@
     }
     
     $coverId = getCoverId(Yii::$app->session->get('coverId'), 2);
-    $coverIdMobile = getCoverId(Yii::$app->session->get('coverIdMobile'), 4);
+    $coverIdMobile = getCoverId(Yii::$app->session->get('coverIdMobile'), 2);
 
     Yii::$app->session->set('coverId', $coverId);
     Yii::$app->session->set('coverIdMobile', $coverIdMobile);
@@ -31,7 +31,8 @@
 <div class="vw-100 d-none d-md-block pointer-events-none">
     <?= Html::img('/images/main/banner_desktop_' . $coverId . '.jpg', [
             'class' => 'd-block w-100',
-            'alt' => Yii::$app->id . ' - ' . Yii::$app->name
+            'alt' => Yii::$app->id . ' - ' . Yii::$app->name,
+            'loading' => 'lazy',
         ])
     ?>
 </div>
@@ -55,35 +56,20 @@
 </div>
 -->
 
-<div class="container-fluid mb-10 pt-5 pb-5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
+<div class="container-fluid mb-md-10 pt-5 pb-3 pb-md-5 mt-md-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
     background: url('/images/main/ellipse<?= Yii::$app->language == 'ru' ? '_ru' : '' ?>.png') center center /cover no-repeat;
 ">
     <div class="row">
+        <div class="col-12 text-right">
+            EST. 2018
+        </div>
         <div class="col-12">
     <?php
         $text = explode('|', Yii::t('front', 'GPS-одежда | для тех, | кто мечтает | о Марсе'));
         foreach ($text as $k => $txt) {
     ?>
-            <h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 position-relative <?= $k % 2 ? ($k == 3 && Yii::$app->language == 'ru' ? 'text-left' : 'text-right') : 'text-left' ?>">
+            <h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 position-relative <?= $k % 2 ? ($k == 3 && Yii::$app->language == 'ru' ? 'text-left' : 'text-md-right') : 'text-left' ?>">
                 <?= trim($txt) ?>
-                
-                <?php
-                    if ($k == 0) {
-                        echo Html::tag('span', 'EST. 2018', [
-                            'style' => '
-                                position: absolute;
-                                top: 40px;
-                                right: 100px;
-                                font-family: Helvetica;
-                                font-size: 16px;
-                                font-weight: normal;
-                                line-height: 20.8px;
-                                text-decoration: none;
-                                text-transform: none;
-                            ',
-                        ]);
-                    }
-                ?>
                 
                 <?php
                     if ($k == 1) {
@@ -116,7 +102,7 @@
     </div>
 </div>
 
-<div class="position-relative mt-5 mb-10 bg-warning pt-1_5" style="height: 100px">
+<div class="position-relative mt-2 mt-md-5 mb-5 mb-md-10 bg-warning pt-2 pt-md-1_5" style="height: 100px">
     <div class="marquee h3 m-0 font-weight-light text-white">
         <?= Yii::t('front', 'бегущая строка', [
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
@@ -134,12 +120,12 @@
     </h2>
 </div>
 
-<div class="container-fluid pb-0_5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5 mt-4">
+<div class="container-fluid pb-0 px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-md-4">
     <div class="row list-products justify-content-center">
     <?php
-        foreach ($products as $product) {
+        foreach ($products as $key => $product) {
     ?>
-            <div class="col-12 col-md-6 mb-3 mb-md-4">
+            <div class="col-12 col-md-6 mb-md-4 <?= $key > 7 ? 'd-none d-md-block' : '' ?>">
                 <?= $this->render('@frontend/views/catalog/_product', [
                         'model' => $product,
                         'prices' => $prices,
@@ -150,19 +136,25 @@
     <?php
         }
     ?>
+
+        <div class="col-12 mt-2 text-center d-md-none">
+            <?= Html::a(Yii::t('front', 'Смотреть еще'), ['/catalog'], [
+                    'class' => 'btn btn-outline-primary text-uppercase px-2 py-1'
+                ]);
+            ?>
+        </div>
     </div>
 </div>
 
-<div class="container-fluid text-center d-none">
-    <?= Html::a(Yii::t('front', 'Смотреть еще'), ['/catalog'], [
-            'class' => 'btn btn-outline-primary text-uppercase px-2 py-1'
-        ]);
-    ?>
-</div>
-
-<div class="vw-100 h-auto mt-8 mb-12 position-relative d-none d-md-block">
+<div class="vw-100 h-auto mt-5 mt-md-8 mb-3 mb-md-12 position-relative">
     <?= Html::img('/images/main/banner_6.jpg', [
-            'class' => 'd-block w-100 pointer-events-none'
+            'class' => 'd-none d-md-block w-100 pointer-events-none',
+            'loading' => 'lazy',
+        ])
+    ?>
+    <?= Html::img('/images/main/who_we_are_mobile.jpg', [
+            'class' => 'd-block d-md-none w-100 pointer-events-none',
+            'loading' => 'lazy',
         ])
     ?>
     <div class="container-fluid position-absolute pb-0_5 pl-lg-2 pl-xl-3 pl-xxl-5 pr-lg-2 pr-xl-3 pr-xxl-5 mt-1_5 mt-3 mt-md-4 mt-lg-5 mt-xl-6 mt-xxl-7" style="
@@ -170,53 +162,25 @@
         left: 0;
     ">
         <div class="row justify-content-between">
-            <div class="col-md-6">
-                <h3 class="h1 ttfirsneue text-uppercase font-weight-light text-white">
+            <div class="col-md-5">
+                <h3 class="h1 mb-2 ttfirsneue text-uppercase font-weight-light text-white">
                     <?= Yii::t('front', 'Кто мы') ?>
                 </h3>
             </div>
-            <div class="col-md-6 col-lg-5 col-xl-4 col-xxl-3">
-                <p class="text-white">
+            <div class="col-md-7 col-lg-5 col-xl-4 col-xxl-3">
+                <p class="text-white mb-5 mb-md-3">
                     <?= Yii::$app->id ?> - <?= Yii::t('front', 'fashion tech wear бренд') ?>. 
                     <?= Yii::t('front', 'Для тех, кто ищет себя, ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу. Своей миссией бренд {0} выбрал продвижение ценностей мира и ответственность за сохранение природы и судьбу человечества, предметное размышление о взаимосвязи прошлого и настоящего. И взгляд в будущее.', [
                         Yii::$app->id
                     ]) ?>
                 </p>
-                <div class="mt-3 text-right text-xl-left">
+                <div class="text-center text-md-right text-xl-left mr-md-2 mr-lg-1 mr-xl-0">
                     <?= Html::a(Yii::t('front', 'Узнать больше'), ['/about'], [
                             'class' => 'btn btn-outline-primary text-uppercase text-white border-light bg-transparent px-2 py-1'
                         ]);
                     ?>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="d-md-none mt-1_5 mb-5">
-    <?= Html::img('/images/main/banner_mobile_bottom.jpg', [
-            'class' => 'd-block w-100 pointer-events-none'
-        ])
-    ?>
-    <div class="container-fluid mt-5">
-        <hr>
-        <h3 class="h1 ttfirsneue text-uppercase mb-3">
-            <?= Yii::t('front', 'Кто мы') ?>
-        </h3>
-        <p>
-            <?= Yii::t('front', 'NRK87 clothing is minimalistic, where technology, fashion relevance and principles of sustainable development intersect.') ?>
-        </p>
-        <p>
-            <?= Yii::t('front', 'High-tech fabrics, integrated GPS and NFC (near field communications) labels, unique color solutions, and natural graphics create a ready-made positive environment for the self-realization of those who truly care.') ?>
-        </p>
-        <p>
-            <?= Yii::t('front', 'For those who are looking for themselves, and responsibly and consciously relate to our planet. For those who believe in technology, and also for those who dream of walking on Mars.') ?>
-        </p>
-        <div class="text-center mt-5">
-            <?= Html::a(Yii::t('front', 'Узнать больше'), ['/about'], [
-                    'class' => 'btn btn-outline-primary text-uppercase px-2 py-1'
-                ]);
-            ?>
         </div>
     </div>
 </div>

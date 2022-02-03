@@ -11,18 +11,19 @@ $this->title = Yii::t('front', 'Контакты');
 
 ?>
 
-<div class="container-fluid mb-7 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
-    
-    <div class="row mb-7">
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-3 mb-md-7">
+    <div class="row">
         <div class="col-12">
             <h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
                 <?= Yii::t('front', 'Контакты') ?>
             </h1>
         </div>
     </div>
-    
+</div>
+
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-md-7">
     <div class="row">
-        <div class="col-md-4 col-lg-5 col-xl-6 mb-3">
+        <div class="col-md-4 col-lg-5 col-xl-6 mb-2 mb-md-3">
             <p class="text-uppercase">
                 <?= Yii::t('front', 'Часы работы') ?>
             </p>
@@ -35,7 +36,7 @@ $this->title = Yii::t('front', 'Контакты');
         </div>
         <div class="col-md-8 col-lg-7 col-xl-6">
             <div class="row">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-2 mb-md-3">
                     <p class="text-uppercase">
                         <?= Yii::t('front', 'Адрес') ?>
                     </p>
@@ -46,7 +47,7 @@ $this->title = Yii::t('front', 'Контакты');
                         <?= Yii::t('front', Yii::$app->params['contacts']['full_address'][1]) ?>
                     </p>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-2 mb-md-3">
                     <p class="text-uppercase">
                         <?= Yii::t('front', 'Контакты') ?>
                     </p>
@@ -63,7 +64,7 @@ $this->title = Yii::t('front', 'Контакты');
 
 </div>
 
-<div class="mt-3 my-5 vw-100 vh-75">
+<div class="mt-1 mt-md-5 mb-3 mb-md-5 vw-100 vh-75">
     <!-- <iframe src="https://snazzymaps.com/embed/349900" width="100%" height="100%" style="border:none;"></iframe> -->
     <!-- <iframe src="https://snazzymaps.com/embed/349900" width="100%" height="100%" style="border:none;"></iframe>-->
     <!-- 

@@ -9,7 +9,6 @@
     use frontend\assets\AppAsset;
     // use common\widgets\Alert;
     use yii\web\View;
-
     use dvizh\cart\widgets\CartInformer;
     use dvizh\cart\widgets\ElementsList;
 
@@ -141,10 +140,14 @@
         ];
     }
     
+    $controllerID = Yii::$app->controller->id;
+    $actionID = Yii::$app->controller->action->id;
     
     // главная страница?
-    $isMainpage = Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index';
+    $isMainPage = $controllerID == 'site' && $actionID == 'index';
     
+    // карточка товара
+    $isProductPage = $controllerID == 'product' && $actionID == 'index';
     
     $cart = Yii::$app->cart;
 
@@ -234,7 +237,7 @@
         <script src="https://api-maps.yandex.ru/2.1/?apikey=ba64904a-6f6b-42da-82b6-4483c98a8114&lang=ru_RU" type="text/javascript"></script>
         
     </head>
-    <body data-c="<?= Yii::$app->controller->id ?>" data-a="<?= Yii::$app->controller->action->id ?>" class="position-relative" >
+    <body data-c="<?= $controllerID ?>" data-a="<?= $actionID ?>" class="position-relative">
     
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJWR5X2"
@@ -243,7 +246,7 @@
         
     <?php $this->beginBody() ?>
         
-        <nav id="nav" class="navbar navbar-expand-lg <?= $isMainpage ? 'navbar-dark dark' : 'navbar-light' ?> bg-transparent fixed-top py-0 mt-0_5 mt-lg-1 px-0_5 px-lg-0">
+        <nav id="nav" class="navbar navbar-expand-lg <?= $isMainPage ? 'navbar-dark dark' : 'navbar-light' ?> bg-transparent fixed-top py-0 mt-0_5 mt-lg-1 px-0_5 px-lg-0">
         
             <div id="nav-container" class="container-fluid py-2 py-lg-3 px-lg-2 px-xl-3 px-xxl-5">
 
@@ -324,7 +327,7 @@
                         if ($langs) {
                             foreach ($langs as $key => $lang) {
                                 echo Html::a($lang['label'], $lang['url'], [
-                                    'class' => 'text-uppercase text-decoration-none ml-0_5 ' . ($lang['active'] ? 'text-black' : ($isMainpage ? 'text-gray-400' : 'text-gray-500'))
+                                    'class' => 'text-uppercase text-decoration-none ml-0_5 ' . ($lang['active'] ? 'text-black' : ($isMainPage ? 'text-gray-400' : 'text-gray-500'))
                                 ]);
                             }
                         }
@@ -389,7 +392,7 @@
         </nav>
 
 
-        <div id="pagecontent" class="<?= $isMainpage ? 'mt-0' : 'mt-10 mt-lg-14' ?>">
+        <div id="pagecontent" class="<?= $isMainPage ? 'mt-0' : 'mt-' . ($isProductPage ? '7' : '10') . ' mt-lg-14' ?>">
 
             <?php 
                 // echo Breadcrumbs::widget([
