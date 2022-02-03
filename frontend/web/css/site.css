@@ -344,7 +344,7 @@ body[data-c="blog"][data-a="index"] footer hr {
 
 .modal .modal-dialog,
 .modal .modal-content {
-	min-width: 400px;
+	min-width: 450px;
 }
 @media (max-width: 576px){
 	.modal .modal-dialog,

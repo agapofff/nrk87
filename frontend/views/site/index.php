@@ -102,7 +102,7 @@
     </div>
 </div>
 
-<div class="position-relative mt-2 mt-md-5 mb-5 mb-md-10 bg-warning pt-2 pt-md-1_5" style="height: 90px">
+<div class="position-relative mt-2 mt-md-5 mb-5 mb-md-10 bg-warning pt-2 pb-4 pt-md-2 pb-md-5">
     <div class="marquee h3 m-0 font-weight-light text-white">
         <?= Yii::t('front', 'бегущая строка', [
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
