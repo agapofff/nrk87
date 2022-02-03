@@ -12,7 +12,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
 ?>
 
 
-<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-3 mb-md-7">
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-2 mb-md-7">
     <div class="row">
         <div class="col-12">
             <h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
@@ -22,7 +22,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
     </div>
 </div>
 
-<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-3 mb-md-7">
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-2 mb-md-7">
 <?php
     foreach ($collections as $collection) {
 ?>
@@ -38,7 +38,9 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                 </h2>
             </div>
         </div>
-                <?= $collectionSlug ?>        
+        
+        <?= $collectionSlug ?>        
+        
     <?php
         if ($collection['subCategories']) {
     ?>
@@ -72,16 +74,14 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
     
         <hr class="d-none d-md-block mt-0">
                             
-
-            
     <?php
         if ($collection['products']) {
     ?>
-            <div class="row list-products justify-content-center mt-6">
+            <div class="row list-products justify-content-center mt-2 mt-md-6">
             <?php
                 foreach ($collection['products'] as $product) {
             ?>
-                    <div class="col-12 col-md-6 mb-3 mb-md-4">
+                    <div class="col-12 col-md-6 mb-0 mb-md-4">
                         <?= $this->render('@frontend/views/catalog/_product', [
                                 'model' => $product,
                                 'prices' => $prices,
