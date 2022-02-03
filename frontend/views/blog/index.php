@@ -35,21 +35,25 @@ $this->title = Yii::t('front', 'Новости');
     <div class="container-fluid">
         <div class="row">
             <div id="blog" class="mx-auto col-md-10 col-lg-6 mt-7">
-                <div id="blog-categories">
-                    <a href="#all" class="blog-category d-inline-block mr-1_5 mb-1 text-white text-decoration-none" data-category="all">
-                        <?= Yii::t('front', 'Все') ?>
-                    </a>
+                <div id="blog-categories" class="row justify-content-between flex-nowrap overflow-x-auto overflow-y-hidden">
+                    <div class="col-auto">
+                        <a href="#all" class="blog-category d-inline-block mb-1 text-white text-decoration-none" data-category="all">
+                            <?= Yii::t('front', 'Все') ?>
+                        </a>
+                    </div>
             <?php
                 foreach ($categories as $category) {
             ?>
-                    <a href="#<?= $category->slug ?>" class="blog-category d-inline-block mr-1_5 mb-1 text-white text-decoration-none opacity-50" data-category="<?= $category->slug ?>">
-                        <?= json_decode($category->name)->{Yii::$app->language} ?>
-                    </a>
+                    <div class="col-auto">
+                        <a href="#<?= $category->slug ?>" class="blog-category d-inline-block mb-1 text-white text-decoration-none opacity-50" data-category="<?= $category->slug ?>">
+                            <?= json_decode($category->name)->{Yii::$app->language} ?>
+                        </a>
+                    </div>
             <?php
                 }
             ?>
                 </div>
-                <hr class="border-white mt-0_5 mb-2">
+                <hr class="border-white mt-0 mb-2">
                 <div id="blog-posts">
             <?php
                 foreach ($posts as $post) {

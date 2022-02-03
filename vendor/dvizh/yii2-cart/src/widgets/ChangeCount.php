@@ -80,7 +80,7 @@ class ChangeCount extends \yii\base\Widget
         } else {
             return Html::tag('div', $downArr.$input.$upArr, [
                 'class' => $this->cssClass . ($this->showArrows ? ' input-group justify-content-start align-items-center mr-auto' : ''),
-                'style' => 'width: 130px;',
+                'style' => 'width: 120px;',
             ]);
         }
     }
