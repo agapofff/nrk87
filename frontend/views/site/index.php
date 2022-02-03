@@ -56,7 +56,7 @@
 </div>
 -->
 
-<div class="container-fluid mb-md-10 pt-5 pb-3 pb-md-5 mt-md-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
+<div class="container-fluid mb-md-10 pt-3 pt-md-5 pb-3 pb-md-5 mt-md-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
     background: url('/images/main/ellipse<?= Yii::$app->language == 'ru' ? '_ru' : '' ?>.png') center center /cover no-repeat;
 ">
     <div class="row">
@@ -102,7 +102,7 @@
     </div>
 </div>
 
-<div class="position-relative mt-2 mt-md-5 mb-5 mb-md-10 bg-warning pt-2 pt-md-1_5" style="height: 100px">
+<div class="position-relative mt-2 mt-md-5 mb-5 mb-md-10 bg-warning pt-2 pt-md-1_5" style="height: 90px">
     <div class="marquee h3 m-0 font-weight-light text-white">
         <?= Yii::t('front', 'бегущая строка', [
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
