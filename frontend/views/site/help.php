@@ -16,7 +16,7 @@ $this->title = Yii::t('front', 'Помощь');
 
 <div class="container-fluid mb-7 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
     
-    <div class="row mb-7">
+    <div class="row mb-2 mb-lg-7">
         <div class="col-12">
             <h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
                 <?= Yii::t('front', 'Помощь') ?>
@@ -24,21 +24,21 @@ $this->title = Yii::t('front', 'Помощь');
         </div>
     </div>
     
-    <div class="row mb-6">
+    <div class="row mb-lg-6">
         <div class="col-12 mb-3">
     <?php
         if ($models) {
             foreach ($models as $model) {
     ?>
-                <a href="#help<?= $model->id ?>" class="text-uppercase font-weight-light text-decoration-none d-block mt-3 help" data-toggle="collapse">
+                <a href="#help<?= $model->id ?>" class="text-uppercase font-weight-light text-decoration-none d-block mt-2 mt-lg-3 help" data-toggle="collapse">
                     <span class="float-right">
                         <span>+</span>
                         <span>-</span>
                     </span>
                     <?= json_decode($model->name)->{Yii::$app->language} ?>
                 </a>
-                <hr class="mt-1_5 py-0">
-                <div id="help<?= $model->id ?>" class="collapse mt-3 mb-5">
+                <hr class="mt-0_5 mt-lg-1_5 py-0">
+                <div id="help<?= $model->id ?>" class="collapse mt-1_5 mb-2 mt-lg-3 mb-lg-5">
                     <div class="row">
                         <div class="col-sm-10 col-md-8 col-lg-7 col-xl-6 col-xxl-5">
                             <?= json_decode($model->content)->{Yii::$app->language} ?>

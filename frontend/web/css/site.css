@@ -204,7 +204,7 @@ button,
 }
 @media (max-width: 576px){
 	.display-2 {
-		font-size: calc(2.375rem + 7vw);
+		font-size: calc(2.375rem);
 	}
 }
 
@@ -476,14 +476,16 @@ input[name="shipping_type_switcher"]:checked ~ label {
 }
 
 .red_dot:after {
-	content: '';
+    content: '';
     position: absolute;
     top: 50%;
     left: 100%;
-    width: 348px;
-    height: 348px;
-    transform: translate(-10%, -53%);
-    background: url(/images/red_dot.svg) center center no-repeat;
+    width: 100%;
+    height: 200%;
+    max-width: 348px;
+    max-height: 348px;
+    transform: translate(-20%, -50%);
+    background: url(/images/red_dot.svg) center center /cover no-repeat;
 }
 
 
