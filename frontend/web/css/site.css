@@ -211,7 +211,7 @@ button,
     }
 }
 
-/*
+
 @media (max-width: 767px){
     html,
     body {
@@ -219,7 +219,7 @@ button,
         overflow-x: hidden !important;
     }
 }
-*/
+
 body {
     overflow-x: hidden;
 }
