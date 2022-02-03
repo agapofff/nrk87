@@ -256,6 +256,7 @@
 								'placeholder' => Yii::t('front', 'Выберите способ доставки'),
 								'autocomplete' => rand(),
 							],
+                            'hideSearch' => true,
 							'pluginOptions' => [
 								'allowClear' => false,
 								'dropdownParent' => new JsExpression("$('#block-delivery')"),
@@ -300,10 +301,12 @@
 								'placeholder' => Yii::t('front', 'Выберите пункт самовывоза'),
 								'autocomplete' => rand(),
 							],
+                            'hideSearch' => true,
 							'pluginOptions' => [
 								'allowClear' => false,
 								'dropdownParent' => new JsExpression("$('#block-pickup')"),
 								// 'minimumInputLength' => 2,
+                                'minimumResultsForSearch' => 'Infinity',
 								'ajax' => [
 									'url' => Url::to(['/checkout/get-delivery']),
 									'dataType' => 'json',

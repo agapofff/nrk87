@@ -732,6 +732,9 @@ input[name="shipping_type_switcher"]:checked ~ label {
     background-color: #E5E5E5 !important;
     color: #000 !important;
 }
+.select2-results__option:before {
+    display: none;
+}
 .select2-selection {
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
@@ -765,6 +768,9 @@ input[name="shipping_type_switcher"]:checked ~ label {
 }
 div[data-select2] label {
 	font-size: 80%;
+}
+.select2-search {
+    display: none !important;
 }
 
 
