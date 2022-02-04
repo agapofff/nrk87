@@ -137,7 +137,7 @@
         }
     ?>
 
-        <div class="col-12 mt-2 text-center d-md-none">
+        <div class="col-12 mt-2 text-center">
             <?= Html::a(Yii::t('front', 'Смотреть еще'), ['/catalog'], [
                     'class' => 'btn btn-outline-primary text-uppercase px-2 py-1'
                 ]);
