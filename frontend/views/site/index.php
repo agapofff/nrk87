@@ -146,7 +146,7 @@
     </div>
 </div>
 
-<div class="vw-100 h-auto mt-5 mt-md-8 mb-3 mb-md-12 position-relative">
+<div class="d-none d-md-block vw-100 h-auto mt-5 mt-md-8 mb-3 mb-md-12 position-relative">
     <?= Html::img('/images/main/banner_6.jpg', [
             'class' => 'd-none d-md-block w-100 pointer-events-none',
             'loading' => 'lazy',
@@ -183,5 +183,36 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="d-md-none vw-100 h-auto mt-5 mb-3 pt-1 position-relative" style="background: #C66439">
+    <div class="container-fluid pb-0_5 mt-2">
+        <div class="row justify-content-between">
+            <div class="col-md-5">
+                <h3 class="h1 mb-2 ttfirsneue text-uppercase font-weight-light text-white">
+                    <?= Yii::t('front', 'Кто мы') ?>
+                </h3>
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-4 col-xxl-3">
+                <p class="text-white mb-3">
+                    <?= Yii::$app->id ?> - <?= Yii::t('front', 'fashion tech wear бренд') ?>. 
+                    <?= Yii::t('front', 'Для тех, кто ищет себя, ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу. Своей миссией бренд {0} выбрал продвижение ценностей мира и ответственность за сохранение природы и судьбу человечества, предметное размышление о взаимосвязи прошлого и настоящего. И взгляд в будущее.', [
+                        Yii::$app->id
+                    ]) ?>
+                </p>
+                <div class="text-center mb-2">
+                    <?= Html::a(Yii::t('front', 'Узнать больше'), ['/about'], [
+                            'class' => 'btn btn-outline-primary text-uppercase text-white border-light bg-transparent px-2 py-1'
+                        ]);
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?= Html::img('/images/main/who_we_are_mobile.png', [
+            'class' => 'd-block d-md-none w-100 pointer-events-none',
+            'loading' => 'lazy',
+        ])
+    ?>
 </div>
 
