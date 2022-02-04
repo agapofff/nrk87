@@ -17,7 +17,7 @@
     $this->title = Yii::t('front', 'Оформить заказ');
 ?>
 
-<div class="container-fluid mb-7 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
+<div class="container-fluid mb-md-7 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
     <div class="row justify-content-center">
         <div class="col col-sm-10 col-md-8 col-lg-6 pr-lg-1_5">
             <?= OrderForm::widget();?>

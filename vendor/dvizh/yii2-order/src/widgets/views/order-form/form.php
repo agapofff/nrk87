@@ -31,7 +31,7 @@
         
         <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->csrfToken) ?>
 
-		<div class="row justify-content-between mb-3">
+		<div class="row justify-content-between mb-1 mb-md-3">
 			<div class="col-auto">
 				<p class="text-uppercase font-weight-bold">
 					<?= Yii::t('front', 'Контактная информация') ?>
@@ -133,7 +133,7 @@
 			
 		</div>
 		
-		<div id="block-city" class="form-group mb-5 position-relative required" data-select2>
+		<div id="block-city" class="form-group mb-3 mb-md-5 position-relative required" data-select2>
 			<label class="control-label" for="city">
 				<?= Yii::t('front', 'Город') ?>
 			</label>
@@ -185,7 +185,7 @@
 		</div>
 				
 		
-		<div class="row justify-content-between mt-5 mb-3">
+		<div class="row justify-content-between mt-3 mt-md-5 mb-1 mb-md-3">
 			<div class="col-auto">
 				<p class="text-uppercase font-weight-bold m-0">
 					<?= Yii::t('front', 'Доставка') ?>
@@ -232,7 +232,7 @@
 		foreach($shippingTypesList as $key => $sht){
 	?>  
 			<div 
-				class="tab-pane mt-3 <?php if ($key == 0){?>active<?php } ?>" 
+				class="tab-pane mt-2 mt-md-3 <?php if ($key == 0){?>active<?php } ?>" 
 				id="shipping-type-tab-<?= $sht->id ?>" 
 			>
 
@@ -354,7 +354,7 @@
 		
 		<p id="delivery_image" style="height: 500px; display: none;"></p>
 		
-		<div id="address" class="row justify-content-center mt-2">
+		<div id="address" class="row justify-content-center mt-1 mt-md-2">
 			<div class="col-12">
 				<?= $form
 						->field($orderModel, 'address', [
@@ -374,11 +374,11 @@
 		
 		<div class="position-relative">
 	<?php
-		if ($fields){
-			foreach ($fields as $field){
+		if ($fields) {
+			foreach ($fields as $field) {
 	?>
 				<div id="<?= $field->name ?>" class="row justify-content-center <?= $field->required == 'yes' ? 'required' : '' ?>"
-					<?php if ($field->name != 'postcode'){?>
+					<?php if ($field->name != 'postcode') { ?>
 						style="
 							position: absolute;
 							top: 0;
@@ -438,7 +438,7 @@
 								',
 							],
 							'options' => [
-								'class' => 'form-group mb-5 position-relative',
+								'class' => 'form-group mb-3 mb-md-5 position-relative',
 							],
 							'template' => '{label}{input}{hint}{error}',
 						])
@@ -460,7 +460,7 @@
 			</div>
 		</div>
 		
-		<div class="row my-5 align-items-center">
+		<div class="row my-2 my-md-5 align-items-center">
 			<div id="order_submit" class="col-sm-6 text-center order-lg-last">
 				<?= Html::submitButton(Yii::t('front', 'Перейти к оплате'), [
 						'class' => 'btn btn-lg btn-primary btn-hover-warning btn-block py-1 text-uppercase ttfirsneue text-nowrap',

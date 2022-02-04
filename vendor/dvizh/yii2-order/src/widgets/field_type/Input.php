@@ -28,7 +28,7 @@ class Input extends \yii\base\Widget
                     'data-field' => $this->fieldModel->name,
                 ],
                 'options' => [
-                    'class' => 'form-group mb-5 position-relative floating-label',
+                    'class' => 'form-group mb-2 position-relative floating-label',
                 ],
                 'template' => '{input}{label}{hint}{error}',
             ])
