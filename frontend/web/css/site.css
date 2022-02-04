@@ -183,13 +183,16 @@ button,
 	right: 100% !important;
 }
 .opacity-25 {
-    opacity: .25;
+    opacity: .25 !important;
 }
 .opacity-50 {
-    opacity: .5;
+    opacity: .5 !important;
 }
 .opacity-75 {
-    opacity: .75;
+    opacity: .75 !important;
+}
+.opacity-100 {
+    opacity: 1 !important;
 }
 
 @media (max-width: 1200px){
@@ -474,14 +477,15 @@ input[name="shipping_type_switcher"]:checked ~ label {
     pointer-events: none;
 }
 
-.nav-pills {
+.about-nav {
     border-left: 1px solid rgba(0, 0, 0, .2);
 }
-.nav-pills .nav-link {
+.about-nav .nav-link {
     opacity: .5;
     border-left: 2px solid transparent;
 }
-.nav-pills .nav-link.active {
+.about-nav .nav-link.active,
+.about-nav .nav-link[aria-expanded="true"] {
     opacity: 1;
     background: transparent !important;
     color: #000 !important;
