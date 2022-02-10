@@ -48,7 +48,7 @@ $this->title = Yii::t('front', 'О нас');
                     <?= Yii::t('front', 'Технологии') ?>
                 </a>
                 <a class="nav-link display-3 bg-none text-black my-1 px-5 py-1" href="#fgi">
-                    <?= Yii::t('front', 'Freedom Group') ?>
+                    <?= Yii::t('front', 'Freedom Int. Group') ?>
                 </a>
             </nav>
         </div>
