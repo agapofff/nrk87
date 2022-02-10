@@ -124,7 +124,7 @@ $this->title = Yii::t('front', 'О нас');
         <div class="col-12">
             <div class="about-nav">
                 <a class="nav-link display-3 bg-none text-black mt-0_5 mb-1 px-1 py-0_5 opacity-100" href="#_fgi" data-toggle="collapse">
-                    <?= Yii::t('front', 'Freedom Group') ?>
+                    <?= Yii::t('front', 'Freedom Int. Group') ?>
                 </a>
             </div>
             <div id="_fgi" class="collapse pb-1">
