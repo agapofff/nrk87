@@ -249,6 +249,7 @@ dvizh.cart = {
         return false;
     },
     sendData: function (data, link) {
+console.log(data);
         if (!link) {
             link = '/cart/element/create';
         }

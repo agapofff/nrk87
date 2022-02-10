@@ -219,7 +219,7 @@ return [
                 Yii::$app->params['h1'] = $meta->h1;
             }
         }
-        
+
         
     },
             

@@ -273,6 +273,10 @@ form[disabled] {
     background-color: #D6751C !important;
 }
 
+#fade {
+    z-index: 1032;
+}
+
 #content ul {
     list-style: none;
 }
@@ -432,6 +436,12 @@ form[disabled] {
 	background: rgba(0, 0, 0, 0.1) !important;
 }
 
+/* GIFT */
+body[data-gift] .cart-product[data-price="0"] .dvizh-change-count,
+body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
+    display: none;
+}
+
 
 .dvizh-cart-buy-button:disabled {
 	pointer-events: none !important;
@@ -477,21 +487,6 @@ input[name="shipping_type_switcher"]:checked ~ label {
     pointer-events: none;
 }
 
-.about-nav {
-    border-left: 1px solid rgba(0, 0, 0, .2);
-}
-.about-nav .nav-link {
-    opacity: .5;
-    border-left: 2px solid transparent;
-}
-.about-nav .nav-link.active,
-.about-nav .nav-link[aria-expanded="true"] {
-    opacity: 1;
-    background: transparent !important;
-    color: #000 !important;
-    border-color: #000;
-}
-
 .red_dot:after {
     content: '';
     position: absolute;
@@ -517,6 +512,7 @@ input[name="shipping_type_switcher"]:checked ~ label {
 }
 
 
+/* HELP */
 .help span span:last-child {
 	display: none;
 }
@@ -528,6 +524,21 @@ input[name="shipping_type_switcher"]:checked ~ label {
 }
 
 
+/* ABOUT US */
+.about-nav {
+    border-left: 1px solid rgba(0, 0, 0, .2);
+}
+.about-nav .nav-link {
+    opacity: .5;
+    border-left: 2px solid transparent;
+}
+.about-nav .nav-link.active,
+.about-nav .nav-link[aria-expanded="true"] {
+    opacity: 1;
+    background: transparent !important;
+    color: #000 !important;
+    border-color: #000;
+}
 #about-earth {
     margin-top: -15em;
     z-index: -1;
@@ -608,6 +619,7 @@ input[name="shipping_type_switcher"]:checked ~ label {
 }
 
 
+/* BLOG */
 #blog hr {
     opacity: .2;
 }

@@ -13,7 +13,7 @@ if ($options && !empty($allOptions)) {
 		if ($optionId == 1){
 			if ($optionData = $allOptions[$optionId]) {
 				$optionName = $optionData['name'];
-				$optionValue = $optionData['variants'][$valueId];
+				$optionValue = $valueId == 1 ? '' : $optionData['variants'][$valueId];
 				// $productOptions .= Html::tag('div', Html::tag('strong', Yii::t('front', $optionName)) . ': ' . Html::tag('span', $optionValue, [
 					// 'class' => 'cart-product-variant'
 				// ]));
@@ -27,9 +27,7 @@ if ($options && !empty($allOptions)) {
 
 ?>
 
-
-
-<div class="cart-product" data-currency="<?= $currency ?>" data-id="<?= $model->comment ?>" data-name="<?= $name ?>" data-price="<?= round($model->price) ?>">
+<div class="cart-product" data-product-id="<?= $model->item_id ?>" data-currency="<?= $currency ?>" data-id="<?= $model->comment ?>" data-name="<?= $name ?>" data-price="<?= round($model->price) ?>">
     <div class="row">
         <div class="col-4">
 			<a href="<?= $url ?>">
@@ -42,7 +40,15 @@ if ($options && !empty($allOptions)) {
 					<p class="font-weight-bold">
 						<?= $name ?> <?= $optionValue ?>
 					</p>
-					
+                    
+					<?php
+                        if (!$model->price) {
+                    ?>
+                        <p class="text-danger"><?= Yii::t('front', 'Подарок') ?></p>
+                    <?php
+                        }
+                    ?>
+                    
                     <?php 
                         if (!empty($otherFields))
                         {

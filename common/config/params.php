@@ -62,6 +62,14 @@ return [
     // 'scanToWin' => [
         // 'considerOrderStatus' => false, // учитывать статус чека в розыгрыше (активно / не активно)
     // ],
+    
+    // товар в подарок
+    // 'gift' => [
+        // 'product_id' => 84,
+        // 'count' => 1,
+        // 'price' => 0,
+        // 'disableAddToCart' => true,
+    // ],
 	
 	'facebookPixelID' => '323610652739800',
 	'facebookAccessToken' => 'EAAH9nQtUZC9wBAEnNWscm3q93ZBt35ahabS5Up0gfD8icX7hm2Cuo4fqHZC9llGFFA2pBjzYuIZAGYZCtkCqRKUBrViBo2Dlo0SGObLrW7wsIwqGZBz9PCpMuY6FqhcfLnxsKLTnyOYuP2TsdyYWNehpZAZA2M64Rgayuc5EZAO13bTaa5e2HNE0wiMRylWbPZBuMZD',

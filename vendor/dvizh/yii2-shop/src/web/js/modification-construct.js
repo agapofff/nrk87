@@ -66,7 +66,7 @@ dvizh.modificationconstruct = {
 						
 					$('.btn-wishlist')
                         .removeClass('text-hover-warning')
-                        .addAttr('disabled', true);
+                        .attr('disabled', true);
 					
 					$('.select-size-note').show();
 

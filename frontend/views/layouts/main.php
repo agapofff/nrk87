@@ -150,6 +150,49 @@
     $isProductPage = $controllerID == 'product' && $actionID == 'index';
     
     $cart = Yii::$app->cart;
+    
+    
+    // товар в подарок
+    $giftData = null;
+    if (Yii::$app->params['gift']) {
+        $gift = \dvizh\shop\models\Product::findOne(Yii::$app->params['gift']['product_id']);
+        
+        $giftOptions = [];
+        if ($giftCartOptions = $gift->getCartOptions()) {
+            foreach ($giftCartOptions as $key => $giftCartOption) {
+                foreach ($giftCartOption['variants'] as $k => $v) {
+                    $giftOptions[$key] = $k;
+                }
+            }
+        }
+
+        $giftAttributes = $gift->getModifications()->andWhere([
+            'lang' => Yii::$app->language,
+            'store_type' => Yii::$app->params['store_type'],
+        ])->all();
+
+        if ($giftAttributes && !empty($giftOptions)) {
+            $giftData = [
+                'model' => \dvizh\shop\models\Product::className(),
+                'item_id' => Yii::$app->params['gift']['product_id'],
+                'count' => Yii::$app->params['gift']['count'],
+                'price' => Yii::$app->params['gift']['price'],
+                'options' => $giftOptions,
+                'id' => $giftAttributes[0]->sku,
+                'lang' => Yii::$app->language,
+                'url' => Url::to(['/cart/element/create'])
+            ];
+            
+            if (Yii::$app->params['gift']['disableAddToCart']) {
+                $this->registerCss('
+                    .product-content .product-buy[data-id="' . Yii::$app->params['gift']['product_id'] . '"],
+                    .product-content .price-options[data-id="' . Yii::$app->params['gift']['product_id'] . '"] {
+                        display: none;
+                    }
+                ');
+            }
+        }
+    }
 
 ?>
 
@@ -237,8 +280,20 @@
         <script src="https://api-maps.yandex.ru/2.1/?apikey=ba64904a-6f6b-42da-82b6-4483c98a8114&lang=ru_RU" type="text/javascript"></script>
         
     </head>
-    <body data-c="<?= $controllerID ?>" data-a="<?= $actionID ?>" class="position-relative">
+    <body 
+        data-c="<?= $controllerID ?>" 
+        data-a="<?= $actionID ?>" 
+<?php
+    if ($giftData) {
+?>
+        data-gift="<?= base64_encode(json_encode($giftData)) ?>"
+<?php
+    }
+?>
+        class="position-relative">
     
+        <div id="fade" class="fixed-top vw-100 vh-100 bg-white"></div>
+        
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJWR5X2"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -762,7 +817,6 @@
         ", View::POS_READY);
     }
 ?>
-    
         
 
     <?php $this->endBody() ?>

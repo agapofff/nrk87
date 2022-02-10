@@ -27,7 +27,7 @@ $this->title = Yii::$app->params['title'] ?: $product_name . ' - ' . Yii::t('fro
 $sizes = json_decode($model->sizes)->{Yii::$app->language};
 ?>
 
-<div class="container-fluid mb-3 md-md-5 px-lg-2 px-xl-3 px-xxl-5" itemscope itemtype="http://schema.org/Product">
+<div class="product-content container-fluid mb-3 md-md-5 px-lg-2 px-xl-3 px-xxl-5" itemscope itemtype="http://schema.org/Product">
     
     <div class="row justify-content-center">
 
@@ -100,7 +100,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                 </div>
                 
                 <div class="row mb-2 mb-md-4">
-                    <div class="product-buy col-sm-6 col-md-12 col-lg-6 mb-0_5">
+                    <div class="product-buy col-sm-6 col-md-12 col-lg-6 mb-0_5" data-id="<?= $model->id ?>">
                         <?= BuyButton::widget([
                                 'model' => $model,
                                 'htmlTag' => 'button',
@@ -111,7 +111,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                             <?= Yii::t('front', 'Выберите размер') ?>
                         </span>
                     </div>
-                    <div class="price-options col-sm-6 col-md-12 col-lg-6 mb-0_5">
+                    <div class="price-options col-sm-6 col-md-12 col-lg-6 mb-0_5" data-id="<?= $model->id ?>">
                         <?= ChangeOptions::widget([
                                 'model' => $model,
                                 'type' => 'select',
