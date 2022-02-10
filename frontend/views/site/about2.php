@@ -38,16 +38,16 @@ $this->title = Yii::t('front', 'О нас');
     <div class="row">
         <div class="col-md-6">
             <nav id="about-nav" class="about-nav nav nav-pills flex-column sticky-top overflow-x-hidden" style="top: 100px">
-                <a class="nav-link display-3 bg-none text-black my-1 px-5 py-1" href="#earth">
+                <a class="nav-link display-4 bg-none text-black my-1 px-5 py-1" href="#earth">
                     <?= Yii::t('front', 'Земля') ?>
                 </a>
-                <a class="nav-link display-3 bg-none text-black my-1 px-5 py-1" href="#mars">
+                <a class="nav-link display-4 bg-none text-black my-1 px-5 py-1" href="#mars">
                     <?= Yii::t('front', 'Марс') ?>
                 </a>
-                <a class="nav-link display-3 bg-none text-black my-1 px-5 py-1" href="#technology">
+                <a class="nav-link display-4 bg-none text-black my-1 px-5 py-1" href="#technology">
                     <?= Yii::t('front', 'Технологии') ?>
                 </a>
-                <a class="nav-link display-3 bg-none text-black my-1 px-5 py-1" href="#fgi">
+                <a class="nav-link display-4 bg-none text-black my-1 px-5 py-1" href="#fgi">
                     <?= Yii::t('front', 'Freedom Int. Group') ?>
                 </a>
             </nav>
