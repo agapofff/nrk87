@@ -1,9 +1,6 @@
 jQuery(document).ready(function ($) {
     
     // page fade in-out
-    $(window).on('beforeunload', function(){
-        $('#fade').fadeIn('fast');
-    });
     $('#fade').fadeOut('fast');
 
     // индикатор загрузки
@@ -19,6 +16,8 @@ jQuery(document).ready(function ($) {
     });
     $(window).on('beforeunload', function () {
         NProgress.start();
+        $('#fade').fadeIn('fast');
+        $('.modal').modal('hide');
     });
     $(window).on('load', function () {
         NProgress.done();
@@ -419,25 +418,22 @@ jQuery(document).ready(function ($) {
     
     // товар в подарок
     giftProduct = function () {
-console.log('init');
         if ($('body').is('[data-gift]')) {
             var data = JSON.parse(atob($('body').data('gift'))),
                 giftAlreadyInCart = $('.cart-product').is('[data-id="' + data.id + '"]'),
                 otherProductsInCart = $('.cart-product').not('[data-id="' + data.id + '"]').length,
                 cartQty = parseFloat($('.dvizh-cart-count').text());
-    console.log(data);            
-    console.log('giftAlreadyInCart = ' + giftAlreadyInCart);
-    console.log('otherProductsInCart = ' + otherProductsInCart);
+
             if (cartQty > 0 && !giftAlreadyInCart) {
-    console.log('В корзине есть товары, но нет подарка - добавляем подарок');
                 dvizh.cart.addElement(data.model, data.item_id, data.count, data.price, data.options, data.url, data.id);
             }
+            
             if (giftAlreadyInCart && !otherProductsInCart) {
-    console.log('В корзине остался только подарок - удаляем подарок');
                 $('.cart-product[data-id="' + data.id + '"]')
                     .find('.dvizh-cart-delete-button')
                     .click();
             }
+            
             if (giftAlreadyInCart && $('.cart-product[data-id="' + data.id + '"]').find('.dvizh-cart-element-count').val() > 1) {
                 $('.cart-product[data-id="' + data.id + '"]').find('.cart-change-count.minus').click();
             }
