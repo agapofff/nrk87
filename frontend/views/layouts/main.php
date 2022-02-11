@@ -88,8 +88,8 @@
             'class' => '',
         ],
         [
-            'label' => Yii::t('front', 'Помощь'),
-            'url' => Url::to(['/help']),
+            'label' => Yii::t('front', 'Новости'),
+            'url' => Url::to(['/news']),
             'class' => '',
         ],
         [
@@ -98,8 +98,8 @@
             'class' => '',
         ],
         [
-            'label' => Yii::t('front', 'Новости'),
-            'url' => Url::to(['/news']),
+            'label' => Yii::t('front', 'Помощь'),
+            'url' => Url::to(['/help']),
             'class' => '',
         ],
         [
