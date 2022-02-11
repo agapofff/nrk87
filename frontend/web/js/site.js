@@ -416,6 +416,20 @@ jQuery(document).ready(function ($) {
     initMarquee();
     
     
+    // cookies
+    setTimeout(function () {
+        $('#cookiesNotification').addClass('show');
+        if ($('#cookiesNotification').data('type') == '3'){
+            var translate = $('#cookiesNotification').height();
+            $('#nav').css({
+                '-webkit-transform': 'translateY(' + translate + 'px)',
+                '-ms-transform': 'translateY(' + translate + 'px)',
+                'transform': 'translateY(' + translate + 'px)'
+            })
+        }
+    }, 1000);
+    
+    
     // товар в подарок
     giftProduct = function () {
         if ($('body').is('[data-gift]')) {

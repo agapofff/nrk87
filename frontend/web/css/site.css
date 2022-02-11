@@ -307,6 +307,23 @@ form[disabled] {
 	min-height: 50vh;
 }
 
+#cookiesNotification {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+    z-index: 1031;
+}
+#cookiesNotification[data-type="3"].fade:not(.show) {
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+#cookiesNotification[data-type="3"].fade.show {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+}
+
 #nav,
 #nav-container {
     -webkit-transition: all .3s ease;
