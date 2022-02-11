@@ -85,7 +85,6 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
         <?php
             if ($price && $model->available) {
         ?>
-
                 <div class="product-price mb-2 mb-md-3" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                     <meta itemprop="price" content="<?= $price ?>">
                     <meta itemprop="priceCurrency" content="<?= Yii::$app->params['currency'] ?>">
@@ -99,7 +98,14 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                     ?>
                 </div>
                 
-                <div class="row mb-2 mb-md-4">
+                <div class="row mb-0_5">
+                    <div class="price-options col-sm-6 col-md-12 col-lg-6 mb-0_5" data-id="<?= $model->id ?>">
+                        <?= ChangeOptions::widget([
+                                'model' => $model,
+                                'type' => 'select',
+                            ]);
+                        ?>
+                    </div>
                     <div class="product-buy col-sm-6 col-md-12 col-lg-6 mb-0_5" data-id="<?= $model->id ?>">
                         <?= BuyButton::widget([
                                 'model' => $model,
@@ -111,21 +117,27 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                             <?= Yii::t('front', 'Выберите размер') ?>
                         </span>
                     </div>
-                    <div class="price-options col-sm-6 col-md-12 col-lg-6 mb-0_5" data-id="<?= $model->id ?>">
-                        <?= ChangeOptions::widget([
-                                'model' => $model,
-                                'type' => 'select',
-                            ]);
+                </div>
+                
+                <div class="row mb-2 mb-md-3 align-items-center">
+                    <div class="col-sm-6 col-md-12 col-lg-6 mb-0_5">
+                        <?php
+                            if ($sizes) {
+                        ?>
+                                <a href="#sizes" data-toggle="modal" title="<?= Yii::t('front', 'Размерная сетка') ?>" class="text-uppercase">
+                                    <?= Yii::t('front', 'Размерная сетка') ?>
+                                </a>
+                        <?php
+                            }
                         ?>
                     </div>
-                    <div id="product-wishlist-container" class="col-auto mb-0_5">
+                    <div id="product-wishlist-container" class="col-sm-6 col-md-12 col-lg-6 mb-0_5">
                         <?= $this->render('@frontend/views/wishlist/product', [
                                 'product_id' => $model->id
                             ])
                         ?>
                     </div>
                 </div>
-                
         <?php
             }
         ?>
@@ -140,31 +152,19 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
             }
         ?>
                 <div class="row mb-1">
-                    <div class="product-features col-sm-6 col-md-12 col-lg-6 mb-2">
+                    <div class="product-features col-sm-6 col-md-12 col-lg-6 mb-1 mb-md-2">
                         <p class="text-uppercase font-weight-normal mb-1_5"><?= Yii::t('front', 'Характеристики') ?></p>
                         <div id="product-characteristics" style="opacity: 0.6">
                             <?= json_decode($model->short_text)->{Yii::$app->language} ?>
                         </div>
                     </div>
-                    <div class="product-description col-sm-6 col-md-12 col-lg-6 mb-md-2">
+                    <div class="product-description col-sm-6 col-md-12 col-lg-6 mb-1 mb-md-2">
                         <p class="text-uppercase font-weight-normal mb-1_5"><?= Yii::t('front', 'Описание') ?></p>
                         <div id="product-description" itemprop="description" style="opacity: 0.6">
                             <?= json_decode($model->text)->{Yii::$app->language} ?>
                         </div>
                     </div>
                 </div>
-
-        <?php
-            if ($sizes) {
-        ?>
-                <p>
-                    <a href="#sizes" data-toggle="modal" title="<?= Yii::t('front', 'Размерная сетка') ?>" class="text-uppercase">
-                        <?= Yii::t('front', 'Размерная сетка') ?>
-                    </a>
-                </p>
-        <?php
-            }
-        ?>
                 
             </div>
             
