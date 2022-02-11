@@ -230,7 +230,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                 <div class="modal-content m-0 border-0 vh-100 vw-50">
                     <div class="modal-header align-items-center flex-nowrap py-md-2 px-md-1 px-lg-2 px-xl-3">
                         <span class="ttfirsneue h5 m-0 font-weight-light">
-                            <?= Yii::t('front', 'Размерная сетка') ?> <small class="text-muted">(<?= Yii::t('front', 'в сантиметрах') ?>)</small>
+                            <?= Yii::t('front', 'Размерная сетка') ?> <small class="text-muted font-weight-light text-nowrap">(<?= Yii::t('front', 'в сантиметрах') ?>)</small>
                         </span>
                         <button type="button" class="close p-0 float-none" data-dismiss="modal">
                             <svg width='53' height='53' viewBox='0 0 53 53' fill='none' xmlns='http://www.w3.org/2000/svg'><line x1='13.7891' y1='12.3744' x2='39.9521' y2='38.5373' stroke='black' stroke-width='2'></line><line x1='12.3749' y1='38.5379' x2='38.5379' y2='12.3749' stroke='black' stroke-width='2'></line></svg>
