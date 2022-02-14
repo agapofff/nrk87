@@ -102,7 +102,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                     <div class="price-options col-sm-6 col-md-12 col-lg-6" data-id="<?= $model->id ?>">
                         <?= ChangeOptions::widget([
                                 'model' => $model,
-                                'type' => 'radio',
+                                'type' => 'select',
                                 // 'cssClass' => 'd-none'
                             ]);
                         ?>
