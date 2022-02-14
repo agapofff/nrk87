@@ -15,8 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="shippingtype-update">
 
             <?= $this->render('_form', [
-                'model' => $model,
-            ]) ?>
+                    'model' => $model,
+                    'languages' => $languages,
+                ])
+            ?>
 
         </div>
     </div>

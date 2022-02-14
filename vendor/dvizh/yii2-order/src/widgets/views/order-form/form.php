@@ -421,6 +421,7 @@
 				<?= $form->field($orderModel, 'payment_type_id')->dropDownList($paymentTypes) ?>
 			</div>
 		<?php } ?>
+        
 		
 		<div id="order_comment" class="row justify-content-center">
 			<div class="col-12">

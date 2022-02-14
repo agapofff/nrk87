@@ -19,6 +19,7 @@ $model->active = 1;
 
             <?= $this->render('_form', [
                 'model' => $model,
+                'languages' => $languages,
             ]) ?>
 
         </div>

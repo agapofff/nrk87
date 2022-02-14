@@ -51,7 +51,7 @@ class ChangeOptions extends \yii\base\Widget
                 $cssClass = "{$changerCssClass} dvizh-cart-option{$id} cart-option";
 
                 $optionsArray = [];
-                if ($optionId == 1){
+                if ($optionId == 1 && $this->type == 'select'){
 					$optionsArray = [
 						'' => Yii::t('front', $optionData['name']) 
 					];
@@ -151,10 +151,10 @@ class ChangeOptions extends \yii\base\Widget
                                 'data-id' => $id,
                                 'class' => $cssClass,
                                 'labelOptions' => [
-                                    'class' => 'btn btn-lg- rounded-0 btn-outline-primary mx-2 p-0 d-flex justify-content-center align-items-center active float-left',
+                                    'class' => 'btn btn-lg rounded-0 btn-outline-primary mr-1 mb-1 p-0 d-flex justify-content-center align-items-center active float-left',
                                     'style' => '
-                                        width: 60px;
-                                        height: 60px;
+                                        width: 58px;
+                                        height: 58px;
                                     ',
                                 ],
                             ],
@@ -168,7 +168,7 @@ class ChangeOptions extends \yii\base\Widget
                     ]);
                 } else {
                     $options[] = Html::tag('div', $optionLabel . Html::tag('div', $list, [
-                        'class' => 'dvizh-option dvizh-option-heading btn-group btn-group-toggle w-100 row px-2',
+                        'class' => 'dvizh-option dvizh-option-heading btn-group btn-group-toggle w-100',
                         'data' => [
                             'toggle' => 'buttons',
                         ],

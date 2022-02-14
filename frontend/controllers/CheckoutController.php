@@ -189,7 +189,7 @@ class CheckoutController extends \yii\web\Controller
                 $details = [];
                 $deliveryJson = str_replace('\r\n', '<br>', $deliveryJson);
                 $shippings = json_decode($deliveryJson);
-
+// echo \yii\helpers\VarDumper::dump($shippings, 99, true);
                 foreach ($shippings as $shipping) {
                     $operator = substr($shipping->delivery_type->delivery_service->name, 0, strpos($shipping->delivery_type->delivery_service->name, ' '));
                     $text = str_replace('<br>', ' ', ($shipping->delivery_type->pickup ? $shipping->comment : $shipping->delivery_type->name . (

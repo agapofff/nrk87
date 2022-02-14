@@ -8,7 +8,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
 use backend\models\Langs;
 
 class PaymentTypeController  extends Controller

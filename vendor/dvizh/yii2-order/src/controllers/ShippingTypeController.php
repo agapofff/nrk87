@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use backend\models\Langs;
 
 class ShippingTypeController  extends Controller
 {
@@ -36,10 +37,13 @@ class ShippingTypeController  extends Controller
     {
         $searchModel = new ShippingTypeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        $languages = Langs::find()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'languages' => $languages,
         ]);
     }
 
@@ -55,9 +59,12 @@ class ShippingTypeController  extends Controller
             }
             return $this->redirect(['index']);
         }
+        
+        $languages = Langs::find()->all();
 
         return $this->render('create', [
             'model' => $model,
+            'languages' => $languages,
         ]);
     }
 
@@ -76,9 +83,12 @@ class ShippingTypeController  extends Controller
                 return $this->redirect(['index']);
             }
         }
+        
+        $languages = Langs::find()->all();
 
         return $this->render('update', [
             'model' => $model,
+            'languages' => $languages,
         ]);
     }
 

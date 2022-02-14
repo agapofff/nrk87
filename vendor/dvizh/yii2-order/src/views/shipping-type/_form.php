@@ -7,8 +7,6 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\Pjax;
 use kartik\switchinput\SwitchInput;
 
-$languages = Yii::$app->getModule('languages')->languages;
-
 ?>
 
 <?php Pjax::begin(); ?>
@@ -75,10 +73,10 @@ $languages = Yii::$app->getModule('languages')->languages;
         ?>
         <ul class="nav nav-pills nav-justified">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <li <?php if ($lang == Yii::$app->language){?>class="active"<?php } ?>>
-                <a href="#description_<?= $lang ?>_tab" aria-controls="description_<?= $lang ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang) ?></a>
+            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                <a href="#description_<?= $lang->code ?>_tab" aria-controls="description_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
             </li>
     <?php
         }
@@ -86,12 +84,12 @@ $languages = Yii::$app->getModule('languages')->languages;
         </ul>
         <div class="tab-content">
     <?php
-        foreach ($languages as $key => $lang){
+        foreach ($languages as $key => $lang) {
     ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang == Yii::$app->language){?>active<?php } ?>" id="description_<?= $lang ?>_tab" style="padding-left: 0; padding-right: 0;">
+            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="description_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
                 <?= \yii\imperavi\Widget::widget([
-                        'id' => 'shippingtype-description_'.$lang,
-                        'value' => json_decode($model->description)->{$lang},
+                        'id' => 'shippingtype-description_'.$lang->code,
+                        'value' => json_decode($model->description)->{$lang->code},
                         'plugins' => [
                             'fontcolor',
                         ],
@@ -110,7 +108,7 @@ $languages = Yii::$app->getModule('languages')->languages;
                             'class' => 'json_field',
                             'data' => [
                                 'field' => 'shippingtype-description',
-                                'lang' => $lang,
+                                'lang' => $lang->code,
                             ]
                         ]
                     ]);
