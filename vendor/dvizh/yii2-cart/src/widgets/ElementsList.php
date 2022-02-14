@@ -113,10 +113,12 @@ class ElementsList extends \yii\base\Widget
             // }, 'class' => 'dvizh-cart-list']);
             $cartElements = '';
             foreach ($elements as $element){
-                $cartElements .= $this->_row($element);
+                $cartElements .= Html::tag('div', $this->_row($element), [
+                    'class' => 'col-12' . (Yii::$app->params['gift'] && $element->item_id == Yii::$app->params['gift']['product_id'] ? ' order-first' : '')
+                ]);
             }
             $cart = Html::tag('div', $cartElements, [
-                // 'class' => 'list-group list-group-flush'
+                'class' => 'row'
             ]);
 		}
 
