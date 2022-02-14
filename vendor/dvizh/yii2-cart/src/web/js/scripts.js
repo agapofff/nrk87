@@ -249,7 +249,7 @@ dvizh.cart = {
         return false;
     },
     sendData: function (data, link) {
-console.log(data);
+// console.log(data);
         if (!link) {
             link = '/cart/element/create';
         }
@@ -289,7 +289,7 @@ console.log(data);
 
             },
             error: function(response){
-                console.log(response);
+console.log(response);
                 // dvizh.cart.sendData(data, link);
             },
             complete: function(){
@@ -346,6 +346,6 @@ console.log(data);
 $(function() {
     dvizh.cart.init();
     // dvizh.cart.renderCart();
-    $('.btn-minicart-checkout').toggleClass('d-none', $('.dvizh-cart-count:first').text() === '0');
+    // $('.btn-minicart-checkout').toggleClass('d-none', $('.dvizh-cart-count:first').text() === '0');
 });
 

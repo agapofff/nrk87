@@ -151,7 +151,7 @@ class ChangeOptions extends \yii\base\Widget
                                 'data-id' => $id,
                                 'class' => $cssClass,
                                 'labelOptions' => [
-                                    'class' => 'btn btn-lg rounded-0 btn-outline-primary mr-1 mb-1 p-0 d-flex justify-content-center align-items-center active float-left',
+                                    'class' => 'btn btn-lg rounded-0 btn-outline-primary mr-1 mb-1 p-0 d-flex justify-content-center align-items-center float-left',
                                     'style' => '
                                         width: 58px;
                                         height: 58px;

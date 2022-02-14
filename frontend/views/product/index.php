@@ -99,14 +99,16 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                 </div>
                 
                 <div class="row">
-                    <div class="price-options col-sm-6 col-md-12 col-lg-6 mb-0_5" data-id="<?= $model->id ?>">
+                    <div class="price-options col-sm-6 col-md-12 col-lg-6" data-id="<?= $model->id ?>">
                         <?= ChangeOptions::widget([
                                 'model' => $model,
                                 'type' => 'radio',
+                                // 'cssClass' => 'd-none'
                             ]);
                         ?>
+                        
                     </div>
-                    <div class="product-buy col-sm-6 col-md-12 col-lg-6 mb-0_5" data-id="<?= $model->id ?>">
+                    <div class="product-buy col-sm-6 col-md-12 col-lg-6 mb-1 mb-md-0_5" data-id="<?= $model->id ?>">
                         <?= BuyButton::widget([
                                 'model' => $model,
                                 'htmlTag' => 'button',
@@ -119,12 +121,12 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                     </div>
                 </div>
                 
-                <div class="row mb-2 mb-md-3 align-items-center">
+                <div class="row mb-2 align-items-center">
                     <div class="col-sm-6 col-md-12 col-lg-6 mb-0_5">
                         <?php
                             if ($sizes) {
                         ?>
-                                <a href="#sizes" data-toggle="modal" title="<?= Yii::t('front', 'Размерная сетка') ?>" class="text-uppercase">
+                                <a href="#sizes" data-toggle="modal" title="<?= Yii::t('front', 'Размерная сетка') ?>" class="btn btn-link bg-transparent border-0 px-0 text-uppercase">
                                     <?= Yii::t('front', 'Размерная сетка') ?>
                                 </a>
                         <?php
@@ -247,6 +249,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 <?php
     }
 ?>
+
 
 
 <?php

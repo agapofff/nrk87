@@ -75,6 +75,7 @@ dvizh.modificationconstruct = {
 
                 }
                 // $('.dvizh-shop-price-' + modelId).css('opacity', 1);
+                // $('.dvizh-change-options').removeClass('d-none');
 
             },
             error: function(data){
@@ -83,6 +84,7 @@ console.log(data);
             },
             complete: function(){
                 NProgress.done();
+                
             },
         });
     },
