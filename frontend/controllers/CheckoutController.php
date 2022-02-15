@@ -161,7 +161,7 @@ class CheckoutController extends \yii\web\Controller
         $total = 0;
         $products = [];
         $elements = Yii::$app->cart->elements;
-            
+
         if ($elements) {
             foreach ($elements as $element) {
                 $products[] = [
@@ -183,20 +183,32 @@ class CheckoutController extends \yii\web\Controller
 
             if ($deliveryJson) {
                 $deliveries = [
+                    'courier' => [],
                     'delivery' => [],
                     'pickups' => []
                 ];
                 $details = [];
                 $deliveryJson = str_replace('\r\n', '<br>', $deliveryJson);
                 $shippings = json_decode($deliveryJson);
+
 // echo \yii\helpers\VarDumper::dump($shippings, 99, true);
+
                 foreach ($shippings as $shipping) {
                     $operator = substr($shipping->delivery_type->delivery_service->name, 0, strpos($shipping->delivery_type->delivery_service->name, ' '));
-                    $text = str_replace('<br>', ' ', ($shipping->delivery_type->pickup ? $shipping->comment : $shipping->delivery_type->name . (
-                        strpos($shipping->delivery_type->name, $operator) !== false ? '' : ' ' . $operator
-                    )));
                     
-                    $deliveryType = $shipping->delivery_type->pickup ? 'pickups' : 'delivery';
+                    if ($shipping->delivery_type->pickup) {
+                        $text = $shipping->comment;
+                    } elseif ($shipping->delivery_type->delivery_service->id == 8150) {
+                        $text = $shipping->delivery_type->delivery_service->name;
+                    } else {
+                        $text = $shipping->delivery_type->name . (
+                            strpos($shipping->delivery_type->name, $operator) !== false ? '' : ' ' . $operator
+                        );
+                    }
+                    
+                    $text = str_replace('<br>', ' ', $text);
+                    
+                    $deliveryType = $shipping->delivery_type->pickup ? 'pickups' : 'delivery'; // ($shipping->delivery_type->delivery_service->id == 8150 ? 'courier' : 'delivery');
                     
                     if ($q) {
                         if (mb_stripos($text, $q) === false) {
@@ -256,6 +268,11 @@ class CheckoutController extends \yii\web\Controller
                         'lon' => $shipping->lng,
                         'text' => $text,
                     ];
+                }
+                
+                // сначала показывать курьера с примеркой в Москве
+                if ($country_id == 1 && $city_id == 3) {
+                    ArrayHelper::multisort($deliveries['delivery'], 'id', SORT_DESC);
                 }
                 
                 $return = [

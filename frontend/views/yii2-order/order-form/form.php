@@ -320,6 +320,7 @@
 										};
 									}"),
 								],
+                                'selectOnClose' => true,
 							],
 						]);
 					?>
@@ -596,16 +597,16 @@
 		});
 		
 		function setMap(lat, lon, name, comment){
-			var map = new ymaps.Map('delivery_image', {
-					center: [lat, lon],
-					zoom: 15
-				}, {
-					autoFitToViewport: 'always'
-				});
-			map.balloon.open([lat, lon], {
-				contentHeader: name,
-				contentBody: comment,
-			});
+            var map = new ymaps.Map('delivery_image', {
+                    center: [lat, lon],
+                    zoom: 15
+                }, {
+                    autoFitToViewport: 'always'
+                });
+            map.balloon.open([lat, lon], {
+                contentHeader: name,
+                contentBody: comment,
+            });
 		}
         
         function clearDeliveryParams(){
@@ -635,8 +636,10 @@
 				$('#delivery_time').text(params.time);
 				$('#delivery_comment').html(params.comment);
 				$('#delivery_comment').toggleClass('d-none', params.comment === '');
-				ymaps.ready(setMap(params.lat, params.lon, params.delivery_service.name, '<p>' + params.comment + '</p><p>' + params.text + '</p>'));
-				$('#delivery_image').show();
+                if (params.lat && params.lon) {
+                    ymaps.ready(setMap(params.lat, params.lon, params.delivery_service.name, '<p>' + params.comment + '</p><p>' + params.text + '</p>'));
+                    $('#delivery_image').show();
+                }
 				$('[data-field=\"delivery_cost\"]').val(params.cost);
 				$('[data-field=\"delivery_comment\"]').val(params.comment);
 			} else {

@@ -335,7 +335,8 @@ return [
         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@dektrium/user/views' => '@frontend/views/user'
+                    '@dektrium/user/views' => '@frontend/views/user',
+                    '@vendor/dvizh/yii2-order/src/widgets/views' => '@frontend/views/yii2-order',
                 ],
             ],
         ],
