@@ -179,6 +179,7 @@
 								// }
 							// "),
 						],
+                        'cache' => true,
 					],
 				]);
 			?>
@@ -201,7 +202,7 @@
 	
 		<div class="form-group row" role="tablist">
 			<?php
-				foreach($shippingTypesList as $key => $sht){
+				foreach ($shippingTypesList as $key => $sht) {
 			?>
 					<div class="col-auto">
 						<div class="custom-control custom-radio mr-3">
@@ -212,7 +213,7 @@
 								value="<?= $sht->id ?>" 
 								class="custom-control-input" 
 								data-target="#shipping-type-tab-<?= $sht->id ?>" 
-								<?php if ($orderModel->shipping_type_id == $sht->id){?>
+								<?php if ($orderModel->shipping_type_id == $sht->id) { ?>
 									checked
 								<?php } ?>
 							>
@@ -229,15 +230,15 @@
 		<div class="tab-content mb-1">
 		
 	<?php
-		foreach($shippingTypesList as $key => $sht){
+		foreach ($shippingTypesList as $key => $sht) {
 	?>  
 			<div 
-				class="tab-pane mt-2 mt-md-3 <?php if ($key == 0){?>active<?php } ?>" 
+				class="tab-pane mt-2 mt-md-3 <?php if ($key == 0) { ?>active<?php } ?>" 
 				id="shipping-type-tab-<?= $sht->id ?>" 
 			>
 
 		<?php
-			if ($sht->id == 1){
+			if ($sht->id == 1) {
 		?>
 				<div id="block-delivery" class="form-group position-relative">
 					<label class="control-label" for="pickup">
@@ -274,6 +275,7 @@
 									}"),
 								],
                                 'selectOnClose' => true,
+                                'cache' => true,
 							],
 						]);
 					?>
@@ -321,6 +323,7 @@
 									}"),
 								],
                                 'selectOnClose' => true,
+                                'cache' => true,
 							],
 						]);
 					?>
@@ -418,10 +421,33 @@
 		
 
 
-		<?php if($paymentTypes) { ?>
-			<div class="d-none">
-				<?= $form->field($orderModel, 'payment_type_id')->dropDownList($paymentTypes) ?>
-			</div>
+		<?php if ($paymentTypes) { ?>
+                <div id="block-payment_type_id" class="form-group mt-2 mb-3 position-relative required" data-select2>
+                    <p class="control-label text-uppercase font-weight-bold mb-1" for="payment_type_id">
+                        <?= Yii::t('front', 'Оплата') ?>
+                    </p>
+                    <div class="pointer-events-none opacity-75">
+                        <?= Select2::widget([
+                                'id' => 'payment_type_id',
+                                'name' => 'Order[payment_type_id]',
+                                'value' => ($fieldsDefaultValues['payment_type_id'] ?: 2),
+                                'bsVersion' => '4.x',
+                                'language' => Yii::$app->language,
+                                'theme' => Select2::THEME_BOOTSTRAP,
+                                'data' => $paymentTypes,
+                                'options' => [
+                                    'class' => 'form-control mb-0 px-0',
+                                    'placeholder' => ' ',
+                                    'autocomplete' => rand(),
+                                ],
+                                'pluginOptions' => [
+                                    'allowClear' => false,
+                                    'dropdownParent' => new JsExpression("$('#block-payment_type_id')"),
+                                ],
+                            ]);
+                        ?>
+                    </div>
+                </div>
 		<?php } ?>
         
 		
@@ -465,7 +491,12 @@
 		
 		<div class="row my-2 my-md-5 align-items-center">
 			<div id="order_submit" class="col-sm-6 text-center order-lg-last">
-				<?= Html::submitButton(Yii::t('front', 'Перейти к оплате'), [
+				<?= Html::submitButton(Html::tag('span', Yii::t('front', 'Перейти к оплате'), [
+                        'id' => 'submit-payment-text'
+                    ]) . Html::tag('span', Yii::t('front', 'Оформить заказ'), [
+                        'id' => 'submit-finish-text'
+                    ]), [
+                        'id' => 'order-form-submit-button',
 						'class' => 'btn btn-lg btn-primary btn-hover-warning btn-block py-1 text-uppercase ttfirsneue text-nowrap',
 					])
 				?>
@@ -513,8 +544,7 @@
 <?php
     $this->registerJs(
     "
-    
-        $('#country').change(function(){
+        $('#country').change(function () {
             $('#order-phone').val('');
             $('#city').val(null).trigger('change');
             $('#order-shipping_type_id').trigger('change');
@@ -523,39 +553,57 @@
             setPhoneMask();
         });
         
-        $('#city').change(function(){
-            $('#order-shipping_type_id').trigger('change');
+        $('#city').change(function () {
+            shippingTypeChange(true);
             $('[data-field=\"city_id\"]').val($('#city').val());
             $('[data-field=\"city_name\"]').val($('#city option:selected').text());
         });
         
-        $('#order-shipping_type_id').change(function(){
-            clearDeliveryParams();
-            toggleAddress();
-            if ($(this).val() === '1'){
-                $('#delivery').val(null).trigger('change');
-            } else if ($(this).val() === '2'){
-                $('#pickup').val(null).trigger('change');
-            }
+        $('#order-shipping_type_id').change(function () {
+            shippingTypeChange();
         });
         
-        $('#delivery').change(function(){
-            if ($('#delivery').val()){
+        shippingTypeChange = function (isCityChanged = false) {
+// console.log('shippingTypeChange = ' + isCityChanged);
+            clearDeliveryParams();
+            toggleAddress();
+            setPaymentOptions();
+            
+            if (isCityChanged) {
+                $('#delivery, #pickup').empty();
+            }
+            
+            $('#delivery').val(null);
+            $('#pickup').val(null);
+            
+            if (!isCityChanged) {
+                if ($('#order-shipping_type_id').val() === '1') {
+                    $('#delivery').val($('#delivery option').eq(1).attr('value'));
+                } else if ($('#order-shipping_type_id').val() === '2') {
+                    $('#pickup').val($('#pickup option').eq(1).attr('value'));
+                }
+            }
+            $('#delivery').trigger('change');
+            $('#pickup').trigger('change');
+        }
+        
+        $('#delivery').change(function () {
+            if ($('#delivery').val()) {
                 $('[data-field=\"delivery_id\"]').val($('#delivery').val());
                 $('[data-field=\"delivery_name\"]').val($('#delivery option:selected').text());
                 getDeliveryParams($('#delivery').val());
             }
         });
         
-        $('#pickup').change(function(){
-            if ($('#pickup').val()){
+        $('#pickup').change(function () {
+            if ($('#pickup').val()) {
                 $('[data-field=\"delivery_id\"]').val($('#pickup').val());
                 $('[data-field=\"delivery_name\"]').val($('#pickup option:selected').text());
                 getDeliveryParams($('#pickup').val());
             }
         });
         
-        function getDeliveryParams(shippingId){
+        getDeliveryParams = function (shippingId) {
             $.ajax({
                 url: '" . Url::to(['/checkout/get-delivery']) . "',
                 method: 'get',
@@ -565,60 +613,60 @@
                     type: 'details',
                     shipping_id: shippingId
                 },
-                beforeSend: function(){
+                beforeSend: function () {
                     NProgress.start();
                 },
-                success: function(response){
-					if (response == null){
+                success: function (response) {
+					if (response == null) {
 						location.reload();
 					} else {
 						setDeliveryParams(response);
+                        setPaymentOptions();
 					}
                 },
-                error: function(response){
-					console.log('Ошибка расчёта доставки');
-                    console.log(response);
+                error: function (response) {
+console.log('Ошибка расчёта доставки');
+console.log(response);
                     toastr.error('" . Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже') . "');
                 },
-                complete: function(){
+                complete: function () {
                     NProgress.done();
                 }
             });
         }
 		
-		$(document).on('dvizhCartChanged', function(){
-			if ($('#order-shipping_type_id').val() === '1'){
+		$(document).on('dvizhCartChanged', function () {
+			if ($('#order-shipping_type_id').val() === '1') {
 				$('#delivery').trigger('change');
-			} else if ($('#order-shipping_type_id').val() === '2'){
+			} else if ($('#order-shipping_type_id').val() === '2') {
 				$('#pickup').trigger('change');
 			} else {
 				location.reload();
 			}
 		});
 		
-		function setMap(lat, lon, name, comment){
+		setMap = function (lat, lon, name, comment) {
             var map = new ymaps.Map('delivery_image', {
                     center: [lat, lon],
                     zoom: 15
                 }, {
                     autoFitToViewport: 'always'
                 });
+            
             map.balloon.open([lat, lon], {
                 contentHeader: name,
                 contentBody: comment,
             });
 		}
         
-        function clearDeliveryParams(){
+        clearDeliveryParams = function () {
             $('#order_total').hide();
             $('#total').text('');
             $('#delivery_price').text(' ');
             $('#delivery_time').text(' ');
             $('#delivery_comment').html('');
             $('#delivery_comment').addClass('d-none');
-			$('#delivery_image')
-				.empty()
-				.hide();
+			$('#delivery_image').empty().hide();
             $('[data-field=\"delivery_cost\"]').val('');
             $('[data-field=\"delivery_comment\"]').val('');
             $('[data-field=\"postcode\"]').val('');
@@ -627,9 +675,10 @@
             $('[data-field=\"delivery_name\"]').val('');
         }
         
-        function setDeliveryParams(data){
+        setDeliveryParams = function (data) {
 			var params = JSON.parse(data);
-			if (params !== null && 'total' in params){
+            
+			if (params !== null && 'total' in params) {
 				$('#total').text(params.total);
 				$('#order_total').show();
 				$('#delivery_price').text(params.price);
@@ -637,6 +686,7 @@
 				$('#delivery_comment').html(params.comment);
 				$('#delivery_comment').toggleClass('d-none', params.comment === '');
                 if (params.lat && params.lon) {
+                    $('#delivery_image').empty();
                     ymaps.ready(setMap(params.lat, params.lon, params.delivery_service.name, '<p>' + params.comment + '</p><p>' + params.text + '</p>'));
                     $('#delivery_image').show();
                 }
@@ -647,17 +697,28 @@
 			}
         }
         
-        function toggleAddress(){
+        toggleAddress = function () {
             $('#address, #postcode')
                 .toggleClass('d-none', $('#order-shipping_type_id').val() === '2')
                 .toggleClass('required', $('#order-shipping_type_id').val() === '1');
         }
         toggleAddress();
+        
 
-        function validateOrderForm(){
+        setPaymentOptions = function () {
+            var moscowCourier = parseFloat($('[data-field=\"delivery_id\"]').val()) === 74265;
+
+            $('#payment_type_id').val(moscowCourier ? 2 : 1).trigger('change');
+            $('#order-form-submit-button').toggleClass('moscowCourier', moscowCourier);
+            $('#submit-finish-text').toggle(moscowCourier);
+            $('#submit-payment-text').toggle(!moscowCourier);
+        }
+        setPaymentOptions();
+
+        validateOrderForm = function () {
             var errors = false;
             
-            if ($('#order-form').find('.has-error').length > 0){
+            if ($('#order-form').find('.has-error').length > 0) {
                 errors = true;
                 var message = $('#order-form').find('.has-error').first().find('.help-block').text();
 				
@@ -665,21 +726,23 @@
                 return false;
             } 
             
-            if (errors){
+            if (errors) {
                 return false;
             }
             
-            $('#order-form').find('.required').each(function(){
-                if ($(this).find('input, select, textarea').val() == ''){
+            $('#order-form').find('.required').each(function () {
+                if ($(this).find('input, select, textarea').val() == '') {
                     errors = true;
+                    
                     var label = $(this).find('label').text() === 'Стоимость доставки' ? '" . Yii::t('front', 'Способ доставки') . "' : $(this).find('label').text(),
-						message = " . (Yii::$app->language == 'ru' ? "'" . Yii::t('front', 'Заполните') . " «' + label + '»';" : "'«' + label + '» ' + '" . Yii::t('front', 'не может быть пустым') . "';") . "
+						message = " . (Yii::$app->language == 'ru' ? "'" . Yii::t('front', 'Заполните') . " «' + label + '»';" : "'«' + label + '» ' + '" . Yii::t('front', 'не может быть пустым') . "';") . ";
+                        
                     toastr.error(message);
                     return false;
                 }
             });
             
-            if (errors){
+            if (errors) {
                 return false;
             }
             
@@ -687,11 +750,11 @@
         }
         
         $('#order-form')
-            .on('afterValidate', function(e){
+            .on('afterValidate', function (e) {
                 return validateOrderForm();
             })
-            .on('beforeSubmit', function(e){
-                if (validateOrderForm()){
+            .on('beforeSubmit', function (e) {
+                if (validateOrderForm()) {
 // return true;
                     var orderData = {
                         delivery_method: $('input[data-field=\"delivery_id\"]').val(),
@@ -720,31 +783,33 @@
                         url: '" . Url::to(['/checkout/get-products']) . "',
                         method: 'get',
                         async: false,
-                        beforeSend: function(){
+                        beforeSend: function () {
                             NProgress.start();
                         },
-                        success: function(products){
+                        success: function (products) {
                             orderData.products = JSON.parse(products);
+                            
                             $.ajax({
                                 url: 'https://api.sessia.com/api/market/" . $store_id . "/ordersAnonymous',
                                 method: 'post',
                                 data: orderData,
                                 async: false,
-                                beforeSend: function(){
+                                beforeSend: function () {
                                     NProgress.start();
                                     $('[data-field=\"log_request\"]').val(JSON.stringify(orderData));
                                 },
-                                success: function(response){
+                                success: function (response) {
                                     $('[data-field=\"log_response\"]').val(JSON.stringify(response));
                                     $('#order-id').val(response.id);
                                     $('[data-field=\"id_order_sessia\"]').val(response.id);
                                     NProgress.start();
                                     $('#order-form')[0].submit();
-                                    return true;
+                                    return;
                                 },
-                                error: function(response){
+                                error: function (response) {
+console.log(response);
                                     var errors = response.responseJSON;
-                                    for (var error in errors){
+                                    for (var error in errors) {
                                         if (errors[error][0] !== undefined) {
                                             if (Array.isArray(errors[error])) {
                                                 toastr.error(errors[error][0]);
@@ -773,12 +838,12 @@
                                 }
                             });
                         },
-                        error: function(response){
-                            console.log(response);
+                        error: function (response) {
+console.log(response);
                             toastr.error('" . Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже') . "');
                             return false;
                         },
-                        complete: function(){
+                        complete: function () {
                             NProgress.done();
                         }
                     });
@@ -791,33 +856,33 @@
 ?>
 
 <?php
-    $this->registerJs(
-    "
-        $(document).on('click', '.next', function(e){
-            e.preventDefault();
-            var errors = false,
-                target = $(this).attr('data-target'),
-                parentCollapse = $(this).parents('.collapse');
+    // $this->registerJs(
+    // "
+        // $(document).on('click', '.next', function (e) {
+            // e.preventDefault();
+            // var errors = false,
+                // target = $(this).attr('data-target'),
+                // parentCollapse = $(this).parents('.collapse');
             
-            if ($(parentCollapse).find('.has-error').length > 0){
-                errors = true;
-                var message = $(parentCollapse).find('.has-error').find('.help-block').text();
-                toastr.error(message);
-                return false;
-            } 
+            // if ($(parentCollapse).find('.has-error').length > 0){
+                // errors = true;
+                // var message = $(parentCollapse).find('.has-error').find('.help-block').text();
+                // toastr.error(message);
+                // return false;
+            // } 
             
-            $(parentCollapse).find('.required').each(function(){
-                if ($(this).find('input, select, textarea').val() == ''){
-                    errors = true;
-                    var message = $(this).find('label').text() + ' " . Yii::t('front', 'не может быть пустым') . "';
-                    toastr.error(message);
-                    return false;
-                }
-            });
+            // $(parentCollapse).find('.required').each(function(){
+                // if ($(this).find('input, select, textarea').val() == ''){
+                    // errors = true;
+                    // var message = $(this).find('label').text() + ' " . Yii::t('front', 'не может быть пустым') . "';
+                    // toastr.error(message);
+                    // return false;
+                // }
+            // });
             
-            if (!errors){
-                $(target).collapse('show');
-            }
-        })
-    ");
+            // if (!errors){
+                // $(target).collapse('show');
+            // }
+        // })
+    // ");
 ?>
