@@ -226,5 +226,5 @@
 ?>
 
 <h3 style="text-align: right">
-    <?= Yii::t('front', 'Итого') ?>: <?= Yii::$app->formatter->asCurrency($model->total, $currency) ?>
+    <?= Yii::t('front', 'Итого') ?>: <?= Yii::$app->formatter->asCurrency($model->cost, $currency) ?>
 </h3>

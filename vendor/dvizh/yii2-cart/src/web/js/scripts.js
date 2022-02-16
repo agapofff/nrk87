@@ -335,6 +335,10 @@ console.log(response);
             $('a[href="#cart-widget"]').click();
         }
 
+        if (parseFloat(json.count) === 0 && location.href.includes('checkout')){
+            location.href = '/catalog';
+        }
+
         $('.btn-minicart-checkout').toggleClass('d-none', $('.dvizh-cart-count:first').text() === '0');
 
         jQuery(document).trigger("renderCart", json);

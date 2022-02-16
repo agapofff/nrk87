@@ -90,6 +90,7 @@ class CheckoutController extends \yii\web\Controller
         $langId = 1;
         $langsJson = Yii::$app->runAction('curl', [
             'url' => 'https://api.sessia.com/api/language',
+            'cache' => true
         ]);
         $langs = json_decode($langsJson);
         
@@ -122,6 +123,7 @@ class CheckoutController extends \yii\web\Controller
     {        
         $countries = Yii::$app->runAction('curl', [
             'url' => 'https://api.sessia.com/api/market/delivery-countries/' . $store_id,
+            'cache' => true
         ]);
         return $countries ?: false;
     }
@@ -138,7 +140,8 @@ class CheckoutController extends \yii\web\Controller
                 'offset' => 0,
                 'lang' => $lang ?: Yii::$app->language,
                 'q' => $q
-            ])
+            ]),
+            'cache' => true
         ]);
 
         if ($citiesJson) {
@@ -178,7 +181,8 @@ class CheckoutController extends \yii\web\Controller
                     'country' => $country_id,
                     'city' => $city_id,
                     'products' => $products,
-                ])
+                ]),
+                'cache' => true,
             ]);
 
             if ($deliveryJson) {

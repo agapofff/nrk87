@@ -266,14 +266,17 @@ class OrderController  extends Controller
                         ->send();
                 }
 
-                return $this->redirect([
+                if ($model->payment_type_id == 1) { // онлайн-оплата
+                    return $this->redirect([
                         Yii::$app->getModule('order')->successUrl,
                         'id' => $model->id,
                         'payment' => $model->payment_type_id
                     ]);
+                } else {
+                    return $this->redirect(['/checkout/success']);
+                }
             } else {
                 Yii::$app->session->setFlash('orderError', Yii::t('back', serialize($model->getErrors())));
-
                 return $this->redirect(Yii::$app->request->referrer);
             }
         } else {

@@ -471,12 +471,12 @@ body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
     background-color: #D6751C !important;
     border-color: #D6751C !important;
 }
-
 .select-size-note {
 	font-size: 12px;
 	color: #C36C39;
 	font-weight: 400;
 }
+
 
 .custom-radio .custom-control-label::before {
 	top: 1px;
@@ -825,6 +825,9 @@ div[data-select2] label {
 }
 .select2-search {
     display: none !important;
+}
+#block-payment_type_id .select2-selection__arrow {
+    display: none;
 }
 
 

@@ -11,8 +11,14 @@ use linslin\yii2\curl;
 class CurlController extends \yii\web\Controller
 {
     
-    public function actionIndex($url, $post = null, $params = null, $json = null)
-    {
+    public function actionIndex(
+        $url, 
+        $post = null, 
+        $params = null, 
+        $json = null, 
+        $cache = false,
+        $time = 86400
+    ) {
         $curl = new curl\Curl();
         
         if ($params) {
@@ -23,7 +29,12 @@ class CurlController extends \yii\web\Controller
             }
         }
         
-        $response = $post ? $curl->post($url) : $curl->get($url);
+        if ($cache) {
+            $key = md5($url . $params);
+            $response = Yii::$app->cache->getOrSet($key, fn() => $post ? $curl->post($url) : $curl->get($url), $time);
+        } else {
+            $response = $post ? $curl->post($url) : $curl->get($url);
+        }
         
         if ($curl->errorCode === null) {
             return $response;

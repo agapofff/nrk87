@@ -456,7 +456,7 @@
 				<?= $form
 						->field($orderModel, 'comment', [
 							'inputOptions' => [
-								'class' => 'form-control mb-0 px-0 px-2',
+								'class' => 'form-control mb-0',
 								'autocomplete' => rand(),
 								// 'placeholder' => ' ',
 								'rows' => 5,
