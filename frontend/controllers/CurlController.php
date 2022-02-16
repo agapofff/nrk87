@@ -31,7 +31,9 @@ class CurlController extends \yii\web\Controller
         
         if ($cache) {
             $key = md5($url . $params);
-            $response = Yii::$app->cache->getOrSet($key, fn() => $post ? $curl->post($url) : $curl->get($url), $time);
+            $response = Yii::$app->cache->getOrSet($key, function () use ($curl, $url, $post) {
+                return $post ? $curl->post($url) : $curl->get($url);
+            }, $time);
         } else {
             $response = $post ? $curl->post($url) : $curl->get($url);
         }
