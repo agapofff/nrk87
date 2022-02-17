@@ -41,13 +41,13 @@ if ($options && !empty($allOptions)) {
 						<?= $name ?> <?= $optionValue ?>
 					</p>
                     
-					<?php
-                        if (!$model->price) {
-                    ?>
+                <?php
+                    if ($model->item_id == Yii::$app->params['gift']['product_id']) {
+                ?>
                         <p class="text-danger"><?= Yii::t('front', 'Подарок') ?></p>
-                    <?php
-                        }
-                    ?>
+                <?php
+                    }
+                ?>
                     
                     <?php 
                         if (!empty($otherFields))
