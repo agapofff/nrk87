@@ -88,9 +88,8 @@ $this->title = Yii::t('front', 'Контакты');
                     '<br>' + 
                     '<?= Yii::$app->params["contacts"]["full_address"][1] ?>' +
                     '<hr>' + 
-                    '<a href="tel:<?= preg_replace("/[D]/", "", Yii::$app->params["contacts"]["phone"]) ?>" class="text-decoration-none"><?= Yii::$app->params["contacts"]["phone"] ?></a>' +
-                    '<br>' + 
-                    '<a href="mailto:<?= Yii::$app->params["contacts"]["email"] ?>" class="text-decoration-none"><?= Yii::$app->params["contacts"]["email"] ?></a>',
+                    '<p class="mb-0_5"><a href="tel:<?= preg_replace("/[D]/", "", Yii::$app->params["contacts"]["phone"]) ?>" class="text-decoration-none"><?= Yii::$app->params["contacts"]["phone"] ?></a></p>' +
+                    '<p class="mb-0_5"><a href="mailto:<?= Yii::$app->params["contacts"]["email"] ?>" class="text-decoration-none"><?= Yii::$app->params["contacts"]["email"] ?></a></p>',
                 }, {
                     iconImageHref: "<?= Url::to('/images/map_pointer.svg', true) ?>",
                     iconImageSize: [88, 92],

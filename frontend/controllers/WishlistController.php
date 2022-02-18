@@ -14,22 +14,22 @@ use yii\helpers\ArrayHelper;
 class WishlistController extends \yii\web\Controller
 {
     
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['index', 'add', 'remove', 'check'],
-                'rules' => [
-                    [
-                        'actions' => ['index', 'add', 'remove', 'check'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ];
-    }
+    // public function behaviors()
+    // {
+        // return [
+            // 'access' => [
+                // 'class' => AccessControl::className(),
+                // 'only' => ['index', 'add', 'remove', 'check'],
+                // 'rules' => [
+                    // [
+                        // 'actions' => ['index', 'add', 'remove', 'check'],
+                        // 'allow' => true,
+                        // 'roles' => ['@'],
+                    // ],
+                // ],
+            // ],
+        // ];
+    // }
     
     public function actionIndex($product_id = null, $size = null)
     {
@@ -37,9 +37,14 @@ class WishlistController extends \yii\web\Controller
             $this->actionRemove($product_id, $size);
         }
         
-        $wishlist = Wishlist::findAll([
-            'user_id' => Yii::$app->user->id
-        ]);
+        $wishlist = Wishlist::find()
+        ->where([
+            'user_id' => (Yii::$app->user->isGuest ? Yii::$app->session->getId() : Yii::$app->user->id)
+        ])
+        ->orderBy([
+            'id' => SORT_DESC
+        ])
+        ->all();
         
         $products = Product::find()->all();
             
@@ -106,7 +111,7 @@ class WishlistController extends \yii\web\Controller
     public function actionCheck($product_id, $size = null)
     {
         $model = Wishlist::findOne([
-            'user_id' => Yii::$app->user->id,
+            'user_id' => (Yii::$app->user->isGuest ? Yii::$app->session->getId() : Yii::$app->user->id),
             'product_id' => $product_id,
             'size' => $size,
         ]);
@@ -121,11 +126,12 @@ class WishlistController extends \yii\web\Controller
     public function actionAdd($product_id, $size = null)
     {
         if (!$model = Wishlist::findOne([
+            'user_id' => (Yii::$app->user->isGuest ? Yii::$app->session->getId() : Yii::$app->user->id),
             'product_id' => $product_id,
             'size' => $size,
         ])) {
             $model = new Wishlist();
-            $model->user_id = Yii::$app->user->id;
+            $model->user_id = Yii::$app->user->isGuest ? Yii::$app->session->getId() : Yii::$app->user->id;
             $model->product_id = $product_id;
             $model->size = $size;
             $model->save();
@@ -135,7 +141,7 @@ class WishlistController extends \yii\web\Controller
     public function actionRemove($product_id, $size = null)
     {
         $model = Wishlist::findOne([
-            'user_id' => Yii::$app->user->id,
+            'user_id' => (Yii::$app->user->isGuest ? Yii::$app->session->getId() : Yii::$app->user->id),
             'product_id' => $product_id,
             'size' => $size,
         ]);

@@ -32,8 +32,8 @@ class Wishlist extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'product_id', 'size'], 'required'],
-            [['user_id', 'product_id'], 'integer'],
-            [['size'], 'string', 'max' => 255],
+            [['product_id'], 'integer'],
+            [['size', 'user_id'], 'string', 'max' => 255],
         ];
     }
 
