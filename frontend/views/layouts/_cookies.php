@@ -2,6 +2,7 @@
     use yii\helpers\Url;
     use yii\helpers\Html;
 ?>
+<!--
     <div id="cookiesNotification" class="fixed-bottom w-100 fade" data-type="1">
         <div class="vw-100 pb-1 px-1_5">
             <div class="row align-items-center justify-content-end">
@@ -32,8 +33,7 @@
             </div>
         </div>
     </div> 
-
-<!--
+-->
     <div id="cookiesNotification" class="fixed-bottom w-100 fade" data-type="2">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-end">
@@ -63,7 +63,7 @@
             </div>
         </div>
     </div> 
-
+<!--
     <div id="cookiesNotification" class="fixed-top w-100 fade" data-type="3">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-end">
