@@ -408,7 +408,7 @@ jQuery(document).ready(function ($) {
     // бегущая строка
     initMarquee = function () {
         $('.marquee').marquee({
-            duration: $(window).width() * 10,
+            duration: $(window).width() > 1000 ? $(window).width() * 10 : $(window).width() * 20,
             startVisible: true,
             duplicated: true
         });
