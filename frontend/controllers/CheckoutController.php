@@ -106,10 +106,17 @@ class CheckoutController extends \yii\web\Controller
     
     public function actionGetProducts()
     {
-        $elements = Yii::$app->cart->elements;        
+        $elements = Yii::$app->cart->elements;
         $products = [];
         
         foreach ($elements as $element) {
+            // убрать подарочный товар из списка
+            if (Yii::$app->params['gift']) {
+                if ($element->item_id == Yii::$app->params['gift']['product_id']) {
+                    continue;
+                }
+            }
+            
             $products[] = [
                 'goods' => $element->getComment(),
                 'quantity' => $element->getCount()
