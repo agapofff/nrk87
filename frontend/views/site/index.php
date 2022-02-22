@@ -56,7 +56,7 @@
 </div>
 -->
 
-<div class="container-fluid mb-md-10 pt-3 pt-md-5 pb-3 pb-md-5 mt-md-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
+<div class="container-fluid pt-3 pt-md-7 pb-3 pb-md-15 px-lg-2 px-xl-3 px-xxl-5" style="
     background: url('/images/main/ellipse.png') center center /contain no-repeat;
 ">
     <div class="row">
