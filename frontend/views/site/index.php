@@ -57,44 +57,24 @@
 -->
 
 <div class="container-fluid mb-md-10 pt-3 pt-md-5 pb-3 pb-md-5 mt-md-1_5 px-lg-2 px-xl-3 px-xxl-5" style="
-    background: url('/images/main/ellipse<?= Yii::$app->language == 'ru' ? '_ru' : '' ?>.png') center center /cover no-repeat;
+    background: url('/images/main/ellipse.png') center center /cover no-repeat;
 ">
     <div class="row">
         <div class="col-12 text-right">
             EST. 2018
         </div>
-        <div class="col-12">
+        <div class="col-auto mx-auto">
     <?php
-        $text = explode('|', Yii::t('front', 'GPS-одежда | для тех, | кто мечтает | о Марсе'));
+        $text = explode('|', Yii::t('front', 'End ‒ | less | search'));
         foreach ($text as $k => $txt) {
     ?>
-            <h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 position-relative <?= $k % 2 ? ($k == 3 && Yii::$app->language == 'ru' ? 'text-left' : 'text-md-right') : 'text-left' ?>">
-                <?= trim($txt) ?>
-                
-                <?php
-                    if ($k == 1) {
-                ?>
-                        <div class="d-none d-xl-block" style="
-                            position: absolute;
-                            top: 40px;
-                            left: 15px;
-                            max-width: 470px;
-                            float: left;
-                            font-family: Helvetica;
-                            font-size: 16px;
-                            font-weight: normal;
-                            line-height: 20.8px;
-                            text-decoration: none;
-                            text-transform: none;
-                            text-align: left;
-                            opacity: .5;
-                        ">
-                            <?= Yii::t('front', 'Мы решили создать коллекцию одежды со встроенными GPS-трекерами, с помощью которых можно не только легко найти человека, но и связаться с ним в любую минуту. Вы сможете чувствовать себя спокойно и уверенно, а значит, появится время творить, мечтать и делать мир вокруг лучше.') ?>
-                        </div>
-                <?php
-                    }
-                ?>
-            </h1>
+            <div class="row <?= !$k ? 'justify-content-end' : ''?>">
+                <div class="col-auto">
+                    <h1 class="ttfirsneue text-uppercase display-2 d-inline-block mb-0 w-100 position-relative" style="line-height:1">
+                        <?= trim($txt) ?>
+                    </h1>
+                </div>
+            </div>
     <?php
         }
     ?>
