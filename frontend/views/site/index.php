@@ -60,8 +60,11 @@
     background: url('/images/main/ellipse.png') center center /contain no-repeat;
 ">
     <div class="row">
-        <div class="col-12 text-right">
-            EST. 2018
+        <div class="col-6">
+            <?= Yii::$app->id ?>
+        </div>
+        <div class="col-6 text-right">
+            EST. 2019
         </div>
         <div class="col-auto mx-auto">
     <?php
