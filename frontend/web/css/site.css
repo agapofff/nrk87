@@ -299,9 +299,6 @@ form[disabled] {
     -moz-transition: all .3s ease;
     transition: all .3s ease;
 }
-#nav.scrolling #logo img {
-    width: 40px !important;
-}
 
 #pagecontent {
 	min-height: 50vh;

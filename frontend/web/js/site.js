@@ -37,12 +37,11 @@ jQuery(document).ready(function ($) {
     // маски
     $.mask.definitions['_'] = "[0-9]";
     
-
-    // $(document).ready(function () {
-        if (location.href.includes('#')) {
-            $('a[href="#' + location.href.split('#')[1] + '"]').trigger('click');
-        }
-    // });
+    
+    // клики по хэш-ссылкам
+    if (location.href.includes('#')) {
+        $('a[href="#' + location.href.split('#')[1] + '"]').trigger('click');
+    }
 
 
     // уведомления
@@ -111,33 +110,29 @@ jQuery(document).ready(function ($) {
 
 
     // popover
-    $(document).ready(function () {
-        $('[data-toggle="popover"]').popover({
-            html: true,
-            trigger: 'focus',
-            container: 'body',
-            content: function () {
-                if ($(this).is('[data-element]')) {
-                    return $($(this).attr('data-element')).html();
-                } else {
-                    return $(this).attr('data-content');
-                }
-            },
-        });
-        // }).on('shown.bs.popover', function () {
-            // generateOwlCarousel();
-        // });
+    $('[data-toggle="popover"]').popover({
+        html: true,
+        trigger: 'focus',
+        container: 'body',
+        content: function () {
+            if ($(this).is('[data-element]')) {
+                return $($(this).attr('data-element')).html();
+            } else {
+                return $(this).attr('data-content');
+            }
+        },
     });
+    // }).on('shown.bs.popover', function () {
+        // generateOwlCarousel();
+    // });
 
     
     // переключатель способов доставки
-    // $(document).ready(function () {
-        $('input[name="shipping_type_switcher"]').click(function () {
-            $(this).tab('show');
-            $(this).removeClass('active');
-            $('#order-shipping_type_id').val($(this).val()).trigger('change');
-        });
-    // });
+    $('input[name="shipping_type_switcher"]').click(function () {
+        $(this).tab('show');
+        $(this).removeClass('active');
+        $('#order-shipping_type_id').val($(this).val()).trigger('change');
+    });
 
 
 
@@ -177,7 +172,7 @@ jQuery(document).ready(function ($) {
         sendAjaxData($link, url);
     });
 
-    function sendAjaxData($element, action, method = 'get', params = [], isForm = false) {
+    sendAjaxData = function ($element, action, method = 'get', params = [], isForm = false) {
         NProgress.start();
         $.ajax({
             url: action,
@@ -213,7 +208,7 @@ jQuery(document).ready(function ($) {
 
     // OWL
 
-    function owlCarouselInit(item) {
+    owlCarouselInit = function (item) {
         var itemCount = ($(item).attr('data-items')) ? $(item).attr('data-items').split('-') : [1,1,1,1,1,1],
             owlAutoPlay = ($(item).attr('data-autoplay') == 'true' || $(item).hasClass('owl-autoplay')) ? true : false,
             owlAutoPlayTimeout = ($(item).attr('data-speed')) ? parseFloat($(item).attr('data-speed')) : 5000,
@@ -277,7 +272,7 @@ jQuery(document).ready(function ($) {
                 '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></svg>', 
                 '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>'
             ],
-            onInitialize: function(element) {
+            onInitialize: function (element) {
                 if (owlRandom === true) {
                     $(item).children().sort(function () {
                         return Math.round(Math.random()) - 0.5;
@@ -290,27 +285,25 @@ jQuery(document).ready(function ($) {
             onDragged: function () {
                 // imageZoom();
             },
-            onChanged: function(event) {
+            onChanged: function (event) {
                 $(item).attr('data-item', event.item.index ? event.item.index-1 : event.item.index);
                 // imageZoom();
             },
         });
     }
 
-    function generateOwlCarousel() {
+    generateOwlCarousel = function () {
         $('.owl-carousel').each(function () {
             owlCarouselInit($(this));
         });
     }
 
-    // $(document).ready(function () {
-        generateOwlCarousel();
-    // });
+    generateOwlCarousel();
 
 
     // выпадающее меню
-    $(document).on('click.bs.dropdown.data-api', '.dropdown-menu', function(e) {
-        e.stopPropagation();
+    $(document).on('click.bs.dropdown.data-api', '.dropdown-menu', function (event) {
+        event.stopPropagation();
     });
 
 
@@ -324,18 +317,17 @@ jQuery(document).ready(function ($) {
             // });
         // });	 
     // }
-    // $(document).ready(function () {
-        // imageZoom();
-        Fancybox.bind('.fancybox', {
-            Image: {
-                fit: 'cover',
-                Panzoom: {
-                    baseScale: 1,
-                    maxScale: 1,
-                },
+    // imageZoom();
+    
+    Fancybox.bind('.fancybox', {
+        Image: {
+            fit: 'cover',
+            Panzoom: {
+                baseScale: 1,
+                maxScale: 1,
             },
-        });
-    // });
+        },
+    });
 
 
     // выбор размера
