@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Countries */
+/* @var $model backend\models\Addresses */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('back', 'Countries'), 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('back', 'Addresses'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="countries-view">
+<div class="addresses-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -32,8 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'active',
             'ordering',
-            'name:ntext',
             'slug',
+            'country:ntext',
+            'city:ntext',
+            'address:ntext',
+            'email:email',
+            'phone',
+            'worktime:ntext',
+            'lat',
+            'lon',
         ],
     ]) ?>
 

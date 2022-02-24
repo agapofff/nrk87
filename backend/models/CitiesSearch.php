@@ -4,12 +4,12 @@ namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Countries;
+use backend\models\Cities;
 
 /**
- * CountriesSearch represents the model behind the search form of `backend\models\Countries`.
+ * CitiesSearch represents the model behind the search form of `backend\models\Cities`.
  */
-class CountriesSearch extends Countries
+class CitiesSearch extends Cities
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,7 @@ class CountriesSearch extends Countries
     public function rules()
     {
         return [
-            [['id', 'active', 'ordering', 'slug'], 'integer'],
+            [['id', 'active', 'ordering', 'slug', 'country_id'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -40,7 +40,7 @@ class CountriesSearch extends Countries
      */
     public function search($params)
     {
-        $query = Countries::find();
+        $query = Cities::find();
 
         // add conditions that should always apply here
 
@@ -62,6 +62,7 @@ class CountriesSearch extends Countries
             'active' => $this->active,
             'ordering' => $this->ordering,
             'slug' => $this->slug,
+            'country_id' => $this->country_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

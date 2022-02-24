@@ -4,12 +4,12 @@ namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Countries;
+use backend\models\Addresses;
 
 /**
- * CountriesSearch represents the model behind the search form of `backend\models\Countries`.
+ * AddressesSearch represents the model behind the search form of `backend\models\Addresses`.
  */
-class CountriesSearch extends Countries
+class AddressesSearch extends Addresses
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class CountriesSearch extends Countries
     public function rules()
     {
         return [
-            [['id', 'active', 'ordering', 'slug'], 'integer'],
-            [['name'], 'safe'],
+            [['id', 'active', 'ordering', 'country_id', 'city_id'], 'integer'],
+            [['address', 'email', 'phone', 'worktime', 'lat', 'lon'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CountriesSearch extends Countries
      */
     public function search($params)
     {
-        $query = Countries::find();
+        $query = Addresses::find();
 
         // add conditions that should always apply here
 
@@ -61,10 +61,16 @@ class CountriesSearch extends Countries
             'id' => $this->id,
             'active' => $this->active,
             'ordering' => $this->ordering,
-            'slug' => $this->slug,
+            'country_id' => $this->country_id,
+            'city_id' => $this->city_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'phone', $this->phone])
+            ->andFilterWhere(['like', 'worktime', $this->worktime])
+            ->andFilterWhere(['like', 'lat', $this->lat])
+            ->andFilterWhere(['like', 'lon', $this->lon]);
 
         return $dataProvider;
     }

@@ -8,11 +8,14 @@ use yii\widgets\ActiveForm;
 use kartik\alert\AlertBlock;
 use kartik\switchinput\SwitchInput;
 
+/* @var $this yii\web\View */
+/* @var $model backend\models\Cities */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <?php Pjax::begin(); ?>
 
-    <div class="countries-form">
+    <div class="cities-form">
     
         <?= AlertBlock::widget([
                 'type' => 'growl',
@@ -33,6 +36,13 @@ use kartik\switchinput\SwitchInput;
                         'offColor' => 'danger',
                     ],
                 ]);
+            ?>
+            
+            <?= $form
+                    ->field($model, 'country_id')
+                    ->dropDownList(ArrayHelper::map($countries, 'id', function ($country) {
+                        return json_decode($country['name'])->{Yii::$app->language};
+                    }))
             ?>
             
             <br>
@@ -67,10 +77,10 @@ use kartik\switchinput\SwitchInput;
                             'name_'.$lang->code,
                             json_decode($model->name)->{$lang->code},
                             [
-                                'id' => 'countries_name_'.$lang->code,
+                                'id' => 'cities_name_'.$lang->code,
                                 'class' => 'form-control json_field',
                                 'data' => [
-                                    'field' => 'countries-name',
+                                    'field' => 'cities-name',
                                     'lang' => $lang->code,
                                 ]
                             ]
@@ -89,6 +99,7 @@ use kartik\switchinput\SwitchInput;
                         'maxlength' => true
                     ])
             ?>
+
 
             <?= $form
                     ->field($model, 'ordering')

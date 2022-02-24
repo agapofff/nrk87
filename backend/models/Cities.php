@@ -5,18 +5,18 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%countries}}".
+ * This is the model class for table "{{%cities}}".
  *
  * @property int $id
  * @property int $active
  * @property int $ordering
  * @property string|null $name
  * @property int $slug
+ * @property int $country_id
  *
- * @property Cities[] $cities
- * @property Registration[] $registrations
+ * @property Countries $country
  */
-class Countries extends \yii\db\ActiveRecord
+class Cities extends \yii\db\ActiveRecord
 {
     public $saveAndExit;
 
@@ -34,7 +34,7 @@ class Countries extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%countries}}';
+        return '{{%cities}}';
     }
 
     /**
@@ -43,9 +43,10 @@ class Countries extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['active', 'ordering'], 'integer'],
+            [['name', 'country_id'], 'required'],
+            [['active', 'ordering', 'country_id'], 'integer'],
             [['name', 'slug'], 'string'],
+            [['country_id'], 'exist', 'skipOnError' => true, 'targetClass' => Countries::className(), 'targetAttribute' => ['country_id' => 'id']],
         ];
     }
 
@@ -60,26 +61,17 @@ class Countries extends \yii\db\ActiveRecord
             'ordering' => Yii::t('back', 'Порядок'),
             'name' => Yii::t('back', 'Название'),
             'slug' => Yii::t('back', 'Алиас'),
+            'country_id' => Yii::t('back', 'Страна'),
         ];
     }
 
     /**
-     * Gets query for [[Cities]].
+     * Gets query for [[Country]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCities()
+    public function getCountry()
     {
-        return $this->hasMany(Cities::className(), ['country_id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Registrations]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRegistrations()
-    {
-        return $this->hasMany(Registration::className(), ['country' => 'id']);
+        return $this->hasOne(Countries::className(), ['id' => 'country_id']);
     }
 }

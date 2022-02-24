@@ -16,7 +16,6 @@ $this->title = Yii::t('back', 'Помощь');
 $this->params['breadcrumbs'][] = $this->title;
 
 $sort = Yii::$app->request->get('sort');
-
 ?>
 
 <div class="help-index">
@@ -62,9 +61,9 @@ $sort = Yii::$app->request->get('sort');
                     'attribute' => 'ordering',
                     'format' => 'html',
                     'filter' => false,
-                    'value' => function ($model) {
+                    'value' => function ($model) use ($sort) {
                         return Html::tag('i', '', [
-                            'class' => 'fa fa-sort ' . (Yii::$app->request->get('sort') ? 'text-info sort-handler' : 'text-muted')
+                            'class' => 'fa fa-sort ' . ($sort == 'ordering' || $sort == '-ordering' ? 'text-info sort-handler' : 'text-muted')
                         ]);
                     },
                     'headerOptions' => [
@@ -115,9 +114,6 @@ $sort = Yii::$app->request->get('sort');
                 [
                     'attribute' => 'name',
                     'format' => 'raw',
-                    'value' => function ($model) {
-                        return ;
-                    },
                     'value' => function ($model) {
                         return Html::a(json_decode($model->name)->{Yii::$app->language}, [
                             'update',

@@ -2,18 +2,22 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use kartik\alert\AlertBlock;
 
-$this->title = Yii::t('back', 'Страны');
-$this->params['breadcrumbs'][] = $this->title;
+/* @var $this yii\web\View */
+/* @var $searchModel backend\models\CitiesSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
-$sort = Yii::$app->request->get('sort');
+$this->title = Yii::t('back', 'Города');
+
+$this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="countries-index">
+<div class="cities-index">
 
     <?= Html::a(Html::tag('span', '', [
             'class' => 'glyphicon glyphicon-plus'
@@ -23,7 +27,7 @@ $sort = Yii::$app->request->get('sort');
     ?>
 
     <?php Pjax::begin(); ?>
-    
+
         <?= AlertBlock::widget([
                 'type' => 'growl',
                 'useSessionFlash' => true,
@@ -50,7 +54,7 @@ $sort = Yii::$app->request->get('sort');
                 'columns' => [
                     // ['class' => 'yii\grid\SerialColumn'],
                     // 'id',
-                    
+
                     [
                         'attribute' => 'ordering',
                         'format' => 'html',
@@ -126,6 +130,30 @@ $sort = Yii::$app->request->get('sort');
                             'class' => 'text-center'
                         ],
                     ],
+                    
+                    [
+                        'attribute' => 'country_id',
+                        'format' => 'raw',
+                        'filter' => Html::activeDropDownList(
+                            $searchModel,
+                            'country_id',
+                            ArrayHelper::map($countries, 'id', function ($country) {
+                                return json_decode($country['name'])->{Yii::$app->language};
+                            }), [
+                                'class' => 'form-control',
+                                'prompt' => Yii::t('back', 'Все'),
+                            ]
+                        ),
+                        'value' => function ($model) use ($countries) {
+                            return json_decode(ArrayHelper::index($countries, 'id')[$model->country_id]->name)->{Yii::$app->language};
+                        },
+                        'headerOptions' => [
+                            'class' => 'text-center'
+                        ],
+                        'contentOptions' => [
+                            'class' => 'text-center'
+                        ],
+                    ],
 
                     [
                         'class' => 'yii\grid\ActionColumn',
@@ -154,6 +182,7 @@ $sort = Yii::$app->request->get('sort');
                             },
                         ]
                     ],
+
                 ],
             ]);
         ?>

@@ -21,7 +21,28 @@ $this->title = Yii::t('front', 'Контакты');
     </div>
 </div>
 
-<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-md-7">
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-2 mb-md-7">
+    <div class="row justify-content-between flex-nowrap overflow-x-auto overflow-y-hidden product-types py-0_5">
+<?php
+    foreach ($countries as $countryKey => $country) {
+?>
+        <div class="col-auto">
+            <?= Html::a(json_decode($country->name)->{Yii::$app->language}, '#' . $country->slug, [
+                    'class' => 'ttfirsneue text-uppercase text-decoration-none py-1 ' . ($categorySlug && $subCategory->slug == $categorySlug ? 'text-dark' : 'text-gray-500'),
+                    'data-toggle' => 'tab',
+                    'role' => 'tab',
+                    
+                ])
+            ?>
+        </div>
+    <?php
+        }
+    ?>
+    </div>
+    <hr class="d-none d-md-block mt-0">
+</div>
+
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-md-2">
     <div class="row">
         <div class="col-md-4 col-lg-5 col-xl-6 mb-2 mb-md-3">
             <p class="text-uppercase">
@@ -64,7 +85,7 @@ $this->title = Yii::t('front', 'Контакты');
 
 </div>
 
-<div class="mt-1 mt-md-5 mb-3 mb-md-5 vw-100 vh-75">
+<div class="mb-3 mb-md-5 vw-100 vh-75">
     <!-- <iframe src="https://snazzymaps.com/embed/349900" width="100%" height="100%" style="border:none;"></iframe> -->
     <!-- <iframe src="https://snazzymaps.com/embed/349900" width="100%" height="100%" style="border:none;"></iframe>-->
     <!-- 

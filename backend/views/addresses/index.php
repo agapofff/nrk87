@@ -2,18 +2,24 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use kartik\alert\AlertBlock;
 
-$this->title = Yii::t('back', 'Страны');
+/* @var $this yii\web\View */
+/* @var $searchModel backend\models\AddressesSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = Yii::t('back', 'Адреса');
+
 $this->params['breadcrumbs'][] = $this->title;
 
 $sort = Yii::$app->request->get('sort');
 
 ?>
 
-<div class="countries-index">
+<div class="addresses-index">
 
     <?= Html::a(Html::tag('span', '', [
             'class' => 'glyphicon glyphicon-plus'
@@ -87,9 +93,10 @@ $sort = Yii::$app->request->get('sort');
                             return Html::a(
                                 Html::tag('big', 
                                     Html::tag('span', '', [
-                                        'class' => 'glyphicon ' . ( $data->active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                        'class' => 'glyphicon ' . ($data->active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
                                     ])
-                                ), [
+                                ),
+                                [
                                     'active',
                                     'id' => $data->id
                                 ], [
@@ -103,22 +110,23 @@ $sort = Yii::$app->request->get('sort');
                             'class' => 'text-center'
                         ],
                     ],
-                
+                    
                     [
-                        'attribute' => 'name',
+                        'attribute' => 'country_id',
                         'format' => 'raw',
-                        'value' => function ($model) {
-                            return Html::a(json_decode($model->name)->{Yii::$app->language}, [
-                                'update',
-                                'id' => $model->id,
-                            ], [
-                                'data-pjax' => 0,
-                            ]);
+                        'filter' => Html::activeDropDownList(
+                            $searchModel,
+                            'country_id',
+                            ArrayHelper::map($countries, 'id', function ($country) {
+                                return json_decode($country['name'])->{Yii::$app->language};
+                            }), [
+                                'class' => 'form-control',
+                                'prompt' => Yii::t('back', 'Все'),
+                            ]
+                        ),
+                        'value' => function ($model) use ($countries) {
+                            return json_decode(ArrayHelper::index($countries, 'id')[$model->country_id]->name)->{Yii::$app->language};
                         },
-                        'filterInputOptions' => [
-                            'class' => 'form-control text-center',
-                            'placeholder' => 'Поиск...'
-                        ],
                         'headerOptions' => [
                             'class' => 'text-center'
                         ],
@@ -126,7 +134,50 @@ $sort = Yii::$app->request->get('sort');
                             'class' => 'text-center'
                         ],
                     ],
-
+                    
+                    [
+                        'attribute' => 'city_id',
+                        'format' => 'raw',
+                        'filter' => Html::activeDropDownList(
+                            $searchModel,
+                            'city_id',
+                            ArrayHelper::map($cities, 'id', function ($city) {
+                                return json_decode($city['name'])->{Yii::$app->language};
+                            }), [
+                                'class' => 'form-control',
+                                'prompt' => Yii::t('back', 'Все'),
+                            ]
+                        ),
+                        'value' => function ($model) use ($cities) {
+                            return json_decode(ArrayHelper::index($cities, 'id')[$model->city_id]->name)->{Yii::$app->language};
+                        },
+                        'headerOptions' => [
+                            'class' => 'text-center'
+                        ],
+                        'contentOptions' => [
+                            'class' => 'text-center'
+                        ],
+                    ],
+                    
+                    [
+                        'attribute' => 'address',
+                        'format' => 'raw',
+                        'value' => function ($model) {
+                            return Html::a(json_decode($model->address)->{Yii::$app->language}, [
+                                'update',
+                                'id' => $model->id
+                            ], [
+                                'data-pjax' => 0,
+                            ]);
+                        },
+                        'headerOptions' => [
+                            'class' => 'text-center'
+                        ],
+                        'contentOptions' => [
+                            'class' => 'text-center'
+                        ],
+                    ],
+                
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'template' => '{update} {delete}',

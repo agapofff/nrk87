@@ -547,7 +547,10 @@ return [
                 // 'lookbook' => 'site/lookbook',
                 // 'about-mars' => 'site/about-mars',
                 // 'contacts/<slug>' => 'site/boutiques',
-                'contacts' => 'site/contacts',
+                
+                'contacts' => 'contacts/index',
+                'contacts/<slug>' => 'contacts/index',
+                
                 'help' => 'site/help',
                 
                 // 'test/<slug>' => 'test/index',

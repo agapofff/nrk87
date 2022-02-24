@@ -3,17 +3,19 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Countries;
-use backend\models\CountriesSearch;
+use backend\models\Addresses;
+use backend\models\AddressesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\Langs;
+use backend\models\Countries;
+use backend\models\Cities;
 
 /**
- * CountriesController implements the CRUD actions for Countries model.
+ * AddressesController implements the CRUD actions for Addresses model.
  */
-class CountriesController extends Controller
+class AddressesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,25 +33,29 @@ class CountriesController extends Controller
     }
 
     /**
-     * Lists all Countries models.
+     * Lists all Addresses models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CountriesSearch();
+        $searchModel = new AddressesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
         $languages = Langs::find()->all();
+        $countries = Countries::find()->all();
+        $cities = Cities::find()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'languages' => $languages,
+            'countries' => $countries,
+            'cities' => $cities,
         ]);
     }
 
     /**
-     * Displays a single Countries model.
+     * Displays a single Addresses model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -62,15 +68,15 @@ class CountriesController extends Controller
     }
 
     /**
-     * Creates a new Countries model.
+     * Creates a new Addresses model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Countries();
+        $model = new Addresses();
         $model->loadDefaultValues();
-        $model->ordering = (int) Countries::find()->max('ordering') + 1;
+        $model->ordering = (int) Addresses::find()->max('ordering') + 1;
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
@@ -82,15 +88,19 @@ class CountriesController extends Controller
         }
         
         $languages = Langs::find()->all();
+        $countries = Countries::find()->all();
+        $cities = Cities::find()->all();
 
         return $this->render('create', [
             'model' => $model,
             'languages' => $languages,
+            'countries' => $countries,
+            'cities' => $cities,
         ]);
     }
 
     /**
-     * Updates an existing Countries model.
+     * Updates an existing Addresses model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -100,7 +110,7 @@ class CountriesController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post())) {        
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
             } else {
@@ -113,15 +123,19 @@ class CountriesController extends Controller
         }
         
         $languages = Langs::find()->all();
+        $countries = Countries::find()->all();
+        $cities = Cities::find()->all();
 
         return $this->render('update', [
             'model' => $model,
             'languages' => $languages,
+            'countries' => $countries,
+            'cities' => $cities,
         ]);
     }
 
     /**
-     * Deletes an existing Countries model.
+     * Deletes an existing Addresses model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -139,21 +153,20 @@ class CountriesController extends Controller
     }
 
     /**
-     * Finds the Countries model based on its primary key value.
+     * Finds the Addresses model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Countries the loaded model
+     * @return Addresses the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Countries::findOne($id)) !== null) {
+        if (($model = Addresses::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException(Yii::t('back', 'The requested page does not exist.'));
     }
-    
     
     public function actionActive($id)
     {

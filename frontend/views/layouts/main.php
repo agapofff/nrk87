@@ -549,18 +549,18 @@
                     
                     <div class="col-10 col-md-3">
                         <p class="mb-1_5 mb-lg-2">
-                            <?= Yii::t('front', Yii::$app->params['contacts']['full_address'][0]) ?>
+                            <?= Yii::t('front', Yii::$app->params['contacts']['Россия']['Москва'][0]['address'][0]) ?>
                             <br>
-                            <?= Yii::t('front', Yii::$app->params['contacts']['full_address'][1]) ?>
+                            <?= Yii::t('front', Yii::$app->params['contacts']['Россия']['Москва'][0]['address'][1]) ?>
                         </p>
                         <p class="m-0">
                             <!--
-                            <a href="tel:<?= preg_replace('/[D]/', '', Yii::$app->params['contacts']['phones'][0]) ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['phones'][0] ?></a>
+                            <a href="tel:<?= preg_replace('/[D]/', '', Yii::$app->params['contacts']['Россия']['phone']) ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['Россия']['Москва'][0]['phone'] ?></a>
                             <br>
                             -->
-                            <a href="tel:<?= preg_replace('/[D]/', '', Yii::$app->params['contacts']['phone']) ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['phone'] ?></a>
+                            <a href="tel:<?= preg_replace('/[D]/', '', Yii::$app->params['contacts']['Россия']['Москва'][0]['phone']) ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['Россия']['Москва'][0]['phone'] ?></a>
                             <br>
-                            <a href="mailto:<?= Yii::$app->params['contacts']['email'] ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['email'] ?></a>
+                            <a href="mailto:<?= Yii::$app->params['contacts']['Россия']['Москва'][0]['email'] ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['Россия']['Москва'][0]['email'] ?></a>
                         </p>
                     </div>
                 </div>

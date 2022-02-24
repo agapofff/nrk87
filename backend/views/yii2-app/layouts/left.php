@@ -240,11 +240,40 @@
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Помощь'),
                     'icon' => 'question',
-                    'url' => ['/help'],
+                    'url' => [
+                        '/help',
+                        'sort' => 'ordering'
+                    ],
                 ];
             }
             
-
+            if (
+                Yii::$app->user->can('/addresses/*')
+                && Yii::$app->user->can('/cities/*')
+                && Yii::$app->user->can('/countries/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Контакты'),
+                    'icon' => 'map-marker',
+                    'items' => [
+                        [
+                            'label' => Yii::t('back', 'Страны'),
+                            'icon' => 'globe',
+                            'url' => ['/countries'],
+                        ],
+                        [
+                            'label' => Yii::t('back', 'Города'),
+                            'icon' => 'map-signs',
+                            'url' => ['/cities']
+                        ],
+                        [
+                            'label' => Yii::t('back', 'Адреса'),
+                            'icon' => 'street-view',
+                            'url' => ['/addresses']
+                        ],
+                    ],
+                ];
+            }
             
             if (
                 Yii::$app->user->can('/tests/*')
