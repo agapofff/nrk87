@@ -8,7 +8,7 @@ $this->title = Yii::t('front', 'Контакты') . ' - ' . json_decode($curren
 
 ?>
 
-<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-3 mb-md-7">
+<div class="container-fluid mb-1 mb-md-3 px-lg-2 px-xl-3 px-xxl-5">
     <div class="row">
         <div class="col-12">
             <h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
@@ -18,7 +18,7 @@ $this->title = Yii::t('front', 'Контакты') . ' - ' . json_decode($curren
     </div>
 </div>
 
-<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-1_5 mb-md-2">
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mb-1_5 mb-md-2">
     <div class="row justify-content-between flex-nowrap overflow-x-auto overflow-y-hidden product-types py-0_5">
 <?php
     foreach ($countries as $countryKey => $country) {
@@ -46,7 +46,7 @@ $this->title = Yii::t('front', 'Контакты') . ' - ' . json_decode($curren
             foreach ($cities as $cityKey => $city) {
         ?>
                 <li class="nav-item col-auto" role="presentation">
-                    <a href="#<?= $city->slug ?>" id="<?= $city->slug ?>-tab" class="nav-link display-5 px-0 bg-transparent text-dark border-bottom ttfirsneue text-uppercase font-weight-light <?= $cityKey ? '' : 'active' ?>" data-toggle="tab" role="tab" aria-controls="cities" aria-selected="<?= $cityKey ? 'false' : 'true' ?>">
+                    <a href="#<?= $city->slug ?>" id="<?= $city->slug ?>-tab" class="nav-link display-5 px-0 bg-transparent text-dark ttfirsneue text-uppercase font-weight-light <?= $cityKey ? '' : 'active' ?>" data-toggle="tab" role="tab" aria-controls="cities" aria-selected="<?= $cityKey ? 'false' : 'true' ?>">
                         <?= json_decode($city->name)->{Yii::$app->language} ?>
                     </a>
                 </li>
@@ -64,7 +64,7 @@ $this->title = Yii::t('front', 'Контакты') . ' - ' . json_decode($curren
     foreach ($cities as $cityKey => $city) {
 ?>
         <div id="<?= $city->slug ?>" class="tab-pane <?= $cityKey ? '' : 'active' ?>" role="tabpanel" aria-labelledby="<?= $city->slug ?>-tab">
-            <div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-1_5 mb-md-2">
+            <div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-2 mb-1_5 mb-md-2">
     <?php
         foreach ($addresses as $addressKey => $address) {
             if ($address->city_id == $city->id) {
@@ -116,7 +116,7 @@ $this->title = Yii::t('front', 'Контакты') . ' - ' . json_decode($curren
 
 </div>
 
-<div class="mb-3 mb-md-5 vw-100 vh-75">
+<div class="vw-100 vh-75">
     <div id="map" style="width:100%; height:100%;"></div>
 </div>
 
