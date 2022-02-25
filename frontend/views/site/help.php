@@ -14,7 +14,7 @@ $this->title = Yii::t('front', 'Помощь');
 
 ?>
 
-<div class="container-fluid mt-1_5 px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mb-2 mb-md-7">
+<div class="container-fluid mb-1 mb-md-0 px-lg-2 px-xl-3 px-xxl-5">
     <div class="row">
         <div class="col-12">
             <h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
@@ -23,9 +23,9 @@ $this->title = Yii::t('front', 'Помощь');
         </div>
     </div>
 </div>
-<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mb-2 mb-md-7">
-    <div class="row mb-md-6">
-        <div class="col-12 mb-3">
+<div class="container-fluid mb-3 mb-md-5 px-lg-2 px-xl-3 px-xxl-5">
+    <div class="row">
+        <div class="col-12">
     <?php
         if ($models) {
             foreach ($models as $model) {
@@ -51,10 +51,11 @@ $this->title = Yii::t('front', 'Помощь');
     ?>
         </div>
     </div>
-    
+</div>
+
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5">    
     <div class="row">
         <div class="col-12">
-            <p>
                 <?= Yii::t('front', 'Остались вопросы?') ?>
                 <br>
                 <?= Yii::t('front', 'Свяжитесь с нами по {0}email{1} или {2}телефону{3}', [
@@ -64,7 +65,6 @@ $this->title = Yii::t('front', 'Помощь');
                         '</a>',
                     ])
                 ?>
-            </p>
         </div>
     </div>
 

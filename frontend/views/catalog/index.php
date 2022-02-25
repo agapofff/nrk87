@@ -12,7 +12,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
 ?>
 
 
-<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-2 mb-md-7">
+<div class="container-fluid mb-1 mb-md-2 px-lg-2 px-xl-3 px-xxl-5">
     <div class="row">
         <div class="col-12">
             <h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
@@ -22,11 +22,11 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
     </div>
 </div>
 
-<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-1_5 mb-2 mb-md-7">
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5">
 <?php
     foreach ($collections as $collection) {
 ?>
-        <div class="row mb-md-5">
+        <div class="row mb-1 mb-md-3">
             <div class="col-auto">
                 <h2 class="display-3 ttfirsneue text-uppercase font-weight-light mb-0">
                     <?= Html::a(json_decode($collection['collection']->text)->{Yii::$app->language}, [
@@ -44,12 +44,12 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
     <?php
         if ($collection['subCategories']) {
     ?>
-            <div class="row justify-content-between flex-nowrap overflow-x-auto overflow-y-hidden product-types py-0_5">
+            <div class="row justify-content-between flex-nowrap overflow-x-auto overflow-y-hidden product-types pb-0_5">
                 <div class="col-auto">
                     <?= Html::a(Yii::t('front', 'Все'), [
                             '/catalog' . ($collectionSlug ? '/' . $collectionSlug : '')
                         ], [
-                            'class' => 'ttfirsneue text-uppercase text-decoration-none py-1 ' . (($collectionSlug && $collection['collection']->slug == $collectionSlug) || (!$collectionSlug && !$categorySlug) ? 'text-dark' : ' text-gray-500')
+                            'class' => 'ttfirsneue text-uppercase text-decoration-none pb-1 ' . (($collectionSlug && $collection['collection']->slug == $collectionSlug) || (!$collectionSlug && !$categorySlug) ? 'text-dark' : ' text-gray-500')
                         ])
                     ?>
                 </div>
@@ -77,11 +77,11 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
     <?php
         if ($collection['products']) {
     ?>
-            <div class="row list-products justify-content-center mt-2 mt-md-6">
+            <div class="row list-products justify-content-center mt-1 mt-md-3">
             <?php
                 foreach ($collection['products'] as $product) {
             ?>
-                    <div class="col-12 col-md-6 mb-0 mb-md-4">
+                    <div class="col-12 col-md-6">
                         <?= $this->render('@frontend/views/catalog/_product', [
                                 'model' => $product,
                                 'prices' => $prices,

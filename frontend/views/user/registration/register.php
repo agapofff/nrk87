@@ -24,7 +24,7 @@ $this->title = Yii::t('front', 'Регистрация');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="container">
+<div class="container mt-15">
 
     <div class="row justify-content-center align-items-center">
 
@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <input type="checkbox" class="custom-control-input" id="agree" name="agree" checked>
                         <label class="custom-control-label" for="agree">
                             <?= Yii::t('front', 'Даю согласие на обработку моих персональных данных.') ?> <?= Html::a(Yii::t('front', 'Подробнее'), [
-                                    '/policy'
+                                    '/privacy-policy'
                                 ], [
                                     'target' => '_blank',
                                 ]) ?>...

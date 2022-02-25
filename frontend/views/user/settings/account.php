@@ -18,7 +18,7 @@
     
 ?>
 
-<div class="container-fluid mb-15 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
+<div class="container-fluid mt-13 px-lg-2 px-xl-3 px-xxl-5">
     <div class="row justify-content-center">
         <div class="col-lg-6 mb-4 d-none d-lg-block">
             <?= $this->render('_menu') ?>
@@ -136,7 +136,7 @@
                         ->label(Yii::t('front', 'Дата рождения'))
                 ?>
                 
-                <div class="row justify-content-between align-items-center mt-8 mb-3">
+                <div class="row justify-content-between align-items-center mt-5 mb-3">
                     <div class="col-auto font-weight-bold text-uppercase">
                         <?= Yii::t('front', 'Пароль') ?>
                     </div>
@@ -174,7 +174,7 @@
                                 'placeholder' => ' ',
                             ],
                             'options' => [
-                                'class' => 'form-group mb-3 position-relative floating-label',
+                                'class' => 'form-group position-relative floating-label',
                             ],
                             'template' => '{input}{label}{hint}{error}',
                         ])

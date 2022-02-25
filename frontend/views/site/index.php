@@ -56,7 +56,7 @@
 </div>
 -->
 
-<div class="container-fluid pt-3 pt-md-7 pb-3 pb-md-15 px-lg-2 px-xl-3 px-xxl-5" style="
+<div class="container-fluid mt-3 mt-md-5 mb-3 mb-md-5 px-lg-2 px-xl-3 px-xxl-5" style="
     background: url('/images/main/ellipse.png') center center /contain no-repeat;
 ">
     <div class="row">
@@ -85,7 +85,7 @@
     </div>
 </div>
 
-<div class="position-relative mt-2 mt-md-5 mb-5 mb-md-10 bg-warning pt-2 pb-4 pt-md-2 pb-md-5">
+<div class="position-relative mb-4 mb-md-6 bg-warning pt-2 pb-4 pt-md-2 pb-md-5">
     <div class="marquee h3 m-0 font-weight-light text-white">
         <?= Yii::t('front', 'бегущая строка', [
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
@@ -93,9 +93,8 @@
     </div>
 </div>
 
-<div class="container-fluid pb-0_5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
-    <hr>
-    <h2 class="h1 mt_1_5 ttfirsneue font-weight-light text-uppercase">
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 mb-1 mb-md-3">
+    <h2 class="h1 ttfirsneue font-weight-light text-uppercase m-0">
         <?= Html::a(Yii::t('front', 'Каталог'), ['/catalog'], [
                 'class' => 'text-decoration-none'
             ]);
@@ -103,12 +102,12 @@
     </h2>
 </div>
 
-<div class="container-fluid pb-0 px-lg-2 px-xl-3 px-xxl-5 mt-1_5 mt-md-4">
+<div class="container-fluid mb-5 mb-md-6 pb-0 px-lg-2 px-xl-3 px-xxl-5">
     <div class="row list-products justify-content-center">
     <?php
         foreach ($products as $key => $product) {
     ?>
-            <div class="col-12 col-md-6 mb-md-4 <?= $key > 7 ? 'd-none d-md-block' : '' ?>">
+            <div class="col-12 col-md-6 <?= $key > 7 ? 'd-none d-md-block' : '' ?>">
                 <?= $this->render('@frontend/views/catalog/_product', [
                         'model' => $product,
                         'prices' => $prices,
@@ -120,7 +119,7 @@
         }
     ?>
 
-        <div class="col-12 mt-2 text-center">
+        <div class="col-12 mt-md-2 text-center">
             <?= Html::a(Yii::t('front', 'Смотреть еще'), ['/catalog'], [
                     'class' => 'btn btn-outline-primary text-uppercase px-2 py-1'
                 ]);
@@ -129,17 +128,9 @@
     </div>
 </div>
 
-<div class="d-none d-md-block vw-100 h-auto mt-5 mt-md-8 mb-3 mb-md-12 position-relative">
-    <?= Html::img('/images/main/banner_6.jpg', [
-            'class' => 'd-none d-md-block w-100 pointer-events-none',
-            'loading' => 'lazy',
-        ])
-    ?>
-    <?= Html::img('/images/main/who_we_are_mobile.jpg', [
-            'class' => 'd-block d-md-none w-100 pointer-events-none',
-            'loading' => 'lazy',
-        ])
-    ?>
+<div class="d-none d-md-block vw-100 vh-100 position-relative" style="
+    background: url('/images/main/banner_6_1.jpg') center top / cover no-repeat;
+">
     <div class="container-fluid position-absolute pb-0_5 pl-lg-2 pl-xl-3 pl-xxl-5 pr-lg-2 pr-xl-3 pr-xxl-5 mt-1_5 mt-3 mt-md-4 mt-lg-5 mt-xl-6 mt-xxl-7" style="
         top: 0;
         left: 0;

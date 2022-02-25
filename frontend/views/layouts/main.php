@@ -102,10 +102,13 @@
             'url' => Url::to(['/help']),
             'class' => '',
         ],
-        [
-            'label' => '<hr>',
-            'class' => 'd-lg-none',
-        ],
+    ];
+    
+    $bottomMenuItems = $menuItems;
+    
+    $menuItems[] = [
+        'label' => '<hr>',
+        'class' => 'd-lg-none',
     ];
     
     if (Yii::$app->user->isGuest) {
@@ -462,7 +465,7 @@
         </nav>
 
 
-        <div id="pagecontent" class="<?= $isMainPage ? 'mt-0' : 'mt-' . ($isProductPage ? '7' : '10') . ' mt-lg-14' ?>">
+        <div id="pagecontent" class="<?= $isMainPage ? 'mt-0' : 'mt-' . ($isProductPage ? '7' : '9') . ' mt-lg-11' ?>">
 
             <?php 
                 // echo Breadcrumbs::widget([
@@ -506,25 +509,18 @@
                         <hr>
                     </div>
             
-                    <div class="col-7 mb-1 mb-lg-5">
+                    <div class="col-7">
+                <?php
+                    foreach ($bottomMenuItems as $menuItem) {
+                ?>
                         <p>
-                            <?= Html::a(Yii::t('front', 'Каталог'), ['/catalog'], [
-                                    'class' => 'text-uppercase text-decoration-none'
-                                ])
-                            ?>
+                            <a href="<?= $menuItem['url'] ?>" class="text-uppercase text-decoration-none">
+                                <?= $menuItem['label'] ?>
+                            </a>
                         </p>
-                        <p>
-                            <?= Html::a(Yii::t('front', 'О нас'), ['/about'], [
-                                    'class' => 'text-uppercase text-decoration-none'
-                                ])
-                            ?>
-                        </p>
-                        <p>
-                            <?= Html::a(Yii::t('front', 'Контакты'), ['/contacts'], [
-                                    'class' => 'text-uppercase text-decoration-none'
-                                ])
-                            ?>
-                        </p>
+                <?php
+                    }
+                ?>
                     </div>
                     
                     <div class="col-5 col-md-2 order-md-last text-right">
@@ -564,8 +560,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="row justify-content-between mt-lg-3">
-                    <div class="col-12 mt-1 mt-lg-0 mb-1 mb-lg-0">
+                <div class="row justify-content-between">
+                    <div class="col-12 mb-md-0 mb-1 mb-lg-0">
                         <hr>
                     </div>
                     <div class="col-12">

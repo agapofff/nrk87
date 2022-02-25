@@ -9,7 +9,7 @@ $this->title = Yii::t('front', 'О нас');
 
 ?>
 
-<div class="container-fluid mb-3 mb-md-5 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
+<div class="container-fluid mb-1 mb-md-3 px-lg-2 px-xl-3 px-xxl-5">
     <div class="row">
         <div class="col-12">
             <h1 class="ttfirsneue text-uppercase display-2 position-relative d-inline-block mb-0 red_dot">
@@ -34,7 +34,7 @@ $this->title = Yii::t('front', 'О нас');
     </div>
 </div>
 
-<div class="container-fluid mb-7 mt-5 px-lg-2 px-xl-3 px-xxl-5 position-relative d-none d-md-block">
+<div class="container-fluid mt-5 px-lg-2 px-xl-3 px-xxl-5 position-relative d-none d-md-block">
     <div class="row">
         <div class="col-md-6">
             <nav id="about-nav" class="about-nav nav nav-pills flex-column sticky-top overflow-x-hidden" style="top: 100px">
@@ -81,7 +81,7 @@ $this->title = Yii::t('front', 'О нас');
     </div>
 </div>
 
-<div class="container-fluid mb-3 mt-2 d-md-none">
+<div class="container-fluid mt-2 d-md-none">
     <div class="row">
         <div class="col-12">
             <div class="about-nav">

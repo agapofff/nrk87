@@ -11,8 +11,8 @@ $this->title = Yii::t('front', 'Новости');
 ?>
 
 <div class="mt-1_5" style="
-    height: 55vw;
-    background: url('/images/blog/mountains.jpg') center bottom /cover no-repeat;
+    height: 35vw;
+    background: url('/images/blog/mountains_1.jpg') center bottom /cover no-repeat;
 ">
     <div class="container-fluid px-lg-2 px-xl-3 px-xxl-5">
         <div class="row">
@@ -25,7 +25,7 @@ $this->title = Yii::t('front', 'Новости');
     </div>
 </div>
 
-<div id="blog-container" class="position-relative px-0 py-5">
+<div id="blog-container" class="position-relative px-0">
     <div class="marquee h2 font-weight-light text-white">
         <?= Yii::t('front', 'бегущая строка', [
             '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
@@ -34,7 +34,7 @@ $this->title = Yii::t('front', 'Новости');
     
     <div class="container-fluid">
         <div class="row">
-            <div id="blog" class="mx-auto col-md-10 col-lg-6 mt-7">
+            <div id="blog" class="mx-auto col-md-10 col-lg-6 mt-5">
                 <div id="blog-categories" class="row justify-content-between flex-nowrap overflow-x-auto overflow-y-hidden">
                     <div class="col-auto">
                         <a href="#all" class="blog-category d-inline-block mb-1 text-white text-decoration-none" data-category="all">

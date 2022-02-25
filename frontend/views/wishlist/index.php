@@ -10,7 +10,7 @@
     
 ?>
 
-<div class="container-fluid mb-15 mt-1_5 px-lg-2 px-xl-3 px-xxl-5">
+<div class="container-fluid mt-13 px-lg-2 px-xl-3 px-xxl-5">
     <div class="row justify-content-center">
         <div class="col-lg-6 mb-4 d-none d-lg-block">
             <?= $this->render('@frontend/views/user/settings/_menu') ?>
