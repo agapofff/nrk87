@@ -186,7 +186,7 @@
 		</div>
 				
 		
-		<div class="row justify-content-between mt-3 mt-md-5 mb-1 mb-md-3">
+		<div id="shipping_title" class="row justify-content-between mt-3 mt-md-5 mb-1 mb-md-3">
 			<div class="col-auto">
 				<p class="text-uppercase font-weight-bold m-0">
 					<?= Yii::t('front', 'Доставка') ?>
@@ -200,7 +200,7 @@
 				->label(false)
 		?>
 	
-		<div class="form-group row" role="tablist">
+		<div id="shipping_types_list" class="form-group row" role="tablist">
 			<?php
 				foreach ($shippingTypesList as $key => $sht) {
 			?>
@@ -227,7 +227,7 @@
 			?>
 		</div>
 	
-		<div class="tab-content mb-1">
+		<div id="shipping_options_section" class="tab-content mb-1">
 		
 	<?php
 		foreach ($shippingTypesList as $key => $sht) {
@@ -340,7 +340,7 @@
 		</div>
 		
 
-		<div class="row justify-content-between">
+		<div id="delivery_price_and_time" class="row justify-content-between">
 			<div class="col-auto">
 				<p id="delivery_price">
 					<?= $delivery_price ?>
@@ -382,7 +382,7 @@
 		if ($fields) {
 			foreach ($fields as $field) {
 	?>
-				<div id="<?= $field->name ?>" class="row justify-content-center <?= $field->required == 'yes' ? 'required' : '' ?>"
+				<div id="<?= $field->name ?>" class="row justify-content-center d-none <?= $field->required == 'yes' ? 'required' : '' ?>"
 					<?php if ($field->name != 'postcode') { ?>
 						style="
 							position: absolute;
@@ -392,7 +392,7 @@
 							opacity: 0;
 							z-index: -1;
 						"
-					<?php } ?>
+                    <?php } ?>
 				>
 					<div class="col-12 order-custom-field-<?= $field->id ?>">
 					<?php
@@ -421,34 +421,34 @@
 		
 
 
-		<?php if ($paymentTypes) { ?>
-                <div id="block-payment_type_id" class="form-group mt-2 mb-3 position-relative required" data-select2>
-                    <p class="control-label text-uppercase font-weight-bold mb-1" for="payment_type_id">
-                        <?= Yii::t('front', 'Оплата') ?>
-                    </p>
-                    <div class="pointer-events-none opacity-75">
-                        <?= Select2::widget([
-                                'id' => 'payment_type_id',
-                                'name' => 'Order[payment_type_id]',
-                                'value' => ($fieldsDefaultValues['payment_type_id'] ?: 2),
-                                'bsVersion' => '4.x',
-                                'language' => Yii::$app->language,
-                                'theme' => Select2::THEME_BOOTSTRAP,
-                                'data' => $paymentTypes,
-                                'options' => [
-                                    'class' => 'form-control mb-0 px-0',
-                                    'placeholder' => ' ',
-                                    'autocomplete' => rand(),
-                                ],
-                                'pluginOptions' => [
-                                    'allowClear' => false,
-                                    'dropdownParent' => new JsExpression("$('#block-payment_type_id')"),
-                                ],
-                            ]);
-                        ?>
-                    </div>
-                </div>
-		<?php } ?>
+<?php if ($paymentTypes) { ?>
+        <div id="block-payment_type_id" class="form-group mt-2 mb-3 position-relative required" data-select2>
+            <p class="control-label text-uppercase font-weight-bold mb-1" for="payment_type_id">
+                <?= Yii::t('front', 'Оплата') ?>
+            </p>
+            <div class="pointer-events-none opacity-75">
+                <?= Select2::widget([
+                        'id' => 'payment_type_id',
+                        'name' => 'Order[payment_type_id]',
+                        'value' => ($fieldsDefaultValues['payment_type_id'] ?: 2),
+                        'bsVersion' => '4.x',
+                        'language' => Yii::$app->language,
+                        'theme' => Select2::THEME_BOOTSTRAP,
+                        'data' => $paymentTypes,
+                        'options' => [
+                            'class' => 'form-control mb-0 px-0',
+                            'placeholder' => ' ',
+                            'autocomplete' => rand(),
+                        ],
+                        'pluginOptions' => [
+                            'allowClear' => false,
+                            'dropdownParent' => new JsExpression("$('#block-payment_type_id')"),
+                        ],
+                    ]);
+                ?>
+            </div>
+        </div>
+<?php } ?>
         
 		
 		<div id="order_comment" class="row justify-content-center">
@@ -489,7 +489,7 @@
 			</div>
 		</div>
 		
-		<div class="row my-2 my-md-5 align-items-center">
+		<div id="submit" class="row my-2 my-md-5 align-items-center">
 			<div id="order_submit" class="col-sm-6 text-center order-lg-last">
 				<?= Html::submitButton(Html::tag('span', Yii::t('front', 'Перейти к оплате'), [
                         'id' => 'submit-payment-text'
@@ -522,7 +522,14 @@
         
 </div>
 
-
+<?php
+    $this->registerCssFile('https://cdn.jsdelivr.net/npm/suggestions-jquery@latest/dist/css/suggestions.min.css');
+    $this->registerJsFile('https://cdn.jsdelivr.net/npm/suggestions-jquery@latest/dist/js/jquery.suggestions.min.js', [
+        'depends' => [
+            \yii\web\JqueryAsset::class
+        ]
+    ]);
+?>
 
 <?php
     $this->registerJs(
@@ -544,19 +551,22 @@
 <?php
     $this->registerJs(
     "
+        var dadataServiceUrl = 'https://dadata.ru/api/v2',
+            dadataToken = '" . Yii::$app->params['dadataApiKey'] . "';
+        
         $('#country').change(function () {
             $('#order-phone').val('');
             $('#city').val(null).trigger('change');
-            $('#order-shipping_type_id').trigger('change');
             $('[data-field=\"country_id\"]').val($('#country').val());
             $('[data-field=\"country_name\"]').val($('#country option:selected').text());
+            $('#order-shipping_type_id').trigger('change');
             setPhoneMask();
         });
         
         $('#city').change(function () {
-            shippingTypeChange(true);
             $('[data-field=\"city_id\"]').val($('#city').val());
             $('[data-field=\"city_name\"]').val($('#city option:selected').text());
+            shippingTypeChange(true);
         });
         
         $('#order-shipping_type_id').change(function () {
@@ -564,10 +574,16 @@
         });
         
         shippingTypeChange = function (isCityChanged = false) {
-// console.log('shippingTypeChange = ' + isCityChanged);
+console.log('shippingTypeChange = ' + isCityChanged);
             clearDeliveryParams();
             toggleAddress();
             setPaymentOptions();
+            
+            if ($('#country_id input').val() === '1' && $('#city_name input').val() !== '') {
+                daDataInit();
+            } else {
+                $('#order-address').suggestions().disable();
+            }
             
             if (isCityChanged) {
                 $('#delivery, #pickup').empty();
@@ -698,12 +714,47 @@ console.log(response);
         }
         
         toggleAddress = function () {
+console.log($('#country_id input').val());
             $('#address, #postcode')
                 .toggleClass('d-none', $('#order-shipping_type_id').val() === '2')
                 .toggleClass('required', $('#order-shipping_type_id').val() === '1');
+            $('#postcode').toggleClass('d-none', $('#country_id input').val() === '1');
         }
         toggleAddress();
         
+        daDataInit = function () {
+            $('#order-address').suggestions({
+                token: dadataToken,
+                type: 'ADDRESS',
+                bounds: 'street-house-apartment',
+                count: 10,
+                hint: false,
+                autoSelectFirst: true,
+                geoLocation: false,
+                language: '" . Yii::$app->language . "',
+                constraints: {
+                    locations: {
+                        country: $('#country_name input').val(),
+                        city: $('#city_name input').val().split('(')[0].trim(),
+                    }
+                },
+                // restrict_value: true,
+                onSelect: function (suggestion) {
+    // console.log(suggestion);
+                    if (suggestion.data.house){
+                        $('#fieldvalue-value-8').val(suggestion.data.postal_code);
+                    } else {
+                        $('#fieldvalue-value-8').val('');
+                        toastr.error('" . Yii::t('front', 'Введите адрес с точностью до дома') . "');
+                    }
+                },
+                onSelectNothing: function(){
+                    $('#fieldvalue-value-8').val('');
+                    toastr.error('" . Yii::t('front', 'Введите Ваш адрес') . "');
+                },
+            });
+        }
+        daDataInit();
 
         setPaymentOptions = function () {
             var moscowCourier = parseFloat($('[data-field=\"delivery_id\"]').val()) === 74265;

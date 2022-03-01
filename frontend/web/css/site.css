@@ -723,7 +723,7 @@ input[name="shipping_type_switcher"]:checked ~ label {
     border-left: none !important;
     border-right: none !important;
 }
-.floating-label input + label {
+.floating-label input ~ label {
     position: absolute;
     top: 0.5rem;
     font-size: 100%;
@@ -732,8 +732,8 @@ input[name="shipping_type_switcher"]:checked ~ label {
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
-.floating-label input:focus + label,
-.floating-label input:not(:placeholder-shown) + label {
+.floating-label input:focus ~ label,
+.floating-label input:not(:placeholder-shown) ~ label {
     top: 0;
     font-size: 80%;
     opacity: 1;

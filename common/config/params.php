@@ -93,6 +93,8 @@ return [
         // 'considerOrderStatus' => false, // учитывать статус чека в розыгрыше (активно / не активно)
     // ],
     
+    'dadataApiKey' => 'f5f182cc08d1cd3bf72596625e1b6f853bcf63c4',
+    
     // товар в подарок
     'gift' => [
         'product_id' => 84,
