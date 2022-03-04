@@ -1032,3 +1032,8 @@ div[data-select2] label {
 	-moz-filter: grayscale(1);
 	-o-filter: grayscale(1);
 }
+
+
+.suggestions-suggestions a[href*="dadata"] {
+	display: none;
+}
