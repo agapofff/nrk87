@@ -64,18 +64,6 @@ class ContactsController extends \yii\web\Controller
                 throw new NotFoundHttpException(Yii::t('front', 'Страница не найдена'));
             }
         } else {
-            $country = Countries::find()
-                ->where([
-                    'active' => 1
-                ])
-                ->orderBy([
-                    'ordering' => SORT_ASC
-                ])
-                ->one();
-                
-            return $this->redirect(['/contacts/' . $country->slug]);
-                
-            /*
             $geo = new Sypexgeo();
             $geo->get();
             
@@ -97,7 +85,6 @@ class ContactsController extends \yii\web\Controller
             } else {
                 return $this->redirect(['/contacts/austria']);
             }
-            */
         }
     }
     
