@@ -16,8 +16,8 @@ return [
         'devicedetect',
     ],
     'controllerNamespace' => 'frontend\controllers',
-    'sourceLanguage' => 'en',
-    'language' => 'en',
+    'sourceLanguage' => 'ru',
+    'language' => 'ru',
     'on beforeRequest' => function () {
         
         $pathInfo = Yii::$app->request->pathInfo;
@@ -402,15 +402,15 @@ return [
                     'user' => 'user',  // optional, the User component ID.
                     'languageAttribute' => 'language_code' // optional, an attribute that contains a language.
                 ],
-                // [
+                [
                     // Detects a language from the "Accept-Language" header.
-                    // 'class' => 'cetver\LanguagesDispatcher\handlers\AcceptLanguageHeaderHandler',
-                    // 'request' => 'request', // optional, the Request component ID.
-                // ],
-                // [
+                    'class' => 'cetver\LanguagesDispatcher\handlers\AcceptLanguageHeaderHandler',
+                    'request' => 'request', // optional, the Request component ID.
+                ],
+                [
                     // Detects a language from the "language" property.
-                    // 'class' => 'cetver\LanguagesDispatcher\handlers\DefaultLanguageHandler',
-                    // 'language' => 'en' // the default language.
+                    'class' => 'cetver\LanguagesDispatcher\handlers\DefaultLanguageHandler',
+                    'language' => 'ru' // the default language.
                     /*
                     or
                     'language' => function () {
@@ -421,7 +421,7 @@ return [
                             ->queryScalar();
                     },
                     */
-                // ]
+                ]
 
             ],
         ],

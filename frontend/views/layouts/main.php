@@ -383,7 +383,7 @@
                 <div id="nav-lang-select" class="d-none d-lg-block ml-lg-3 ml-xl-4 ml-xxl-5">
                     <?php
                         if ($langs) {
-                            foreach ($langs as $key => $lang) {
+                            foreach (array_reverse($langs) as $key => $lang) {
                                 echo Html::a($lang['label'], $lang['url'], [
                                     'class' => 'text-uppercase text-decoration-none ml-0_5 ' . ($lang['active'] ? 'text-black' : ($isMainPage ? 'text-gray-400' : 'text-gray-500'))
                                 ]);
