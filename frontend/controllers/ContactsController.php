@@ -87,7 +87,7 @@ class ContactsController extends \yii\web\Controller
                 return $this->redirect(['/contacts/' . $country->slug]);
             } else if ($geo->country['continent'] == 'EU') {
                 return $this->redirect(['/contacts/austria']);
-            } else if (in_array($geo->country['continent'], ['NA', 'SA', 'US']) {
+            } else if (in_array($geo->country['continent'], ['NA', 'SA', 'US'])) {
                 return $this->redirect(['/contacts/usa']);
             } else if ($geo->country['continent'] == 'AS') {
                 return $this->redirect(['/contacts/vietnam']);
