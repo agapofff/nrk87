@@ -84,7 +84,7 @@ class ContactsController extends \yii\web\Controller
             if ($country = Countries::findOne([
                 'iso' => $geo->country['iso']
             ])) {
-exit $geo->country['iso'];
+echo $geo->country['iso']; exit;
                 return $this->redirect(['/contacts/' . $country->slug]);
             } else if ($geo->country['continent'] == 'EU') {
                 return $this->redirect(['/contacts/austria']);
