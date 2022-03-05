@@ -36,9 +36,9 @@ class Countries extends \yii\db\ActiveRecord
     {
         return [
             [['publish', 'selected', 'code', 'lang_id', 'country_id'], 'integer'],
-            [['code', 'lang_id', 'country_id', 'name'], 'required'],
+            [['code', 'lang_id', 'country_id', 'name', 'iso'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'iso'], 'string', 'max' => 255],
         ];
     }
 
@@ -55,6 +55,7 @@ class Countries extends \yii\db\ActiveRecord
             'lang_id' => Yii::t('front', 'Lang ID'),
             'country_id' => Yii::t('front', 'Country ID'),
             'name' => Yii::t('front', 'Name'),
+            'iso' => Yii::t('front', 'ISO'),
             'created_at' => Yii::t('front', 'Created At'),
             'updated_at' => Yii::t('front', 'Updated At'),
         ];

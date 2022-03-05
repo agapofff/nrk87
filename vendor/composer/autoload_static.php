@@ -177,6 +177,7 @@ class ComposerStaticInit8236d2fd6998012d5c1e6e4991187826
         ),
         'j' => 
         array (
+            'jisoft\\sypexgeo\\' => 16,
             'jino5577\\daterangepicker\\' => 25,
         ),
         'g' => 
@@ -551,6 +552,10 @@ class ComposerStaticInit8236d2fd6998012d5c1e6e4991187826
         'kartik\\affix\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-affix',
+        ),
+        'jisoft\\sypexgeo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jisoft/yii2-sypexgeo',
         ),
         'jino5577\\daterangepicker\\' => 
         array (

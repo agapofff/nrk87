@@ -3506,6 +3506,66 @@
             "install-path": "../jino5577/yii2-date-range-picker"
         },
         {
+            "name": "jisoft/yii2-sypexgeo",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JiSoft/yii2-sypexgeo.git",
+                "reference": "faa8930cbebc183014cb653827508e9b187ed4c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JiSoft/yii2-sypexgeo/zipball/faa8930cbebc183014cb653827508e9b187ed4c1",
+                "reference": "faa8930cbebc183014cb653827508e9b187ed4c1",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "time": "2014-06-16T06:21:37+00:00",
+            "default-branch": true,
+            "type": "yii2-extension",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "jisoft\\sypexgeo\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "zapimir",
+                    "email": "zapimir@zapimir.net"
+                },
+                {
+                    "name": "BINOVATOR",
+                    "email": "info@sypex.net"
+                },
+                {
+                    "name": "jisoft",
+                    "email": "jisoft.dn@gmail.com"
+                }
+            ],
+            "description": "Yii2 extension for Sypex Geo API (http://sypexgeo.net)",
+            "homepage": "https://github.com/JiSoft/yii2-sypexgeo",
+            "keywords": [
+                "geo",
+                "geoip",
+                "geolocation",
+                "sypexgeo",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/JiSoft/yii2-sypexgeo/issues",
+                "source": "https://github.com/JiSoft/yii2-sypexgeo/tree/master"
+            },
+            "install-path": "../jisoft/yii2-sypexgeo"
+        },
+        {
             "name": "jpgraph/jpgraph",
             "version": "4.0.2",
             "version_normalized": "4.0.2.0",

@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '519b7f92ab3430d5316e3ed65b5613edfa89cb5b',
+        'reference' => 'fd4fddcd0d28fef3ea81500a7eb73919b323c72a',
         'name' => 'yiisoft/yii2-app-advanced',
         'dev' => true,
     ),
@@ -638,6 +638,17 @@
             'install_path' => __DIR__ . '/../jino5577/yii2-date-range-picker',
             'aliases' => array(),
             'reference' => '3a9fdffb5edd2f6a7d73de4c5a664af1bb9c37c1',
+            'dev_requirement' => false,
+        ),
+        'jisoft/yii2-sypexgeo' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../jisoft/yii2-sypexgeo',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => 'faa8930cbebc183014cb653827508e9b187ed4c1',
             'dev_requirement' => false,
         ),
         'jpgraph/jpgraph' => array(
@@ -1935,7 +1946,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '519b7f92ab3430d5316e3ed65b5613edfa89cb5b',
+            'reference' => 'fd4fddcd0d28fef3ea81500a7eb73919b323c72a',
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-authclient' => array(

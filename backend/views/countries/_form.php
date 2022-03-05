@@ -89,6 +89,14 @@ use kartik\switchinput\SwitchInput;
                         'maxlength' => true
                     ])
             ?>
+            
+            <?= $form
+                    ->field($model, 'iso')
+                    ->textInput([
+                        'maxlength' => true
+                    ])
+            ?>
+
 
             <?= $form
                     ->field($model, 'ordering')

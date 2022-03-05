@@ -8,6 +8,7 @@ use yii\web\NotFoundHttpException;
 use backend\models\Countries;
 use backend\models\Cities;
 use backend\models\Addresses;
+use jisoft\sypexgeo\Sypexgeo;
 
 class ContactsController extends \yii\web\Controller
 {
@@ -63,16 +64,36 @@ class ContactsController extends \yii\web\Controller
                 throw new NotFoundHttpException(Yii::t('front', 'Страница не найдена'));
             }
         } else {
-            $country = Countries::find()
-                ->where([
-                    'active' => 1
-                ])
-                ->orderBy([
-                    'ordering' => SORT_ASC
-                ])
-                ->one();
+            // $country = Countries::find()
+                // ->where([
+                    // 'active' => 1
+                // ])
+                // ->orderBy([
+                    // 'ordering' => SORT_ASC
+                // ])
+                // ->one();
+                
+            $geo = new Sypexgeo();
+            $geo->get();
             
-            return $this->redirect(['/contacts/' . $country->slug]);
+            // внешний IP для localhost
+            if ($geo->ip == $_SERVER['SERVER_ADDR']) {
+                $geo->get(file_get_contents('https://myip.axioweb.ru'));
+            }
+            
+            if ($country = Countries::findOne([
+                'iso' => $geo->country['iso']
+            ])) {
+                return $this->redirect(['/contacts/' . $country->slug]);
+            } else if ($geo->country['continent'] == 'EU') {
+                return $this->redirect(['/contacts/austria']);
+            } else if (in_array($geo->country['continent'], ['NA', 'SA', 'US']) {
+                return $this->redirect(['/contacts/usa']);
+            } else if ($geo->country['continent'] == 'AS') {
+                return $this->redirect(['/contacts/vietnam']);
+            } else {
+                return $this->redirect(['/contacts/austria']);
+            }
         }
     }
     

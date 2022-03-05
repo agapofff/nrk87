@@ -44,8 +44,8 @@ class Countries extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['active', 'ordering'], 'integer'],
-            [['name', 'slug'], 'string'],
+            [['active', 'ordering', 'saveAndExit'], 'integer'],
+            [['name', 'slug', 'iso'], 'string'],
         ];
     }
 
@@ -60,6 +60,7 @@ class Countries extends \yii\db\ActiveRecord
             'ordering' => Yii::t('back', 'Порядок'),
             'name' => Yii::t('back', 'Название'),
             'slug' => Yii::t('back', 'Алиас'),
+            'iso' => Yii::t('back', 'ISO'),
         ];
     }
 

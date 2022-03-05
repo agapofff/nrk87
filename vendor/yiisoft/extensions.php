@@ -696,4 +696,13 @@ return array (
       '@vova07/imperavi/tests' => $vendorDir . '/vova07/yii2-imperavi-widget/tests',
     ),
   ),
+  'jisoft/yii2-sypexgeo' => 
+  array (
+    'name' => 'jisoft/yii2-sypexgeo',
+    'version' => 'dev-master',
+    'alias' => 
+    array (
+      '@jisoft/sypexgeo' => $vendorDir . '/jisoft/yii2-sypexgeo',
+    ),
+  ),
 );

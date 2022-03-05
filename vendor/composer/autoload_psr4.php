@@ -65,6 +65,7 @@ return array(
     'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base/src'),
     'kartik\\alert\\' => array($vendorDir . '/kartik-v/yii2-widget-alert'),
     'kartik\\affix\\' => array($vendorDir . '/kartik-v/yii2-widget-affix'),
+    'jisoft\\sypexgeo\\' => array($vendorDir . '/jisoft/yii2-sypexgeo'),
     'jino5577\\daterangepicker\\' => array($vendorDir . '/jino5577/yii2-date-range-picker'),
     'githubjeka\\rbac\\' => array($vendorDir . '/githubjeka/yii2-gui-rbac/src'),
     'dvizh\\tree\\' => array($vendorDir . '/dvizh/yii2-tree/src'),

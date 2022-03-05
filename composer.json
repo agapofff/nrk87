@@ -12,7 +12,7 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.0",
         "yiisoft/yii2": "~2.0.14",
@@ -65,7 +65,8 @@
         "skeeks/yii2-assets-auto-compress": "*",
         "alexandernst/yii2-device-detect": "^0.0.12",
         "facebook/php-business-sdk": "^12.0",
-        "vova07/yii2-imperavi-widget": "*"
+        "vova07/yii2-imperavi-widget": "*",
+        "jisoft/yii2-sypexgeo": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -83,7 +84,10 @@
         "fxp-asset": {
             "enabled": false
         },
-		"platform-check": false
+		"platform-check": false,
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
     },
     "repositories": [
         {
