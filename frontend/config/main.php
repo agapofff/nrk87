@@ -558,6 +558,7 @@ return [
                 
                 // 'scan-to-win' => 'scan-to-win/index',
                 // 'scan-to-win/choose-winner' => 'scan-to-win/choose-winner',
+                'scan-to-win' => 'site/index',
                 
                 'orders' => 'orders/index',
                 'orders/<id>' => 'orders/view',
