@@ -35,11 +35,30 @@ return [
     'store_type' => 0,
     'currency' => 'RUB',
     'socials' => [
-        'Facebook' => 'https://www.facebook.com/nrk1987.wear/',
-        'TikTok' => 'https://www.tiktok.com/@nrk1987.wear',
-        'Instagram' => 'https://www.instagram.com/nrk87.wear',
-        'Vkontakte' => 'https://vk.com/nrk1987.wear',
-        'Youtube' => 'https://www.youtube.com/channel/UC_iVum1wE34wTzSY0WxjNGA',
+        'Facebook' => [
+            'name' => 'nrk1987.wear',
+            'link' => 'https://www.facebook.com/nrk1987.wear',
+        ],
+        'TikTok' => [
+            'name' => 'nrk1987.wear',
+            'link' => 'https://www.tiktok.com/@nrk1987.wear',
+        ],
+        'Instagram' => [
+            'name' => 'nrk87.wear',
+            'link' => 'https://www.instagram.com/nrk87.wear',
+        ],
+        'Vkontakte' => [
+            'name' => 'nrk1987.wear',
+            'link' => 'https://vk.com/nrk1987.wear',
+        ],
+        'Youtube' => [
+            'name' => 'nrk87',
+            'link' => 'https://www.youtube.com/channel/UC_iVum1wE34wTzSY0WxjNGA',
+        ],
+        'Telegram' => [
+            'name' => '',
+            'link' => '',
+        ],
     ],
     'boutiquePlaces' => [
         'earth' => Yii::t('back', 'Адрес на Земле'),
