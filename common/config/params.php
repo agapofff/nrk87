@@ -56,8 +56,8 @@ return [
             'link' => 'https://www.youtube.com/channel/UC_iVum1wE34wTzSY0WxjNGA',
         ],
         'Telegram' => [
-            'name' => '',
-            'link' => '',
+            'name' => 'NRK87.wear',
+            'link' => 'https://t.me/nrk87',
         ],
     ],
     'boutiquePlaces' => [
