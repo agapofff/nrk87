@@ -56,7 +56,7 @@ return [
             'link' => 'https://www.youtube.com/channel/UC_iVum1wE34wTzSY0WxjNGA',
         ],
         'Telegram' => [
-            'name' => 'NRK87.wear',
+            'name' => 'nrk87.wear',
             'link' => 'https://t.me/nrk87',
         ],
     ],
