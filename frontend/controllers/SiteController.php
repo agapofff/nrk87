@@ -91,7 +91,7 @@ class SiteController extends Controller
                 'active' => 1
             ])
             ->orderBy(new Expression('rand()'))
-            ->limit(16)
+            // ->limit(16)
             ->all();
             
         $modifications = (new Query())

@@ -107,7 +107,8 @@
     <?php
         foreach ($products as $key => $product) {
     ?>
-            <div class="col-12 col-md-6 <?= $key > 7 ? 'd-none d-md-block' : '' ?>">
+            <!-- <div class="col-12 col-md-6 <?= $key > 7 ? 'd-none d-md-block' : '' ?>"> -->
+            <div class="col-12 col-md-6">
                 <?= $this->render('@frontend/views/catalog/_product', [
                         'model' => $product,
                         'prices' => $prices,
@@ -119,7 +120,7 @@
         }
     ?>
 
-        <div class="col-12 mt-md-2 text-center">
+        <div class="col-12 mt-md-2 text-center d-none">
             <?= Html::a(Yii::t('front', 'Смотреть еще'), ['/catalog'], [
                     'class' => 'btn btn-outline-primary text-uppercase px-2 py-1'
                 ]);
