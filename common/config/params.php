@@ -49,7 +49,7 @@ return [
         ],
         'Vkontakte' => [
             'name' => 'nrk1987.wear',
-            'link' => 'https://vk.com/nrk1987.wear',
+            'link' => 'https://vk.com/nrk87com',
         ],
         'Youtube' => [
             'name' => 'nrk87',
