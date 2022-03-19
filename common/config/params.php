@@ -112,7 +112,7 @@ return [
         // 'considerOrderStatus' => false, // учитывать статус чека в розыгрыше (активно / не активно)
     // ],
     
-    'dadataApiKey' => 'f5f182cc08d1cd3bf72596625e1b6f853bcf63c4',
+    
     
     // товар в подарок
     'gift' => [
@@ -122,7 +122,5 @@ return [
         'disableAddToCart' => true,
     ],
 	
-	'facebookPixelID' => '323610652739800',
-	'facebookAccessToken' => 'EAAH9nQtUZC9wBAEnNWscm3q93ZBt35ahabS5Up0gfD8icX7hm2Cuo4fqHZC9llGFFA2pBjzYuIZAGYZCtkCqRKUBrViBo2Dlo0SGObLrW7wsIwqGZBz9PCpMuY6FqhcfLnxsKLTnyOYuP2TsdyYWNehpZAZA2M64Rgayuc5EZAO13bTaa5e2HNE0wiMRylWbPZBuMZD',
-	'test_event_code' => 'TEST90632'
+	
 ];
