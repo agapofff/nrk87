@@ -382,8 +382,8 @@
 		if ($fields) {
 			foreach ($fields as $field) {
 	?>
-				<div id="<?= $field->name ?>" class="row justify-content-center d-none <?= $field->required == 'yes' ? 'required' : '' ?>"
-					<?php if ($field->name != 'postcode') { ?>
+				<div id="<?= $field->name ?>" class="row justify-content-center d-none- <?= $field->required == 'yes' ? 'required' : '' ?>"
+					<?php /* if ($field->name != 'postcode') { ?>
 						style="
 							position: absolute;
 							top: 0;
@@ -392,11 +392,11 @@
 							opacity: 0;
 							z-index: -1;
 						"
-                    <?php } ?>
+                    <?php } */ ?>
 				>
 					<div class="col-12 order-custom-field-<?= $field->id ?>">
 					<?php
-						if ($widget = $field->type->widget){
+						if ($widget = $field->type->widget) {
 							echo $widget::widget([
 								'form' => $form,
 								'fieldModel' => $field,
