@@ -869,28 +869,26 @@ $store_types = Yii::$app->params['store_types'];
 
 
         <?php if (!$model->isNewRecord){ ?>
-            <!--
             <br>
             <br>
             <br>
-            -->
             <?php
-                // echo Html::tag('p', Yii::t('back', 'Фильтры'), [
-                    // 'class' => 'text-bold',
-                // ])
+                echo Html::tag('p', Yii::t('back', 'Фильтры'), [
+                    'class' => 'text-bold',
+                ])
             ?>
             <?php
-                // if ($filterPanel = \dvizh\filter\widgets\Choice::widget([
-                    // 'model' => $model
-                // ])){
-                    // echo $filterPanel;
-                // } else {
-                    // echo Html::a(Yii::t('back', 'Фильтры'), [
-                        // '/filter/filter/index'
-                    // ], [
-                        // 'class' => 'btn btn-info'
-                    // ]);
-                // }
+                if ($filterPanel = \dvizh\filter\widgets\Choice::widget([
+                    'model' => $model
+                ])){
+                    echo $filterPanel;
+                } else {
+                    echo Html::a(Yii::t('back', 'Фильтры'), [
+                        '/filter/filter/index'
+                    ], [
+                        'class' => 'btn btn-info'
+                    ]);
+                }
             ?>
             
         <?php } ?>
