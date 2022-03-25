@@ -94,28 +94,7 @@ class SiteController extends Controller
             // ->limit(16)
             ->all();
             
-        $modifications = (new Query())
-            ->select([
-                'product_id' => 'm.product_id',
-                'price' => 'p.price',
-                'price_old' => 'p.price_old',
-            ])
-            ->from([
-                'm' => '{{%shop_product_modification}}',
-                'p' => '{{%shop_price}}',
-            ])
-            ->where([
-                'm.available' => 1,
-            ])
-            ->andWhere(['like', 'm.name', Yii::$app->language])
-            ->andWhere(['like', 'm.name', Yii::$app->params['store_types'][Yii::$app->params['store_type']]])
-            ->andWhere('m.id = p.item_id')
-            ->groupBy([
-                'product_id',
-                'price',
-                'price_old'
-            ])
-            ->all();
+        $modifications = Yii::$app->runAction('catalog/get-active-products-modifications');
             
         Yii::$app->params['currency'] = \backend\models\Langs::findOne([
             'code' => Yii::$app->language

@@ -65,6 +65,22 @@ $config = [
             'relationFieldValues' =>
                 function() {
                     return \dvizh\shop\models\Category::buildTextTree();
+
+                    // $return = [];
+                    // foreach ($products as $product) {
+                       // if (empty($category->parent_id)) {
+                            // $return[] = $category;
+                            // foreach($categories as $category2) {
+                                // if($category2->parent_id == $category->id) {
+                                    // $category2->name = ' --- '.$category2->name;
+                                    // $return[] = $category2;
+                                // }
+                            // }
+                       // }
+                    // }
+                    
+                    // $products =  \dvizh\shop\models\Product::find()->asArray()->all();
+                    // return \yii\helpers\ArrayHelper::map($products, 'id', 'name');
                 },
         ],
         'field' => [

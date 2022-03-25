@@ -110,9 +110,10 @@
             <!-- <div class="col-12 col-md-6 <?= $key > 7 ? 'd-none d-md-block' : '' ?>"> -->
             <div class="col-12 col-md-6">
                 <?= $this->render('@frontend/views/catalog/_product', [
-                        'model' => $product,
-                        'prices' => $prices,
-                        'prices_old' => $prices_old
+                        'product' => $product,
+                        'productName' => json_decode($product->name)->{Yii::$app->language},
+                        'oldPrice' => $prices_old[$product->id],
+                        'price' => $prices[$product->id],
                     ])
                 ?> 
             </div>

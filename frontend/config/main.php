@@ -303,7 +303,18 @@ return [
         
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
-            'linkAssets' => true
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => false,
+                'yii\bootstrap\BootstrapAssetPlugin' => false,
+                'dvizh\filter\assets\Asset' => false,
+                'dvizh\cart\assets\WidgetAsset' => [
+                    'css' => [],
+                    'depends' => [],
+                ],
+                'dvizh\filter\assets\FrontendAsset' => false,
+                'dvizh\filter\assets\FrontendAjaxAsset' => false,
+            ],
+            'linkAssets' => true,
         ],
         
         /*
@@ -337,6 +348,7 @@ return [
                 'pathMap' => [
                     '@dektrium/user/views' => '@frontend/views/user',
                     '@vendor/dvizh/yii2-order/src/widgets/views' => '@frontend/views/yii2-order',
+                    '@vendor/dvizh/yii2-filter/src/widgets' => '@frontend/views/yii2-filter',
                 ],
             ],
         ],

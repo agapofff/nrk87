@@ -1,8 +1,11 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
+use yii\web\View;
+use frontend\widgets\FilterPanel\FilterPanel;
 
 $this->title = Yii::$app->params['title'] ?: $title;
 $h1 = Yii::$app->params['h1'] ?: $this->title;
@@ -10,7 +13,6 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
 // \yii\web\YiiAsset::register($this);
 
 ?>
-
 
 <div class="container-fluid mb-1 mb-md-2 px-lg-2 px-xl-3 px-xxl-5">
     <div class="row">
@@ -61,8 +63,8 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                             '/catalog/' . ($collectionSlug ? $collectionSlug . '/' : '') . $subCategory->slug
                         ], [
                             'class' => 'ttfirsneue text-uppercase text-decoration-none py-1 ' . ($categorySlug && $subCategory->slug == $categorySlug ? 'text-dark' : 'text-gray-500'),
-                        ]
-                    ) ?>
+                        ])
+                    ?>
                 </div>
             <?php
                 }
@@ -73,32 +75,55 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
     ?>
     
         <hr class="d-none d-md-block mt-0">
-                            
-    <?php
-        if ($collection['products']) {
-    ?>
-            <div class="row list-products justify-content-center mt-1 mt-md-3">
-            <?php
-                foreach ($collection['products'] as $product) {
+        <?php Pjax::begin(); ?>
+
+            <?= FilterPanel::widget([
+                    'itemId' => $collection['collection']->id,
+                    'blockCssClass' => 'col-12 col-md-6 col-lg-4 col-xl-3 mb-1',
+                    'productSizes' => $collection['productSizes'],
+                    'productPrices' => $collection['productPrices'],
+                    'actionRoute' => explode('?', Url::to())[0],
+                ]);
             ?>
-                    <div class="col-12 col-md-6">
-                        <?= $this->render('@frontend/views/catalog/_product', [
-                                'model' => $product,
-                                'prices' => $prices,
-                                'prices_old' => $prices_old
-                            ])
-                        ?> 
+            
+            <?php
+                if ($collection['products']) {
+            ?>
+                    
+                    <div class="row list-products justify-content-center mt-1 mt-md-3">
+                    <?php
+                        foreach ($collection['products'] as $product) {
+                    ?>
+                            <div class="col-12 col-md-6">
+                                <?= $this->render('@frontend/views/catalog/_product', [
+                                        'product' => $product['model'],
+                                        'productName' => $product['name'],
+                                        'oldPrice' => $product['oldPrice'],
+                                        'price' => $product['price'],
+                                        'sizes' => $product['sizes'],
+                                    ])
+                                ?> 
+                            </div>
+                    <?php
+                        }
+                    ?>
                     </div>
+                   
             <?php
                 }
             ?>
-            </div>
-    <?php
-        }
-    ?>
+            
+            <?php
+                $this->registerJs("
+                    $('.select2-search__field').addClass('form-control');
+                ", View::POS_READY);
+            ?>
+
+        <?php Pjax::end(); ?>
         
 <?php
     }
 ?>
 
 </div>
+

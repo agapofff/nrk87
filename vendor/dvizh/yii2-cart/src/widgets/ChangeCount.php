@@ -51,7 +51,7 @@ class ChangeCount extends \yii\base\Widget
         if(!$this->model instanceof \dvizh\cart\interfaces\CartElement) {
             $input = Html::activeTextInput($this->model, 'count', [
                 'type' => ($this->showArrows ? 'text' : 'number'),
-                'class' => 'dvizh-cart-element-count form-control border-0 px-0 bg-transparent',
+                'class' => 'dvizh-cart-element-count form-control text-center border-0 px-0 bg-transparent',
                 'data-role' => 'cart-element-count',
                 'data-line-selector' => $this->lineSelector,
                 'data-id' => $this->model->getId(),

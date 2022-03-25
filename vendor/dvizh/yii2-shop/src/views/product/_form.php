@@ -733,18 +733,18 @@ $store_types = Yii::$app->params['store_types'];
                                                             // 'prompt' => Yii::t('back', 'Все'),
                                                         // ]
                                                     // ),
-                                                    'value' => function($data){
-                                                        return // Html::a(
+                                                    'value' => function($model){
+                                                        return Html::a(
                                                             Html::tag('big', 
                                                                 Html::tag('span', '', [
-                                                                    'class' => 'glyphicon ' . ( $data->available ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                                                    'class' => 'glyphicon ' . ( $model->available ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
                                                                 ])
-                                                            // ), [
-                                                                // '/shop/modification/publish',
-                                                                // 'id' => $model->id
-                                                            // ], [
-                                                                // 'class' => 'pjax'
-                                                            // ]
+                                                            ), [
+                                                                '/shop/modification/publish',
+                                                                'id' => $model->id
+                                                            ], [
+                                                                'class' => 'pjax'
+                                                            ]
                                                         );
                                                     },
                                                 ],
