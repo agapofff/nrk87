@@ -11,7 +11,6 @@ $this->title = Yii::$app->params['title'] ?: $title;
 $h1 = Yii::$app->params['h1'] ?: $this->title;
 
 // \yii\web\YiiAsset::register($this);
-
 ?>
 
 <div class="container-fluid mb-1 mb-md-2 px-lg-2 px-xl-3 px-xxl-5">
