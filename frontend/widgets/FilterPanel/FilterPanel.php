@@ -109,37 +109,39 @@ class FilterPanel extends \yii\base\Widget
         
         
         // цена
-        $title = Html::tag('p', Yii::t('front', 'Цена'), [
-            'class' => 'm-0'
-        ]);
-        $prices = Yii::$app->request->get('price') ? explode(';', Yii::$app->request->get('price')) : [min($this->productsPrices), max($this->productsPrices)];
-        $block = IonSlider::widget([
-            'name' => 'price',
-            'type' => 'double',
-            'pluginOptions' => [
-                'skin' => 'square',
-                'drag_interval' => true,
-                'grid' => true,
-                'min' => min($this->productsPrices),
-                'max' => max($this->productsPrices),
-                'from' => $prices[0],
-                'to' => $prices[1],
-                'step' => 100,
-                'onFinish' => new JsExpression("
-                    function (data) {
-                        $('#products-filters').submit();
-                    }
-                "),
-            ]
-        ]);
-        $return[] = Html::tag('div', $title . Html::tag('div', Html::tag('div', $block, [
-            'class' => 'col-11',
-            'style' => 'margin-top: 0.4rem !important',
-        ]), [
-            'class' => 'row justify-content-center'
-        ]), [
-            'class' => $this->blockCssClass
-        ]);
+        if ($this->productsPrices) {
+            $title = Html::tag('p', Yii::t('front', 'Цена'), [
+                'class' => 'm-0'
+            ]);
+            $prices = Yii::$app->request->get('price') ? explode(';', Yii::$app->request->get('price')) : [min($this->productsPrices), max($this->productsPrices)];
+            $block = IonSlider::widget([
+                'name' => 'price',
+                'type' => 'double',
+                'pluginOptions' => [
+                    'skin' => 'square',
+                    'drag_interval' => true,
+                    'grid' => true,
+                    'min' => min($this->productsPrices),
+                    'max' => max($this->productsPrices),
+                    'from' => $prices[0],
+                    'to' => $prices[1],
+                    'step' => 100,
+                    'onFinish' => new JsExpression("
+                        function (data) {
+                            $('#products-filters').submit();
+                        }
+                    "),
+                ]
+            ]);
+            $return[] = Html::tag('div', $title . Html::tag('div', Html::tag('div', $block, [
+                'class' => 'col-11',
+                'style' => 'margin-top: 0.4rem !important',
+            ]), [
+                'class' => 'row justify-content-center'
+            ]), [
+                'class' => $this->blockCssClass
+            ]);
+        }
         
         
         // размеры
