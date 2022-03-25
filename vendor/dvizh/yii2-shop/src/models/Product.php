@@ -296,11 +296,8 @@ class Product extends \yii\db\ActiveRecord implements \dvizh\relations\interface
         $modifications = [];
         foreach ($this->modifications as $key => $modification)
         {
-            if (
-                $modification->available
-                && $modification->lang == Yii::$app->language 
-                && $modification->store_type == Yii::$app->params['store_type']
-            ) {
+            if ($modification->lang == Yii::$app->language && $modification->store_type == Yii::$app->params['store_type'])
+            {
                 $modifications[$key] = $modification;
             }
         }
@@ -321,11 +318,8 @@ class Product extends \yii\db\ActiveRecord implements \dvizh\relations\interface
         $modifications = [];
         foreach ($this->modifications as $key => $modification)
         {
-            if (
-                $modification->available
-                && $modification->lang == Yii::$app->language 
-                && $modification->store_type == Yii::$app->params['store_type']
-            ) {
+            if ($modification->lang == Yii::$app->language && $modification->store_type == Yii::$app->params['store_type'])
+            {
                 $modifications[$key] = $modification;
             }
         }
