@@ -10,7 +10,7 @@ use yii\web\Controller;
 use yii\db\Expression;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use dvizh\shop\models\Product;
+use common\models\Product;
 use dvizh\shop\models\product\ProductSearch;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
@@ -94,19 +94,19 @@ class SiteController extends Controller
             // ->limit(16)
             ->all();
             
-        $modifications = Yii::$app->runAction('catalog/get-products-prices');
+        $modifications = Product::getAllProductsPrices($collectionProductsIDs);
+
+        $modificationsPrices = ArrayHelper::map($modifications, 'product_id', 'price');
+        $modificationsOldPrices = ArrayHelper::map($modifications, 'product_id', 'price_old');
             
         Yii::$app->params['currency'] = \backend\models\Langs::findOne([
             'code' => Yii::$app->language
         ])->currency;
-    
-        $prices = ArrayHelper::map($modifications, 'product_id', 'price');
-        $pricesOld = ArrayHelper::map($modifications, 'product_id', 'price_old');
             
         return $this->render('index', [
             'products' => $products,
-            'prices' => $prices,
-            'prices_old' => $pricesOld,
+            'prices' => $modificationsPrices,
+            'prices_old' => $modificationsOldPrices,
         ]);
         
     }

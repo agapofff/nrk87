@@ -6,14 +6,7 @@ use Yii;
 use backend\models\Stores;
 use backend\models\Langs;
 use common\models\Product;
-// use dvizh\shop\models\product\ProductSearch;
-// use dvizh\shop\events\ProductEvent;
-// use dvizh\shop\models\PriceType;
-// use dvizh\shop\models\Price;
 use common\models\Category;
-// use dvizh\shop\models\price\PriceSearch;
-// use dvizh\shop\models\Modification;
-// use dvizh\shop\models\modification\ModificationSearch;
 use dvizh\filter\models\Filter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -40,18 +33,14 @@ class CatalogController extends \yii\web\Controller
         
         $category = $categorySlug ? Category::findOne(['slug' => $categorySlug]) : null;
 
-        $modifications = Product::getAllProductsPrices();
-
-        $modificationPrices = ArrayHelper::map($modifications, 'product_id', 'price');
-        $modificationOldPrices = ArrayHelper::map($modifications, 'product_id', 'price_old');
-
         $collections = [];
+        
+// print_r($allProductsSizes);
         
         foreach ($collectionsIDs as $collectionID) {
             $collectionCategories = [];
             $collectionProductsIDs = [];
             $products = null;
-            $allProductSizes = [];
             $allProductPrices = [];
             
             $collection = Category::findOne([
@@ -91,6 +80,13 @@ class CatalogController extends \yii\web\Controller
                         ])
                         ->all();
                         
+                    $modifications = Product::getAllProductsPrices($collectionProductsIDs);
+                    
+                    $modificationsSizes = Product::getAllProductsSizes($collectionProductsIDs);
+
+                    $modificationsPrices = ArrayHelper::map($modifications, 'product_id', 'price');
+                    $modificationsOldPrices = ArrayHelper::map($modifications, 'product_id', 'price_old');
+                        
                     $goods = Product::find()
                         ->where([
                             'active' => 1,
@@ -107,25 +103,22 @@ class CatalogController extends \yii\web\Controller
                     
                     if ($goods) {
                         foreach ($goods as $key => $product) {
-                            $productSizes = $product->getCartOptions()[1]['variants'];
-                            
+                            // $productSizes = $product->getCartOptions()[1]['variants'];
+// print_r($product->getCartOptions()[1]['variants']);
+                            $productSizes = array_filter($modificationsSizes, function ($modificationsSizes) use ($product) {
+                                return $modificationsSizes['product_id'] == $product->id;
+                            });
+
                             $products[] = [
                                 'model' => $product,
                                 'name' => json_decode($product->name)->{Yii::$app->language},
-                                'price' => (float) $modificationPrices[$product->id],
-                                'oldPrice' => (float) $modificationOldPrices[$product->id],
-                                'sizes' => $productSizes ?: [],
+                                'price' => (float) $modificationsPrices[$product->id],
+                                'oldPrice' => (float) $modificationsOldPrices[$product->id],
+                                'sizes' => ArrayHelper::map($productSizes, 'id', 'id'), // $productSizes ?: [],
                             ];
-                            
-                            if ($productSizes) {
-                                foreach ($productSizes as $productSize) {
-                                    $allProductSizes[$productSize] = $productSize;
-                                }
-                            }
                         }
                     }
-                    
-                    $allProductPrices = array_unique(ArrayHelper::getColumn($products, 'price'));
+// echo \yii\helpers\VarDumper::dump($products, 99, true);
                     
                     $price = Yii::$app->request->get('price');
                     if ($price) {
@@ -149,15 +142,15 @@ class CatalogController extends \yii\web\Controller
                         $sortDir = $isDesc ? SORT_DESC : SORT_ASC;
                         ArrayHelper::multisort($products, [$sortField], [$sortDir]);
                     }
+
+                    $collections[$collectionID] = [
+                        'collection' => $collection,
+                        'subCategories' => $collectionCategories,
+                        'products' => $products,
+                        'productsSizes' => array_unique(ArrayHelper::map($modificationsSizes, 'id', 'value')),
+                        'productsPrices' => array_unique($modificationsPrices),
+                    ];
                 }
-                
-                $collections[$collectionID] = [
-                    'collection' => $collection,
-                    'subCategories' => $collectionCategories,
-                    'products' => $products,
-                    'productSizes' => $allProductSizes,
-                    'productPrices' => $allProductPrices,
-                ];
             }
         }
         

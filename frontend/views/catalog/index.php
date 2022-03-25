@@ -79,8 +79,8 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
             <?= FilterPanel::widget([
                     'itemId' => $collection['collection']->id,
                     'blockCssClass' => 'col-12 col-md-6 col-lg-4 col-xl-3 mb-1',
-                    'productSizes' => $collection['productSizes'],
-                    'productPrices' => $collection['productPrices'],
+                    'productsSizes' => $collection['productsSizes'],
+                    'productsPrices' => $collection['productsPrices'],
                     'actionRoute' => explode('?', Url::to())[0],
                 ]);
             ?>

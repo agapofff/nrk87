@@ -25,8 +25,8 @@ class FilterPanel extends \yii\base\Widget
     public $submitButtonValue = 'Показать';
     public $actionRoute = false;
     public $filterGetParamName = 'filter';
-    public $productSizes = null;
-    public $productPrices = null;
+    public $productsSizes = null;
+    public $productsPrices = null;
     
     public function init()
     {
@@ -112,7 +112,7 @@ class FilterPanel extends \yii\base\Widget
         $title = Html::tag('p', Yii::t('front', 'Цена'), [
             'class' => 'm-0'
         ]);
-        $prices = Yii::$app->request->get('price') ? explode(';', Yii::$app->request->get('price')) : [min($this->productPrices), max($this->productPrices)];
+        $prices = Yii::$app->request->get('price') ? explode(';', Yii::$app->request->get('price')) : [min($this->productsPrices), max($this->productsPrices)];
         $block = IonSlider::widget([
             'name' => 'price',
             'type' => 'double',
@@ -120,8 +120,8 @@ class FilterPanel extends \yii\base\Widget
                 'skin' => 'square',
                 'drag_interval' => true,
                 'grid' => true,
-                'min' => min($this->productPrices),
-                'max' => max($this->productPrices),
+                'min' => min($this->productsPrices),
+                'max' => max($this->productsPrices),
                 'from' => $prices[0],
                 'to' => $prices[1],
                 'step' => 100,
@@ -143,14 +143,14 @@ class FilterPanel extends \yii\base\Widget
         
         
         // размеры
-        if ($this->productSizes) {
+        if ($this->productsSizes) {
             $title = Html::tag('p', Yii::t('front', 'Размеры'), [
                 'class' => 'm-0'
             ]);
             $block = Select2::widget([
                 'name' => 'sizes',
                 'value' => Yii::$app->request->get('sizes'),
-                'data' => $this->productSizes,
+                'data' => $this->productsSizes,
                 'language' => Yii::$app->language,
                 'theme' => Select2::THEME_MATERIAL,
                 'showToggleAll' => false,

@@ -231,7 +231,7 @@ class Product extends ActiveRecord implements Torelate, CartElement
             return $callable($this);
         }
 
-        if($price = $this->getPriceModel($type)) {
+        if ($price = $this->getPriceModel($type)) {
             return $price->price;
         }
 
@@ -441,7 +441,7 @@ class Product extends ActiveRecord implements Torelate, CartElement
         }
     }
     
-    public static function getAllProductsPrices($limit = 9999)
+    public static function getAllProductsPrices($productsIDs = null, $limit = 9999)
     {
         return (new Query())
             ->select([
@@ -458,15 +458,43 @@ class Product extends ActiveRecord implements Torelate, CartElement
                 'm.lang' => Yii::$app->language,
                 'm.store_type' => Yii::$app->params['store_type'],
             ])
-            // ->andWhere(['like', 'm.name', Yii::$app->language])
-            // ->andWhere(['like', 'm.name', Yii::$app->params['store_types'][Yii::$app->params['store_type']]])
             ->andWhere('m.id = p.item_id')
+            ->andFilterWhere([
+                'm.product_id' => $productsIDs
+            ])
             ->groupBy([
                 'product_id',
                 'price',
                 'price_old'
             ])
             ->limit($limit)
+            ->all();
+    }
+    
+    public static function getAllProductsSizes($productsIDs = null)
+    {
+        return (new Query())
+            ->select([
+                'product_id' => 'm.product_id',
+                'id' => 'f.id',
+                'value' => 'f.value',
+            ])
+            ->from([
+                'm' => '{{%shop_product_modification}}',
+                'o' => '{{%shop_product_modification_to_option}}',
+                'f' => '{{%filter_variant}}'
+            ])
+            ->where([
+                'm.available' => 1,
+                'm.lang' => Yii::$app->language,
+                'm.store_type' => Yii::$app->params['store_type'],
+                'f.filter_id' => 1,
+            ])
+            ->andWhere('m.id = o.modification_id')
+            ->andWhere('o.variant_id = f.id')
+            ->andFilterWhere([
+                'm.product_id' => $productsIDs
+            ])
             ->all();
     }
 }
