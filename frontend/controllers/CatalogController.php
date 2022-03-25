@@ -5,12 +5,12 @@ namespace frontend\controllers;
 use Yii;
 use backend\models\Stores;
 use backend\models\Langs;
-use dvizh\shop\models\Product;
-use dvizh\shop\models\product\ProductSearch;
+use common\models\Product;
+// use dvizh\shop\models\product\ProductSearch;
 // use dvizh\shop\events\ProductEvent;
 // use dvizh\shop\models\PriceType;
 // use dvizh\shop\models\Price;
-use dvizh\shop\models\Category;
+use common\models\Category;
 // use dvizh\shop\models\price\PriceSearch;
 // use dvizh\shop\models\Modification;
 // use dvizh\shop\models\modification\ModificationSearch;
@@ -18,7 +18,6 @@ use dvizh\filter\models\Filter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
-use yii\db\Query;
 use yii\helpers\ArrayHelper;
 
 class CatalogController extends \yii\web\Controller
@@ -41,7 +40,7 @@ class CatalogController extends \yii\web\Controller
         
         $category = $categorySlug ? Category::findOne(['slug' => $categorySlug]) : null;
 
-        $modifications = $this->actionGetActiveProductsModifications();
+        $modifications = Product::getAllProductsPrices();
 
         $modificationPrices = ArrayHelper::map($modifications, 'product_id', 'price');
         $modificationOldPrices = ArrayHelper::map($modifications, 'product_id', 'price_old');
@@ -183,36 +182,6 @@ class CatalogController extends \yii\web\Controller
             'category' => $category,
             'title' => $title,
         ]);
-    }
-    
-    
-    public function actionGetActiveProductsModifications($limit = 9999) 
-    {
-        return (new Query())
-            ->select([
-                'product_id' => 'm.product_id',
-                'price' => 'p.price',
-                'price_old' => 'p.price_old',
-            ])
-            ->from([
-                'm' => '{{%shop_product_modification}}',
-                'p' => '{{%shop_price}}',
-            ])
-            ->where([
-                'm.available' => 1,
-                'm.lang' => Yii::$app->language,
-                'm.store_type' => Yii::$app->params['store_type'],
-            ])
-            // ->andWhere(['like', 'm.name', Yii::$app->language])
-            // ->andWhere(['like', 'm.name', Yii::$app->params['store_types'][Yii::$app->params['store_type']]])
-            ->andWhere('m.id = p.item_id')
-            ->groupBy([
-                'product_id',
-                'price',
-                'price_old'
-            ])
-            ->limit($limit)
-            ->all();
     }
 
     

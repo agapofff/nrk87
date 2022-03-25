@@ -94,7 +94,7 @@ class SiteController extends Controller
             // ->limit(16)
             ->all();
             
-        $modifications = Yii::$app->runAction('catalog/get-active-products-modifications');
+        $modifications = Yii::$app->runAction('catalog/get-products-prices');
             
         Yii::$app->params['currency'] = \backend\models\Langs::findOne([
             'code' => Yii::$app->language
