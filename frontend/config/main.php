@@ -314,7 +314,7 @@ return [
                 'dvizh\filter\assets\FrontendAsset' => false,
                 'dvizh\filter\assets\FrontendAjaxAsset' => false,
             ],
-            'linkAssets' => true,
+            'linkAssets' => false,
         ],
         
         /*
@@ -440,7 +440,7 @@ return [
         
         'assetsAutoCompress' => [
             'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
-            'enabled' => false,
+            'enabled' => true,
             'readFileTimeout' => 3,
             'jsCompress' => true,
             'jsCompressFlaggedComments' => true,
