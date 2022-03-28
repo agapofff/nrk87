@@ -196,6 +196,7 @@
 		
 		<?= $form
 				->field($orderModel, 'shipping_type_id')
+                // ->textInput()
 				->hiddenInput()
 				->label(false)
 		?>
@@ -205,7 +206,7 @@
 				foreach ($shippingTypesList as $key => $sht) {
 			?>
 					<div class="col-auto">
-						<div class="custom-control custom-radio mr-3">
+						<div class="custom-control custom-radio mr-2">
 							<input 
 								type="radio" 
 								id="shipping-type-tab-link-<?= $sht->id ?>" 
@@ -233,9 +234,56 @@
 		foreach ($shippingTypesList as $key => $sht) {
 	?>  
 			<div 
-				class="tab-pane mt-2 mt-md-3 <?php if ($key == 0) { ?>active<?php } ?>" 
+				class="tab-pane mt-2 mt-md-3 <?php if ($orderModel->shipping_type_id == $sht->id) {  ?>active<?php } ?>" 
 				id="shipping-type-tab-<?= $sht->id ?>" 
 			>
+            
+		<?php
+			if ($sht->id == 3) {
+		?>
+				<div id="block-courier" class="form-group position-relative">
+					<label class="control-label" for="courier">
+						<?= Yii::t('front', 'Способ курьерской доставки') ?>
+					</label>
+					<?= Select2::widget([
+							'id' => 'courier',
+							'name' => 'courier',
+							'value' => $fieldsDefaultValues['delivery_id'],
+							'bsVersion' => '4.x',
+							'language' => Yii::$app->language,
+							'theme' => Select2::THEME_BOOTSTRAP,
+							'data' => $courierList,
+							'options' => [
+								'class' => 'form-control mb-0 px-0',
+								'placeholder' => Yii::t('front', 'Выберите способ доставки'),
+								'autocomplete' => rand(),
+							],
+                            'hideSearch' => true,
+							'pluginOptions' => [
+								'allowClear' => false,
+								'dropdownParent' => new JsExpression("$('#block-courier')"),
+								// 'minimumInputLength' => 2,
+								'ajax' => [
+									'url' => Url::to(['/checkout/get-delivery']),
+									'dataType' => 'json',
+									'data' => new JsExpression("function(params){
+										return {
+											country_id:$('#country').val(),
+											city_id:$('#city').val(),
+											type:'courier',
+											q:params.term
+										};
+									}"),
+								],
+                                'selectOnClose' => true,
+                                'cache' => true,
+							],
+						]);
+					?>
+				</div>			
+		<?php
+			}
+		?>
 
 		<?php
 			if ($sht->id == 1) {
@@ -492,7 +540,8 @@
 		<div id="submit" class="row my-2 my-md-5 align-items-center">
 			<div id="order_submit" class="col-sm-6 text-center order-lg-last">
 				<?= Html::submitButton(Html::tag('span', Yii::t('front', 'Перейти к оплате'), [
-                        'id' => 'submit-payment-text'
+                        'id' => 'submit-payment-text',
+                        'style' => 'display: none',
                     ]) . Html::tag('span', Yii::t('front', 'Оформить заказ'), [
                         'id' => 'submit-finish-text'
                     ]), [
