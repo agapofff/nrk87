@@ -451,7 +451,7 @@ return [
             'cssFileBottom' => false,
             'cssFileBottomLoadOnJs' => false,
             'jsFileCompile' => true,
-            'jsFileRemouteCompile' => false,
+            'jsFileRemouteCompile' => true,
             'jsFileCompress' => true,
             'jsFileCompressFlaggedComments' => true,
             'noIncludeJsFilesOnPjax' => true,
