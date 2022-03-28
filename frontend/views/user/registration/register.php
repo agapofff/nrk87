@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 <div class="form-group mt-2 mb-0">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="agree" name="agree" checked>
+                        <input type="checkbox" class="custom-control-input" id="agree" name="agree">
                         <label class="custom-control-label" for="agree">
                             <?= Yii::t('front', 'Даю согласие на обработку моих персональных данных.') ?> <?= Html::a(Yii::t('front', 'Подробнее'), [
                                     '/privacy-policy'
@@ -136,7 +136,7 @@ $this->params['breadcrumbs'][] = $this->title;
             })
             .on('beforeSubmit', function (event) {
                 event.preventDefault();
-                if (!$('#agree').checked) {
+                if (!$('#agree').is(':checked')) {
                     toastr.error('" . Yii::t('front', 'Необходимо согласиться') . "');
                     return false;
                 }
