@@ -446,7 +446,7 @@ return [
             'jsCompressFlaggedComments' => true,
             'cssCompress' => true,
             'cssFileCompile' => true,
-            'cssFileRemouteCompile' => false,
+            'cssFileRemouteCompile' => true,
             'cssFileCompress' => true,
             'cssFileBottom' => false,
             'cssFileBottomLoadOnJs' => false,
