@@ -841,8 +841,12 @@ div[data-select2] label {
     padding: 0.3em 1.3em 0.4em 0.5em !important;
     margin: 0.25em 0.5em 0.25em 0 !important;
     border-radius: 0 !important;
-    background: #000 !important;
+    background-color: #000 !important;
     color: #fff !important;
+}
+.select2-selection__choice:hover {
+    background-color: #D6751C !important;
+    border-color: #D6751C !important;
 }
 .select2-selection__choice .select2-selection__choice__remove {
     position: absolute;
@@ -872,6 +876,13 @@ li.select2-search:before {
 .irs-handle {
     border-radius: 50%;
     cursor: pointer;
+}
+.irs-handle:hover {
+    border-color: #D6751C !important;
+}
+.irs-from:hover,
+.irs-to:hover {
+    background-color: #D6751C !important;
 }
 
 
