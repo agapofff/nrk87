@@ -163,7 +163,7 @@ $this->title = Yii::t('front', 'Контакты') . ' - ' . json_decode($curren
         }  
     ", View::POS_READY, 'maps');
     
-    $this->registerJsFile("//api-maps.yandex.ru/2.0/?load=package.standard&lang=" . Yii::$app->language . "-" . strtoupper(Yii::$app->language) . "&onload=initMap");
+    $this->registerJsFile("https://api-maps.yandex.ru/2.0/?load=package.standard&lang=" . Yii::$app->language . "-" . strtoupper(Yii::$app->language) . "&onload=initMap");
     
     $this->registerJs("        
         $(document).on('click', '.address', function () {
