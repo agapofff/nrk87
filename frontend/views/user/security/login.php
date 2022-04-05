@@ -80,7 +80,7 @@
                         <div class="mb-1_5">
                             <?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Вход'),
                                 [
-                                    'class' => 'btn btn-primary btn-block text-uppercase py-1',
+                                    'class' => 'btn btn-primary btn-hover-warning btn-block text-uppercase py-1',
                                     'tabindex' => '4',
                                     'title' => Yii::t('front', 'Вход')
                                 ]
@@ -88,7 +88,7 @@
                         </div>
                         <div class="mb-2">
                             <?= Html::a(Yii::t('front', 'Регистрация'), ['/register'], [
-                                    'class' => 'btn btn-outline-primary btn-block text-uppercase py-1',
+                                    'class' => 'btn btn-outline-primary btn-hover-warning btn-block text-uppercase py-1',
                                 ])
                             ?>
                         </div>

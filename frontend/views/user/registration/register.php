@@ -100,7 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="mb-2 mt-5">
                             <?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Зарегистрироваться'),
                                 [
-                                    'class' => 'btn btn-primary btn-block text-uppercase py-1',
+                                    'class' => 'btn btn-primary btn-hover-warning btn-block text-uppercase py-1',
                                     'tabindex' => '4',
                                     'title' => Yii::t('front', 'Зарегистрироваться')
                                 ]

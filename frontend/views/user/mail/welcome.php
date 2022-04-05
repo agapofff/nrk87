@@ -21,11 +21,12 @@ use yii\helpers\Html;
 ?>
 
 <h1 style="text-align: center;">
-    <?= Yii::t('front', 'Благодарим Вас за регистрацию на сайте {0}', [
-            Yii::$app->name
-        ])
-    ?>
+    <?= Yii::$app->name ?>.
 </h1>
+
+<h2 style="text-align: center;">
+    <?= Yii::t('front', 'Благодарим Вас за регистрацию') ?>
+</h2>
 
 <br>
 

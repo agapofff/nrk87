@@ -50,7 +50,7 @@
                 <div class="row no-gutters">
                     <div class="col-md-6">
                             <?= Html::submitButton(Html::tag('span') . Yii::t('front', 'Продолжить'), [
-                                    'class' => 'btn btn-primary btn-block py-1',
+                                    'class' => 'btn btn-primary btn-hover-warning btn-block py-1',
                                     'title' => Yii::t('front', 'Продолжить'),
                                 ])
                             ?>

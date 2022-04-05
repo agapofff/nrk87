@@ -47,7 +47,7 @@
                     <div class="col-md-6">
                         <?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Продолжить'),
                             [
-                                'class' => 'btn btn-primary btn-block text-uppercase py-1',
+                                'class' => 'btn btn-primary btn-hover-warning btn-block text-uppercase py-1',
                                 'tabindex' => '4',
                                 'title' => Yii::t('front', 'Продолжить')
                             ]

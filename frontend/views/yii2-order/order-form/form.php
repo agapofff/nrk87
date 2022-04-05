@@ -536,6 +536,19 @@
 				</div>
 			</div>
 		</div>
+        
+        <div class="<?= Yii::$app->user->isGuest ? 'form-group mt-2 mb-0 ' : 'd-none' ?>">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="agree" name="agree" <?php if (!Yii::$app->user->isGuest){?>checked="checked"<?php }?>>
+                <label class="custom-control-label" for="agree">
+                    <?= Yii::t('front', 'Даю согласие на обработку моих персональных данных.') ?> <?= Html::a(Yii::t('front', 'Подробнее'), [
+                            '/privacy-policy'
+                        ], [
+                            'target' => '_blank',
+                        ]) ?>...
+                </label>
+            </div>
+        </div>
 		
 		<div id="submit" class="row my-2 my-md-5 align-items-center">
 			<div id="order_submit" class="col-sm-6 text-center order-lg-last">
@@ -623,7 +636,7 @@
         });
         
         shippingTypeChange = function (isCityChanged = false) {
-console.log('shippingTypeChange = ' + isCityChanged);
+// console.log('shippingTypeChange = ' + isCityChanged);
             clearDeliveryParams();
             toggleAddress();
             setPaymentOptions();
@@ -763,7 +776,7 @@ console.log(response);
         }
         
         toggleAddress = function () {
-console.log($('#country_id input').val());
+// console.log($('#country_id input').val());
             $('#address, #postcode')
                 .toggleClass('d-none', $('#order-shipping_type_id').val() === '2')
                 .toggleClass('required', $('#order-shipping_type_id').val() === '1');
@@ -854,6 +867,11 @@ console.log($('#country_id input').val());
                 return validateOrderForm();
             })
             .on('beforeSubmit', function (e) {
+                if (!$('#agree').is(':checked')) {
+                    toastr.error('" . Yii::t('front', 'Необходимо согласиться с обработкой персональных данных') . "');
+                    return false;
+                }
+                
                 if (validateOrderForm()) {
 // return true;
                     var orderData = {
