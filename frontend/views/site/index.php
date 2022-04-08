@@ -139,13 +139,13 @@
     ">
         <div class="row justify-content-between">
             <div class="col-md-5">
-                <h3 class="h1 mb-2 ttfirsneue text-uppercase font-weight-light text-white">
+                <h3 class="h1 mb-2 ttfirsneue text-uppercase font-weight-light text-white d-none">
                     <?= Yii::t('front', 'Кто мы') ?>
                 </h3>
             </div>
             <div class="col-md-7 col-lg-5 col-xl-4 col-xxl-3">
                 <p class="text-white mb-5 mb-md-3">
-                    <?= Yii::$app->id ?> - <?= Yii::t('front', 'fashion tech wear бренд') ?>. 
+                    <?= Yii::$app->id ?> &mdash; <?= Yii::t('front', 'fashion tech wear бренд') ?>. 
                     <?= Yii::t('front', 'Для тех, кто ищет себя, ответственно и осознанно относится к нашей планете. Для тех, кто верит в технологии, а также для тех, кто мечтает прогуляться по Марсу. Своей миссией бренд {0} выбрал продвижение ценностей мира и ответственность за сохранение природы и судьбу человечества, предметное размышление о взаимосвязи прошлого и настоящего. И взгляд в будущее.', [
                         Yii::$app->id
                     ]) ?>
