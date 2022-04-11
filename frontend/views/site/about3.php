@@ -19,7 +19,7 @@ $this->title = Yii::t('front', 'О нас');
     </div>
 </div>
 
-<div class="container-fluid mt-5 px-lg-2 px-xl-3 px-xxl-5 position-relative d-none d-md-block">
+<div class="container-fluid px-lg-2 px-xl-3 px-xxl-5 position-relative d-none d-md-block">
     <div class="row">
         <div class="col-md-6">
             <nav id="about-nav" class="about-nav nav nav-pills flex-column sticky-top overflow-x-hidden" style="top: 100px">
