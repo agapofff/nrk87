@@ -597,7 +597,7 @@
                             <div class="col-12 col-lg-auto mb-1 mt-2 mt-md-0">
                                 <div class="row">
                                     <div class="col-12 col-md-auto mb-1 mb-md-0">
-                                        <a href="<?= Yii::$app->params['socials']['Vkontakte']['link'] ?>" target="_blank" class="text-decoration-none text-nowrap d-inline-block position-relative pl-1_5">
+                                        <a href="<?= Yii::$app->params['socials']['Vkontakte']['link'] ?>" target="_blank" class="text-decoration-none text-nowrap d-inline-block position-relative pl-xl-1_5">
                                             <!--
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="22" height="22" style="
                                                 position: absolute;
@@ -610,7 +610,7 @@
                                         </a>
                                     </div>
                                     <div class="col-12 col-md-auto mb-1 mb-md-0">
-                                        <a href="<?= Yii::$app->params['socials']['Telegram']['link'] ?>" target="_blank" class="text-decoration-none text-nowrap d-inline-block position-relative pl-1_5">
+                                        <a href="<?= Yii::$app->params['socials']['Telegram']['link'] ?>" target="_blank" class="text-decoration-none text-nowrap d-inline-block position-relative pl-xl-1_5">
                                             <!--
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="
                                                 position: absolute;
