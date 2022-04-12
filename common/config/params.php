@@ -48,16 +48,16 @@ return [
             'link' => 'https://www.instagram.com/nrk87.wear',
         ],
         'Vkontakte' => [
-            'name' => 'nrk1987.wear',
-            'link' => 'https://vk.com/nrk87com',
+            'name' => 'nrk87.wear',
+            'link' => 'https://vk.com/nrk87.wear',
         ],
         'Youtube' => [
             'name' => 'nrk87',
             'link' => 'https://www.youtube.com/channel/UC_iVum1wE34wTzSY0WxjNGA',
         ],
         'Telegram' => [
-            'name' => 'nrk87.wear',
-            'link' => 'https://t.me/nrk87',
+            'name' => 'nrk87wear',
+            'link' => 'https://t.me/nrk87wear',
         ],
     ],
     'boutiquePlaces' => [
