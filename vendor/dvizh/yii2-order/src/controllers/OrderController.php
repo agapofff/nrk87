@@ -241,8 +241,8 @@ class OrderController  extends Controller
                             'elements' => Yii::$app->cart->elements,
                             'currency' => $currency,    
                         ])
-                        ->setTo(Yii::$app->params['adminEmail'])
-                        // ->setTo('agapofff@gmail.com')
+                        // ->setTo(Yii::$app->params['adminEmail'])
+                        ->setTo('agapofff@gmail.com')
                         ->setFrom([
                             Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']
                         ])
