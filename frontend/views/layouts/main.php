@@ -545,18 +545,12 @@
                     
                     <div class="col-10 col-md-3">
                         <p class="mb-1_5 mb-lg-2">
-                            <?= Yii::t('front', Yii::$app->params['contacts']['Россия']['Москва'][0]['address'][0]) ?>
-                            <br>
-                            <?= Yii::t('front', Yii::$app->params['contacts']['Россия']['Москва'][0]['address'][1]) ?>
+                            <?= Yii::t('front', Yii::$app->params['contacts']['address']) ?>
                         </p>
                         <p class="m-0">
-                            <!--
-                            <a href="tel:<?= preg_replace('/[D]/', '', Yii::$app->params['contacts']['Россия']['phone']) ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['Россия']['Москва'][0]['phone'] ?></a>
+                            <a href="tel:<?= preg_replace('/[D]/', '', Yii::$app->params['contacts']['phone']) ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['phone'] ?></a>
                             <br>
-                            -->
-                            <a href="tel:<?= preg_replace('/[D]/', '', Yii::$app->params['contacts']['Россия']['Москва'][0]['phone']) ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['Россия']['Москва'][0]['phone'] ?></a>
-                            <br>
-                            <a href="mailto:<?= Yii::$app->params['contacts']['Россия']['Москва'][0]['email'] ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['Россия']['Москва'][0]['email'] ?></a>
+                            <a href="mailto:<?= Yii::$app->params['contacts']['email'] ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['email'] ?></a>
                         </p>
                     </div>
                 </div>

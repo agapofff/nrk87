@@ -178,7 +178,7 @@ class SiteController extends Controller
     }
     
     
-    public function actionAbout($v = 2)
+    public function actionAbout($v = 3)
     {
         return $this->render('about' . $v);
     }
