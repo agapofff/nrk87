@@ -40,7 +40,7 @@ class Addresses extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['active', 'ordering', 'country_id', 'city_id'], 'integer'],
+            [['active', 'ordering', 'country_id', 'city_id', 'saveAndExit'], 'integer'],
             [['country_id', 'city_id'], 'required'],
             [['address', 'worktime'], 'string'],
             [['email', 'phone', 'lat', 'lon'], 'string', 'max' => 255],

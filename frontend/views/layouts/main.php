@@ -550,7 +550,7 @@
                         <p class="m-0">
                             <a href="tel:<?= preg_replace('/[D]/', '', Yii::$app->params['contacts']['phone']) ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['phone'] ?></a>
                             <br>
-                            <a href="mailto:<?= Yii::$app->params['contacts']['email'] ?>" class="text-decoration-none"><?= Yii::$app->params['contacts']['email'] ?></a>
+                            <a href="mailto:<?= Yii::$app->params['supportEmail'] ?>" class="text-decoration-none"><?= Yii::$app->params['supportEmail'] ?></a>
                         </p>
                     </div>
                 </div>
