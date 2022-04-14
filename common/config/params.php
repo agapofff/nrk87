@@ -1,7 +1,7 @@
 <?php
 return [
-    'adminEmail' => 'info@nrk1987.com',
-    'supportEmail' => 'info@nrk1987.com',
+    'adminEmail' => 'info@nrk87.com',
+    'supportEmail' => 'info@nrk87.com',
     'senderEmail' => 'noreply@nrk87.com',
     'senderName' => 'NRK87.',
     'user.passwordResetTokenExpire' => 3600,
