@@ -2,8 +2,8 @@
 return [
     'adminEmail' => 'info@nrk1987.com',
     'supportEmail' => 'info@nrk1987.com',
-    'senderEmail' => 'info@nrk1987.com',
-    'senderName' => 'NRK1987',
+    'senderEmail' => 'noreply@nrk87.com',
+    'senderName' => 'NRK87.',
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
     // 'languages' => [

@@ -132,7 +132,7 @@ $config = [
                 'email',
                 'shipping_type_id',
             ],
-            'robotEmail' => 'info@nrk1987.com',
+            'robotEmail' => 'noreply@nrk87.com',
             'robotName' => 'NRK87.',
             'adminNotificationEmail' => true,
             'clientEmailNotification' => true,
