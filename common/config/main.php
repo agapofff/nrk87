@@ -26,6 +26,9 @@ $config = [
             'class' => 'dektrium\user\Module',
             'admins' => ['admin'],
             'enableGeneratingPassword' => true,
+            'mailer' => [
+                'sender' => Yii::$app->params['senderEmail'],
+            ],
         ],
         
         /*
