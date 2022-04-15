@@ -27,7 +27,9 @@ $config = [
             'admins' => ['admin'],
             'enableGeneratingPassword' => true,
             'mailer' => [
-                'sender' => Yii::$app->params['senderEmail'],
+                'sender' => [
+                    'noreply@nrk87.com' => 'NRK87.'
+                ],
             ],
         ],
         
