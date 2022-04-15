@@ -20,17 +20,13 @@ use yii\helpers\Html;
  */
 ?>
 
-<h1 style="text-align: center;">
-    <?= Yii::$app->name ?>.
-</h1>
-
 <h2 style="text-align: center;">
     <?= Yii::t('front', 'Благодарим Вас за регистрацию') ?>
 </h2>
 
 <br>
 
-<p>
+<p style="text-align: center">
     <?php
         if ($showPassword || $module->enableGeneratingPassword) {
     ?>

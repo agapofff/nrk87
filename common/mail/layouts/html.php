@@ -209,7 +209,7 @@
 											margin: 0 0 10px; 
 											padding: 0;
 										">
-											© <?= date('Y') ?> <?= Yii::$app->id ?> - <?= Yii::$app->name ?>
+											© <?= date('Y') ?> <?= Yii::$app->name ?>
 										</p>
 									</td>
 								</tr>

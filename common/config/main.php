@@ -3,7 +3,7 @@ use \kartik\datecontrol\Module;
 
 $config = [
     'id' => 'NRK87.',
-    'name' => 'fashion tech wear бренд',
+    'name' => 'NRK87.',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
