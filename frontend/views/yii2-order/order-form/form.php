@@ -927,27 +927,30 @@ console.log(response);
                                 error: function (response) {
 console.log(response);
                                     var errors = response.responseJSON;
-                                    for (var error in errors) {
-                                        if (errors[error][0] !== undefined) {
-                                            if (Array.isArray(errors[error])) {
-                                                toastr.error(errors[error][0]);
+                                    if (errors.isArray()) {
+                                        for (var error in errors) {
+                                            if (errors[error][0] !== undefined) {
+                                                if (Array.isArray(errors[error])) {
+                                                    toastr.error(errors[error][0]);
+                                                } else {
+                                                    toastr.error(errors[error]);
+                                                }
                                             } else {
-                                                toastr.error(errors[error]);
-                                            }
-                                        } else {
-                                            if (errors[error].message !== undefined) {
-                                                toastr.error(errors[error].message);
-                                            } else {
-                                                for (var msg in errors[error]) {
-                                                    if (errors[error][msg][0] !== undefined) {
-                                                        toastr.error(errors[error][msg][0]);
-                                                    } else {
-                                                        toastr.error(errors[error]);
+                                                if (errors[error].message !== undefined) {
+                                                    toastr.error(errors[error].message);
+                                                } else {
+                                                    for (var msg in errors[error]) {
+                                                        if (errors[error][msg][0] !== undefined) {
+                                                            toastr.error(errors[error][msg][0]);
+                                                        } else {
+                                                            toastr.error(errors[error]);
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
-                                        
+                                    } else {
+                                        toastr.error(errors);
                                     }
                                     return false;
                                 },
