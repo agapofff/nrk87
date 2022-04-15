@@ -26,11 +26,6 @@ $config = [
             'class' => 'dektrium\user\Module',
             'admins' => ['admin'],
             'enableGeneratingPassword' => true,
-            'mailer' => [
-                'sender' => [
-                    'noreply@nrk87.com' => 'NRK87.'
-                ],
-            ],
         ],
         
         /*

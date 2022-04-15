@@ -56,7 +56,7 @@ class Mailer extends Component
     public function getWelcomeSubject()
     {
         if ($this->welcomeSubject == null) {
-            $this->setWelcomeSubject(Yii::t('front', 'Добро пожаловать на сайт {0}', Yii::$app->name));
+            $this->setWelcomeSubject(Yii::t('front', 'Добро пожаловать на сайт {0}', Yii::$app->id));
         }
 
         return $this->welcomeSubject;
@@ -76,7 +76,7 @@ class Mailer extends Component
     public function getNewPasswordSubject()
     {
         if ($this->newPasswordSubject == null) {
-            $this->setNewPasswordSubject(Yii::t('front', 'Ваш пароль на сайте {0} был изменён', Yii::$app->name));
+            $this->setNewPasswordSubject(Yii::t('front', 'Ваш пароль на сайте {0} был изменён', Yii::$app->id));
         }
 
         return $this->newPasswordSubject;
@@ -96,7 +96,7 @@ class Mailer extends Component
     public function getConfirmationSubject()
     {
         if ($this->confirmationSubject == null) {
-            $this->setConfirmationSubject(Yii::t('front', 'Подтверждение учётной записи на сайте {0}', Yii::$app->name));
+            $this->setConfirmationSubject(Yii::t('front', 'Подтверждение учётной записи на сайте {0}', Yii::$app->id));
         }
 
         return $this->confirmationSubject;
@@ -116,7 +116,7 @@ class Mailer extends Component
     public function getReconfirmationSubject()
     {
         if ($this->reconfirmationSubject == null) {
-            $this->setReconfirmationSubject(Yii::t('front', 'Подтверждение изменения e-mail адреса на сайте {0}', Yii::$app->name));
+            $this->setReconfirmationSubject(Yii::t('front', 'Подтверждение изменения e-mail адреса на сайте {0}', Yii::$app->id));
         }
 
         return $this->reconfirmationSubject;
@@ -136,7 +136,7 @@ class Mailer extends Component
     public function getRecoverySubject()
     {
         if ($this->recoverySubject == null) {
-            $this->setRecoverySubject(Yii::t('front', 'Подтверждение изменения пароля на сайте {0}', Yii::$app->name));
+            $this->setRecoverySubject(Yii::t('front', 'Подтверждение изменения пароля на сайте {0}', Yii::$app->id));
         }
 
         return $this->recoverySubject;
@@ -269,8 +269,8 @@ class Mailer extends Component
         $mailer->getView()->theme = Yii::$app->view->theme;
 
         if ($this->sender === null) {
-            $this->sender = isset(Yii::$app->params['adminEmail']) ?
-                Yii::$app->params['adminEmail']
+            $this->sender = isset(Yii::$app->params['senderEmail']) ?
+                Yii::$app->params['senderEmail']
                 : 'no-reply@example.com';
         }
 
