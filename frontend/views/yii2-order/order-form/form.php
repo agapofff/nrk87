@@ -927,7 +927,7 @@ console.log(response);
                                 error: function (response) {
 console.log(response);
                                     var errors = response.responseJSON;
-                                    if (errors.isArray()) {
+                                    if (Array.isArray(errors)) {
                                         for (var error in errors) {
                                             if (errors[error][0] !== undefined) {
                                                 if (Array.isArray(errors[error])) {

@@ -10,7 +10,7 @@ $params = array_merge(
 
 return [
     'id' => 'NRK',
-    'name' => 'NRK1987 admin',
+    'name' => 'NRK87. admin',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
