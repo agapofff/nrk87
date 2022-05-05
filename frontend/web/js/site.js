@@ -19,12 +19,10 @@ jQuery(document).ready(function ($) {
         $('#fade').fadeIn('fast');
         $('.modal').modal('hide');
     });
-    $(window).on('load', function () {
-        NProgress.done();
-    });
     $(document).on('click', '.loading', function () {
         NProgress.done();
     });
+    NProgress.done();
     
     
     // lazy loading
