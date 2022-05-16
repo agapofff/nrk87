@@ -317,14 +317,11 @@ jQuery(document).ready(function ($) {
     // }
     // imageZoom();
     
-    Fancybox.bind('.fancybox', {
-        Image: {
-            fit: 'cover',
-            Panzoom: {
-                baseScale: 1,
-                maxScale: 1,
-            },
+    Fancybox.bind('[data-fancybox]', {
+        Thumbs: {
+            autoStart: false,
         },
+        dragToClose: false,
     });
 
 
