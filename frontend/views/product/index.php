@@ -41,9 +41,9 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                     $cachedImageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x2000.jpg';
             ?>
                     <div class="col-12 mt-1 overflow-hidden">
-                        <a href="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMax) ? $cachedImageMax : $image->getUrl('x2000') ?>" data-fancybox="gallery1">
+                        <!-- <a href="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMax) ? $cachedImageMax : $image->getUrl('x2000') ?>" data-fancybox="gallery1"> -->
                             <img <?php if ($key == 0) {?> itemprop="image" <?php } ?> src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImageMin) ? $cachedImageMin : $image->getUrl('x1500') ?>" class="d-block w-100" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
-                        </a>
+                        <!-- </a> -->
                     </div>
             <?php
                 }
