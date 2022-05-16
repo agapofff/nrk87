@@ -13,8 +13,9 @@ return [
     'name' => 'NRK87. admin',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log'],
-    
+    'bootstrap' => [
+        // 'log'
+    ],
     'on beforeRequest' => function () {
         // добавляем активные языки из базы в модуль переключения языков
         // $langs = Yii::$app->db->createCommand('SELECT * FROM {{%langs}} WHERE publish = 1')->queryAll();

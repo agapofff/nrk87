@@ -234,6 +234,7 @@ use dvizh\gallery\widgets\Gallery;
                                 'plugins' => [
                                     'fullscreen',
                                 ],
+                                'replaceDivs' => false,
                             ],
                             'plugins' => [
                                 'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
