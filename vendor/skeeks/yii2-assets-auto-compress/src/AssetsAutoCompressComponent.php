@@ -160,6 +160,14 @@ class AssetsAutoCompressComponent extends Component implements BootstrapInterfac
     /**
      * @return IFormatter|bool
      */
+     
+    /**
+     * Skip specific filenames.
+     * @var array
+     */
+    public $skip = [];
+     
+     
     public function getHtmlFormatter()
     {
         return $this->_htmlFormatter;
@@ -410,6 +418,11 @@ JS
 
             if (!$this->jsFileRemouteCompile) {
                 foreach ($files as $fileCode => $fileTag) {
+                    if (in_array(array_pop(explode('/', $fileCode)), $this->skip)) {
+                        $resultFiles[$fileCode] = $fileTag;
+                        continue;
+                    }
+                    
                     if (!Url::isRelative($fileCode)) {
                         $resultFiles[$fileCode] = $fileTag;
                     }
@@ -427,6 +440,11 @@ JS
             $resultContent = [];
             $resultFiles = [];
             foreach ($files as $fileCode => $fileTag) {
+                if (in_array(array_pop(explode('/', $fileCode)), $this->skip)){
+                    $resultFiles[$fileCode] = $fileTag;
+                    continue;
+                }
+                
                 if (Url::isRelative($fileCode)) {
                     if ($pos = strpos($fileCode, "?")) {
                         $fileCode = substr($fileCode, 0, $pos);
@@ -599,6 +617,11 @@ JS
 
             if (!$this->cssFileRemouteCompile) {
                 foreach ($files as $fileCode => $fileTag) {
+                    if (in_array(array_pop(explode('/', $fileCode)), $this->skip)){
+                        $resultFiles[$fileCode] = $fileTag;
+                        continue;
+                    }
+                
                     if (!Url::isRelative($fileCode)) {
                         $resultFiles[$fileCode] = $fileTag;
                     }
@@ -615,6 +638,11 @@ JS
             $resultContent = [];
             $resultFiles = [];
             foreach ($files as $fileCode => $fileTag) {
+                if (in_array(array_pop(explode('/', $fileCode)), $this->skip)) {
+                    $resultFiles[$fileCode] = $fileTag;
+                    continue;
+                }
+                
                 if (Url::isRelative($fileCode)) {
                     $fileCodeLocal = $fileCode;
                     if ($pos = strpos($fileCode, "?")) {
