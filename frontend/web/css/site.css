@@ -709,7 +709,7 @@ input[name="shipping_type_switcher"]:checked ~ label {
 	-moz-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, .9));
 	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, .9));
 }
-.fancybox__slide.has-image.is-selected:hover .fancybox__content:after {
+.fancybox__slide.has-image.is-selected.can-zoom_in:hover .fancybox__content:after {
 	-webkit-opacity: 0.7;
 	-moz-opacity: 0.7;
 	opacity: 0.7;	
