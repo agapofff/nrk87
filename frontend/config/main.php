@@ -461,6 +461,9 @@ return [
                 'noComments' => true,
                 'maxNumberRows' => 50000,
             ],
+            'skip' => [
+                'fancybox.css',
+            ],
         ],
         
         'devicedetect' => [
