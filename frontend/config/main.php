@@ -440,7 +440,7 @@ return [
         
         'assetsAutoCompress' => [
             'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
-            'enabled' => false,
+            'enabled' => true,
             'readFileTimeout' => 3,
             'jsCompress' => true,
             'jsCompressFlaggedComments' => true,
@@ -460,6 +460,9 @@ return [
                 'extra' => true,
                 'noComments' => true,
                 'maxNumberRows' => 50000,
+            ],
+            'skip' => [
+                'fancybox.css',
             ],
         ],
         
