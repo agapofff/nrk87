@@ -746,9 +746,9 @@ input[name="shipping_type_switcher"]:checked ~ label {
 .is-dragging {
     cursor: grabbing;
 }
-.fancybox__counter {
-    display: none;
-}
+/* .fancybox__counter { */
+    /* display: none; */
+/* } */
 
 /* floating labels */
 .floating-label input {
