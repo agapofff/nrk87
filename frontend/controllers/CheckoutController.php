@@ -181,6 +181,7 @@ class CheckoutController extends \yii\web\Controller
                 $total += ($element->getCount() * $element->getPrice());
             }
 
+
             $deliveryJson = Yii::$app->runAction('curl', [
                 'url' => 'https://www.sessia.com/api/market/delivery-cost',
                 'post' => true,
@@ -219,7 +220,7 @@ class CheckoutController extends \yii\web\Controller
                     
                     $text = str_replace('<br>', ' ', $text);
                     
-                    $deliveryType = $shipping->delivery_type->pickup ? 'pickups' : 'delivery'; // ($shipping->delivery_type->delivery_service->id == 8150 ? 'courier' : 'delivery');
+                    $deliveryType = $shipping->delivery_type->pickup ? 'pickups' : ($shipping->delivery_type->delivery_service->id == 8150 ? 'courier' : 'delivery');
                     
                     if ($q) {
                         if (mb_stripos($text, $q) === false) {
@@ -236,14 +237,18 @@ class CheckoutController extends \yii\web\Controller
                     }
                     
                     // убрать Никольскую
-                    if (strpos($text, 'Никольская') !== false) {
-                        $alreadySet = true;
-                    }
+                    // if (strpos($text, 'Никольская') !== false) {
+                        // $alreadySet = true;
+                    // }
                     
                     // убрать все пункты самовывоза, кроме склада - и переименовать склад
                     if ($deliveryType == 'pickups') {
-                        if (strpos($text, 'Склад Freedom International Group') !== false) {
-                            $text = 'г. Москва, ул. Краснобогатырская, д.89, стр.1 (метро Преображенская площадь)';
+                        if ($shipping->id == 74175) {
+                            $text = 'Москва, Новинский бульвар, 18с1';
+                            $shipping->delivery_type->delivery_service->name = 'Шоу-рум NRK87.';
+                            $shipping->comment = '';
+                            $shipping->lat = 55.754806;
+                            $shipping->lng = 37.584550;
                         } else {
                             continue;
                         }
@@ -260,18 +265,14 @@ class CheckoutController extends \yii\web\Controller
                         'cost' => $shipping->cost,
                         'price' => Yii::$app->formatter->asCurrency($shipping->cost, Yii::$app->params['currency']),
                         'image' => isset($shipping->image) ? 'https://sessia.com' . $shipping->image : '',
-                        'comment' => str_replace('Freedom International Group', 'NRK87', 
-                            $shipping->comment
-                        ),
+                        'comment' => $shipping->comment,
                         'time' => (isset($shipping->delivery_time_from) ? Yii::t('front', 'от {0} до {1} дней', [
                             $shipping->delivery_time_from,
                             $shipping->delivery_time_to
                         ]) : ''),
                         'delivery_service' => [
                             'id' => $shipping->delivery_type->delivery_service->id,
-                            'name' => str_replace('FIG', 'NRK87.', 
-                                $shipping->delivery_type->delivery_service->name
-                            ),
+                            'name' => $shipping->delivery_type->delivery_service->name,
                         ],
                         'sum' => ($total + $shipping->cost),
                         'total' => Yii::$app->formatter->asCurrency(($total + $shipping->cost), Yii::$app->params['currency']),
@@ -287,7 +288,9 @@ class CheckoutController extends \yii\web\Controller
                 }
                 
                 $return = [
-                    'delivery' => $deliveries['delivery'],
+                    // 'delivery' => $deliveries['delivery'],
+                    'delivery' => (!empty($deliveries['delivery']) && !empty($deliveries['courier']) ? array_merge($deliveries['courier'], $deliveries['delivery']) : $deliveries['delivery']),
+                    'courier' => $deliveries['courier'],
                     'pickups' => $deliveries['pickups'],
                     'details' => $details,
                 ];
@@ -301,6 +304,11 @@ class CheckoutController extends \yii\web\Controller
                     case 'delivery':
                         return json_encode([
                             'results' => $return['delivery']
+                        ]);
+                        break;
+                    case 'courier':
+                        return json_encode([
+                            'results' => $return['courier']
                         ]);
                         break;
                     case 'details':
