@@ -36,27 +36,27 @@ return [
     'currency' => 'RUB',
     'socials' => [
         'Facebook' => [
-            'name' => 'nrk1987.wear',
+            'name' => '@nrk1987.wear',
             'link' => 'https://www.facebook.com/nrk1987.wear',
         ],
         'TikTok' => [
-            'name' => 'nrk1987.wear',
+            'name' => '@nrk1987.wear',
             'link' => 'https://www.tiktok.com/@nrk1987.wear',
         ],
         'Instagram' => [
-            'name' => 'nrk87.wear',
+            'name' => '@nrk87.wear',
             'link' => 'https://www.instagram.com/nrk87.wear',
         ],
         'Vkontakte' => [
-            'name' => 'nrk87.wear',
+            'name' => '@nrk87.wear',
             'link' => 'https://vk.com/nrk87.wear',
         ],
         'Youtube' => [
-            'name' => 'nrk87',
+            'name' => '@nrk87',
             'link' => 'https://www.youtube.com/channel/UC_iVum1wE34wTzSY0WxjNGA',
         ],
         'Telegram' => [
-            'name' => 'nrk87wear',
+            'name' => '@nrk87wear',
             'link' => 'https://t.me/nrk87wear',
         ],
     ],
