@@ -240,7 +240,8 @@
         <!-- End Google Tag Manager -->
         
         <meta name="facebook-domain-verification" content="ow656i7d8fj2k61bm0t1vsbisir0pu" />
-        <meta name="yandex-verification" content="8534594848771dbc" />
+        <!-- <meta name="yandex-verification" content="8534594848771dbc" /> -->
+        <meta name="yandex-verification" content="c976c6beb5ed6e56" />
         <meta name="google-site-verification" content="aBPgHR_MNoFK2chOGxm2WAUNITUDcdOrTrQ_wd2X7aA" />
 
         
