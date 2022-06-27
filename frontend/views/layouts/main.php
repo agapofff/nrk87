@@ -582,6 +582,14 @@
                                         ?>
                                     </div>
                                     <div class="col-12 col-md-auto mb-1">
+                                        <?= Html::a(Yii::t('front', 'Пользовательское соглашение'), [
+                                                '/user-agreement'
+                                            ], [
+                                                'class' => 'text-decoration-none mr-4'
+                                            ])
+                                        ?>
+                                    </div>
+                                    <div class="col-12 col-md-auto mb-1">
                                         <?= Html::a(Yii::t('front', 'Публичная оферта'), [
                                                 '/public-offer'
                                             ], [
