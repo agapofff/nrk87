@@ -32,7 +32,8 @@ jQuery(document).ready(function ($) {
     });
     
     // предзагрузка изображений
-    preloadImages = function (images) {
+    preloadImages = function () {
+        var images = JSON.parse(arguments);
         for (var i = 0; i < images.length; i++) {
             $('<img>').attr('src', images[i]);
         }
