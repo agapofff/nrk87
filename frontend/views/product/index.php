@@ -19,6 +19,21 @@ if ($images) {
     ]);
 }
 
+$imgMin = 1000;
+$imgMid = 2000;
+$imgMax = 3500;
+$productImages = [];
+foreach ($images as $key => $image) {
+    $imageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMin . '.jpg';
+    $imageMid = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMid . '.jpg';
+    $imageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMax . '.jpg';
+    $productImages[] = [
+        'min' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMin) ? $imageMin : $image->getUrl('x' . $imgMin),
+        'mid' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMid) ? $imageMid : $image->getUrl('x' . $imgMid),
+        'max' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMax) ? $imageMax : $image->getUrl('x' . $imgMax),
+    ];
+}
+
 $product_name = json_decode($model->name)->{Yii::$app->language};
 $h1 = Yii::$app->params['h1'] ?: $product_name;
 $this->title = Yii::$app->params['title'] ?: $product_name . ' - ' . Yii::t('front', 'Купить в интернет-магазине') . ' ' . Yii::$app->name;
@@ -36,11 +51,10 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
             
             <?php
                 foreach ($images as $key => $image) {
-                    $cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1500.jpg';
             ?>
                     <div class="col-12 mt-1 overflow-hidden">
-                        <a href="<?= $image->getUrl('x3500') ?>" data-fancybox="gallery1">
-                            <img <?php if ($key == 0) {?> itemprop="image" <?php } ?> src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x1500') ?>" class="d-block w-100" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
+                        <a href="<?= $productImages[$key]['max'] ?>" data-fancybox="gallery1">
+                            <img src="<?= $productImages[$key]['min'] ?>" class="d-block w-100" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy" <?php if ($key == 0) {?>itemprop="image"<?php } ?>>
                         </a>
                     </div>
             <?php
@@ -57,11 +71,9 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                     
                 <?php
                     foreach ($images as $key => $image) {
-                        $cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1000.jpg';
-                        $cachedImageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x2500.jpg';
                 ?>
-                        <a href="<?= $image->getUrl('x2500') ?>" data-fancybox="gallery2" data-width="100" data-height="100">
-                            <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x1000') ?>" class="img-fluid rounded" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
+                        <a href="<?= $productImages[$key]['mid'] ?>" data-fancybox="gallery2" data-width="100" data-height="100">
+                            <img src="<?= $productImages[$key]['min'] ?>" class="img-fluid rounded" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
                         </a>
                 <?php
                     }

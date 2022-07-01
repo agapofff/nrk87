@@ -30,6 +30,13 @@ jQuery(document).ready(function ($) {
     $(document).on('pjax:end', function () {
         lazyload();
     });
+    
+    // предзагрузка изображений
+    preloadImages = function (images) {
+        for (var i = 0; i < images.length; i++) {
+            $('<img>').attr('src', images[i]);
+        }
+    };
         
 
     // маски
