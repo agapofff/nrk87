@@ -28,11 +28,13 @@ foreach ($images as $key => $image) {
     $imageMid = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMid . '.jpg';
     $imageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMax . '.jpg';
     $productImages[] = [
-        'min' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMin) ? $imageMin : $image->getUrl('x' . $imgMin),
-        'mid' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMid) ? $imageMid : $image->getUrl('x' . $imgMid),
-        'max' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMax) ? $imageMax : $image->getUrl('x' . $imgMax),
+        'min' => /* file_exists(Yii::getAlias('@frontend') . '/web' . $imageMin) ? $imageMin :*/ $image->getUrl('x' . $imgMin),
+        'mid' => /*file_exists(Yii::getAlias('@frontend') . '/web' . $imageMid) ? $imageMid :*/ $image->getUrl('x' . $imgMid),
+        'max' => /*file_exists(Yii::getAlias('@frontend') . '/web' . $imageMax) ? $imageMax :*/ $image->getUrl('x' . $imgMax),
     ];
 }
+
+// $this->registerJs("", View::POS_READY);
 
 $product_name = json_decode($model->name)->{Yii::$app->language};
 $h1 = Yii::$app->params['h1'] ?: $product_name;
