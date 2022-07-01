@@ -39,7 +39,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                     $cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1500.jpg';
             ?>
                     <div class="col-12 mt-1 overflow-hidden">
-                        <a href="<?= $image->getUrl('x3000') ?>" data-fancybox="gallery1">
+                        <a href="<?= $image->getUrl('x3500') ?>" data-fancybox="gallery1">
                             <img <?php if ($key == 0) {?> itemprop="image" <?php } ?> src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x1500') ?>" class="d-block w-100" alt="<?= $image->alt ? $image->alt : $product_name ?>" loading="lazy">
                         </a>
                     </div>
