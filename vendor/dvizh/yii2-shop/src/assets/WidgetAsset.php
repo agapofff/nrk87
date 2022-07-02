@@ -7,6 +7,7 @@ class WidgetAsset extends AssetBundle
 {
     public $depends = [
         'yii\web\JqueryAsset',
+        '@frontend/web/js/site.js',
         // 'yii\bootstrap\BootstrapPluginAsset',
     ];
 
