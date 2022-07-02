@@ -20,20 +20,20 @@ if ($images) {
     ]);
 }
 
-// $imgMin = 1000;
-// $imgMid = 2000;
-// $imgMax = 3500;
-// $productImages = [];
-// foreach ($images as $key => $image) {
-    // $imageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMin . '.jpg';
-    // $imageMid = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMid . '.jpg';
-    // $imageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMax . '.jpg';
-    // $productImages[] = [
-        // 'min' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMin) ? $imageMin : $image->getUrl('x' . $imgMin),
-        // 'mid' => /* file_exists(Yii::getAlias('@frontend') . '/web' . $imageMid) ? $imageMid :*/ $image->getUrl('x' . $imgMid),
-        // 'max' => /* file_exists(Yii::getAlias('@frontend') . '/web' . $imageMax) ? $imageMax :*/ $image->getUrl('x' . $imgMax),
-    // ];
-// }
+$imgMin = 1000;
+$imgMid = 2000;
+$imgMax = 3500;
+$productImages = [];
+foreach ($images as $key => $image) {
+    $imageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMin . '.jpg';
+    $imageMid = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMid . '.jpg';
+    $imageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMax . '.jpg';
+    $productImages[] = [
+        'min' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMin) ? $imageMin : $image->getUrl('x' . $imgMin),
+        'mid' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMid) ? $imageMid : $image->getUrl('x' . $imgMid),
+        'max' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMax) ? $imageMax : $image->getUrl('x' . $imgMax),
+    ];
+}
 
 // foreach ($productImages as $productImage) {
     // $this->registerLinkTag([
@@ -62,8 +62,8 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                 foreach ($images as $key => $image) {
             ?>
                     <div class="col-12 mt-1 overflow-hidden">
-                        <a href="<?= $image->getUrl('x3500') ?>" data-fancybox="gallery1">
-                            <img data-src="<?= $image->getUrl('x1000') ?>" class="d-block w-100 lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>" <?php if ($key == 0) {?>itemprop="image"<?php } ?>>
+                        <a href="<?= $productImages[$key]['max'] ?>" data-fancybox="gallery1">
+                            <img data-src="<?= $productImages[$key]['min'] ?>" class="d-block w-100 lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>" <?php if ($key == 0) {?>itemprop="image"<?php } ?>>
                         </a>
                     </div>
             <?php
@@ -81,8 +81,8 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                 <?php
                     foreach ($images as $key => $image) {
                 ?>
-                        <a href="<?= $image->getUrl('x2000') ?>" data-fancybox="gallery2" data-width="100" data-height="100">
-                            <img src="<?= $image->getUrl('x1000') ?>" class="img-fluid rounded lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>">
+                        <a href="<?= $productImages[$key]['mid'] ?>" data-fancybox="gallery2" data-width="100" data-height="100">
+                            <img src="<?= $productImages[$key]['min'] ?>" class="img-fluid rounded lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>">
                         </a>
                 <?php
                     }
