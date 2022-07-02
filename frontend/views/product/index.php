@@ -82,7 +82,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                     foreach ($images as $key => $image) {
                 ?>
                         <div>
-                            <img src="<?= $productImages[$key]['min'] ?>" class="img-fluid rounded lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>" onclick="$('#fancyboxGalleryLink<?= $key ?>').trigger('click');">
+                            <img src="<?= $productImages[$key]['min'] ?>" class="img-fluid rounded lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>" onclick="Fancybox.getInstance().jumpTo(<?= $key ?>).show();">
                         </div>
                 <?php
                     }
