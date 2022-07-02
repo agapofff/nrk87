@@ -32,12 +32,12 @@ jQuery(document).ready(function ($) {
     });
     
     // предзагрузка изображений
-    preloadImages = function () {
-        var images = JSON.parse(arguments);
-        for (var i = 0; i < images.length; i++) {
-            $('<img>').attr('src', images[i]);
-        }
-    };
+    // preloadImages = function () {
+        // var images = JSON.parse(arguments);
+        // for (var i = 0; i < arguments.length; i++) {
+            // $('<img>').attr('src', arguments[i]);
+        // }
+    // };
         
 
     // маски
