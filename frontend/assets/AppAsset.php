@@ -24,7 +24,8 @@ class AppAsset extends AssetBundle
         'fonts/ttfirsneue/css/fonts.css',
         'css/nprogress.css',
         // 'css/ekko-lightbox.css',
-        'css/fancybox.css',
+        // 'css/fancybox.css',
+        'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css',
         'css/site.css',
     ];
     public $js = [
@@ -52,7 +53,8 @@ class AppAsset extends AssetBundle
         
         // 'js/jquery.zoom.js',
         'js/ekko-lightbox.js',
-        'js/fancybox.umd.js',
+        // 'js/fancybox.umd.js',
+        'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js',
         'js/nprogress.js',
         'js/jquery.marquee.min.js',
         // 'js/headroom.min.js',
