@@ -76,7 +76,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
             
                 <div class="col-12 mb-2">
                 
-                    <div class="owl-carousel owl-theme owl-dots owl-autoheight owl-loop">
+                    <div class="owl-carousel owl-theme owl-dots owl-autoheight">
                     
                 <?php
                     foreach ($images as $key => $image) {
