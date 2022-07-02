@@ -6,8 +6,8 @@ use yii\web\AssetBundle;
 class WidgetAsset extends AssetBundle
 {
     public $depends = [
-        'yii\web\JqueryAsset',
-        '@frontend\web\js\site.js',
+        'frontend\assets\AppAsset',
+        // 'yii\web\JqueryAsset',
         // 'yii\bootstrap\BootstrapPluginAsset',
     ];
 
