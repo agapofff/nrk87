@@ -81,7 +81,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                 <?php
                     foreach ($images as $key => $image) {
                 ?>
-                        <a href="<?= $productImages[$key]['mid'] ?>" data-fancybox="gallery2" data-width="100" data-height="100">
+                        <a href="<?= $productImages[$key]['mid'] ?>" data-fancybox="gallery2">
                             <img src="<?= $productImages[$key]['min'] ?>" class="img-fluid rounded lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>">
                         </a>
                 <?php
