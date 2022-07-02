@@ -668,15 +668,6 @@ return array (
       '@cetver/LanguageSelector' => $vendorDir . '/cetver/yii2-language-selector',
     ),
   ),
-  'skeeks/yii2-assets-auto-compress' => 
-  array (
-    'name' => 'skeeks/yii2-assets-auto-compress',
-    'version' => '1.4.3.3',
-    'alias' => 
-    array (
-      '@skeeks/yii2/assetsAuto' => $vendorDir . '/skeeks/yii2-assets-auto-compress/src',
-    ),
-  ),
   'alexandernst/yii2-device-detect' => 
   array (
     'name' => 'alexandernst/yii2-device-detect',
@@ -703,6 +694,15 @@ return array (
     'alias' => 
     array (
       '@jisoft/sypexgeo' => $vendorDir . '/jisoft/yii2-sypexgeo',
+    ),
+  ),
+  'skeeks/yii2-assets-auto-compress' => 
+  array (
+    'name' => 'skeeks/yii2-assets-auto-compress',
+    'version' => 'dev-master',
+    'alias' => 
+    array (
+      '@skeeks/yii2/assetsAuto' => $vendorDir . '/skeeks/yii2-assets-auto-compress/src',
     ),
   ),
 );

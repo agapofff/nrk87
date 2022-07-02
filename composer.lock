@@ -6698,7 +6698,7 @@
         },
         {
             "name": "skeeks/yii2-assets-auto-compress",
-            "version": "1.4.3.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-semenov/yii2-assets-auto-compress.git",
@@ -6717,6 +6717,7 @@
                 "yiisoft/yii2": "^2",
                 "yiisoft/yii2-httpclient": "^2"
             },
+            "default-branch": true,
             "type": "yii2-extension",
             "autoload": {
                 "psr-4": {
@@ -11940,5 +11941,5 @@
         "php": ">=5.6.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
