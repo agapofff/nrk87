@@ -24,8 +24,9 @@ class AppAsset extends AssetBundle
         'fonts/ttfirsneue/css/fonts.css',
         'css/nprogress.css',
         // 'css/ekko-lightbox.css',
-        'css/fancybox.css',
+        
         'css/site.css',
+        'css/fancybox.css',
     ];
     public $js = [
         // '//use.fontawesome.com/9132c887d9.js',
