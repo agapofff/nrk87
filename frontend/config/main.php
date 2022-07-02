@@ -462,7 +462,7 @@ return [
                 'maxNumberRows' => 50000,
             ],
             'skip' => [
-                'fancybox.css',
+                // 'fancybox.css',
                 // 'fancybox.umd.js',
             ],
         ],
