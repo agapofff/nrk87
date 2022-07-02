@@ -34,7 +34,7 @@ foreach ($images as $key => $image) {
         'max' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMax) ? $imageMax : $image->getUrl('x' . $imgMax),
     ];
 }
-
+print_r(ArrayHelper::getColumn($productImages, 'max'));
 $this->registerJs("preloadImages(" . json_encode(ArrayHelper::getColumn($productImages, 'max')) . ");", View::POS_READY);
 
 $product_name = json_decode($model->name)->{Yii::$app->language};
