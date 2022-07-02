@@ -35,23 +35,13 @@ foreach ($images as $key => $image) {
     ];
 }
 
-foreach ($productImages as $productImage) {
-    $this->registerLinkTag([
-        'rel' => 'preload prefetch prerender', 
-        'as' => 'image', 
-        'href' => $productImage['min']
-    ]);
-    $this->registerLinkTag([
-        'rel' => 'preload prefetch prerender', 
-        'as' => 'image', 
-        'href' => $productImage['mid']
-    ]);
-    $this->registerLinkTag([
-        'rel' => 'preload prefetch prerender', 
-        'as' => 'image', 
-        'href' => $productImage['max']
-    ]);
-}
+// foreach ($productImages as $productImage) {
+    // $this->registerLinkTag([
+        // 'rel' => 'preload prefetch prerender', 
+        // 'as' => 'image', 
+        // 'href' => $productImage['max']
+    // ]);
+// }
 
 $product_name = json_decode($model->name)->{Yii::$app->language};
 $h1 = Yii::$app->params['h1'] ?: $product_name;
