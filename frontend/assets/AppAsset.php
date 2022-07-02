@@ -52,7 +52,7 @@ class AppAsset extends AssetBundle
         
         // 'js/jquery.zoom.js',
         'js/ekko-lightbox.js',
-        'js/fancybox.umd.js',
+        // 'js/fancybox.umd.js',
         'js/nprogress.js',
         'js/jquery.marquee.min.js',
         // 'js/headroom.min.js',
