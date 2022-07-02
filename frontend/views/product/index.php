@@ -51,59 +51,45 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
 ?>
 
 <div class="product-content container-fluid mb-3 md-md-5 px-lg-2 px-xl-3 px-xxl-5" itemscope itemtype="http://schema.org/Product">
-    
     <div class="row justify-content-center">
-
         <div class="col-12 col-md-6">
-        
             <div class="row d-none d-md-flex">
-            
             <?php
                 foreach ($images as $key => $image) {
             ?>
                     <div class="col-12 mt-1 overflow-hidden">
-                        <a id="fancyboxGalleryLink<?= $key ?>" href="<?= $productImages[$key]['max'] ?>" data-fancybox="gallery">
+                        <a href="<?= $productImages[$key]['max'] ?>" data-fancybox="gallery" data-image="<?= $key ?>">
                             <img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="<?= $productImages[$key]['min'] ?>" class="d-block w-100 lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>" <?php if ($key == 0) {?>itemprop="image"<?php } ?>>
                         </a>
                     </div>
             <?php
                 }
             ?>
-            
             </div>
             
             <div class="row d-md-none">
-            
                 <div class="col-12 mb-2">
-                
-                    <div class="owl-carousel owl-theme owl-dots owl-autoheight">
-                    
+                    <!-- <div class="owl-carousel owl-theme owl-dots owl-autoheight"> -->
                 <?php
                     foreach ($images as $key => $image) {
                 ?>
-                        <div>
-                            <img src="<?= $productImages[$key]['min'] ?>" class="img-fluid rounded lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>" onclick="Fancybox.getInstance().jumpTo(<?= $key ?>).show();">
-                        </div>
+                        <a href="<?= $productImages[$key]['mid'] ?>" data-fancybox="gallery2">
+                            <img src="<?= $productImages[$key]['min'] ?>" class="img-fluid rounded lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>">
+                        </a>
                 <?php
                     }
                 ?>
                     
-                    </div>
-                
+                    <!-- </div>-->
                 </div>
-            
             </div>
-            
         </div>
         
         <div class="col-12 col-md-6">
-        
             <div class="sticky-top" style="top:100px">
-            
                 <h1 class="ttfirsneue font-weight-light mb-2 mb-md-3" itemprop="name">
                     <?= $h1 ?>
                 </h1>
-                
         <?php
             if ($price && $model->available) {
         ?>
@@ -191,9 +177,7 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                 </div>
                 
             </div>
-            
         </div>
-        
     </div>
     
 <?php
