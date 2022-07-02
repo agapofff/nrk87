@@ -324,7 +324,7 @@ jQuery(document).ready(function ($) {
         // });	 
     // }
     // imageZoom();
-    
+    /*
     Fancybox.bind('[data-fancybox]', {
         // Image: {
             // fit: 'contain-w',
@@ -339,7 +339,7 @@ jQuery(document).ready(function ($) {
         },
         dragToClose: false,
     });
-
+*/
 
     // выбор размера
     $(document).on('click', '.dropdown-change-select', function () {
