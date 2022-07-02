@@ -339,9 +339,6 @@ jQuery(document).ready(function ($) {
         },
         dragToClose: false,
     });
-    fancyboxShow = function (id) {
-        $('[data-fancybox][data-image="' + id + '"]').click();
-    }
 
 
     // выбор размера
