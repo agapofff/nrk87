@@ -461,10 +461,6 @@ return [
                 'noComments' => true,
                 'maxNumberRows' => 500000,
             ],
-            'skip' => [
-                // 'fancybox.css',
-                // 'fancybox.umd.js',
-            ],
         ],
         
         'devicedetect' => [
