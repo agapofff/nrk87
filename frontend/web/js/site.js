@@ -1,3 +1,13 @@
+    wishlistCheck = function () {
+        var $btn = $('.btn-wishlist');
+        $.get('/' + $btn.data('lang') + '/wishlist/check', {
+            'product_id': $btn.data('product'),
+            'size': $btn.data('size')
+        }, function(data) {
+            $btn.replaceWith(data);
+        });
+    }
+
 jQuery(document).ready(function ($) {
     
     // page fade in-out
@@ -372,15 +382,7 @@ jQuery(document).ready(function ($) {
 
 
     // wishlist
-    wishlistCheck = function () {
-        var $btn = $('.btn-wishlist');
-        $.get('/' + $btn.data('lang') + '/wishlist/check', {
-            'product_id': $btn.data('product'),
-            'size': $btn.data('size')
-        }, function(data) {
-            $btn.replaceWith(data);
-        });
-    }
+
     $(document).on('click', '.btn-wishlist', function () {
         $.get('/' + $(this).data('lang') + '/wishlist/' + $(this).data('action'), {
             'product_id': $(this).data('product'),
