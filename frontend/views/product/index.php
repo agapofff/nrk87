@@ -2,6 +2,7 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use dvizh\shop\widgets\ShowPrice;
 use dvizh\cart\widgets\BuyButton;
 use dvizh\cart\widgets\ChangeCount;
@@ -34,7 +35,7 @@ foreach ($images as $key => $image) {
     ];
 }
 
-// $this->registerJs("", View::POS_READY);
+$this->registerJs("preloadImages(" . json_encode(ArrayHelper::getColumn($productImages, 'max')) . ");", View::POS_READY);
 
 $product_name = json_decode($model->name)->{Yii::$app->language};
 $h1 = Yii::$app->params['h1'] ?: $product_name;
