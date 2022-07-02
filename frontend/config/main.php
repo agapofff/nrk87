@@ -457,12 +457,12 @@ return [
             'noIncludeJsFilesOnPjax' => true,
             'htmlFormatter' => [
                 'class' => 'skeeks\yii2\assetsAuto\formatters\html\TylerHtmlCompressor',
-                'extra' => true,
+                'extra' => false,
                 'noComments' => true,
-                'maxNumberRows' => 50000,
+                'maxNumberRows' => 500000,
             ],
             'skip' => [
-                'fancybox.css',
+                // 'fancybox.css',
                 // 'fancybox.umd.js',
             ],
         ],
