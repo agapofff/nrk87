@@ -463,6 +463,7 @@ return [
             ],
             'skip' => [
                 'fancybox.css',
+                'fancybox.umd.js',
             ],
         ],
         
