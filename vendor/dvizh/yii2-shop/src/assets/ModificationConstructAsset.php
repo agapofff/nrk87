@@ -7,6 +7,7 @@ class ModificationConstructAsset extends AssetBundle
 {
     public $depends = [
         'yii\web\JqueryAsset',
+        'js/site.js'
     ];
     
     public $js = [
