@@ -49,25 +49,18 @@ $store_types = Yii::$app->params['store_types'];
             // }
         // ", View::POS_LOAD);
     // }
-?>
-<div style="
-    position: fixed;
-    left: -99999px;
-    pointer-events: none;
-">
-<?php
     
-    foreach ($images as $image){
-?>
-        <img src="<?= $image->getUrl('x200') ?>">
-        <img src="<?= $image->getUrl('x1000') ?>">
-        <img src="<?= $image->getUrl('x2000') ?>">
-        <img src="<?= $image->getUrl('x3500') ?>">
-        <img src="<?= $image->getUrl() ?>">
-<?php
+    foreach ($images as $image) {
+        $this->registerJs("
+            $.get('" . $image->getUrl('x200') . "');
+            $.get('" . $image->getUrl('x1000') . "');
+            $.get('" . $image->getUrl('x2000') . "');
+            $.get('" . $image->getUrl('x3500') . "');
+            $.get('" . $image->getUrl() . "');
+        ", View::POS_READY);
     }
 ?>
-</div>
+
 
 <div class="product-form">
 
