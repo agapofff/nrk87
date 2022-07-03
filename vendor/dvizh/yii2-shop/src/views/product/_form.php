@@ -34,7 +34,7 @@ $store_types = Yii::$app->params['store_types'];
 <?php // формируем изображения заранее, до вывода на фронте ?>
 <div style="
     position: fixed;
-    left: -99999;
+    left: -99999px;
     pointer-events: none;
 ">
 <?php
