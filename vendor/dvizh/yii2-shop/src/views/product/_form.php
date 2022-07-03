@@ -31,26 +31,6 @@ $store_types = Yii::$app->params['store_types'];
 
 ?>
 
-<?php // формируем изображения заранее, до вывода на фронте ?>
-<div style="
-    position: fixed;
-    left: -99999px;
-    pointer-events: none;
-">
-<?php
-    $images = $model->getImages();
-    foreach ($images as $image){
-?>
-        <img src="<?= $image->getUrl('x200') ?>">
-        <img src="<?= $image->getUrl('x1000') ?>">
-        <img src="<?= $image->getUrl('x2000') ?>">
-        <img src="<?= $image->getUrl('x3500') ?>">
-        <img src="<?= $image->getUrl() ?>">
-<?php
-    }
-?>
-</div>
-
 <div class="product-form">
 
     <?= AlertBlock::widget([
@@ -992,3 +972,18 @@ $store_types = Yii::$app->params['store_types'];
     );
 ?>
 
+<?php // формируем изображения заранее, до вывода на фронте 
+    $productImages = json_encode([
+        $image->getUrl('x200'),
+        $image->getUrl('x1000'),
+        $image->getUrl('x2000'),
+        $image->getUrl('x3500'),
+        $image->getUrl()
+    ]);
+    $this->registerJs("
+        $.each(JSON.parse($productImages), function (url) {
+            var img = new Image();
+            img.src = url;
+        });
+    ", View::POS_READY);
+?>
