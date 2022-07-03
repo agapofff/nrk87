@@ -34,30 +34,20 @@ $store_types = Yii::$app->params['store_types'];
 
 <?php // формируем изображения заранее, до вывода на фронте 
     $images = $model->getImages();
-    // foreach ($images as $image){
-        // $this->registerJs("
-            // var urls = [
-                // '" . $image->getUrl('x200') . "',
-                // '" . $image->getUrl('x1000') . "',
-                // '" . $image->getUrl('x2000') . "',
-                // '" . $image->getUrl('x3500') . "',
-                // '" . $image->getUrl() . "'
-            // ];
-            // for (var i = 0; i < urls.length; i++) {
-                // var img = new Image();
-                // img.src = urls[i];
-            // }
-        // ", View::POS_LOAD);
-    // }
-    
-    foreach ($images as $image) {
+    foreach ($images as $image){
         $this->registerJs("
-            $.ajax({url:'" . $image->getUrl('x200') . "'});
-            $.ajax({url:'" . $image->getUrl('x1000') . "'});
-            $.ajax({url:'" . $image->getUrl('x2000') . "'});
-            $.ajax({url:'" . $image->getUrl('x3500') . "'});
-            $.ajax({url:'" . $image->getUrl() . "'});
-        ", View::POS_READY);
+            var urls = [
+                '" . $image->getUrl('x200') . "',
+                '" . $image->getUrl('x1000') . "',
+                '" . $image->getUrl('x2000') . "',
+                '" . $image->getUrl('x3500') . "',
+                '" . $image->getUrl() . "'
+            ];
+            for (var i = 0; i < urls.length; i++) {
+                var img = new Image();
+                img.src = urls[i];
+            }
+        ", View::POS_LOAD);
     }
 ?>
 
