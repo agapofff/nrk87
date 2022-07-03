@@ -25,12 +25,12 @@ $imgMid = 2000;
 $imgMax = 3500;
 $productImages = [];
 foreach ($images as $key => $image) {
-    $imageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMin . '.jpg';
-    $imageMid = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMid . '.jpg';
+    $imageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_' . $imgMin . 'x.jpg';
+    $imageMid = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_' . $imgMid . 'x.jpg';
     $imageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '.jpg';
     $productImages[] = [
-        'min' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMin) ? $imageMin : $image->getUrl('x' . $imgMin),
-        'mid' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMid) ? $imageMid : $image->getUrl('x' . $imgMid),
+        'min' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMin) ? $imageMin : $image->getUrl($imgMin . 'x'),
+        'mid' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMid) ? $imageMid : $image->getUrl($imgMid . 'x'),
         'max' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMax) ? $imageMax : $image->getUrl(),
     ];
 }
