@@ -974,6 +974,7 @@ $store_types = Yii::$app->params['store_types'];
 
 <?php // формируем изображения заранее, до вывода на фронте 
     $productImages = [];
+    $images = $model->getImages();
     foreach ($images as $image){
         $productImages[] = $image->getUrl('x200');
         $productImages[] = $image->getUrl('x1000');
