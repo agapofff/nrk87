@@ -987,6 +987,6 @@ $store_types = Yii::$app->params['store_types'];
                 var img = new Image();
                 img.src = urls[i];
             }
-        ", View::POS_READY);
+        ", View::POS_LOAD);
     }
 ?>
