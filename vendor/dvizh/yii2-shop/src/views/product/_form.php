@@ -31,7 +31,25 @@ $store_types = Yii::$app->params['store_types'];
 
 ?>
 
-
+<?php // формируем изображения заранее, до вывода на фронте ?>
+<div style="
+    position: absolute;
+    left: -99999;
+    pointer-events: none;
+">
+<?php
+    $images = $model->getImages();
+    foreach ($images as $image){
+?>
+        <img src="<?= $image->getUrl('x200') ?>">
+        <img src="<?= $image->getUrl('x1000') ?>">
+        <img src="<?= $image->getUrl('x2000') ?>">
+        <img src="<?= $image->getUrl('x3500') ?>">
+        <img src="<?= $image->getUrl() ?>">
+<?php
+    }
+?>
+</div>
 
 <div class="product-form">
 
@@ -951,25 +969,7 @@ $store_types = Yii::$app->params['store_types'];
 		<br>
 		<br>
         
-        <?php // формируем изображения заранее, до вывода на фронте ?>
-        <div style="
-            position: absolute;
-            left: -99999;
-            pointer-events: none;
-        ">
-        <?php
-            $images = $model->getImages();
-            foreach ($images as $image){
-        ?>
-                <img src="<?= $image->getUrl('x200') ?>">
-                <img src="<?= $image->getUrl('x1000') ?>">
-                <img src="<?= $image->getUrl('x2000') ?>">
-                <img src="<?= $image->getUrl('x3500') ?>">
-                <img src="<?= $image->getUrl() ?>">
-        <?php
-            }
-        ?>
-        </div>
+
 
     <?php ActiveForm::end(); ?>
     
