@@ -952,16 +952,20 @@ $store_types = Yii::$app->params['store_types'];
 		<br>
         
         <?php // формируем изображения заранее, до вывода на фронте ?>
-        <div class="hidden">
+        <div style="
+            position: absolute;
+            left: -99999;
+            pointer-events: none;
+        ">
         <?php
             $images = $model->getImages();
             foreach ($images as $image){
         ?>
-                <img src="<?= $image->getUrl('x200') ?>" loading="lazy">
-                <img src="<?= $image->getUrl('x1000') ?>" loading="lazy">
-                <img src="<?= $image->getUrl('x2000') ?>" loading="lazy">
-                <img src="<?= $image->getUrl('x3500') ?>" loading="lazy">
-                <img src="<?= $image->getUrl() ?>" loading="lazy">
+                <img src="<?= $image->getUrl('x200') ?>">
+                <img src="<?= $image->getUrl('x1000') ?>">
+                <img src="<?= $image->getUrl('x2000') ?>">
+                <img src="<?= $image->getUrl('x3500') ?>">
+                <img src="<?= $image->getUrl() ?>">
         <?php
             }
         ?>
