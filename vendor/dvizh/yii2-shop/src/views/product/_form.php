@@ -983,10 +983,10 @@ $store_types = Yii::$app->params['store_types'];
                 '" . $image->getUrl('x3500') . "',
                 '" . $image->getUrl() . "'
             ];
-            $.each(urls, function (url) {
+            for (var i = 0; i < urls.length; i++) {
                 var img = new Image();
-                img.src = url;
-            });
+                img.src = urls[i];
+            }
         ", View::POS_READY);
     }
 ?>
