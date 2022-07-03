@@ -37,10 +37,10 @@ $store_types = Yii::$app->params['store_types'];
     foreach ($images as $image) {
         $this->registerJs("
             var urls = [
-                '" . $image->getUrl('x200') . "',
-                '" . $image->getUrl('x1000') . "',
-                '" . $image->getUrl('x2000') . "',
-                '" . $image->getUrl('x3500') . "',
+                '" . $image->getUrl('200x') . "',
+                '" . $image->getUrl('1000x') . "',
+                '" . $image->getUrl('2000x') . "',
+                '" . $image->getUrl('3500x') . "',
                 '" . $image->getUrl() . "'
             ];
             for (var i = 0; i < urls.length; i++) {
