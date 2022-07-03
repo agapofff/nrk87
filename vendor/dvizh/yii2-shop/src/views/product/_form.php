@@ -973,13 +973,14 @@ $store_types = Yii::$app->params['store_types'];
 ?>
 
 <?php // формируем изображения заранее, до вывода на фронте 
-    $productImages = json_encode([
-        $image->getUrl('x200'),
-        $image->getUrl('x1000'),
-        $image->getUrl('x2000'),
-        $image->getUrl('x3500'),
-        $image->getUrl()
-    ]);
+    $productImages = [];
+    foreach ($images as $image){
+        $productImages[] = $image->getUrl('x200');
+        $productImages[] = $image->getUrl('x1000');
+        $productImages[] = $image->getUrl('x2000');
+        $productImages[] = $image->getUrl('x3500');
+        $productImages[] = $image->getUrl();
+    }
     $this->registerJs("
         $.each(JSON.parse($productImages), function (url) {
             var img = new Image();
