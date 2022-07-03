@@ -976,13 +976,13 @@ $store_types = Yii::$app->params['store_types'];
     $images = $model->getImages();
     foreach ($images as $image){
         $this->registerJs("
-            var urls = {
+            var urls = [
                 '" . $image->getUrl('x200') . "',
                 '" . $image->getUrl('x1000') . "',
                 '" . $image->getUrl('x2000') . "',
                 '" . $image->getUrl('x3500') . "',
                 '" . $image->getUrl() . "'
-            };
+            ];
             $.each(urls, function (url) {
                 var img = new Image();
                 img.src = url;
