@@ -984,7 +984,7 @@ $store_types = Yii::$app->params['store_types'];
     }
     $this->registerJs("
 console.log(" . json_encode($productImages) . ");
-        $.each(JSON.parse(" . json_encode($productImages) . "), function (url) {
+        $.each(" . $productImages . ", function (url) {
             var img = new Image();
             img.src = url;
         });
