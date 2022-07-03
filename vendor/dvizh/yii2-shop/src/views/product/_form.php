@@ -31,6 +31,44 @@ $store_types = Yii::$app->params['store_types'];
 
 ?>
 
+
+<?php // формируем изображения заранее, до вывода на фронте 
+    $images = $model->getImages();
+    // foreach ($images as $image){
+        // $this->registerJs("
+            // var urls = [
+                // '" . $image->getUrl('x200') . "',
+                // '" . $image->getUrl('x1000') . "',
+                // '" . $image->getUrl('x2000') . "',
+                // '" . $image->getUrl('x3500') . "',
+                // '" . $image->getUrl() . "'
+            // ];
+            // for (var i = 0; i < urls.length; i++) {
+                // var img = new Image();
+                // img.src = urls[i];
+            // }
+        // ", View::POS_LOAD);
+    // }
+?>
+<div style="
+    position: fixed;
+    left: -99999px;
+    pointer-events: none;
+">
+<?php
+    
+    foreach ($images as $image){
+?>
+        <img src="<?= $image->getUrl('x200') ?>">
+        <img src="<?= $image->getUrl('x1000') ?>">
+        <img src="<?= $image->getUrl('x2000') ?>">
+        <img src="<?= $image->getUrl('x3500') ?>">
+        <img src="<?= $image->getUrl() ?>">
+<?php
+    }
+?>
+</div>
+
 <div class="product-form">
 
     <?= AlertBlock::widget([
@@ -970,23 +1008,4 @@ $store_types = Yii::$app->params['store_types'];
         View::POS_READY,
         'view-products'
     );
-?>
-
-<?php // формируем изображения заранее, до вывода на фронте 
-    $images = $model->getImages();
-    foreach ($images as $image){
-        $this->registerJs("
-            var urls = [
-                '" . $image->getUrl('x200') . "',
-                '" . $image->getUrl('x1000') . "',
-                '" . $image->getUrl('x2000') . "',
-                '" . $image->getUrl('x3500') . "',
-                '" . $image->getUrl() . "'
-            ];
-            for (var i = 0; i < urls.length; i++) {
-                var img = new Image();
-                img.src = urls[i];
-            }
-        ", View::POS_LOAD);
-    }
 ?>
