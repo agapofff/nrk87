@@ -387,7 +387,7 @@ $store_types = Yii::$app->params['store_types'];
         <?php Pjax::begin(); ?>
             <?= Gallery::widget([
                     'model' => $model,
-                    'previewSize' => '300x300',
+                    'previewSize' => '200x200',
                     'fileInputPluginOptions' => [
                         'showPreview' => false,
                     ]
