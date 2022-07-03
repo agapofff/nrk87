@@ -58,8 +58,8 @@ $sizes = json_decode($model->sizes)->{Yii::$app->language};
                 foreach ($images as $key => $image) {
             ?>
                     <div class="col-12 mt-1 overflow-hidden">
-                        <a href="<?= $image->getUrl() ?>" data-fancybox="gallery1">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=" data-src="<?= $image->getUrl('x1000') ?>" class="d-block w-100 lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>" <?php if ($key == 0) {?>itemprop="image"<?php } ?>>
+                        <a href="<?= $productImages[$key]['max'] ?>" data-fancybox="gallery1">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=" data-src="<?= $productImages[$key]['min'] ?>" class="d-block w-100 lazyload" alt="<?= $image->alt ? $image->alt : $product_name ?>" <?php if ($key == 0) {?>itemprop="image"<?php } ?>>
                         </a>
                     </div>
             <?php
