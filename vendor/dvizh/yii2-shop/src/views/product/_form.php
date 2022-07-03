@@ -31,6 +31,23 @@ $store_types = Yii::$app->params['store_types'];
 
 ?>
 
+<?php // формируем изображения заранее, до вывода на фронте 
+    // $images = $model->getImages();
+    // foreach ($images as $image) {
+        // $this->registerJs("
+            // var urls = [
+                // '" . $image->getUrl('1000x') . "',
+                // '" . $image->getUrl('2000x') . "',
+                // '" . $image->getUrl('3500x') . "',
+                // '" . $image->getUrl() . "'
+            // ];
+            // for (var i = 0; i < urls.length; i++) {
+                // var img = new Image();
+                // img.src = urls[i];
+            // }
+        // ", View::POS_READY);
+    // }
+?>
 <div style="
     position: fixed;
     left: -99999px;
