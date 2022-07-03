@@ -27,11 +27,11 @@ $productImages = [];
 foreach ($images as $key => $image) {
     $imageMin = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMin . '.jpg';
     $imageMid = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMid . '.jpg';
-    $imageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x' . $imgMax . '.jpg';
+    $imageMax = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '.jpg';
     $productImages[] = [
         'min' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMin) ? $imageMin : $image->getUrl('x' . $imgMin),
         'mid' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMid) ? $imageMid : $image->getUrl('x' . $imgMid),
-        'max' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMax) ? $imageMax : $image->getUrl('x' . $imgMax),
+        'max' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMax) ? $imageMax : $image->getUrl(),
     ];
 }
 
