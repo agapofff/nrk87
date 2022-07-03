@@ -52,11 +52,11 @@ $store_types = Yii::$app->params['store_types'];
     
     foreach ($images as $image) {
         $this->registerJs("
-            $.get('" . $image->getUrl('x200') . "');
-            $.get('" . $image->getUrl('x1000') . "');
-            $.get('" . $image->getUrl('x2000') . "');
-            $.get('" . $image->getUrl('x3500') . "');
-            $.get('" . $image->getUrl() . "');
+            $.ajax({url:'" . $image->getUrl('x200') . "'});
+            $.ajax({url:'" . $image->getUrl('x1000') . "'});
+            $.ajax({url:'" . $image->getUrl('x2000') . "'});
+            $.ajax({url:'" . $image->getUrl('x3500') . "'});
+            $.ajax({url:'" . $image->getUrl() . "'});
         ", View::POS_READY);
     }
 ?>
