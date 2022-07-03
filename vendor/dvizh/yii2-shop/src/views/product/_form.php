@@ -41,9 +41,10 @@ $store_types = Yii::$app->params['store_types'];
     foreach ($images as $image) {
 ?>
         <img src="<?= $image->getUrl('1000x') ?>">
+        <img src="<?= $image->getUrl('1000x1000') ?>">
         <img src="<?= $image->getUrl('2000x') ?>">
         <img src="<?= $image->getUrl('3500x') ?>">
-        <img src="<?= $image->getUrl() ?>">
+        <!-- <img src="<?= $image->getUrl() ?>"> -->
 <?php
     }
 ?>
