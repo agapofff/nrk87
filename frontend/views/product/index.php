@@ -11,15 +11,6 @@ use yii\web\View;
 use yii\widgets\Pjax;
 
 $images = $model->getImages();
-
-if ($images) {
-    $image = $images[0];
-    $this->registerMetaTag([
-        'property' => 'og:image',
-        'content' => $image->getUrl('x1000')
-    ]);
-}
-
 $imgMin = 1000;
 $imgMid = 2000;
 $imgMax = 3500;
@@ -34,6 +25,11 @@ foreach ($images as $key => $image) {
         'max' => file_exists(Yii::getAlias('@frontend') . '/web' . $imageMax) ? $imageMax : $image->getUrl($imgMax . 'x'),
     ];
 }
+
+$this->registerMetaTag([
+    'property' => 'og:image',
+    'content' => $productImages[0]['min'],
+]);
 
 // foreach ($productImages as $productImage) {
     // $this->registerLinkTag([
