@@ -69,7 +69,7 @@ class DefaultController extends Controller
     public function actionSetmain($id)
     {
         $model = $this->findImage($id);
-        Yii::$app->db->createCommand('UPDATE image SET isMain = 0 WHERE itemId = :itemId')
+        Yii::$app->db->createCommand('UPDATE {{%images}} SET isMain = 0 WHERE itemId = :itemId')
             ->bindValue(':itemId', $model->itemId)
             ->execute();
         $model->isMain = 1;
