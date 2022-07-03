@@ -34,7 +34,7 @@ $store_types = Yii::$app->params['store_types'];
 
 <?php // формируем изображения заранее, до вывода на фронте 
     $images = $model->getImages();
-    foreach ($images as $image){
+    foreach ($images as $image) {
         $this->registerJs("
             var urls = [
                 '" . $image->getUrl('x200') . "',
