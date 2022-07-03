@@ -9,9 +9,10 @@
             <a href="<?= Url::to(['/product/' . $product->slug]) ?>">
                 <?php
                     $image = $product->getImage();
-                    $cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1000.jpg';
+                    $cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_1000x1000.jpg';
+                    $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('1000x1000');
                 ?>
-                <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x1000') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $productName ?>" loading="lazy">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=" data-src="<?= $imageUrl ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $productName ?>">
             </a>
             <p class="text-center mt-1_5 mb-0_5">
                 <?= $productName ?>
