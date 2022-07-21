@@ -18,11 +18,9 @@ class CatalogController extends \yii\web\Controller
     
     public function actionIndex($collectionSlug = null, $categorySlug = null)
     {
-        $collIDs = [
-            16, // 2021
-            17, // 2021 дети
-            9, // 2020
-        ];
+        $collIDs = Yii::$app->params['collectionsIDs'];
+        
+        $search = Yii::$app->request->get('search');
         
         if ($collectionSlug && !in_array(Category::findOne(['slug' => $collectionSlug])->id, $collIDs)) {
             $categorySlug = $collectionSlug;
@@ -91,7 +89,13 @@ class CatalogController extends \yii\web\Controller
                         ->where([
                             'active' => 1,
                             'id' => $collectionProductsIDs
-                        ]);
+                        ])
+                        ->andFilterWhere(['or', 
+                            ['like', 'name', $search],
+                            ['like', 'code', $search],
+                            ['like', 'text', $search],
+                            ['like', 'short_text', $search],
+                        ]);       
                         
                     if (Yii::$app->request->get('filter')) {
                         $goods = $goods->filtered();
@@ -177,5 +181,4 @@ class CatalogController extends \yii\web\Controller
         ]);
     }
 
-    
 }

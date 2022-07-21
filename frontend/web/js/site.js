@@ -105,6 +105,11 @@ jQuery(document).ready(function ($) {
                     .addClass('navbar-dark bg-transparent');
             }
         }
+        
+        if (offset > 20 && offset > prevScroll) {
+            $('#nav-search-dropdown').dropdown('hide');
+        }
+        
         prevScroll = offset;
     }
 
@@ -112,6 +117,15 @@ jQuery(document).ready(function ($) {
     
     $(window).scroll(function () {
         mainMenuStyle();
+    });
+
+
+    // nav search
+    $('#nav-search-dropdown').on('shown.bs.dropdown', function () {
+        $('#nav-search-input').focus();
+    });
+    $('body').on('input', 'input[name="search"]', function (e) {
+        this.value = this.value.replace(/[^0-9A-ZА-Яa-zа-я.,_\-\s]/gi, '').slice(0, this.maxlength).toLowerCase();
     });
 
 

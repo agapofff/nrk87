@@ -372,6 +372,16 @@ form[disabled] {
 	margin-top: 0.1em;
 }
 
+#nav-search-input {
+    width: 100vh;
+    max-width: 300px;
+}
+@media (max-width: 576px){
+    #nav-search-input {
+        max-width: 200px;
+    }
+}
+
 .modal .modal-dialog,
 .modal .modal-content {
 	min-width: 450px;

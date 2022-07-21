@@ -383,7 +383,7 @@
                     </a>
                 </div>
                 
-                <div id="nav-lang-select" class="d-none d-lg-block ml-lg-3 ml-xl-4 ml-xxl-5">
+                <div id="nav-lang-select" class="d-none d-lg-block ml-lg-3 ml-xl-4 ">
                     <?php
                         if ($langs) {
                             foreach (array_reverse($langs) as $key => $lang) {
@@ -395,7 +395,43 @@
                     ?>
                 </div>
                 
-                <div id="nav-user-icon" class="d-none d-lg-block ml-lg-3 ml-xl-4 ml-xxl-5 p-0_25 rounded-pill <?= Yii::$app->user->isGuest ? '' : 'border' ?>">
+                <div id="nav-search" class="ml-2 ml-lg-3 ml-xl-4 d-none">
+                    <div id="nav-search-dropdown" class="dropdown">
+                        <button id="nav-search-dropdown-button" type="button" class="btn btn-link text-decoration-none p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" fill="white"/>
+                                </svg>
+                            </span>
+                            <span class="black">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" fill="black"/>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg-right px-1_5 pt-2 pb-1 mt-1_5 rounded-0 border-gray-300 shadow-sm" aria-labelledby="nav-search-dropdown-button">
+                            <?= Html::beginForm(['/catalog'], 'get', [
+                                    'id' => 'nav-search-form',
+                                    'class' => 'position-relative'
+                                ]) 
+                            ?>
+                                <div class="form-group mb-0 position-relative floating-label">
+                                    <input type="text" id="nav-search-input" class="form-control form-control-lg mb-0 px-0 text-lowercase" name="search" value="<?= Yii::$app->request->get('search') ?>" placeholder=" " maxlength="30">
+                                    <label class="control-label" for="nav-search-input">
+                                        <?= Yii::t('front', 'Поиск') ?>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-link position-absolute top-0 right-0 pr-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" fill="black"/>
+                                    </svg>
+                                </button>
+                            <?= Html::endForm() ?>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="nav-user-icon" class="d-none d-lg-block ml-lg-3 ml-xl-4 p-0_25 rounded-pill <?= Yii::$app->user->isGuest ? '' : 'border' ?>">
                     <a href="<?= Yii::$app->user->isGuest ? Url::to(['/login']) : Url::to(['/account']) ?>">
                         <span class="white">
                             <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -412,7 +448,7 @@
                     </a>
                 </div>
                 
-                <div id="nav-wishlist-icon" class="ml-auto mr-2 ml-lg-3 mr-lg-0 ml-xl-4 ml-xxl-5 p-0_25">
+                <div id="nav-wishlist-icon" class="ml-auto mr-2 ml-lg-3 mr-lg-0 ml-xl-4 p-0_25">
                     <a href="<?= Url::to(['/wishlist']) ?>">
                         <span class="white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" class="bi bi-heart" viewBox="0 0 16 16">
@@ -427,7 +463,7 @@
                     </a>
                 </div>
                 
-                <div id="nav-cart-icon" class="ml-lg-3 ml-xl-4 ml-xxl-5">
+                <div id="nav-cart-icon" class="ml-lg-3 ml-xl-4">
                     <button type="button" class="btn btn-link text-decoration-none p-0" data-toggle="modal" data-target="#mini-cart" aria-label="<?= Yii::t('front', 'Корзина') ?>">
                         <span class="white">
                             <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
