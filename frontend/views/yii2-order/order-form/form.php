@@ -585,12 +585,12 @@
 </div>
 
 <?php
-    $this->registerCssFile('https://cdn.jsdelivr.net/npm/suggestions-jquery@latest/dist/css/suggestions.min.css');
-    $this->registerJsFile('https://cdn.jsdelivr.net/npm/suggestions-jquery@latest/dist/js/jquery.suggestions.min.js', [
-        'depends' => [
-            \yii\web\JqueryAsset::class
-        ]
-    ]);
+    // $this->registerCssFile('https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/css/suggestions.min.css');
+    // $this->registerJsFile('https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/js/jquery.suggestions.min.js', [
+        // 'depends' => [
+            // \yii\web\JqueryAsset::class
+        // ]
+    // ]);
 ?>
 
 <?php
@@ -634,6 +634,16 @@
         $('#order-shipping_type_id').change(function () {
             shippingTypeChange();
         });
+        
+        setPaymentOptions = function () {
+            var moscowCourier = parseFloat($('[data-field=\"delivery_id\"]').val()) === 74265;
+
+            $('#payment_type_id').val(moscowCourier ? 2 : 1).trigger('change');
+            $('#order-form-submit-button').toggleClass('moscowCourier', moscowCourier);
+            $('#submit-finish-text').toggle(moscowCourier);
+            $('#submit-payment-text').toggle(!moscowCourier);
+        }
+        setPaymentOptions();
         
         shippingTypeChange = function (isCityChanged = false) {
 // console.log('shippingTypeChange = ' + isCityChanged);
@@ -817,16 +827,6 @@ console.log(response);
             });
         }
         daDataInit();
-
-        setPaymentOptions = function () {
-            var moscowCourier = parseFloat($('[data-field=\"delivery_id\"]').val()) === 74265;
-
-            $('#payment_type_id').val(moscowCourier ? 2 : 1).trigger('change');
-            $('#order-form-submit-button').toggleClass('moscowCourier', moscowCourier);
-            $('#submit-finish-text').toggle(moscowCourier);
-            $('#submit-payment-text').toggle(!moscowCourier);
-        }
-        setPaymentOptions();
 
         validateOrderForm = function () {
             var errors = false;

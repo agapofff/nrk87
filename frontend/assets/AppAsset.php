@@ -26,6 +26,7 @@ class AppAsset extends AssetBundle
         // 'css/ekko-lightbox.css',
         // 'css/fancybox.css',
         'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css',
+        'css/suggestions.min.css',
         'css/site.css',
     ];
     public $js = [
@@ -57,6 +58,7 @@ class AppAsset extends AssetBundle
         'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js',
         'js/nprogress.js',
         'js/jquery.marquee.min.js',
+        'js/jquery.suggestions.min.js',
         // 'js/headroom.min.js',
         // 'js/jQuery.headroom.js',
         
