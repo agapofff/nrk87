@@ -20,9 +20,9 @@ class IonSliderAsset extends AssetBundle
      * @var array
      */
     public $css = [
-        'css/normalize.css',
+        // 'css/normalize.css',
         'css/ion.rangeSlider.css',
-        'css/ion.rangeSlider.skinHTML5.css',
+        // 'css/ion.rangeSlider.skinHTML5.css',
     ];
 
     /**
