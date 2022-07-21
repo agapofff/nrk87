@@ -39,13 +39,15 @@ class OrderForm extends \yii\base\Widget
             ->where([
                 'active' => 1
             ])
-            ->orderBy('order DESC')
+            ->orderBy([
+                'order' => SORT_ASC
+            ])
             ->all();
 
         $shippingTypes = [];
         
         foreach ($shippingTypesList as $sht) {
-            if($sht->cost > 0) {
+            if ($sht->cost > 0) {
                 $currency = Yii::$app->getModule('order')->currency;
                 $name = "{$sht->name} ({$sht->cost}{$currency})";
             } else {
@@ -63,7 +65,7 @@ class OrderForm extends \yii\base\Widget
             ->all();
         
         foreach($paymentTypesList as $pt) {
-            $paymentTypes[$pt->id] = $pt->name;
+            $paymentTypes[$pt->id] = Yii::t('front', $pt->name);
         }
         
         
@@ -95,8 +97,8 @@ class OrderForm extends \yii\base\Widget
             $countryByLang = null;
             $countries = json_decode($countriesJson);
             $countriesList = ArrayHelper::map($countries, 'id', 'name');
-            foreach ($countries as $country)
-            {
+            
+            foreach ($countries as $country) {
                 $countriesOptions[$country->id] = [
                     'data-code' => $country->code,
                     'data-phonemask' => $country->mask,
@@ -150,6 +152,7 @@ class OrderForm extends \yii\base\Widget
 			
 			$deliveryList = ArrayHelper::map($shippings->delivery, 'id', 'text');
 			$pickupsList = ArrayHelper::map($shippings->pickups, 'id', 'text');
+			$courierList = ArrayHelper::map($shippings->courier, 'id', 'text');
         
 // echo \yii\helpers\VarDumper::dump($pickupsList, 9999, true); exit;
         
@@ -161,6 +164,10 @@ class OrderForm extends \yii\base\Widget
 				$orderModel->shipping_type_id = 2;
 				$delivery_id = $shippings->pickups[0]->id;
 				$delivery_name = $shippings->pickups[0]->text;
+			} else if ($shippings->courier){
+				$orderModel->shipping_type_id = 3;
+				$delivery_id = $shippings->courier[0]->id;
+				$delivery_name = $shippings->courier[0]->text;
 			}
 			
 			$delivery_cost = $shippings->details->{$delivery_id}->cost;
@@ -187,8 +194,10 @@ class OrderForm extends \yii\base\Widget
             'citiesList' => $citiesList,
             'delivery' => empty($shippings->delivery),
             'pickups' => empty($shippings->pickups),
+            'courier' => empty($shippings->courier),
             'deliveryList' => $deliveryList,
             'pickupsList' => $pickupsList,
+            'courierList' => $courierList,
             'fieldsDefaultValues' => [
                 'city_id' => $city_id,
                 'city_name' => $city_name,

@@ -202,6 +202,10 @@ class CheckoutController extends \yii\web\Controller
                 $details = [];
                 $deliveryJson = str_replace('\r\n', '<br>', $deliveryJson);
                 $shippings = json_decode($deliveryJson);
+                
+                $currency = Langs::findOne([
+                    'code' => Yii::$app->language
+                ])->currency;
 
 // echo \yii\helpers\VarDumper::dump($shippings, 99, true);
 
@@ -263,7 +267,7 @@ class CheckoutController extends \yii\web\Controller
                     
                     $details[$shipping->id] = [
                         'cost' => $shipping->cost,
-                        'price' => Yii::$app->formatter->asCurrency($shipping->cost, Yii::$app->params['currency']),
+                        'price' => Yii::$app->formatter->asCurrency((int)$shipping->cost, $currency),
                         'image' => isset($shipping->image) ? 'https://sessia.com' . $shipping->image : '',
                         'comment' => $shipping->comment,
                         'time' => (isset($shipping->delivery_time_from) ? Yii::t('front', 'от {0} до {1} дней', [
@@ -275,7 +279,7 @@ class CheckoutController extends \yii\web\Controller
                             'name' => $shipping->delivery_type->delivery_service->name,
                         ],
                         'sum' => ($total + $shipping->cost),
-                        'total' => Yii::$app->formatter->asCurrency(($total + $shipping->cost), Yii::$app->params['currency']),
+                        'total' => Yii::$app->formatter->asCurrency(($total + $shipping->cost), $currency),
                         'lat' => $shipping->lat,
                         'lon' => $shipping->lng,
                         'text' => $text,

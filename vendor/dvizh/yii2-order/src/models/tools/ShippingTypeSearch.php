@@ -23,7 +23,7 @@ class ShippingTypeSearch extends ShippingType
 
     public function search($params)
     {
-        $query = ShippingType::find()->orderBy('order DESC');
+        $query = ShippingType::find()->orderBy('order ASC');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
