@@ -157,7 +157,7 @@
     
     // товар в подарок
     $giftData = null;
-    if (Yii::$app->params['gift']) {
+    if (Yii::$app->params['gift'] && Yii::$app->language == 'ru') {
         $gift = \dvizh\shop\models\Product::findOne(Yii::$app->params['gift']['product_id']);
         
         $giftOptions = [];
