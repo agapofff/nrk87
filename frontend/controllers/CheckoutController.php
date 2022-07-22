@@ -224,7 +224,7 @@ class CheckoutController extends \yii\web\Controller
                     
                     $text = str_replace('<br>', ' ', $text);
                     
-                    $deliveryType = $shipping->delivery_type->pickup ? 'pickups' : ($shipping->delivery_type->delivery_service->id == 8150 ? 'courier' : 'delivery');
+                    $deliveryType = $shipping->delivery_type->pickup == false ? ($shipping->delivery_type->delivery_service->id == 8150 ? 'courier' : 'delivery') : 'pickups';
                     
                     if ($q) {
                         if (mb_stripos($text, $q) === false) {
